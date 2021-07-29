@@ -1,5 +1,4 @@
-﻿using Abp.Specifications;
-using StarSecurityService.ApplicationCore.Entities;
+﻿using StarSecurityService.ApplicationCore.Entities;
 using StarSecurityService.ApplicationCore.InterFaces;
 using System;
 using System.Collections.Generic;
