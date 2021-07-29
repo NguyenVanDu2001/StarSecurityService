@@ -1,11 +1,7 @@
-﻿using Abp.Specifications;
-using StarSecurityService.ApplicationCore.Entities;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
-using System.Text;
-using System.Threading;
 using System.Threading.Tasks;
 
 namespace StarSecurityService.ApplicationCore.InterFaces
