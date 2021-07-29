@@ -1,0 +1,33 @@
+/*
+Theme Name: Betheme
+Theme URI: https://themes.muffingroup.com/betheme/
+Author: Muffin group
+Author URI: https://muffingroup.com/
+Description: The biggest WordPress Theme ever
+License: Themeforest Split Licence
+License URI: https://themeforest.net/licenses/standard
+Text Domain: betheme
+Version: 21.3.1
+
+All css files are placed in /css/ folder
+*/
+#Header_wrapper, #Intro {
+    margin-top: -117px;
+    background-color: #ecececb8;
+    margin-bottom: 0px !important;
+}
+
+.hide {
+  display: none;
+	
+  background:white;
+  position:absolute;
+  
+  top:-200px;
+  
+}
+    
+.myDIV:hover + .hide {
+  display: block;
+  color: red;
+}
