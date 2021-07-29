@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace StarSecurityService.ApplicationCore.Entities
 {
-    public class Employyee : BaseEntity
+    public class Employyee : BaseEntity<int>
     {
         public string Code{ get; set; }
         public string Name { get; set; }

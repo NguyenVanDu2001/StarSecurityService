@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace StarSecurityService.ApplicationCore.InterFaces
 {
-    public interface IAsyncRepository<T> : IDisposable where T : BaseEntity
+    public interface IAsyncRepository<T> : IDisposable where T : class
     {
         Task<T> GetByIdAsync(int id);
         Task<IReadOnlyList<T>> ListAllAsync();
@@ -21,5 +21,6 @@ namespace StarSecurityService.ApplicationCore.InterFaces
         Task<int> CountAsync(Expression<Func<T, bool>> predicate);
         Task<T> FirstAsync(Expression<Func<T, bool>> predicate);
         Task<T> FirstOrDefaultAsync(Expression<Func<T, bool>> predicate);
+        Task<IQueryable<T>> GetAll();
     }
 }
