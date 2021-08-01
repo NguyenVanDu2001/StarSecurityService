@@ -140,6 +140,10 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\wp-client-fonts\font-family.css" />
+    <Content Include="Content\wp-content\extensions\revolution.extension.layeranimation.min.js" />
+    <Content Include="Content\wp-content\extensions\revolution.extension.navigation.min.js" />
+    <Content Include="Content\wp-content\extensions\revolution.extension.parallax.min.js" />
+    <Content Include="Content\wp-content\extensions\revolution.extension.slideanims.min.js" />
     <Content Include="Content\wp-content\plugins\contact-form-7\images\ajax-loader.gif" />
     <Content Include="Content\wp-content\plugins\contact-form-7\includes\css\stylesb62d.css" />
     <Content Include="Content\wp-content\plugins\contact-form-7\includes\js\scriptsb62d.js" />
@@ -323,6 +327,7 @@
     <Content Include="Scripts\jquery-3.4.1.slim.js" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.themepunch.revolution.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
