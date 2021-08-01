@@ -1,0 +1,48 @@
+﻿@model IEnumerable<StarSecurityService.ApplicationCore.Entities.Bussiness>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_MainLayoutAdmin.cshtml";
+}
+
+<p>
+    @Html.ActionLink("Update", "Update")
+</p>
+<table class="table table-sm table-dashboard data-table no-wrap mb-0 fs--1 w-100" id="tableBussiness">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Status)
+            </th>
+        </tr>
+    </thead>
+
+    @foreach (var item in Model)
+    {
+        <tbody>
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Status)
+                </td>
+
+            </tr>
+        </tbody>
+    }
+
+</table>
+@section scripts {
+    <script>    
+        $("#tableBussiness").DataTable();
+    </script>
+}

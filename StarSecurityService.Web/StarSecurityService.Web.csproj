@@ -124,9 +124,9 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Admin\Controllers\BussinessController.cs" />
-    <Compile Include="Controllers\BussinessController.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\CategoryController.cs" />
+    <Compile Include="Areas\Admin\Controllers\GroupUserController.cs" />
     <Compile Include="Areas\Admin\Controllers\MainAdminController.cs" />
     <Compile Include="Areas\Admin\Controllers\ProductController.cs" />
     <Compile Include="Controllers\EmployeeController.cs" />
@@ -139,6 +139,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Areas\Admin\Views\Bussiness\index.js" />
     <Content Include="Areas\Asset\ckeditor\adapters\jquery.js" />
     <Content Include="Areas\Asset\ckeditor\build-config.js" />
     <Content Include="Areas\Asset\ckeditor\ckeditor.js" />
@@ -2218,6 +2219,9 @@
     <Content Include="Areas\Asset\js\lumino.glyphs.js" />
     <Content Include="Areas\Asset\js\myscript.js" />
     <Content Include="Areas\Asset\js\respond.min.js" />
+    <Content Include="Areas\Asset\tables\Datatable\jquery-3.5.1.js" />
+    <Content Include="Areas\Asset\tables\Datatable\jquery.dataTables.min.css" />
+    <Content Include="Areas\Asset\tables\Datatable\jquery.dataTables.min.js" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -2376,6 +2380,8 @@
     <Content Include="Areas\Admin\Views\Product\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Product\Create.cshtml" />
     <Content Include="Areas\Admin\Views\Category\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\GroupUser\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\GroupUser\GrantPermisstion.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -2403,13 +2409,13 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Employee\Index.cshtml" />
     <Content Include="Views\Employee\Create.cshtml" />
-    <Content Include="Views\Bussiness\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Bussiness\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Models\" />
-    <Folder Include="Areas\Admin\Views\Bussiness\" />
     <Folder Include="Models\" />
+    <Folder Include="Views\Bussiness\" />
     <Folder Include="Views\GroupPermission\" />
   </ItemGroup>
   <ItemGroup>

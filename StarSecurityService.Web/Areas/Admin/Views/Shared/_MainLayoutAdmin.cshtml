@@ -7,6 +7,7 @@
     <link href="~/Areas/Asset/css/bootstrap.min.css" rel="stylesheet">
     <link href="~/Areas/Asset/css/datepicker3.css" rel="stylesheet">
     <link href="~/Areas/Asset/css/styles.css" rel="stylesheet">
+    <link href="~/Areas/Asset/tables/Datatable/jquery.dataTables.min.css" rel="stylesheet" />
     <script type="text/javascript" src="~/Areas/Asset/ckeditor/ckeditor.js"></script>
     <script src="~/Areas/Asset/js/lumino.glyphs.js"></script>
 </head>
@@ -30,9 +31,10 @@
     <div id="sidebar-collapse" class="col-sm-3 col-lg-2 sidebar">
         <ul class="nav menu">
             <li role="presentation" class="divider"></li>
-            <li  ><a href="index.html"><svg class="glyph stroked dashboard-dial"><use xlink:href="#stroked-dashboard-dial"></use></svg> Trang chủ</a></li>
-            <li class="@(Request.Path.StartsWith(@Url.Action("Index", "Product")) ? "active" : null)" ><a href="@Url.Action("Index", "Product")"><svg class="glyph stroked calendar"><use xlink:href="#stroked-calendar"></use></svg> Sản phẩm</a></li>
-            <li class="@(Request.Path.StartsWith(@Url.Action("Index", "Category")) ? "active" : null)" ><a href="@Url.Action("Index", "Category")"><svg class="glyph stroked line-graph"><use xlink:href="#stroked-line-graph"></use></svg> Danh mục</a></li>
+            <li><a href="index.html"><svg class="glyph stroked dashboard-dial"><use xlink:href="#stroked-dashboard-dial"></use></svg> Trang chủ</a></li>
+            <li class="@(Request.Path.StartsWith(@Url.Action("Index", "Product")) ? "active" : null)"><a href="@Url.Action("Index", "Product")"><svg class="glyph stroked calendar"><use xlink:href="#stroked-calendar"></use></svg> Sản phẩm</a></li>
+            <li class="@(Request.Path.StartsWith(@Url.Action("Index", "Category")) ? "active" : null)"><a href="@Url.Action("Index", "Category")"><svg class="glyph stroked line-graph"><use xlink:href="#stroked-line-graph"></use></svg> Danh mục</a></li>
+            <li class="@(Request.Path.StartsWith(@Url.Action("Index", "Bussiness")) ? "active" : null)"><a href="@Url.Action("Index", "Bussiness")"><svg class="glyph stroked line-graph"><use xlink:href="#stroked-line-graph"></use></svg> Pemisstion</a></li>
             <li role="presentation" class="divider"></li>
         </ul>
 
@@ -49,9 +51,10 @@
     <script src="~/Areas/Asset/js/easypiechart.js"></script>
     <script src="~/Areas/Asset/js/easypiechart-data.js"></script>
     <script src="~/Areas/Asset/js/bootstrap-datepicker.js"></script>
+    <script src="~/Areas/Asset/tables/Datatable/jquery.dataTables.min.js"></script>
+
     <script>
-        $('#calendar').datepicker({
-        });
+
 
         !function ($) {
             $(document).on("click", "ul.nav li.parent > a > span.icon", function () {
@@ -68,5 +71,6 @@
         })
 
     </script>
+    @RenderSection("scripts", required: false)
 </body>
 </html>
