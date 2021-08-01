@@ -53,7 +53,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Entities\BaseEntity.cs" />
+    <Compile Include="Entities\Candidate.cs" />
+    <Compile Include="Entities\Client.cs" />
     <Compile Include="Entities\Employyee.cs" />
+    <Compile Include="Entities\ServiceOffer.cs" />
+    <Compile Include="Entities\Vacancy.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

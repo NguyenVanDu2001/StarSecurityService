@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Dashboard | Vietpro shop</title>
+    <title>Dashboard | Star Security</title>
     <link href="~/Areas/Asset/css/bootstrap.min.css" rel="stylesheet">
     <link href="~/Areas/Asset/css/datepicker3.css" rel="stylesheet">
     <link href="~/Areas/Asset/css/styles.css" rel="stylesheet">
@@ -14,12 +14,15 @@
     <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
         <div class="container-fluid">
             <div class="navbar-header">
-                <a class="navbar-brand" href="#">Vietpro Admin</a>
+                <a class="navbar-brand" href="#">Admin</a>
                 <ul class="user-menu">
                     <li class="dropdown pull-right">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown"><svg class="glyph stroked male-user"><use xlink:href="#stroked-male-user"></use></svg> User <span class="caret"></span></a>
                         <ul class="dropdown-menu" role="menu">
-                            <li><a href="#"><svg class="glyph stroked cancel"><use xlink:href="#stroked-cancel"></use></svg> Logout</a></li>
+                            <li><a href="@Url.Action("Index", "Login")"><svg class="glyph stroked cancel"><use xlink:href="#stroked-cancel"></use></svg> Login</a></li>
+                            <li><a href="@Url.Action("Index", "Login")"><svg class="glyph stroked upload"><use xlink:href="#stroked-upload" /></svg> Login</a></li>
+                            <li><a href="#"><svg class="glyph stroked male-user"><use xlink:href="#stroked-male-user"></use></svg> Profile</a></li>
+                            <li><a href="#"><svg class="glyph stroked gear"><use xlink:href="#stroked-gear" /></svg> Settings</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -31,9 +34,14 @@
     <div id="sidebar-collapse" class="col-sm-3 col-lg-2 sidebar">
         <ul class="nav menu">
             <li role="presentation" class="divider"></li>
-            <li class="active"><a href="index.html"><svg class="glyph stroked dashboard-dial"><use xlink:href="#stroked-dashboard-dial"></use></svg> Trang chủ</a></li>
-            <li><a href="@Url.Action("Index", "Product")"><svg class="glyph stroked calendar"><use xlink:href="#stroked-calendar"></use></svg> Sản phẩm</a></li>
-            <li><a href="@Url.Action("Index", "Category")"><svg class="glyph stroked line-graph"><use xlink:href="#stroked-line-graph"></use></svg> Danh mục</a></li>
+            <li class="active"><a href="@Url.Action("Index", "MainAdmin")"><svg class="glyph stroked dashboard-dial"><use xlink:href="#stroked-dashboard-dial"></use></svg> Home</a></li>
+            <li><a href="@Url.Action("Index", "Employee")"><svg class="glyph stroked clipboard with paper"><use xlink:href="#stroked-clipboard-with-paper" /></svg> Employee</a></li>
+            <li><a href="@Url.Action("Index", "Achievement")"><svg class="glyph stroked line-graph"><use xlink:href="#stroked-line-graph"></use></svg> Achievement</a></li>
+            <li><a href="@Url.Action("Index", "Branch")"><svg class="glyph stroked home"><use xlink:href="#stroked-home" /></svg> Branch</a></li>
+            <li><a href="@Url.Action("Index", "Client")"><svg class="glyph stroked female user"><use xlink:href="#stroked-female-user" /></svg> Client</a></li>
+            <li><a href="@Url.Action("Index", "ServiceOffer")"><svg class="glyph stroked open folder"><use xlink:href="#stroked-open-folder" /></svg> ServiceOffer</a></li>
+            <li><a href="@Url.Action("Index", "Vacancy")"><svg class="glyph stroked notepad "><use xlink:href="#stroked-notepad" /></svg> Vacancy</a></li>
+            <li><a href="@Url.Action("Index", "Candidate")"><svg class="glyph stroked film"><use xlink:href="#stroked-film" /></svg> Candidate</a></li>
             <li role="presentation" class="divider"></li>
         </ul>
 

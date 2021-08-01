@@ -6,27 +6,27 @@ using System.Web.Mvc;
 
 namespace StarSecurityService.Web.Areas.Admin.Controllers
 {
-    public class CategoryController : Controller
+    public class BranchController : Controller
     {
-        // GET: Admin/Category
+        // GET: Admin/Branch
         public ActionResult Index()
         {
             return View();
         }
 
-        // GET: Admin/Category/Details/5
+        // GET: Admin/Branch/Details/5
         public ActionResult Details(int id)
         {
             return View();
         }
 
-        // GET: Admin/Category/Create
+        // GET: Admin/Branch/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Admin/Category/Create
+        // POST: Admin/Branch/Create
         [HttpPost]
         public ActionResult Create(FormCollection collection)
         {
@@ -42,13 +42,13 @@ namespace StarSecurityService.Web.Areas.Admin.Controllers
             }
         }
 
-        // GET: Admin/Category/Edit/5
+        // GET: Admin/Branch/Edit/5
         public ActionResult Edit(int id)
         {
             return View();
         }
 
-        // POST: Admin/Category/Edit/5
+        // POST: Admin/Branch/Edit/5
         [HttpPost]
         public ActionResult Edit(int id, FormCollection collection)
         {
@@ -64,13 +64,13 @@ namespace StarSecurityService.Web.Areas.Admin.Controllers
             }
         }
 
-        // GET: Admin/Category/Delete/5
+        // GET: Admin/Branch/Delete/5
         public ActionResult Delete(int id)
         {
             return View();
         }
 
-        // POST: Admin/Category/Delete/5
+        // POST: Admin/Branch/Delete/5
         [HttpPost]
         public ActionResult Delete(int id, FormCollection collection)
         {

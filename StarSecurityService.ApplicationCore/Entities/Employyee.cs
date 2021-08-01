@@ -7,17 +7,31 @@ using System.Threading.Tasks;
 
 namespace StarSecurityService.ApplicationCore.Entities
 {
-    public class Employyee : BaseEntity
+    public class Employyee
     {
-        public string Code{ get; set; }
-        public string Name { get; set; }
-        public string Adress{ get; set; }
-        public int ContactNumber{ get; set; }
-        public int? Role { get; set; }
-        public bool Grade { get; set; }
-        public int Client { get; set; }
-        public int? Achievements { get; set; }
+        public int Id{ get; set; }
+        public int BranchId { get; set; }
+        public string Address{ get; set; }
+        public string Image { get; set; }
+        public string Password { get; set; }
+        public string Email { get; set; }
+        public string Phone { get; set; }
+        public bool sex { get; set; }
+        public bool Status { get; set; }
         public DateTime BirthDay { get; set; }
-      
+
+        public Employyee(int id, int branchId, string address, string image, string password, string email, string phone, bool sex, bool status, DateTime birthDay)
+        {
+            Id = id;
+            BranchId = branchId;
+            Address = address;
+            Image = image;
+            Password = password;
+            Email = email;
+            Phone = phone;
+            this.sex = sex;
+            Status = status;
+            BirthDay = birthDay;
+        }
     }
 }
