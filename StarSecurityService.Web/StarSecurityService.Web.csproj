@@ -125,7 +125,6 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Admin\Controllers\BussinessController.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
-    <Compile Include="Areas\Admin\Controllers\CategoryController.cs" />
     <Compile Include="Areas\Admin\Controllers\GroupUserController.cs" />
     <Compile Include="Areas\Admin\Controllers\AchievementController.cs" />
     <Compile Include="Areas\Admin\Controllers\BranchController.cs" />
@@ -133,7 +132,6 @@
     <Compile Include="Areas\Admin\Controllers\ClientController.cs" />
     <Compile Include="Areas\Admin\Controllers\LoginController.cs" />
     <Compile Include="Areas\Admin\Controllers\MainAdminController.cs" />
-    <Compile Include="Areas\Admin\Controllers\ProductController.cs" />
     <Compile Include="Areas\Admin\Model\GroupUserGrantModel.cs" />
     <Compile Include="Controllers\EmployeeController.cs" />
     <Compile Include="Controllers\GroupPermissionController.cs" />

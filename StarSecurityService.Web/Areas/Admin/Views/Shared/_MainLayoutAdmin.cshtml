@@ -21,7 +21,6 @@
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown"><svg class="glyph stroked male-user"><use xlink:href="#stroked-male-user"></use></svg> User <span class="caret"></span></a>
                         <ul class="dropdown-menu" role="menu">
                             <li><a href="@Url.Action("Index", "Login")"><svg class="glyph stroked cancel"><use xlink:href="#stroked-cancel"></use></svg> Login</a></li>
-                            <li><a href="@Url.Action("Index", "Login")"><svg class="glyph stroked upload"><use xlink:href="#stroked-upload" /></svg> Login</a></li>
                             <li><a href="#"><svg class="glyph stroked male-user"><use xlink:href="#stroked-male-user"></use></svg> Profile</a></li>
                             <li><a href="#"><svg class="glyph stroked gear"><use xlink:href="#stroked-gear" /></svg> Settings</a></li>
                         </ul>
@@ -38,8 +37,11 @@
             
             
             <li class="active"><a href="@Url.Action("Index", "MainAdmin")"><svg class="glyph stroked dashboard-dial"><use xlink:href="#stroked-dashboard-dial"></use></svg> Home</a></li>
-            <li class="@(Request.Path.StartsWith(@Url.Action("Index", "Employee")) ? "active" : null)"><a href="@Url.Action("Index", "Employee")"><svg class="glyph stroked clipboard with paper"><use xlink:href="#stroked-clipboard-with-paper" /></svg> Employee</a></li>
-            <li class="@(Request.Path.StartsWith(@Url.Action("Index", "Achievement")) ? "active" : null)"><a href="@Url.Action("Index", "Achievement")"><svg class="glyph stroked line-graph"><use xlink:href="#stroked-line-graph"></use></svg> Achievement</a></liclass="@(Request.Path.StartsWith(@Url.Action("Index",>
+
+            <li class="@(Request.Path.StartsWith(@Url.Action("Index", "Employee")) ? "active" : null)">
+            <a href="@Url.Action("Index", "Employee")"><svg class="glyph stroked clipboard with paper"><use xlink:href="#stroked-clipboard-with-paper" /></svg> Employee</a></li>
+            <li class="@(Request.Path.StartsWith(@Url.Action("Index", "Achievement")) ? "active" : null)">
+            <a href="@Url.Action("Index", "Achievement")"><svg class="glyph stroked line-graph"><use xlink:href="#stroked-line-graph"></use></svg> Achievement</a>
             <li class="@(Request.Path.StartsWith(@Url.Action("Index", "Branch")) ? "active" : null)"><a href="@Url.Action("Index", "Branch")"><svg class="glyph stroked home"><use xlink:href="#stroked-home" /></svg> Branch</a></li>
             <li class="@(Request.Path.StartsWith(@Url.Action("Index", "Client")) ? "active" : null)"><a href="@Url.Action("Index", "Client")"><svg class="glyph stroked female user"><use xlink:href="#stroked-female-user" /></svg> Client</a></li>
             <li class="@(Request.Path.StartsWith(@Url.Action("Index", "ServiceOffer")) ? "active" : null)" ><a href="@Url.Action("Index", "ServiceOffer")"><svg class="glyph stroked open folder"><use xlink:href="#stroked-open-folder" /></svg> ServiceOffer</a></li>
