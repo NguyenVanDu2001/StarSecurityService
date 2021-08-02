@@ -33,7 +33,7 @@ namespace StarSecurityService.Web.Areas.Admin.Controllers
         public async Task<ActionResult> GrantPermisstion(int groupId)
         {
             // llay các nghiệp vụ
-            var _bussiness = (await  _bussinessReponsitory.ListAllAsync()).ToList();
+            var _bussiness = (await  _bussinessReponsitory.ListAllAsync()).AsEnumerable();
             foreach (var item in _bussiness)
             {
                 // lấy các quyền của nghiệp vụ

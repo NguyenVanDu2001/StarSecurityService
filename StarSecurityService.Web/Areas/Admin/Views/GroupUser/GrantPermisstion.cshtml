@@ -1,48 +1,50 @@
-﻿@model IEnumerable < StarSecurityService.ApplicationCore.Entities.GroupUser>
+﻿@model List<StarSecurityService.ApplicationCore.Entities.Bussiness>
 
 @{
     ViewBag.Title = "GrantPermisstion";
     Layout = "~/Areas/Admin/Views/Shared/_MainLayoutAdmin.cshtml";
 }
-
-<h2>Index</h2>
-
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.isAdmin)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Status)
-        </th>
-        <th></th>
-    </tr>
-
-    @foreach (var item in Model)
+<h2>GrantPermisstion</h2>
+<input type="hidden" name="groupId" id="groupId" value="@ViewBag.groupId" />
+<ul>
+    @foreach (var bsn in Model)
     {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.isAdmin)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Status)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-                @Html.ActionLink("GrantPermisstion", "GrantPermisstion", new { groupId = item.Id }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
-            </td>
-        </tr>
+        <li>
+            <h3>@bsn.Name</h3>
+            <ul>
+                <li>
+                    <div class="row">
+                        @foreach (var p in bsn.Permissions)
+                        {
+                            string _check = p.Status ? "checked" : "";
+                            <div class="col-md-3">
+                                <label>
+                                    <input type="checkbox" @_check name="name" value="@p.Id" class="chk_permistion" /> @p.Name
+                                </label>
+                            </div>
+                        }
+                    </div>
+                </li>
+            </ul>
+
+        </li>
     }
-
-</table>
-
+</ul>
+@section scripts{
+    <script>
+        $(function () {
+            $(".chk_permistion").change(function () {
+                let grouId = $("#groupId").val();
+                let id_permis = $(this).val();
+                $.ajax({
+                    type: "POST",
+                    url: "/Admin/GroupUser/GrantPer",
+                    data: { grouId: grouId, id_permis: id_permis },
+                    success: function (res) {
+                        alert(res.Message)
+                    }
+                })
+            })
+        })
+    </script>
+}
