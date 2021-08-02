@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StarSecurityService.EntityF
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StarSecurityService.ApplicationCore", "StarSecurityService.ApplicationCore\StarSecurityService.ApplicationCore.csproj", "{662129E7-30EA-4E54-B701-D7034FDB81C8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StarSecurityService.Application", "StarSecurityService.Application\StarSecurityService.Application.csproj", "{6AA80D48-4E36-4214-A40E-3D752E365624}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{662129E7-30EA-4E54-B701-D7034FDB81C8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{662129E7-30EA-4E54-B701-D7034FDB81C8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{662129E7-30EA-4E54-B701-D7034FDB81C8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6AA80D48-4E36-4214-A40E-3D752E365624}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6AA80D48-4E36-4214-A40E-3D752E365624}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6AA80D48-4E36-4214-A40E-3D752E365624}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6AA80D48-4E36-4214-A40E-3D752E365624}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

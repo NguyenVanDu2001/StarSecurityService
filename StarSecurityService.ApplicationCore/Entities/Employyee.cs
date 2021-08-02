@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace StarSecurityService.ApplicationCore.Entities
 {
-    public class Employyee
+    public class Employyee : BaseEntity<int>
     {
         public int Id{ get; set; }
         public int BranchId { get; set; }
