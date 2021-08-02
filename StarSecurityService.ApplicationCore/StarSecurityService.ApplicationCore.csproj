@@ -52,7 +52,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Entities\Achievement.cs" />
     <Compile Include="Entities\BaseEntity.cs" />
+    <Compile Include="Entities\Branch.cs" />
     <Compile Include="Entities\Candidate.cs" />
     <Compile Include="Entities\Client.cs" />
     <Compile Include="Entities\Employyee.cs" />

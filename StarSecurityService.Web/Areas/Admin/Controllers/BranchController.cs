@@ -1,4 +1,5 @@
-﻿using System;
+﻿using StarSecurityService.ApplicationCore.Entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -11,7 +12,8 @@ namespace StarSecurityService.Web.Areas.Admin.Controllers
         // GET: Admin/Branch
         public ActionResult Index()
         {
-            return View();
+            IEnumerable<Branch> items = new Branch[] { new Branch(1, "a", "a", "a", "a") };
+            return View(items);
         }
 
         // GET: Admin/Branch/Details/5

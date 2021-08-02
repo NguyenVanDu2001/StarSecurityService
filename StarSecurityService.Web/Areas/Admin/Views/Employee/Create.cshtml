@@ -1,4 +1,5 @@
-﻿
+﻿@model StarSecurityService.ApplicationCore.Entities.Employyee
+
 @{
     ViewBag.Title = "Create";
     Layout = "~/Areas/Admin/Views/Shared/_MainLayoutAdmin.cshtml";
@@ -19,69 +20,113 @@
                 <form method="post" enctype="multipart/form-data">
                     <div class="row" style="margin-bottom:40px">
                         <div class="col-xs-8">
-                            <div class="form-group">
-                                <label>UserName</label>
-                                <input required type="text" name="usename" class="form-control">
+                            @using (Html.BeginForm())
+                            {
+                                @Html.AntiForgeryToken()
+
+                            <div class="form-horizontal">
+                                <h4>Employyee</h4>
+                                <hr />
+                                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.BranchId, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="col-md-10">
+                                        @Html.EditorFor(model => model.BranchId, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.BranchId, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.Address, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="col-md-10">
+                                        @Html.EditorFor(model => model.Address, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.Image, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="col-md-10">
+                                        <input required id="img" type="file" name="img" class="form-control hidden" onchange="changeImg(this)">
+                                        <img id="avatar" class="thumbnail" width="300px" src="~/Areas/Asset/img/new_seo-10-512.png">
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="col-md-10">
+                                        @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="col-md-10">
+                                        @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.Phone, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="col-md-10">
+                                        @Html.EditorFor(model => model.Phone, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.Phone, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.sex, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="col-md-10">
+                                        <div class="checkbox">
+                                            @Html.EditorFor(model => model.sex)
+                                            @Html.ValidationMessageFor(model => model.sex, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.Status, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="col-md-10">
+                                        <div class="checkbox">
+                                            @Html.EditorFor(model => model.Status)
+                                            @Html.ValidationMessageFor(model => model.Status, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="achievement" class="control-label col-md-2">Choose achievement:</label>
+                                    <div class="col-md-10">
+                                        <select name="cars" id="achievement" multiple class="form-control">
+                                            <option value="volvo">Volvo</option>
+                                            <option value="saab">Saab</option>
+                                            <option value="opel">Opel</option>
+                                            <option value="audi">Audi</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.BirthDay, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="col-md-10">
+                                        @Html.EditorFor(model => model.BirthDay, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.BirthDay, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="col-md-offset-2 col-md-10">
+                                        <input type="submit" value="Create" class="btn btn-default" />
+                                    </div>
+                                </div>
                             </div>
-                            <div class="form-group">
-                                <label>Phone</label>
-                                <input required type="number" name="phone" class="form-control">
+                            }
+
+                            <div>
+                                @Html.ActionLink("Back to List", "Index")
                             </div>
-                            <div class="form-group">
-                                <label>Image</label>
-                                <input required id="img" type="file" name="img" class="form-control hidden" onchange="changeImg(this)">
-                                <img id="avatar" class="thumbnail" width="300px" src="~/Areas/Asset/img/new_seo-10-512.png">
-                            </div>
-                            <div class="form-group">
-                                <label>Email</label>
-                                <input required type="text" name="email" class="form-control">
-                            </div>
-                            <div class="form-group">
-                                <label>Password</label>
-                                <input required type="text" name="password" class="form-control">
-                            </div>
-                            <div class="form-group">
-                                <label>Birthday</label>
-                                <input required type="date" name="birthday" class="form-control">
-                            </div>
-                            <div class="form-group">
-                                <label>Address</label>
-                                <input required type="text" name="condition" class="form-control">
-                            </div>
-                            <div class="form-group">
-                                <label>Sex</label>
-                                <select required name="status" class="form-control">
-                                    <option value="1">Male</option>
-                                    <option value="0">Female</option>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label for="achievement">Choose achievement:</label>
-                                <select name="cars" id="achievement" multiple class="form-control">
-                                    <option value="volvo">Volvo</option>
-                                    <option value="saab">Saab</option>
-                                    <option value="opel">Opel</option>
-                                    <option value="audi">Audi</option>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label>Branch</label>
-                                <select required name="branch" class="form-control">
-                                    <option value="1">iPhone</option>
-                                    <option value="2">Samsung</option>
-                                    <option value="3">Nokia</option>
-                                    <option value="4">HTC</option>
-                                    <option value="5">LG</option>
-                                    <option value="6">Sony</option>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label>Status</label><br>
-                                True: <input type="radio" name="status" value="1">
-                                False: <input type="radio" checked name="status" value="0">
-                            </div>
-                            <input type="submit" name="submit" value="Submit" class="btn btn-primary">
-                            <a href="#" class="btn btn-danger">Cancel</a>
                         </div>
                     </div>
                 </form>

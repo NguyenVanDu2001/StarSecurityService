@@ -1,7 +1,10 @@
-﻿
+﻿@model IEnumerable<StarSecurityService.ApplicationCore.Entities.Branch>
+
 @{
-    ViewBag.Title = "Index";
-    Layout = "~/Areas/Admin/Views/Shared/_MainLayoutAdmin.cshtml";
+                /**/
+
+                ViewBag.Title = "Index";
+                Layout = "~/Areas/Admin/Views/Shared/_MainLayoutAdmin.cshtml";
 }
 
 <div class="row">
@@ -19,34 +22,46 @@
                 <div class="bootstrap-table">
                     <div class="table-responsive">
                         <a href="@Url.Action("Create", "Branch")" class="btn btn-primary">Create Branch</a>
-                        <table class="table table-bordered" style="margin-top:20px;">
-                            <thead>
-                                <tr class="bg-primary">
-                                    <th>ID</th>
-                                    <th>Name</th>
-                                    <th>Phone</th>
-                                    <th width="30%">Address</th>
-                                    <th>Email</th>
-                                    <th>Option</th>
-                                </tr>
-                            </thead>
-                            <tbody>
+                        <table class="table">
+                            <tr>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Name)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Phone)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Email)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Address)
+                                </th>
+                                <th></th>
+                            </tr>
+
+                            @foreach (var item in Model)
+                            {
                                 <tr>
-                                    <td>1</td>
-                                    <td>Australia</td>
-                                    <td>19002010</td>
                                     <td>
-                                        6th Floor - 601,Chain Office Bldg.
-                                        Opposite Al Falah Plaza, Muroor Road.,
-                                        Abu Dhabi, UAE
+                                        @Html.DisplayFor(modelItem => item.Name)
                                     </td>
-                                    <td>admin@gmail.com</td>
                                     <td>
-                                        <a href="#" class="btn btn-warning"><i class="fa fa-pencil" aria-hidden="true"></i> Edit</a>
-                                        <a href="#" class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i> Delete</a>
+                                        @Html.DisplayFor(modelItem => item.Phone)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Email)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Address)
+                                    </td>
+                                    <td>
+                                        @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                                        @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                                        @Html.ActionLink("Delete", "Delete", new { id = item.Id })
                                     </td>
                                 </tr>
-                            </tbody>
+                            }
+
                         </table>
                     </div>
                 </div>
