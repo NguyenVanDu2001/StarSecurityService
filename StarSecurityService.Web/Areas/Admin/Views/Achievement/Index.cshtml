@@ -1,0 +1,64 @@
+﻿@model  StarSecurityService.Web.Areas.Admin.Model.Achievements.AchievementModel
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_MainLayoutAdmin.cshtml";
+}
+
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header">Achievement</h1>
+    </div>
+</div><!--/.row-->
+
+<div class="row">
+    <div class="col-xs-12 col-md-5 col-lg-5">
+        @using (Html.BeginForm("SubmitForm", "Achievement", FormMethod.Post))
+        {
+            @Html.AntiForgeryToken() 
+            <input type="hidden"  name="Id" value="@(Model.entity != null ? Model.entity.Id : 0)"/>
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    Create Achievement
+                </div>
+                <div class="panel-body">
+                    <div class="form-group">
+                        <label>Achievement Name:</label>
+                        <input type="text" name="name" class="form-control" value="@(Model.entity != null ? Model.entity.name : "")" placeholder="Enter achievement name...">
+                    </div>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        }
+    </div>
+    <div class="col-xs-12 col-md-7 col-lg-7">
+        <div class="panel panel-primary">
+            <div class="panel-heading">Achievement List</div>
+            <div class="panel-body">
+                <div class="bootstrap-table">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr class="bg-primary">
+                                <th>Name</th>
+                                <th style="width:30%">Option</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model.ListAchievement)
+                            {
+                                <tr>
+                                    <td>@item.name</td>
+                                    <td>
+                                        <a href="@Url.Action("Index","Achievement",new { Id = item.Id})" class="btn btn-warning"><span class="glyphicon glyphicon-edit"></span> Edit</a>
+                                        <a href="#" onclick="return confirm('Bạn có chắc chắn muốn xóa?')" class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span> Delete</a>
+                                    </td>       
+                                </tr>
+                            }
+                          
+                        </tbody>
+                    </table>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </div>
+</div><!--/.row--></h1>

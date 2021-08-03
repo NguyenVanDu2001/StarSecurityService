@@ -1,0 +1,88 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Dashboard | Star Security</title>
+    <link href="~/Areas/Asset/css/bootstrap.min.css" rel="stylesheet">
+    <link href="~/Areas/Asset/css/datepicker3.css" rel="stylesheet">
+    <link href="~/Areas/Asset/css/styles.css" rel="stylesheet">
+    <link href="~/Areas/Asset/tables/Datatable/jquery.dataTables.min.css" rel="stylesheet" />
+    <script type="text/javascript" src="~/Areas/Asset/ckeditor/ckeditor.js"></script>
+    <script src="~/Areas/Asset/js/lumino.glyphs.js"></script>
+</head>
+<body>
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">Admin</a>
+                <ul class="user-menu">
+                    <li class="dropdown pull-right">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><svg class="glyph stroked male-user"><use xlink:href="#stroked-male-user"></use></svg> User <span class="caret"></span></a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a href="@Url.Action("Index", "Login")"><svg class="glyph stroked cancel"><use xlink:href="#stroked-cancel"></use></svg> Login</a></li>
+                            <li><a href="#"><svg class="glyph stroked male-user"><use xlink:href="#stroked-male-user"></use></svg> Profile</a></li>
+                            <li><a href="#"><svg class="glyph stroked gear"><use xlink:href="#stroked-gear" /></svg> Settings</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+
+        </div><!-- /.container-fluid -->
+    </nav>
+    <div id="sidebar-collapse" class="col-sm-3 col-lg-2 sidebar">
+        <ul class="nav menu">
+            <li role="presentation" class="divider"></li>
+            
+            
+            
+            <li class="active"><a href="@Url.Action("Index", "MainAdmin")"><svg class="glyph stroked dashboard-dial"><use xlink:href="#stroked-dashboard-dial"></use></svg> Home</a></li>
+
+            <li class="@(Request.Path.StartsWith(@Url.Action("Index", "Employee")) ? "active" : null)">
+            <a href="@Url.Action("Index", "Employee")"><svg class="glyph stroked clipboard with paper"><use xlink:href="#stroked-clipboard-with-paper" /></svg> Employee</a></li>
+            <li class="@(Request.Path.StartsWith(@Url.Action("Index", "Achievement")) ? "active" : null)">
+            <a href="@Url.Action("Index", "Achievement")"><svg class="glyph stroked line-graph"><use xlink:href="#stroked-line-graph"></use></svg> Achievement</a>
+            <li class="@(Request.Path.StartsWith(@Url.Action("Index", "Branch")) ? "active" : null)"><a href="@Url.Action("Index", "Branch")"><svg class="glyph stroked home"><use xlink:href="#stroked-home" /></svg> Branch</a></li>
+            <li class="@(Request.Path.StartsWith(@Url.Action("Index", "Client")) ? "active" : null)"><a href="@Url.Action("Index", "Client")"><svg class="glyph stroked female user"><use xlink:href="#stroked-female-user" /></svg> Client</a></li>
+            <li class="@(Request.Path.StartsWith(@Url.Action("Index", "ServiceOffer")) ? "active" : null)" ><a href="@Url.Action("Index", "ServiceOffer")"><svg class="glyph stroked open folder"><use xlink:href="#stroked-open-folder" /></svg> ServiceOffer</a></li>
+            <li class="@(Request.Path.StartsWith(@Url.Action("Index", "Vacancy")) ? "active" : null)" ><a href="@Url.Action("Index", "Vacancy")"><svg class="glyph stroked notepad "><use xlink:href="#stroked-notepad" /></svg> Vacancy</a></li>
+            <li class="@(Request.Path.StartsWith(@Url.Action("Index", "Candidate")) ? "active" : null)"><a href="@Url.Action("Index", "Candidate")"><svg class="glyph stroked film"><use xlink:href="#stroked-film" /></svg> Candidate</a></li>
+            <li role="presentation" class="divider"></li>
+        </ul>
+
+    </div><!--/.sidebar-->
+
+    <div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
+        @RenderBody();
+    </div>	<!--/.main-->
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+
+    <script src="~/Areas/Asset/js/chart.min.js"></script>
+    <script src="~/Areas/Asset/js/chart-data.js"></script>
+    <script src="~/Areas/Asset/js/easypiechart.js"></script>
+    <script src="~/Areas/Asset/js/easypiechart-data.js"></script>
+    <script src="~/Areas/Asset/js/bootstrap-datepicker.js"></script>
+    <script src="~/Areas/Asset/tables/Datatable/jquery.dataTables.min.js"></script>
+
+    <script>
+
+
+        !function ($) {
+            $(document).on("click", "ul.nav li.parent > a > span.icon", function () {
+                $(this).find('em:first').toggleClass("glyphicon-minus");
+            });
+            $(".sidebar span.icon").find('em:first').addClass("glyphicon-plus");
+        }(window.jQuery);
+
+        $(window).on('resize', function () {
+            if ($(window).width() > 768) $('#sidebar-collapse').collapse('show')
+        })
+        $(window).on('resize', function () {
+            if ($(window).width() <= 767) $('#sidebar-collapse').collapse('hide')
+        })
+
+    </script>
+    @RenderSection("scripts", required: false)
+</body>
+</html>

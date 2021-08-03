@@ -1,17 +1,14 @@
-﻿using Abp.Specifications;
-using StarSecurityService.ApplicationCore.Entities;
-using StarSecurityService.ApplicationCore.InterFaces;
+﻿using StarSecurityService.ApplicationCore.InterFaces;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Linq.Expressions;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace StarSecurityService.EntityFramework.Data
 {
-    public class EfRepository<T> : IAsyncRepository<T> where T : BaseEntity
+    public class EfRepository<T> : IAsyncRepository<T> where T : class
     {
         protected readonly StarServiceDbContext _dbContext;
 
@@ -19,7 +16,10 @@ namespace StarSecurityService.EntityFramework.Data
         {
             _dbContext = dbContext;
         }
-
+        public async Task<IQueryable<T>> GetAll()
+        {
+            return _dbContext.Set<T>();
+        }
         public virtual async Task<T> GetByIdAsync(int id)
         {
             var keyValues = new object[] { id };
@@ -28,7 +28,7 @@ namespace StarSecurityService.EntityFramework.Data
 
         public async Task<IReadOnlyList<T>> ListAllAsync()
         {
-            return  _dbContext.Set<T>().ToList();
+            return await _dbContext.Set<T>().ToListAsync();
         }
 
         public async Task<IReadOnlyList<T>> ListAsync(Expression<Func<T, bool>> predicate)
@@ -88,5 +88,7 @@ namespace StarSecurityService.EntityFramework.Data
 
             GC.SuppressFinalize(this);
         }
+
+        
     }
 }

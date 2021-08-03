@@ -1,0 +1,47 @@
+﻿@model IEnumerable<StarSecurityService.ApplicationCore.Entities.GroupUser>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_MainLayoutAdmin.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Name
+        </th>
+        <th>
+           IsAdmin            
+        </th>
+        <th>
+            Status
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @item.Name
+
+        </td>
+        <td>
+            @(item.isAdmin ? "Active" :"Employ")   
+        </td>
+        <td>
+            @(item.Status ? "Active":"No Active")
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+            @Html.ActionLink("GrantPermisstion", "GrantPermisstion", new { groupId = item.Id }) 
+            @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+        </td>
+    </tr>
+}
+
+</table>

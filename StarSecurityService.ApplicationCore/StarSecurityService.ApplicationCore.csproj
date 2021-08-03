@@ -10,11 +10,12 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>StarSecurityService.ApplicationCore</RootNamespace>
     <AssemblyName>StarSecurityService.ApplicationCore</AssemblyName>
-    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -186,9 +187,23 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Entities\ClientEmployees.cs" />
+    <Compile Include="Entities\EmployeeAchievement .cs" />
+    <Compile Include="Entities\Achievement.cs" />
     <Compile Include="Entities\BaseEntity.cs" />
+    <Compile Include="Entities\Bussiness.cs" />
+    <Compile Include="Entities\Branch.cs" />
+    <Compile Include="Entities\Candidate.cs" />
+    <Compile Include="Entities\Client.cs" />
+    <Compile Include="Entities\EmployeeServiceOffered.cs" />
     <Compile Include="Entities\Employyee.cs" />
+    <Compile Include="Entities\GroupPermesstion.cs" />
+    <Compile Include="Entities\GroupUser.cs" />
+    <Compile Include="Entities\Permission.cs" />
+    <Compile Include="Entities\User.cs" />
     <Compile Include="InterFaces\IAsyncRepository.cs" />
+    <Compile Include="Entities\ServiceOffer.cs" />
+    <Compile Include="Entities\Vacancy.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
