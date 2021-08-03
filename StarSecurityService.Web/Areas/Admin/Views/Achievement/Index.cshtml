@@ -1,4 +1,5 @@
-﻿@{
+﻿@model  StarSecurityService.Web.Areas.Admin.Model.Achievements.AchievementModel
+@{
     ViewBag.Title = "Index";
     Layout = "~/Areas/Admin/Views/Shared/_MainLayoutAdmin.cshtml";
 }
@@ -11,17 +12,23 @@
 
 <div class="row">
     <div class="col-xs-12 col-md-5 col-lg-5">
-        <div class="panel panel-primary">
-            <div class="panel-heading">
-                Create Achievement
-            </div>
-            <div class="panel-body">
-                <div class="form-group">
-                    <label>Achievement Name:</label>
-                    <input type="text" name="name" class="form-control" placeholder="Achievement Name...">
+        @using (Html.BeginForm("SubmitForm", "Achievement", FormMethod.Post))
+        {
+            @Html.AntiForgeryToken() 
+            <input type="hidden"  name="Id" value="@(Model.entity != null ? Model.entity.Id : 0)"/>
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    Create Achievement
+                </div>
+                <div class="panel-body">
+                    <div class="form-group">
+                        <label>Achievement Name:</label>
+                        <input type="text" name="name" class="form-control" value="@(Model.entity != null ? Model.entity.name : "")" placeholder="Enter achievement name...">
+                    </div>
                 </div>
             </div>
-        </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        }
     </div>
     <div class="col-xs-12 col-md-7 col-lg-7">
         <div class="panel panel-primary">
@@ -36,55 +43,17 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>iPhone</td>
-                                <td>
-                                    <a href="#" class="btn btn-warning"><span class="glyphicon glyphicon-edit"></span> Edit</a>
-                                    <a href="#" onclick="return confirm('Bạn có chắc chắn muốn xóa?')" class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span> Delete</a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Samsung</td>
-                                <td>
-                                    <a href="#" class="btn btn-warning"><span class="glyphicon glyphicon-edit"></span> Sửa</a>
-                                    <a href="#" onclick="return confirm('Bạn có chắc chắn muốn xóa?')" class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span> Xóa</a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Nokia</td>
-                                <td>
-                                    <a href="#" class="btn btn-warning"><span class="glyphicon glyphicon-edit"></span> Sửa</a>
-                                    <a href="#" onclick="return confirm('Bạn có chắc chắn muốn xóa?')" class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span> Xóa</a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>HTC</td>
-                                <td>
-                                    <a href="#" class="btn btn-warning"><span class="glyphicon glyphicon-edit"></span> Sửa</a>
-                                    <a href="#" onclick="return confirm('Bạn có chắc chắn muốn xóa?')" class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span> Xóa</a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>LG</td>
-                                <td>
-                                    <a href="#" class="btn btn-warning"><span class="glyphicon glyphicon-edit"></span> Sửa</a>
-                                    <a href="#" onclick="return confirm('Bạn có chắc chắn muốn xóa?')" class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span> Xóa</a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Sony</td>
-                                <td>
-                                    <a href="#" class="btn btn-warning"><span class="glyphicon glyphicon-edit"></span> Sửa</a>
-                                    <a href="#" onclick="return confirm('Bạn có chắc chắn muốn xóa?')" class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span> Xóa</a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Motorola</td>
-                                <td>
-                                    <a href="#" class="btn btn-warning"><span class="glyphicon glyphicon-edit"></span> Sửa</a>
-                                    <a href="#" onclick="return confirm('Bạn có chắc chắn muốn xóa?')" class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span> Xóa</a>
-                                </td>
-                            </tr>
+                            @foreach (var item in Model.ListAchievement)
+                            {
+                                <tr>
+                                    <td>@item.name</td>
+                                    <td>
+                                        <a href="@Url.Action("Index","Achievement",new { Id = item.Id})" class="btn btn-warning"><span class="glyphicon glyphicon-edit"></span> Edit</a>
+                                        <a href="#" onclick="return confirm('Bạn có chắc chắn muốn xóa?')" class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span> Delete</a>
+                                    </td>       
+                                </tr>
+                            }
+                          
                         </tbody>
                     </table>
                 </div>

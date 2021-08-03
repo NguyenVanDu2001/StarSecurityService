@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace StarSecurityService.ApplicationCore.Entities
 {
-    public class Achievement
+    public class Achievement : BaseEntity<int>
     {
-        public int Id { get; set; }
-        public String name { get; set; }
+        public string name { get; set; }
+        public virtual ICollection<EmployeeAchievement> EmployeeAchievements { get; set; }
     }
 }

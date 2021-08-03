@@ -12,7 +12,10 @@ namespace StarSecurityService.Web.Areas.Admin.Controllers
         // GET: Admin/Vacancy
         public ActionResult Index()
         {
-            IEnumerable<Vacancy> items = new Vacancy[] { new Vacancy(1, "a", 1, 1, new DateTime(), new DateTime(), true) };
+            IEnumerable<Vacancy> items = new List<Vacancy>
+            {
+
+            };
             return View(items);
         }
 

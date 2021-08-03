@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 
 namespace StarSecurityService.ApplicationCore.Entities
 {
-    public class Client
+    public class Client : BaseEntity<int>
     {
-        public int Id { get; set; }
-        public String Name { get; set; }
-        public String Phone { get; set; }
-        public String Image { get; set; }
-        public String Address { get; set; }
+        public string Name { get; set; }
+        public string Phone { get; set; }
+        public string Image { get; set; }
+        public string Address { get; set; }
+        public virtual ICollection<ClientEmployees> ClientEmployees { get; set; }
 
         public Client(int id, string name, string phone, string image, string address)
         {
@@ -21,6 +21,10 @@ namespace StarSecurityService.ApplicationCore.Entities
             Phone = phone;
             Image = image;
             Address = address;
+        }
+        public Client()
+        {
+
         }
     }
 }

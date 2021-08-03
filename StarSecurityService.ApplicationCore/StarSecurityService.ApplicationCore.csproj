@@ -187,12 +187,15 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Entities\ClientEmployees.cs" />
+    <Compile Include="Entities\EmployeeAchievement .cs" />
     <Compile Include="Entities\Achievement.cs" />
     <Compile Include="Entities\BaseEntity.cs" />
     <Compile Include="Entities\Bussiness.cs" />
     <Compile Include="Entities\Branch.cs" />
     <Compile Include="Entities\Candidate.cs" />
     <Compile Include="Entities\Client.cs" />
+    <Compile Include="Entities\EmployeeServiceOffered.cs" />
     <Compile Include="Entities\Employyee.cs" />
     <Compile Include="Entities\GroupPermesstion.cs" />
     <Compile Include="Entities\GroupUser.cs" />

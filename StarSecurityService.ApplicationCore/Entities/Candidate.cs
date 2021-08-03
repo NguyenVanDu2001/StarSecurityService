@@ -1,22 +1,20 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace StarSecurityService.ApplicationCore.Entities
 {
-    public class Candidate
+    public class Candidate : BaseEntity<int>
     {
-        public int Id { get; set; }
-        public String Name { get; set; }
-        public String Phone { get; set; }
+        public string Name { get; set; }
+        public string Phone { get; set; }
         public int VacancyId { get; set; }
-        public String Message { get; set; }
-        public String Email { get; set; }
+        [ForeignKey("VacancyId")]
+        public virtual Vacancy Vacancies { get; set; }
+        public string Message { get; set; }
+        public string Email { get; set; }
         public DateTime StartDate { get; set; }
         public bool Status { get; set; }
-
+        public string UrlFile { get; set; }
         public Candidate(int id, string name, string phone, int vacancyId, string message, string email, DateTime startDate, bool status)
         {
             Id = id;

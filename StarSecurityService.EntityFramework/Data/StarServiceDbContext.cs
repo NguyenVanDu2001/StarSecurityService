@@ -20,6 +20,16 @@ namespace StarSecurityService.EntityFramework.Data
         public virtual DbSet<GroupUser> GroupUsers { get; set; }
         public virtual DbSet<Permission> Permissions { get; set; }
         public virtual DbSet<User> Users { get; set; }
+        public virtual DbSet<Achievement> Achievements { get; set; }
+        public virtual DbSet<ClientEmployees> ClientEmployees { get; set; }
+        public virtual DbSet<EmployeeAchievement> EmployeeAchievements { get; set; }
+        public virtual DbSet<EmployeeServiceOffered> EmployeeServiceOffereds { get; set; }
+        public virtual DbSet<Client> Clients { get; set; }
+        public virtual DbSet<Candidate> Candidates { get; set; }
+        public virtual DbSet<Branch> Branchs { get; set; }
+        public virtual DbSet<ServiceOffer> ServiceOffers { get; set; }
+        public virtual DbSet<Vacancy> Vacancies { get; set; }
+
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -28,17 +38,7 @@ namespace StarSecurityService.EntityFramework.Data
         }
         private static void EfConfiguration(DbModelBuilder modelBuilder)
         {
-            //modelBuilder.Entity<Employyee>().ToTable("Employyee");
-            //modelBuilder.Entity<Employyee>().HasKey(t => new { t.Id });
-            //modelBuilder.Entity<Bussiness>().ToTable("Bussiness");
-            //modelBuilder.Entity<Bussiness>().HasKey(t => new { t.Id });
-            
-            //modelBuilder.Entity<GroupUser>().ToTable("GroupUser");
-            //modelBuilder.Entity<GroupUser>().HasKey(t => new { t.Id });
-            //modelBuilder.Entity<Permission>().ToTable("Employyee");
-            //modelBuilder.Entity<Permission>().HasKey(t => new { t.Id });
-            //modelBuilder.Entity<User>().ToTable("User");
-            //modelBuilder.Entity<User>().HasKey(t => new { t.Id });
+           
         }
     }
 }
