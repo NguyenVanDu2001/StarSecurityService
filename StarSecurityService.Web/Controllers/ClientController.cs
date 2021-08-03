@@ -22,7 +22,50 @@ namespace StarSecurityService.Web.Controllers
         {
             return View();
         }
-
+        public ActionResult ContactUs()
+        {
+            return View();
+        }
+        public ActionResult Divisions()
+        {
+            return View();
+        }
+        public ActionResult Profesional()
+        {
+            return View();
+        }
+        public ActionResult Emiratisation()
+        {
+            return View();
+        }
+        public ActionResult BoardMember()
+        {
+            return View();
+        }
+        public ActionResult Whysss()
+        {
+            return View();
+        }
+        public ActionResult DubaiDivision()
+        {
+            return View();
+        }
+        public ActionResult Recruitment()
+        {
+            return View();
+        }
+        public ActionResult Supervision()
+        {
+            return View();
+        }
+        public ActionResult Training()
+        {
+            return View();
+        }
+        public ActionResult Facilities()
+        {
+            return View();
+        }
         // GET: Client/Details/5
         public ActionResult Details(int id)
         {

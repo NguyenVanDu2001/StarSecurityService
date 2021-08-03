@@ -263,6 +263,7 @@
     <Content Include="Content\wp-content\uploads\pum\pum-site-styles4b43.css" />
     <Content Include="Content\wp-css\Career.css" />
     <Content Include="Content\wp-css\Client.css" />
+    <Content Include="Content\wp-css\font-css.css" />
     <Content Include="Content\wp-includes\css\dist\block-library\style.min9dff.css" />
     <Content Include="Content\wp-includes\js\jquery\jquery-migrate.min330a.js" />
     <Content Include="Content\wp-includes\js\jquery\jquery4a5f.js" />
@@ -347,6 +348,17 @@
     <Content Include="Views\Shared\_LayoutClient.cshtml" />
     <Content Include="Views\Client\AboutUs.cshtml" />
     <Content Include="Views\Client\Career.cshtml" />
+    <Content Include="Views\Client\ContactUs.cshtml" />
+    <Content Include="Views\Client\Divisions.cshtml" />
+    <Content Include="Views\Client\Profesional.cshtml" />
+    <Content Include="Views\Client\Emiratisation.cshtml" />
+    <Content Include="Views\Client\BoardMember.cshtml" />
+    <Content Include="Views\Client\Whysss.cshtml" />
+    <Content Include="Views\Client\DubaiDivision.cshtml" />
+    <Content Include="Views\Client\Recruitment.cshtml" />
+    <Content Include="Views\Client\Supervision.cshtml" />
+    <Content Include="Views\Client\Training.cshtml" />
+    <Content Include="Views\Client\Facilities.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

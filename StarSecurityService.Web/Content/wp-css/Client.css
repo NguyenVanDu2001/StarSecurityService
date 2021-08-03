@@ -1,8 +1,4 @@
-﻿body:not(.template-slider) #Header_wrapper {
-    background-image: url(../aiwa.website/sss/wp-content/uploads/2019/03/barber3_pic31.html)
-}
-
-#Footer {
+﻿#Footer {
     background-image: url(https://starsecurity.ae/wp-content/uploads/2019/07/footer2.jpg);
     background-repeat: no-repeat;
     background-position: right center
@@ -1432,7 +1428,7 @@
     }
 }
 
-#Header_wrapper,
+#img_header,
 #Intro {
     background-color: #212121;
 }
@@ -3299,14 +3295,6 @@ form input.display-none {
 .header-below #Top_bar {
     background-color: #414141a6;
 }
-
-#Header_wrapper,
-#Intro {
-    margin-top: -130px;
-    background-color: #ecececb8;
-    margin-bottom: 40px;
-}
-
 
 .themebg,
 #comments .commentlist > li .reply a.comment-reply-link,
