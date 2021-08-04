@@ -18,77 +18,82 @@
             <div class="panel-heading">Employee List</div>
             <div class="panel-body">
                 <div class="bootstrap-table">
+                    <a href="@Url.Action("Create", "Employee")" class="btn btn-primary">Create Employee</a>
                     <div class="table-responsive">
-                        <a href="@Url.Action("Create", "Employee")" class="btn btn-primary">Create Employee</a>
-                        <table class="table">
-                            <tr>
-                                <th>
-                                    @Html.DisplayNameFor(model => model.BranchId)
-                                </th>
-                                <th>
-                                    @Html.DisplayNameFor(model => model.Address)
-                                </th>
-                                <th>
-                                    @Html.DisplayNameFor(model => model.Image)
-                                </th>
-                                <th>
-                                    @Html.DisplayNameFor(model => model.Password)
-                                </th>
-                                <th>
-                                    @Html.DisplayNameFor(model => model.Email)
-                                </th>
-                                <th>
-                                    @Html.DisplayNameFor(model => model.Phone)
-                                </th>
-                                <th>
-                                    @Html.DisplayNameFor(model => model.sex)
-                                </th>
-                                <th>
-                                    @Html.DisplayNameFor(model => model.Status)
-                                </th>
-                                <th>
-                                    @Html.DisplayNameFor(model => model.BirthDay)
-                                </th>
-                                <th></th>
-                            </tr>
-
-                            @foreach (var item in Model)
-                            {
+                        <br />
+                        <table class="table table-bordered table-hover table-responsive" id="tableIndexEmployee">
+                            <thead>
                                 <tr>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.BranchId)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.Address)
-                                    </td>
-                                    <td>
-                                        <img width="100px" src="~/Areas/Asset/img/iphone7-plus-black-select-2016.jpg" class="thumbnail">
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.Password)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.Email)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.Phone)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.sex)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.Status)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.BirthDay)
-                                    </td>
-                                    <td>
-                                        @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-                                        @Html.ActionLink("Details", "Details", new { id = item.Id }) |
-                                        @Html.ActionLink("Delete", "Delete", new { id = item.Id })
-                                    </td>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.BranchId)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.Address)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.Image)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.Password)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.Email)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.Phone)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.Sex)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.Status)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.BirthDay)
+                                    </th>
+                                    <th></th>
                                 </tr>
-                            }
+                            </thead>
+
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.BranchId)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Address)
+                                        </td>
+                                        <td>
+                                            <img width="100px" src="~/Areas/Asset/img/iphone7-plus-black-select-2016.jpg" class="thumbnail">
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Password)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Email)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Phone)
+                                        </td>
+                                        <td>
+                                            @(item.Sex ? "Male": "Female")
+                                        </td>
+                                        <td>
+                                            @(item.Status ? "Active" : "No Active")
+                                        </td>
+                                        <td>
+                                            @item.BirthDay.ToString("dd/MM/yyyy")
+                                        </td>
+                                        <td>
+                                            @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                                            @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                                            @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
 
                         </table>
                     </div>
@@ -98,3 +103,8 @@
         </div>
     </div>
 </div><!--/.row-->
+@section scripts{
+    <script>
+        $("#tableIndexEmployee").DataTable();
+    </script>
+}
