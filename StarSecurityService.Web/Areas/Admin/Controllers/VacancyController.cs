@@ -28,6 +28,12 @@ namespace StarSecurityService.Web.Areas.Admin.Controllers
         // GET: Admin/Vacancy/Create
         public ActionResult Create()
         {
+            IEnumerable<Branch> branch = new Branch[] { new Branch(1, "a", "a", "a", "a") };
+            IEnumerable<ServiceOffer> service = new ServiceOffer[] { new ServiceOffer(1, "a", "a", true) };
+            SelectList branchList = new SelectList(branch, "Id", "Name");
+            SelectList serviceList = new SelectList(service, "Id", "Title");
+            ViewBag.Branch = branchList;
+            ViewBag.Service = serviceList;
             return View();
         }
 

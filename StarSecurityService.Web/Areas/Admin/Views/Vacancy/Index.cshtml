@@ -19,8 +19,12 @@
                 <div class="bootstrap-table">
                     <div class="table-responsive">
                         <a href="@Url.Action("Create", "Vacancy")" class="btn btn-primary">Create Vacancy</a>
+                        <hr />
                         <table class="table">
                             <tr>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Requirement)
+                                </th>
                                 <th>
                                     @Html.DisplayNameFor(model => model.Description)
                                 </th>
@@ -29,6 +33,9 @@
                                 </th>
                                 <th>
                                     @Html.DisplayNameFor(model => model.BranchId)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.ServiceOfferId)
                                 </th>
                                 <th>
                                     @Html.DisplayNameFor(model => model.EndDate)
@@ -46,6 +53,9 @@
                             {
                                 <tr>
                                     <td>
+                                        @Html.DisplayFor(modelItem => item.Requirement)
+                                    </td>
+                                    <td>
                                         @Html.DisplayFor(modelItem => item.Description)
                                     </td>
                                     <td>
@@ -53,6 +63,9 @@
                                     </td>
                                     <td>
                                         @Html.DisplayFor(modelItem => item.BranchId)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.ServiceOfferId)
                                     </td>
                                     <td>
                                         @Html.DisplayFor(modelItem => item.EndDate)
