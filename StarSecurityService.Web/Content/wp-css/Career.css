@@ -1,0 +1,139 @@
+﻿
+.barber3-table .t2 {
+    font-size: 30px;
+    color: #e9c664;
+}
+
+#Top_bar .logo {
+    float: left;
+    margin: 0 30px 0 50px;
+}
+
+
+#Top_bar #logo, .header-fixed #Top_bar #logo, .header-plain #Top_bar #logo, .header-transparent #Top_bar #logo {
+    height: 76px;
+    line-height: 76px;
+    padding: 5px 0px;
+}
+
+#Top_bar .menu > li > a {
+    padding: 10px 0;
+}
+
+.header-below #Top_bar {
+    background-color: #414141a6;
+}
+
+#Header_wrapper, #Intro {
+    margin-top: -130px;
+    background-color: #ecececb8;
+    margin-bottom: 40px;
+}
+
+
+.themebg, #comments .commentlist > li .reply a.comment-reply-link, #Filters .filters_wrapper ul li a:hover, #Filters .filters_wrapper ul li.current-cat a, .fixed-nav .arrow, .offer_thumb .slider_pagination a:before, .offer_thumb .slider_pagination a.selected:after, .pager .pages a:hover, .pager .pages a.active, .pager .pages span.page-numbers.current, .pager-single span:after, .portfolio_group.exposure .portfolio-item .desc-inner .line, .Recent_posts ul li .desc:after, .Recent_posts ul li .photo .c, .slider_pagination a.selected, .slider_pagination .slick-active a, .slider_pagination a.selected:after, .slider_pagination .slick-active a:after, .testimonials_slider .slider_images, .testimonials_slider .slider_images a:after, .testimonials_slider .slider_images:before, #Top_bar a#header_cart span, .widget_categories ul, .widget_mfn_menu ul li a:hover, .widget_mfn_menu ul li.current-menu-item:not(.current-menu-ancestor) > a, .widget_mfn_menu ul li.current_page_item:not(.current_page_ancestor) > a, .widget_product_categories ul, .widget_recent_entries ul li:after, .woocommerce-account table.my_account_orders .order-number a, .woocommerce-MyAccount-navigation ul li.is-active a, .style-simple .accordion .question:after, .style-simple .faq .question:after, .style-simple .icon_box .desc_wrapper .title:before, .style-simple #Filters .filters_wrapper ul li a:after, .style-simple .article_box .desc_wrapper p:after, .style-simple .sliding_box .desc_wrapper:after, .style-simple .trailer_box:hover .desc, .tp-bullets.simplebullets.round .bullet.selected, .tp-bullets.simplebullets.round .bullet.selected:after, .tparrows.default, .tp-bullets.tp-thumbs .bullet.selected:after {
+    background-color: #0766b0;
+}
+
+.style-simple .icon_box .desc_wrapper .title {
+    color: #6d6e72;
+}
+
+.bt-top {
+    border-top: 4px solid #6d6e72;
+}
+
+
+.counter .desc_wrapper .number-wrapper, .chart_box .chart .num, .chart_box .chart .icon, .style-simple .quick_fact .number-wrapper, #edd_checkout_cart .edd_cart_header_row th {
+    color: #fff;
+}
+
+
+ul.list_mixed li:after, ul.list_check li:after, ul.list_star li:after, ul.list_idea li:after, ul.list_custom li:after {
+    content: "";
+    width: 70px;
+    height: 1px;
+    overflow: hidden;
+    background: rgba(0,0,0,.0);
+    position: absolute;
+    left: 0;
+    bottom: -11px;
+}
+
+ul.list_mixed li:before, ul.list_check li:before, ul.list_star li:before, ul.list_idea li:before, ul.list_custom li i {
+    color: #0e86b8;
+}
+
+body, ul.timeline_items, .icon_box a .desc, .icon_box a:hover .desc, .feature_list ul li a, .list_item a, .list_item a:hover, .widget_recent_entries ul li a, .flat_box a, .flat_box a:hover, .story_box .desc, .content_slider.carouselul li a .title, .content_slider.flat.description ul li .desc, .content_slider.flat.description ul li a .desc, .post-nav.minimal a i {
+    color: #676767;
+}
+
+
+input[type="date"], input[type="email"], input[type="number"], input[type="password"], input[type="search"], input[type="tel"], input[type="text"], input[type="url"], select, textarea, .woocommerce .quantity input.qty, .dark input[type="email"], .dark input[type="password"], .dark input[type="tel"], .dark input[type="text"], .dark select, .dark textarea {
+    background-color: #FFF;
+    border: 1PX SOLID #545556 !IMPORTANT;
+}
+
+
+.column_column ul, .column_column ol, .the_content_wrapper ul, .the_content_wrapper ol {
+    color: #676767;
+}
+
+.list_item .list_right h4 {
+    margin-bottom: 7px;
+    color: #6d6e72;
+}
+
+
+ul.list_mixed li:before, ul.list_check li:before, ul.list_star li:before, ul.list_idea li:before {
+    font-family: "mfn-icons";
+    overflow: hidden;
+    position: absolute;
+    left: 20px;
+    top: 0;
+    font-size: 17px;
+}
+
+
+.mt-40 {
+    margin-top: -40px !important;
+}
+
+/*----05-02-21-----*/
+
+.m-heading {
+    margin-bottom: 0px;
+}
+
+.mission-vision .section_wrapper .one-second.mcb-wrap {
+    padding: 0px 20px;
+}
+
+.color-444 h2 {
+    color: #444 !important;
+    text-align: left;
+}
+
+.values ul {
+    margin: 0px 0px 0px 15px;
+}
+
+.box-mar {
+    padding: 30px;
+    background: #C5AE71;
+    margin-right: 10px;
+    box-shadow: 6px 7px 27px -5px rgb(2 2 2 / 64%);
+    height: 130px;
+}
+
+@media only screen and (max-width: 479px) {
+
+    .box-mar h4 {
+        font-size: 30px;
+        line-height: 1em;
+    }
+
+    .box-mar {
+        height: 100px !important;
+    }
+}
