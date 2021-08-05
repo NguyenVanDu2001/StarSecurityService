@@ -129,12 +129,11 @@
     <Compile Include="Areas\Admin\Controllers\AchievementController.cs" />
     <Compile Include="Areas\Admin\Controllers\BranchController.cs" />
     <Compile Include="Areas\Admin\Controllers\CandidateController.cs" />
-    <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ClientController.cs" />
     <Compile Include="Areas\Admin\Controllers\LoginController.cs" />
     <Compile Include="Areas\Admin\Controllers\MainAdminController.cs" />
     <Compile Include="Areas\Admin\Model\Achievements\AchievementModel.cs" />
     <Compile Include="Areas\Admin\Model\GroupUserGrantModel.cs" />
-    <Compile Include="Controllers\ClientController.cs" />
     <Compile Include="Controllers\EmployeeController.cs" />
     <Compile Include="Controllers\GroupPermissionController.cs" />
     <Compile Include="Areas\Admin\Controllers\EmployeeController.cs" />
@@ -2571,32 +2570,29 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Employee\Index.cshtml" />
     <Content Include="Views\Employee\Create.cshtml" />
-    <Content Include="Views\Client\Index.cshtml" />
-    <Content Include="Views\Shared\_LayoutClient.cshtml" />
-    <Content Include="Views\Client\AboutUs.cshtml" />
-    <Content Include="Views\Client\Career.cshtml" />
-    <Content Include="Views\Client\ContactUs.cshtml" />
-    <Content Include="Views\Client\Divisions.cshtml" />
-    <Content Include="Views\Client\Profesional.cshtml" />
-    <Content Include="Views\Client\Emiratisation.cshtml" />
-    <Content Include="Views\Client\BoardMember.cshtml" />
-    <Content Include="Views\Client\Whysss.cshtml" />
-    <Content Include="Views\Client\DubaiDivision.cshtml" />
-    <Content Include="Views\Client\Recruitment.cshtml" />
-    <Content Include="Views\Client\Supervision.cshtml" />
-    <Content Include="Views\Client\Training.cshtml" />
-    <Content Include="Views\Client\Facilities.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Home\AboutUs.cshtml" />
+    <Content Include="Views\Home\Career.cshtml" />
+    <Content Include="Views\Home\ContactUs.cshtml" />
+    <Content Include="Views\Home\Divisions.cshtml" />
+    <Content Include="Views\Home\Profesional.cshtml" />
+    <Content Include="Views\Home\Emiratisation.cshtml" />
+    <Content Include="Views\Home\BoardMember.cshtml" />
+    <Content Include="Views\Home\Whysss.cshtml" />
+    <Content Include="Views\Home\DubaiDivision.cshtml" />
+    <Content Include="Views\Home\Recruitment.cshtml" />
+    <Content Include="Views\Home\Supervision.cshtml" />
+    <Content Include="Views\Home\Training.cshtml" />
+    <Content Include="Views\Home\Facilities.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Models\" />
     <Folder Include="Models\" />
     <Folder Include="Views\Bussiness\" />
+    <Folder Include="Views\Clients\" />
     <Folder Include="Views\GroupPermission\" />
   </ItemGroup>
   <ItemGroup>
