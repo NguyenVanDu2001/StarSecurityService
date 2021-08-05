@@ -7,7 +7,7 @@ using System.Web.Mvc;
 
 namespace StarSecurityService.Web.Areas.Admin.Controllers
 {
-    public class ClientController : Controller
+    public class HomeController : Controller
     {
         // GET: Admin/Client
         public ActionResult Index()
