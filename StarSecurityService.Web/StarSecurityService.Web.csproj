@@ -148,6 +148,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\Admin\Views\Bussiness\index.js" />
+    <Content Include="Areas\Admin\Views\Employee\create.js" />
     <Content Include="Areas\Asset\ckeditor\adapters\jquery.js" />
     <Content Include="Areas\Asset\ckeditor\build-config.js" />
     <Content Include="Areas\Asset\ckeditor\ckeditor.js" />
@@ -2222,6 +2223,7 @@
     <Content Include="Areas\Asset\js\chart.min.js" />
     <Content Include="Areas\Asset\js\easypiechart-data.js" />
     <Content Include="Areas\Asset\js\easypiechart.js" />
+    <Content Include="Areas\Asset\js\fontawesome.js" />
     <Content Include="Areas\Asset\js\html5shiv.min.js" />
     <Content Include="Areas\Asset\js\jquery-1.11.1.min.js" />
     <Content Include="Areas\Asset\js\lumino.glyphs.js" />
@@ -2547,6 +2549,7 @@
     <Content Include="Areas\Admin\Views\Category\Index.cshtml" />
     <Content Include="Areas\Admin\Views\GroupUser\Index.cshtml" />
     <Content Include="Areas\Admin\Views\GroupUser\GrantPermisstion.cshtml" />
+    <Content Include="Areas\Admin\Views\Bussiness\Index.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />

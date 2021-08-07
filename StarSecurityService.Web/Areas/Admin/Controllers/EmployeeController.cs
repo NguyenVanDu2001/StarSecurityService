@@ -1,18 +1,24 @@
-﻿using StarSecurityService.ApplicationCore.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using StarSecurityService.Application.Employees;
+using StarSecurityService.ApplicationCore.Entities;
+using StarSecurityService.ApplicationCore.InterFaces;
+using StarSecurityService.EntityFramework.Data;
+using System.Threading.Tasks;
 using System.Web.Mvc;
 
 namespace StarSecurityService.Web.Areas.Admin.Controllers
 {
     public class EmployeeController : Controller
     {
-        // GET: Admin/Employee
-        public ActionResult Index()
+        private readonly IEmployeeAppService _employeeAppService;
+        public EmployeeController()
         {
-            IEnumerable<Employyee> items = new Employyee[] { new Employyee(1, 1, "a", "a", "a", "a", "000", true, true, new DateTime()) };
+            _employeeAppService = new EmployeeAppServices();
+        }
+     
+        // GET: Admin/Employee
+        public async Task<ActionResult> Index()
+        {
+            var items = await _employeeAppService.GetAllEmployee();
             return View(items);
         }
 

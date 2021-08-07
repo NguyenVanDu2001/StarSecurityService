@@ -39,7 +39,7 @@ namespace StarSecurityService.Web.Areas.Admin.Controllers
                     Name = ctrl.Name,
                     Status = true
                 };
-                if (!(await _bussinessReponsitory.GetAll()).Any(x => x.Id.Equals(b.Id)))
+                if (!(await _bussinessReponsitory.GetAllAsync()).Any(x => x.Id.Equals(b.Id)))
                 {
                     await _bussinessReponsitory.AddAsync(b);
                 }
@@ -54,7 +54,7 @@ namespace StarSecurityService.Web.Areas.Admin.Controllers
                         BusinessId = ctrl.Name,
                         Status = false
                     };
-                    if (!(await _permisstionReponsitory.GetAll()).Any(x => x.Id.Equals(p.Id)))
+                    if (!(await _permisstionReponsitory.GetAllAsync()).Any(x => x.Id.Equals(p.Id)))
                     {
                         await _permisstionReponsitory.AddAsync(p);
                     }

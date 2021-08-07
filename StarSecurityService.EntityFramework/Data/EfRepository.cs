@@ -16,7 +16,7 @@ namespace StarSecurityService.EntityFramework.Data
         {
             _dbContext = dbContext;
         }
-        public async Task<IQueryable<T>> GetAll()
+        public async Task<IQueryable<T>> GetAllAsync()
         {
             return _dbContext.Set<T>();
         }
@@ -89,6 +89,14 @@ namespace StarSecurityService.EntityFramework.Data
             GC.SuppressFinalize(this);
         }
 
-        
+        public async Task<ICollection<T>> GetAllListAsync()
+        {
+          return  await _dbContext.Set<T>().ToListAsync();
+        }
+
+        public async Task<IQueryable<T>> GetAllAsync(Expression<Func<T, bool>> predicate)
+        {
+           return   _dbContext.Set<T>().Where(predicate);
+        }
     }
 }

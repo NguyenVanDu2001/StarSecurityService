@@ -17,6 +17,8 @@ namespace StarSecurityService.ApplicationCore.InterFaces
         Task<int> CountAsync(Expression<Func<T, bool>> predicate);
         Task<T> FirstAsync(Expression<Func<T, bool>> predicate);
         Task<T> FirstOrDefaultAsync(Expression<Func<T, bool>> predicate);
-        Task<IQueryable<T>> GetAll();
+        Task<IQueryable<T>> GetAllAsync();
+        Task<IQueryable<T>> GetAllAsync(Expression<Func<T, bool>> predicate);
+        Task<ICollection<T>> GetAllListAsync();
     }
 }
