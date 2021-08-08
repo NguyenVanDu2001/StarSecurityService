@@ -6,39 +6,67 @@
     <title>Star Security Login</title>
 
     <link href="~/Areas/Asset/css/bootstrap.min.css" rel="stylesheet">
-    <link href="~/Areas/Asset/css/datepicker3.css" rel="stylesheet">
     <link href="~/Areas/Asset/css/styles.css" rel="stylesheet">
 
     <!--[if lt IE 9]>
     <script src="js/html5shiv.js"></script>
     <script src="js/respond.min.js"></script>
     <![endif]-->
-
+    <style>
+        input.form-control{
+            background-color: #f8f7f7;
+            height : 45px
+        }
+        .btn-login{
+            height : 20%;
+            width:100%;
+        }
+        .message-error {
+            height: 50px;
+            width: 100%;
+            background-color: #ffffff;
+            border-left: 3px solid red;
+        }
+            .message-error label {
+                line-height: 50px;
+                padding: 0px 10px;
+            }
+    </style>
 </head>
 
 <body>
 
     <div class="row">
         <div class="col-xs-10 col-xs-offset-1 col-sm-8 col-sm-offset-2 col-md-4 col-md-offset-4">
+            @if (TempData.ContainsKey("messageError") && TempData["messageError"].ToString().Length > 0)
+            {
+                <div class="message-error">
+                    <label>@TempData["messageError"]</label>
+                </div>
+            }
+
+            <br />
             <div class="login-panel panel panel-default">
-                <div class="panel-heading">Log in</div>
+                <div class="panel-heading text-center"><b>Sign in</b></div>
                 <div class="panel-body">
-                    <form role="form">
+                    @using (Html.BeginForm("Login", "Login", FormMethod.Post))
+                    {
                         <fieldset>
                             <div class="form-group">
-                                <input class="form-control" placeholder="E-mail" name="email" type="email" autofocus="">
+                                <input class="form-control" placeholder="E-mail or user name" name="EmailOrUserName" type="email" autofocus="">
                             </div>
                             <div class="form-group">
-                                <input class="form-control" placeholder="Password" name="password" type="password" value="">
+                                <input class="form-control" placeholder="Password" name="Password" type="password" value="">
                             </div>
                             <div class="checkbox">
                                 <label>
                                     <input name="remember" type="checkbox" value="Remember Me">Remember Me
                                 </label>
                             </div>
-                            <a href="index.html" class="btn btn-primary">Login</a>
+                            <button class="btn btn-primary pull-right btn-login">Login</button>
                         </fieldset>
-                    </form>
+                    }
+
                 </div>
             </div>
         </div><!-- /.col-->
@@ -47,11 +75,7 @@
 
     <script src="~/Areas/Asset/js/jquery-1.11.1.min.js"></script>
     <script src="~/Areas/Asset/js/bootstrap.min.js"></script>
-    <script src="~/Areas/Asset/js/chart.min.js"></script>
-    <script src="~/Areas/Asset/js/chart-data.js"></script>
-    <script src="~/Areas/Asset/js/easypiechart.js"></script>
-    <script src="~/Areas/Asset/js/easypiechart-data.js"></script>
-    <script src="~/Areas/Asset/js/bootstrap-datepicker.js"></script>
+  
     <script>!function ($) {
 			$(document).on("click","ul.nav li.parent > a > span.icon", function(){
 				$(this).find('em:first').toggleClass("glyphicon-minus");

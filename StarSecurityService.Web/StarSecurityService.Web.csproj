@@ -134,6 +134,7 @@
     <Compile Include="Areas\Admin\Controllers\MainAdminController.cs" />
     <Compile Include="Areas\Admin\Model\Achievements\AchievementModel.cs" />
     <Compile Include="Areas\Admin\Model\GroupUserGrantModel.cs" />
+    <Compile Include="Areas\Admin\Model\Logins\LoginModel.cs" />
     <Compile Include="Commons\Response.cs" />
     <Compile Include="Controllers\EmployeeController.cs" />
     <Compile Include="Controllers\GroupPermissionController.cs" />
@@ -150,6 +151,7 @@
   <ItemGroup>
     <Content Include="Areas\Admin\Views\Bussiness\index.js" />
     <Content Include="Areas\Admin\Views\Employee\create.js" />
+    <Content Include="Areas\Admin\Views\Login\login.css" />
     <Content Include="Areas\Asset\ckeditor\adapters\jquery.js" />
     <Content Include="Areas\Asset\ckeditor\build-config.js" />
     <Content Include="Areas\Asset\ckeditor\ckeditor.js" />
@@ -2227,6 +2229,7 @@
     <Content Include="Areas\Asset\js\fontawesome.js" />
     <Content Include="Areas\Asset\js\html5shiv.min.js" />
     <Content Include="Areas\Asset\js\jquery-1.11.1.min.js" />
+    <Content Include="Areas\Asset\js\JqueyValidate\jquery.validate.min.js" />
     <Content Include="Areas\Asset\js\lumino.glyphs.js" />
     <Content Include="Areas\Asset\js\myscript.js" />
     <Content Include="Areas\Asset\js\respond.min.js" />

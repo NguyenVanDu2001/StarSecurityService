@@ -1,4 +1,6 @@
-﻿using StarSecurityService.Application.Clients;
+﻿using StarSecurityService.Application.Achievements;
+using StarSecurityService.Application.Branchs;
+using StarSecurityService.Application.Clients;
 using StarSecurityService.Application.Commons.Dto;
 using StarSecurityService.Application.Employees;
 using StarSecurityService.Application.ServiceOffers;
@@ -19,11 +21,15 @@ namespace StarSecurityService.Web.Areas.Admin.Controllers
         private readonly IEmployeeAppService _employeeAppService;
         private readonly IClientAppService _clientAppServices;
         private readonly IServiceOfferService _serviceOfferAppServices;
+        private readonly IBrachAppService _brachAppService;
+        private readonly IAchievementAppService _achievementAppService;
         public EmployeeController()
         {
             _employeeAppService = new EmployeeAppServices();
             _clientAppServices = new ClientAppServices();
             _serviceOfferAppServices = new ServiceOfferService();
+            _brachAppService = new BranchAppService();
+            _achievementAppService = new AchievementAppService();
         }
      
         // GET: Admin/Employee
@@ -131,5 +137,40 @@ namespace StarSecurityService.Web.Areas.Admin.Controllers
             }
             return Json(res,JsonRequestBehavior.AllowGet);
         }
+        [HttpGet]
+        public async Task<JsonResult> LoadComboboxBranch()
+        {
+            var res = new Response<List<ComboboxCommonDto>>();
+            try
+            {
+                res.Data = await _brachAppService.GetAllForCombobox();
+                res.Message = "Success";
+            }
+            catch (System.Exception ex)
+            {
+                res.Message = "An error occurred";
+                res.StatusCode = HttpStatusCode.OK;
+                res.Status = StatusEnum.BadRequest;
+            }
+            return Json(res,JsonRequestBehavior.AllowGet);
+        }
+        [HttpGet]
+        public async Task<JsonResult> LoadComboboxAchievemt()
+        {
+            var res = new Response<List<ComboboxCommonDto>>();
+            try
+            {
+                res.Data = await _achievementAppService.GetAllComboboxAchievemnt();
+                res.Message = "Success";
+            }
+            catch (System.Exception ex)
+            {
+                res.Message = "An error occurred";
+                res.StatusCode = HttpStatusCode.OK;
+                res.Status = StatusEnum.BadRequest;
+            }
+            return Json(res,JsonRequestBehavior.AllowGet);
+        }
+        
     }
 }

@@ -11,7 +11,7 @@ namespace StarSecurityService.ApplicationCore.Entities
         public string Name { get; set; }
         public bool isAdmin { get; set; }
         public bool Status { get; set; }
-        public virtual ICollection<User> Users { get; set; }
+        public virtual ICollection<Employyee> Employyees { get; set; }
         public virtual ICollection<GroupPermesstion> GroupPermesstions { get; set; }
     }
 }

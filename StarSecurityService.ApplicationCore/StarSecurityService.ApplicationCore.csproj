@@ -201,7 +201,6 @@
     <Compile Include="Entities\GroupPermesstion.cs" />
     <Compile Include="Entities\GroupUser.cs" />
     <Compile Include="Entities\Permission.cs" />
-    <Compile Include="Entities\User.cs" />
     <Compile Include="InterFaces\IAsyncRepository.cs" />
     <Compile Include="Entities\ServiceOffer.cs" />
     <Compile Include="Entities\Vacancy.cs" />

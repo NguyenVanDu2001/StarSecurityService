@@ -19,7 +19,6 @@ namespace StarSecurityService.EntityFramework.Data
         public virtual DbSet<GroupPermesstion> GroupPermesstions { get; set; }
         public virtual DbSet<GroupUser> GroupUsers { get; set; }
         public virtual DbSet<Permission> Permissions { get; set; }
-        public virtual DbSet<User> Users { get; set; }
         public virtual DbSet<Achievement> Achievements { get; set; }
         public virtual DbSet<ClientEmployees> ClientEmployees { get; set; }
         public virtual DbSet<EmployeeAchievement> EmployeeAchievements { get; set; }

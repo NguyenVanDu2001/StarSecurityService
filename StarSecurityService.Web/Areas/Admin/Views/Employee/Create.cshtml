@@ -21,11 +21,17 @@
             cursor:pointer;
             color:blue;
         }
+        label.error{
+            color : red
+        }
+        .font-red{
+            color : red
+        }
     </style>
 }
 <div class="row">
     <div class="col-xs-12 col-md-12 col-lg-12">
-        <form method="post" enctype="multipart/form-data">
+        <form method="post" id="formEmployee" enctype="multipart/form-data">
             <div class="panel panel-primary">
                 <div class="panel-heading">Create Employee</div>
                 <br />
@@ -55,46 +61,13 @@
                                     @Html.AntiForgeryToken()
 
                                     <div class="form-horizontal">
-                                        <h4>Employyee</h4>
-                                        <hr />
-                                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                                         <div class="form-group">
-                                            @Html.LabelFor(model => model.BranchId, htmlAttributes: new { @class = "control-label col-md-2" })
+                                            @Html.LabelFor(model => model.UserName, htmlAttributes: new { @class = "control-label col-md-2" })
                                             <div class="col-md-10">
-                                                <select class=" form-control">
-                                                    <option value=""> Choose branch</option>
-                                                </select>
+                                                @Html.EditorFor(model => model.UserName, new { htmlAttributes = new { @class = "form-control", @type = "password" } })
+                                                @Html.ValidationMessageFor(model => model.UserName, "", new { @class = "text-danger" })
                                             </div>
                                         </div>
-
-                                        <div class="form-group">
-                                            @Html.LabelFor(model => model.Address, htmlAttributes: new { @class = "control-label col-md-2" })
-                                            <div class="col-md-10">
-                                                @Html.EditorFor(model => model.Address, new { htmlAttributes = new { @class = "form-control" } })
-                                                @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger" })
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group">
-                                            @Html.LabelFor(model => model.Image, htmlAttributes: new { @class = "control-label col-md-2" })
-                                            <div class="row">
-                                                <div class="col-md-4">
-                                                    <div class="image-upload">
-                                                        <label for="file-input">
-                                                            <img src="~/Areas/Asset/img/new_seo-10-512.png" width="50%" style="pointer-events: none" />
-                                                        </label>
-                                                        <input id="file-input" type="file" />
-                                                    </div>
-                                                    
-                                                </div>
-                                                <div class="col-md-4">
-                                                    <div class="prevew-image">
-                                                        <img id="blah" src="#" style="display:none"  />
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-
                                         <div class="form-group">
                                             @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-2" })
                                             <div class="col-md-10">
@@ -102,6 +75,8 @@
                                                 @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
                                             </div>
                                         </div>
+
+
 
                                         <div class="form-group">
                                             @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -118,7 +93,53 @@
                                                 @Html.ValidationMessageFor(model => model.Phone, "", new { @class = "text-danger" })
                                             </div>
                                         </div>
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => model.Address, htmlAttributes: new { @class = "control-label col-md-2" })
+                                            <div class="col-md-10">
+                                                @Html.EditorFor(model => model.Address, new { htmlAttributes = new { @class = "form-control" } })
+                                                @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => model.Salary, htmlAttributes: new { @class = "control-label col-md-2" })
+                                            <div class="col-md-10">
+                                                @Html.EditorFor(model => model.Salary, new { htmlAttributes = new { @class = "form-control", @type = "password" } })
+                                                @Html.ValidationMessageFor(model => model.Salary, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => model.BirthDay, htmlAttributes: new { @class = "control-label col-md-2" })
+                                            <div class="col-md-10">
+                                                @Html.EditorFor(model => model.BirthDay, new { htmlAttributes = new { @class = "form-control", @type = "date" } })
+                                                @Html.ValidationMessageFor(model => model.BirthDay, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => model.Bonus, htmlAttributes: new { @class = "control-label col-md-2" })
+                                            <div class="col-md-10">
+                                                @Html.EditorFor(model => model.Bonus, new { htmlAttributes = new { @class = "form-control", @type = "password" } })
+                                                @Html.ValidationMessageFor(model => model.Bonus, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => model.Image, htmlAttributes: new { @class = "control-label col-md-2" })
+                                            <div class="row">
+                                                <div class="col-md-4">
+                                                    <div class="image-upload">
+                                                        <label for="file-input">
+                                                            <img src="~/Areas/Asset/img/new_seo-10-512.png" width="50%" style="pointer-events: none" />
+                                                        </label>
+                                                        <input id="file-input" type="file" />
+                                                    </div>
 
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <div class="prevew-image">
+                                                        <img id="blah" src="#" style="display:none" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                         <div class="form-group">
                                             <label class="control-label col-md-2">
                                                 Grander
@@ -145,9 +166,17 @@
                                             </div>
                                         </div>
                                         <div class="form-group">
+                                            <label for="BranchId" class="control-label col-md-2">Choose branch:</label>
+                                            <div class="col-md-10">
+                                                <select class=" form-control" id="BranchId" name="BranchId">
+                                                    <option value=""> Choose branch</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
                                             <label for="achievement" class="control-label col-md-2">Choose achievement:</label>
                                             <div class="col-md-10">
-                                                <select name="cars" id="achievement" multiple class="form-control">
+                                                <select name="Achievement[]" id="Achievement" multiple class="form-control">
                                                     <option value="volvo">Volvo</option>
                                                     <option value="saab">Saab</option>
                                                     <option value="opel">Opel</option>
@@ -158,7 +187,7 @@
                                         <div class="form-group">
                                             <label for="achievement" class="control-label col-md-2">Choose service offer</label>
                                             <div class="col-md-10">
-                                                <select name="cars" id="achievement" multiple class="form-control">
+                                                <select name="ServiceOffer[]" id="ServiceOffer" multiple class="form-control">
                                                     <option value="volvo">Volvo</option>
                                                     <option value="saab">Saab</option>
                                                     <option value="opel">Opel</option>
@@ -166,13 +195,7 @@
                                                 </select>
                                             </div>
                                         </div>
-                                        <div class="form-group">
-                                            @Html.LabelFor(model => model.BirthDay, htmlAttributes: new { @class = "control-label col-md-2" })
-                                            <div class="col-md-10">
-                                                @Html.EditorFor(model => model.BirthDay, new { htmlAttributes = new { @class = "form-control", @type = "date" } })
-                                                @Html.ValidationMessageFor(model => model.BirthDay, "", new { @class = "text-danger" })
-                                            </div>
-                                        </div>
+
                                     </div>
 
                                 </div>
@@ -235,6 +258,7 @@
 </div><!--/.row-->
 
 @section scripts{
+    <script src="~/Areas/Asset/js/JqueyValidate/jquery.validate.min.js"></script>
     <script>
         function readURL(input) {
             if (input.files && input.files[0]) {
@@ -292,21 +316,85 @@
                     }
                 }
                 $("#tableServiceOffer tbody .select-client").html(option);
-            })
-            $.get("/Admin/Employee/LoadComboboxService").done(function (data) {
-                if (data.StatusCode == 200) {
-                    var option = `<option value="">Choose service offer </option>`;
-                    for (obj of data.Data) {
-                        option += `<option value="${obj.Value}">${obj.Lable}</option>`
-                    }
-                }
-                $("#tableServiceOffer tbody .select-service-offer").html(option);
+                
             })
             // Load combobox service
+            $.get("/Admin/Employee/LoadComboboxService").done(function (data) {
+                if (data.StatusCode == 200) {
+                    fillOptionSelect("#tableServiceOffer tbody .select-service-offer", data.Data, 'Choose service offer');
+                    fillOptionSelect("#ServiceOffer", data.Data);
+                }
+            })
+            //Load combobox branch
+            $.get("/Admin/Employee/LoadComboboxBranch").done(function (data) {
+                if (data.StatusCode == 200) {
+                    fillOptionSelect("select[name=BranchId]", data.Data, 'Choose branch');
+                }
+            })
+            //Load combobox branch
+            $.get("/Admin/Employee/LoadComboboxAchievemt").done(function (data) {
+                debugger
+                if (data.Status != 2) {
+                    fillOptionSelect("#Achievement", data.Data);
+                }
+            })
+            
+        }
+        function fillOptionSelect(selector, data, textOptionDefault = undefined) {
+            let optionDefault = "";
+            if (textOptionDefault) {
+                 optionDefault = `<option value="">${textOptionDefault}</option>`;
+            }
+            for (obj of data) {
+                optionDefault += `<option value="${obj.Value}">${obj.Lable}</option>`
+            }
+            $(selector).html(optionDefault);
         }
 
+        var $validateForm = {
+            validate: $("#formEmployee").validate({
+                rules: {
+                    BranchId: "required",
+                    Address: "required",
 
-        (function () { tableTab2.intit(), loadCombobox()})();
+                    Password: {
+                        required: true,
+                        
+                    },
+                    Achievement: "required",
+                    Email: {
+                        required: true,
+                        email : true
+                    },
+                    BirthDay: "required",
+                    Phone: "required",
+                    Salary: "required",
+                    UserName:"required"
+                },
+                messages: {
+                    BranchId: "Please choose branch",
+                    Address: "Please enter adress",
+                    Password: {
+                        required: "Please enter password ,can't be blank",
+                    },
+                    Achievement: "Please choose branch",
+                    Email: {
+                        required: "Please enter email ,can't be blank ",
+                        email: "Please enter email in correct format"
+                    },
+                    BirthDay: "Please choose birth day ,can't be blank ",
+                    UserName:"Please enter user name ,can't be blank",
+                    Salary:"Please enter salary ,can't be blank",
+                    Phone:"Please enter phone number ,can't be blank",
+                },
+                submitHandler: function (form) {
+                    debugger
+                    // form.submit();
+                }
+            })
+        };
+
+        (function () { tableTab2.intit(), loadCombobox(), $validateForm.validate })();
 
     </script>
 }  

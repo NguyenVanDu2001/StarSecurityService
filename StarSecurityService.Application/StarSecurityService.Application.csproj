@@ -42,7 +42,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Achievements\AchievementAppService.cs" />
     <Compile Include="ApplicationBaseService.cs" />
+    <Compile Include="Branchs\BranchAppService.cs" />
     <Compile Include="Branchs\BranchService.cs" />
     <Compile Include="Clients\ClientAppServices.cs" />
     <Compile Include="Commons\Dto\ComboboxCommonDto.cs" />

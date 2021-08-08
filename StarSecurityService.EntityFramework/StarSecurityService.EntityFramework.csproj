@@ -192,6 +192,18 @@
     <Compile Include="Migrations\202108080714309_updatedb.Designer.cs">
       <DependentUpon>202108080714309_updatedb.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202108080350016_update-migration-employyee.cs" />
+    <Compile Include="Migrations\202108080350016_update-migration-employyee.Designer.cs">
+      <DependentUpon>202108080350016_update-migration-employyee.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202108080416188_update-entity.cs" />
+    <Compile Include="Migrations\202108080416188_update-entity.Designer.cs">
+      <DependentUpon>202108080416188_update-entity.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202108081325323_updatedb1.cs" />
+    <Compile Include="Migrations\202108081325323_updatedb1.Designer.cs">
+      <DependentUpon>202108081325323_updatedb1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -211,6 +223,15 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202108080714309_updatedb.resx">
       <DependentUpon>202108080714309_updatedb.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202108080350016_update-migration-employyee.resx">
+      <DependentUpon>202108080350016_update-migration-employyee.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202108080416188_update-entity.resx">
+      <DependentUpon>202108080416188_update-entity.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202108081325323_updatedb1.resx">
+      <DependentUpon>202108081325323_updatedb1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
