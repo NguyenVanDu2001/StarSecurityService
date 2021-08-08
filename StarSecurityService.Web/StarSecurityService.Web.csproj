@@ -2554,6 +2554,7 @@
     <Content Include="Areas\Admin\Views\GroupUser\Index.cshtml" />
     <Content Include="Areas\Admin\Views\GroupUser\GrantPermisstion.cshtml" />
     <Content Include="Areas\Admin\Views\Bussiness\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Vacancy\Edit.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />

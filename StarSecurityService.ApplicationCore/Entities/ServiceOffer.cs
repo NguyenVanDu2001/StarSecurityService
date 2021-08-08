@@ -17,5 +17,9 @@ namespace StarSecurityService.ApplicationCore.Entities
             Details = details;
             Status = status;
         }
+        public ServiceOffer()
+        {
+                
+        }
     }
 }

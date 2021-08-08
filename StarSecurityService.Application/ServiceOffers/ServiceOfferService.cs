@@ -13,6 +13,7 @@ namespace StarSecurityService.Application.ServiceOffers
     public interface IServiceOfferService
     {
        Task<List<ComboboxCommonDto>> GetComboboxServiceOffer(); 
+       Task<List<ServiceOffer>> GetAll(); 
     }
     public class ServiceOfferService : IServiceOfferService
     {
@@ -20,6 +21,11 @@ namespace StarSecurityService.Application.ServiceOffers
         public ServiceOfferService()
         {
             _serviceOfferRepository = new EfRepository<ServiceOffer>(new StarServiceDbContext());
+        }
+
+        public async Task<List<ServiceOffer>> GetAll()
+        {
+            return (await _serviceOfferRepository.GetAllAsync()).ToList();
         }
 
         public async Task<List<ComboboxCommonDto>> GetComboboxServiceOffer()

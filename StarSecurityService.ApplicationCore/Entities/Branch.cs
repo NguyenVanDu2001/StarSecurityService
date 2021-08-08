@@ -17,5 +17,10 @@ namespace StarSecurityService.ApplicationCore.Entities
             Email = email;
             Address = address;
         }
+        public Branch()
+        {
+
+        }
+
     }
 }

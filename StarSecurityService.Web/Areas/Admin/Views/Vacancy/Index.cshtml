@@ -4,17 +4,12 @@
     ViewBag.Title = "Index";
     Layout = "~/Areas/Admin/Views/Shared/_MainLayoutAdmin.cshtml";
 }
-<div class="row">
-    <div class="col-lg-12">
-        <h1 class="page-header">Vacancy</h1>
-    </div>
-</div><!--/.row-->
 
 <div class="row">
     <div class="col-xs-12 col-md-12 col-lg-12">
 
         <div class="panel panel-primary">
-            <div class="panel-heading">Vacancy List</div>
+           
             <div class="panel-body">
                 <div class="bootstrap-table">
                     <div class="table-responsive">
@@ -26,10 +21,10 @@
                                     @Html.DisplayNameFor(model => model.Requirement)
                                 </th>
                                 <th>
-                                    @Html.DisplayNameFor(model => model.Description)
+                                    @Html.DisplayNameFor(model => model.Title)
                                 </th>
                                 <th>
-                                    @Html.DisplayNameFor(model => model.EmployeeId)
+                                    @Html.DisplayNameFor(model => model.UpdateBy)
                                 </th>
                                 <th>
                                     @Html.DisplayNameFor(model => model.BranchId)
@@ -38,10 +33,10 @@
                                     @Html.DisplayNameFor(model => model.ServiceOfferId)
                                 </th>
                                 <th>
-                                    @Html.DisplayNameFor(model => model.EndDate)
+                                    @Html.DisplayNameFor(model => model.UpdateAt)
                                 </th>
                                 <th>
-                                    @Html.DisplayNameFor(model => model.StartDate)
+                                    @Html.DisplayNameFor(model => model.Salary)
                                 </th>
                                 <th>
                                     @Html.DisplayNameFor(model => model.Status)
@@ -56,10 +51,10 @@
                                         @Html.DisplayFor(modelItem => item.Requirement)
                                     </td>
                                     <td>
-                                        @Html.DisplayFor(modelItem => item.Description)
+                                        @Html.DisplayFor(modelItem => item.Title)
                                     </td>
                                     <td>
-                                        @Html.DisplayFor(modelItem => item.EmployeeId)
+                                        @Html.DisplayFor(modelItem => item.UpdateBy)
                                     </td>
                                     <td>
                                         @Html.DisplayFor(modelItem => item.BranchId)
@@ -68,17 +63,16 @@
                                         @Html.DisplayFor(modelItem => item.ServiceOfferId)
                                     </td>
                                     <td>
-                                        @Html.DisplayFor(modelItem => item.EndDate)
+                                        @Html.DisplayFor(modelItem => item.UpdateAt)
                                     </td>
                                     <td>
-                                        @Html.DisplayFor(modelItem => item.StartDate)
+                                        @Html.DisplayFor(modelItem => item.Salary)
                                     </td>
                                     <td>
                                         @Html.DisplayFor(modelItem => item.Status)
                                     </td>
                                     <td>
                                         @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-                                        @Html.ActionLink("Details", "Details", new { id = item.Id }) |
                                         @Html.ActionLink("Delete", "Delete", new { id = item.Id })
                                     </td>
                                 </tr>
