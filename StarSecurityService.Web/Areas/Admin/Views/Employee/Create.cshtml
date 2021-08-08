@@ -11,28 +11,36 @@
             width: 0;
             height: 0
         }
-    </style>
-    }
-<div class="row">
-    <div class="col-lg-12">
-        <h1 class="page-header">Employee</h1>
-    </div>
-</div><!--/.row-->
 
+        table thead {
+            background-color: gray;
+        }
+
+        table tfoot {
+            background-color: #eaeaea;
+            cursor:pointer;
+            color:blue;
+        }
+    </style>
+}
 <div class="row">
     <div class="col-xs-12 col-md-12 col-lg-12">
-
-        <div class="panel panel-primary">
-            <div class="panel-heading">Create Employee</div>
-            <br />
-            <div class="form-group pull-right "  style="margin-right :17px">
-                <div class="col-md-offset-2 col-md-10">
-                    <input type="submit" value="Create" class="btn btn-primary" />
+        <form method="post" enctype="multipart/form-data">
+            <div class="panel panel-primary">
+                <div class="panel-heading">Create Employee</div>
+                <br />
+                <div class="form-group pull-right " style="margin-right :37px">
+                    <div class="row">
+                        <div class="col-md-offset-2 col-md-3">
+                            <button type="submit" class="btn btn-primary"><i class="fa fa-floppy-o" aria-hidden="true"></i> &nbsp; Save</button>
+                        </div>
+                        <div class="col-md-offset-2 col-md-3">
+                            <a href="#" class="btn btn-danger"> <i class="fa fa-window-close" aria-hidden="true"></i> &nbsp; Close</a>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <br />
-            <br />
-            <form method="post" enctype="multipart/form-data">
+                <br />
+                <br />
                 <div class="panel-body">
                     <ul class="nav nav-tabs">
                         <li class="active"><a href="#home" class="active" data-toggle="tab">HOME</a></li>
@@ -69,11 +77,21 @@
 
                                         <div class="form-group">
                                             @Html.LabelFor(model => model.Image, htmlAttributes: new { @class = "control-label col-md-2" })
-                                            <div class="image-upload">
-                                                <label for="file-input">
-                                                    <img src="~/Areas/Asset/img/new_seo-10-512.png" width="50%" style="pointer-events: none" />
-                                                </label>
-                                                <input id="file-input" type="file" />
+                                            <div class="row">
+                                                <div class="col-md-4">
+                                                    <div class="image-upload">
+                                                        <label for="file-input">
+                                                            <img src="~/Areas/Asset/img/new_seo-10-512.png" width="50%" style="pointer-events: none" />
+                                                        </label>
+                                                        <input id="file-input" type="file" />
+                                                    </div>
+                                                    
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <div class="prevew-image">
+                                                        <img id="blah" src="#" style="display:none"  />
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
 
@@ -148,8 +166,6 @@
                                                 </select>
                                             </div>
                                         </div>
-
-
                                         <div class="form-group">
                                             @Html.LabelFor(model => model.BirthDay, htmlAttributes: new { @class = "control-label col-md-2" })
                                             <div class="col-md-10">
@@ -157,41 +173,35 @@
                                                 @Html.ValidationMessageFor(model => model.BirthDay, "", new { @class = "text-danger" })
                                             </div>
                                         </div>
-
-
                                     </div>
 
-
-                                    <div>
-                                        @Html.ActionLink("Back to List", "Index")
-                                    </div>
                                 </div>
                             </div>
                         </div>
                         <div class="tab-pane" id="info">
-                            <table class="table table-bordered table-condensed">
-                                <thead>
-                                    <tr>
-                                        <th>Order</th>
-                                        <th>Client</th>
-                                        <th>Service Offer</th>
-                                        <th>Start shift  </th>
-                                        <th>End shift  </th>
-                                        <th>Remove</th>
+                            <table class="table table-bordered table-condensed" id="tableServiceOffer">
+                                <thead style="background-color:gray">
+                                    <tr class="active">
+                                        <th class="text-center">Order</th>
+                                        <th class="text-center">Client</th>
+                                        <th class="text-center">Service Offer</th>
+                                        <th class="text-center">Start shift  </th>
+                                        <th class="text-center">End shift  </th>
+                                        <th class="text-center">Remove</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
+                                    <tr class="text-center">
                                         <td>1</td>
                                         <td>
-                                            <select class="form-control">
+                                            <select class="form-control select-client">
                                                 <option>Client</option>
                                                 <option>Client</option>
                                                 <option>Client</option>
                                             </select>
                                         </td>
                                         <td>
-                                            <select class="form-control">
+                                            <select class="form-control select-service-offer">
                                                 <option>Client</option>
                                                 <option>Client</option>
                                                 <option>Client</option>
@@ -200,11 +210,15 @@
                                         </td>
                                         <td><input type="date" name="name" value="" /></td>
                                         <td><input type="date" name="name" value="" /></td>
-                                        <td>Remove</td>
+                                        <td>
+                                            <i class="fa fa-trash fa-2x" aria-hidden="true"></i>
+                                        </td>
                                     </tr>
                                 </tbody>
                                 <tfoot>
-                                    <span>Add Row</span>
+                                    <tr>
+                                        <td colspan="6"> <i class="fa fa-plus-circle" aria-hidden="true"></i>&nbsp; Add row</td>
+                                    </tr>
                                 </tfoot>
                             </table>
                         </div>
@@ -215,7 +229,84 @@
 
                     <div class="clearfix"></div>
                 </div>
-            </form>
-        </div>
+            </div>
+        </form>
     </div>
 </div><!--/.row-->
+
+@section scripts{
+    <script>
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    $('#blah').removeAttr("style").attr('src', e.target.result).height(120).width(120);
+                }
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+        $("#file-input").change(function () {
+            readURL(this);
+        });
+
+        var tableTab2 = {
+            sheft: $("#tableServiceOffer"),
+            elementCloneRowTbody: $("#tableServiceOffer > tbody > tr:first").clone(),
+            intit: function () {
+                this.event();
+            },
+            event: function () {
+                this.addRow();
+                this.deleteRow();
+            },
+            addRow: function () {
+                tableTab2.sheft.find("tfoot tr").off("click").on("click", function () {
+                    $("#tableServiceOffer > tbody > tr:first").clone().insertAfter('#tableServiceOffer tbody tr:last');
+                    tableTab2.orderIndexTbody();
+                })
+            },
+            deleteRow: function () {
+                $(document).on("click", "#tableServiceOffer tbody tr td .fa-trash", function () {
+                    if (confirm("Are you sure you want to delete?")) {
+                        const $this = $(this);
+                        $this.closest("tr").remove();
+                        tableTab2.orderIndexTbody();
+                    } ;
+                })
+            },
+            orderIndexTbody: function () {
+                tableTab2.sheft.find("tbody tr").each(function (i, e) {
+                    $(this).find("td:eq(0)").text(Number(i) + 1)
+                })
+            }
+
+        };
+        function loadCombobox() {
+            // Load combobox client table 
+            $.get("/Admin/Employee/LoadComboboxClient").done(function (data) {
+                if (data.StatusCode == 200) {
+                    var option = `<option value="">-- Choose client --</option>`;
+                    for (obj of data.Data) {
+                        option += `<option value="${obj.Value}">${obj.Lable}</option>`
+                    }
+                }
+                $("#tableServiceOffer tbody .select-client").html(option);
+            })
+            $.get("/Admin/Employee/LoadComboboxService").done(function (data) {
+                if (data.StatusCode == 200) {
+                    var option = `<option value="">Choose service offer </option>`;
+                    for (obj of data.Data) {
+                        option += `<option value="${obj.Value}">${obj.Lable}</option>`
+                    }
+                }
+                $("#tableServiceOffer tbody .select-service-offer").html(option);
+            })
+            // Load combobox service
+        }
+
+
+        (function () { tableTab2.intit(), loadCombobox()})();
+
+    </script>
+}  

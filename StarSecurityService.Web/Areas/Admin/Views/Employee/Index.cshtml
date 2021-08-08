@@ -56,42 +56,45 @@
                             </thead>
 
                             <tbody>
-                                @foreach (var item in Model)
+                                @if (Model?.Any() == true)
                                 {
-                                    <tr>
-                                        <td>
-                                            @Html.DisplayFor(modelItem => item.BranchId)
-                                        </td>
-                                        <td>
-                                            @Html.DisplayFor(modelItem => item.Address)
-                                        </td>
-                                        <td>
-                                            <img width="100px" src="~/Areas/Asset/img/iphone7-plus-black-select-2016.jpg" class="thumbnail">
-                                        </td>
-                                        <td>
-                                            @Html.DisplayFor(modelItem => item.Password)
-                                        </td>
-                                        <td>
-                                            @Html.DisplayFor(modelItem => item.Email)
-                                        </td>
-                                        <td>
-                                            @Html.DisplayFor(modelItem => item.Phone)
-                                        </td>
-                                        <td>
-                                            @(item.Sex ? "Male": "Female")
-                                        </td>
-                                        <td>
-                                            @(item.Status ? "Active" : "No Active")
-                                        </td>
-                                        <td>
-                                            @item.BirthDay.ToString("dd/MM/yyyy")
-                                        </td>
-                                        <td>
-                                            @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-                                            @Html.ActionLink("Details", "Details", new { id = item.Id }) |
-                                            @Html.ActionLink("Delete", "Delete", new { id = item.Id })
-                                        </td>
-                                    </tr>
+                                    foreach (var item in Model)
+                                    {
+                                        <tr>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.BranchId)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Address)
+                                            </td>
+                                            <td>
+                                                <img width="100px" src="~/Areas/Asset/img/iphone7-plus-black-select-2016.jpg" class="thumbnail">
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Password)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Email)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Phone)
+                                            </td>
+                                            <td>
+                                                @(item.Sex ? "Male": "Female")
+                                            </td>
+                                            <td>
+                                                @(item.Status ? "Active" : "No Active")
+                                            </td>
+                                            <td>
+                                                @item.BirthDay.ToString("dd/MM/yyyy")
+                                            </td>
+                                            <td>
+                                                @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                                                @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                                                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                                            </td>
+                                        </tr>
+                                    }
                                 }
                             </tbody>
 

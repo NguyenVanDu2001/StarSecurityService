@@ -34,5 +34,9 @@ namespace StarSecurityService.ApplicationCore.Entities
             Status = status;    
             BirthDay = birthDay;
         }
+        public Employyee()
+        {
+
+        }
     }
 }

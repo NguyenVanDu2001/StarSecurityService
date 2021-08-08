@@ -932,3 +932,6 @@ h1.page-header {
 #avatar{
     cursor: pointer;
 }
+table tbody tr{
+	text-align:center;
+}

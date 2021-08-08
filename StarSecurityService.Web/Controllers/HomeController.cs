@@ -11,19 +11,58 @@ namespace StarSecurityService.Web.Controllers
         public ActionResult Index()
         {
             return View();
-        }      
-
-        public ActionResult About()
-        {
-            ViewBag.Message = "Your application description page.";
-
-            return View();
         }
 
-        public ActionResult Contact()
+        public ActionResult AboutUs()
         {
-            ViewBag.Message = "Your contact page.";
-
+            return View();
+        }
+        public ActionResult Career()
+        {
+            return View();
+        }
+        public ActionResult ContactUs()
+        {
+            return View();
+        }
+        public ActionResult Divisions()
+        {
+            return View();
+        }
+        public ActionResult Profesional()
+        {
+            return View();
+        }
+        public ActionResult Emiratisation()
+        {
+            return View();
+        }
+        public ActionResult BoardMember()
+        {
+            return View();
+        }
+        public ActionResult Whysss()
+        {
+            return View();
+        }
+        public ActionResult DubaiDivision()
+        {
+            return View();
+        }
+        public ActionResult Recruitment()
+        {
+            return View();
+        }
+        public ActionResult Supervision()
+        {
+            return View();
+        }
+        public ActionResult Training()
+        {
+            return View();
+        }
+        public ActionResult Facilities()
+        {
             return View();
         }
     }

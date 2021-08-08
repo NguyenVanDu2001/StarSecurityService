@@ -134,7 +134,7 @@
     <Compile Include="Areas\Admin\Controllers\MainAdminController.cs" />
     <Compile Include="Areas\Admin\Model\Achievements\AchievementModel.cs" />
     <Compile Include="Areas\Admin\Model\GroupUserGrantModel.cs" />
-    <Compile Include="Controllers\ClientController.cs" />
+    <Compile Include="Commons\Response.cs" />
     <Compile Include="Controllers\EmployeeController.cs" />
     <Compile Include="Controllers\GroupPermissionController.cs" />
     <Compile Include="Areas\Admin\Controllers\EmployeeController.cs" />
@@ -149,6 +149,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\Admin\Views\Bussiness\index.js" />
+    <Content Include="Areas\Admin\Views\Employee\create.js" />
     <Content Include="Areas\Asset\ckeditor\adapters\jquery.js" />
     <Content Include="Areas\Asset\ckeditor\build-config.js" />
     <Content Include="Areas\Asset\ckeditor\ckeditor.js" />
@@ -2223,6 +2224,7 @@
     <Content Include="Areas\Asset\js\chart.min.js" />
     <Content Include="Areas\Asset\js\easypiechart-data.js" />
     <Content Include="Areas\Asset\js\easypiechart.js" />
+    <Content Include="Areas\Asset\js\fontawesome.js" />
     <Content Include="Areas\Asset\js\html5shiv.min.js" />
     <Content Include="Areas\Asset\js\jquery-1.11.1.min.js" />
     <Content Include="Areas\Asset\js\lumino.glyphs.js" />
@@ -2548,6 +2550,7 @@
     <Content Include="Areas\Admin\Views\Category\Index.cshtml" />
     <Content Include="Areas\Admin\Views\GroupUser\Index.cshtml" />
     <Content Include="Areas\Admin\Views\GroupUser\GrantPermisstion.cshtml" />
+    <Content Include="Areas\Admin\Views\Bussiness\Index.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -2571,32 +2574,29 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Employee\Index.cshtml" />
     <Content Include="Views\Employee\Create.cshtml" />
-    <Content Include="Views\Client\Index.cshtml" />
-    <Content Include="Views\Shared\_LayoutClient.cshtml" />
-    <Content Include="Views\Client\AboutUs.cshtml" />
-    <Content Include="Views\Client\Career.cshtml" />
-    <Content Include="Views\Client\ContactUs.cshtml" />
-    <Content Include="Views\Client\Divisions.cshtml" />
-    <Content Include="Views\Client\Profesional.cshtml" />
-    <Content Include="Views\Client\Emiratisation.cshtml" />
-    <Content Include="Views\Client\BoardMember.cshtml" />
-    <Content Include="Views\Client\Whysss.cshtml" />
-    <Content Include="Views\Client\DubaiDivision.cshtml" />
-    <Content Include="Views\Client\Recruitment.cshtml" />
-    <Content Include="Views\Client\Supervision.cshtml" />
-    <Content Include="Views\Client\Training.cshtml" />
-    <Content Include="Views\Client\Facilities.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Home\AboutUs.cshtml" />
+    <Content Include="Views\Home\Career.cshtml" />
+    <Content Include="Views\Home\ContactUs.cshtml" />
+    <Content Include="Views\Home\Divisions.cshtml" />
+    <Content Include="Views\Home\Profesional.cshtml" />
+    <Content Include="Views\Home\Emiratisation.cshtml" />
+    <Content Include="Views\Home\BoardMember.cshtml" />
+    <Content Include="Views\Home\Whysss.cshtml" />
+    <Content Include="Views\Home\DubaiDivision.cshtml" />
+    <Content Include="Views\Home\Recruitment.cshtml" />
+    <Content Include="Views\Home\Supervision.cshtml" />
+    <Content Include="Views\Home\Training.cshtml" />
+    <Content Include="Views\Home\Facilities.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Models\" />
     <Folder Include="Models\" />
     <Folder Include="Views\Bussiness\" />
+    <Folder Include="Views\Clients\" />
     <Folder Include="Views\GroupPermission\" />
   </ItemGroup>
   <ItemGroup>
