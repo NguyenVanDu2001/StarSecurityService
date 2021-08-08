@@ -10,6 +10,10 @@ namespace StarSecurityService.ApplicationCore.Entities
         public virtual ICollection<EmployeeServiceOffered> EmployeeServiceOffered { get; set; }
         public virtual ICollection<ClientEmployees> ClientEmployees { get; set; }
 
+        public ServiceOffer()
+        {
+        }
+
         public ServiceOffer(int id, string title, string details, bool status)
         {
             Id = id;

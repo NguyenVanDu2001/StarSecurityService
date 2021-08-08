@@ -9,6 +9,11 @@ namespace StarSecurityService.ApplicationCore.Entities
         public string Email { get; set; }
         public string Address { get; set; }
         public virtual ICollection<Vacancy> Vacancies { get; set; }
+
+        public Branch()
+        {
+        }
+
         public Branch(int id, string name, string phone, string email, string address)
         {
             Id = id;

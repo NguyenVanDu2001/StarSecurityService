@@ -1,7 +1,12 @@
-﻿using StarSecurityService.ApplicationCore.Entities;
+﻿using StarSecurityService.Application.Branchs;
+using StarSecurityService.Application.Clients;
+using StarSecurityService.Application.ServiceOffers;
+using StarSecurityService.Application.Vacancys;
+using StarSecurityService.ApplicationCore.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 
@@ -9,6 +14,19 @@ namespace StarSecurityService.Web.Areas.Admin.Controllers
 {
     public class VacancyController : Controller
     {
+
+        private readonly IBranchService _branchService;
+        private readonly IServiceOfferService _serviceOfferService;
+        private readonly IVacancyService _vacancyService;
+
+        public VacancyController()
+        {
+            _branchService = new BranchService();
+            _serviceOfferService = new ServiceOfferService();
+            _vacancyService = new VacancyService();
+        }
+
+
         // GET: Admin/Vacancy
         public ActionResult Index()
         {
@@ -26,25 +44,20 @@ namespace StarSecurityService.Web.Areas.Admin.Controllers
         }
 
         // GET: Admin/Vacancy/Create
-        public ActionResult Create()
+        public async Task<ActionResult> Create()
         {
-            IEnumerable<Branch> branch = new Branch[] { new Branch(1, "a", "a", "a", "a") };
-            IEnumerable<ServiceOffer> service = new ServiceOffer[] { new ServiceOffer(1, "a", "a", true) };
-            SelectList branchList = new SelectList(branch, "Id", "Name");
-            SelectList serviceList = new SelectList(service, "Id", "Title");
-            ViewBag.Branch = branchList;
-            ViewBag.Service = serviceList;
+            ViewBag.Branch = new SelectList(await _branchService.GetAllBranchs(), "Id", "Name");
+            ViewBag.Service = new SelectList(await _serviceOfferService.GetAll(), "Id", "Title");
             return View();
         }
 
         // POST: Admin/Vacancy/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Create(Vacancy vacancy)
         {
             try
             {
-                // TODO: Add insert logic here
-
+                _vacancyService.AddAsync(vacancy);
                 return RedirectToAction("Index");
             }
             catch
