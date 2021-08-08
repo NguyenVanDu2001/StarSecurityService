@@ -122,7 +122,7 @@
             } else {
                 document.getElementById("title").classList.add("hidden");
             }
-            if ($("#Salary").val() <= 0) {
+            if ($("#Salary").val() < 1) {
                 document.getElementById("salary").classList.remove("hidden");
                 return false;
             } else {
