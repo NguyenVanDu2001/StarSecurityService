@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 namespace StarSecurityService.Application.Branchs
 {
     public interface IBrachAppService {
+        Task<IEnumerable<Branch>> GetAllBranchs();
         Task<List<ComboboxCommonDto>> GetAllForCombobox();
     }
     public class BranchAppService : IBrachAppService
@@ -27,6 +28,11 @@ namespace StarSecurityService.Application.Branchs
                 Lable = x.Name,
                 Value = x.Id
             }).ToList();
+        }
+        public async Task<IEnumerable<Branch>> GetAllBranchs()
+        {
+            var iQueryableEmployee = await _branchRepository.GetAllAsync();
+            return iQueryableEmployee.AsEnumerable();
         }
     }
 }

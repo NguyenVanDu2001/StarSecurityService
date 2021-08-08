@@ -1,7 +1,12 @@
-﻿using StarSecurityService.ApplicationCore.Entities;
+﻿using StarSecurityService.Application.Branchs;
+using StarSecurityService.Application.Clients;
+using StarSecurityService.Application.ServiceOffers;
+using StarSecurityService.Application.Vacancys;
+using StarSecurityService.ApplicationCore.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 
@@ -9,42 +14,41 @@ namespace StarSecurityService.Web.Areas.Admin.Controllers
 {
     public class VacancyController : Controller
     {
-        // GET: Admin/Vacancy
-        public ActionResult Index()
-        {
-            IEnumerable<Vacancy> items = new List<Vacancy>
-            {
 
-            };
+        private readonly IBrachAppService _branchService;
+        private readonly IServiceOfferService _serviceOfferService;
+        private readonly IVacancyService _vacancyService;
+
+        public VacancyController()
+        {
+            _branchService = new BranchAppService();
+            _serviceOfferService = new ServiceOfferService();
+            _vacancyService = new VacancyService();
+        }
+
+
+        // GET: Admin/Vacancy
+        public async Task<ActionResult> Index()
+        {
+            var items = await _vacancyService.GetAll();
             return View(items);
         }
 
-        // GET: Admin/Vacancy/Details/5
-        public ActionResult Details(int id)
-        {
-            return View();
-        }
-
         // GET: Admin/Vacancy/Create
-        public ActionResult Create()
+        public async Task<ActionResult> Create()
         {
-            IEnumerable<Branch> branch = new Branch[] { new Branch(1, "a", "a", "a", "a") };
-            IEnumerable<ServiceOffer> service = new ServiceOffer[] { new ServiceOffer(1, "a", "a", true) };
-            SelectList branchList = new SelectList(branch, "Id", "Name");
-            SelectList serviceList = new SelectList(service, "Id", "Title");
-            ViewBag.Branch = branchList;
-            ViewBag.Service = serviceList;
+            ViewBag.Branch = new SelectList(await _branchService.GetAllBranchs(), "Id", "Name");
+            ViewBag.Service = new SelectList(await _serviceOfferService.GetAll(), "Id", "Title");
             return View();
         }
 
         // POST: Admin/Vacancy/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Create(Vacancy vacancy)
         {
             try
             {
-                // TODO: Add insert logic here
-
+                _vacancyService.AddAsync(vacancy);
                 return RedirectToAction("Index");
             }
             catch
@@ -54,19 +58,21 @@ namespace StarSecurityService.Web.Areas.Admin.Controllers
         }
 
         // GET: Admin/Vacancy/Edit/5
-        public ActionResult Edit(int id)
+        public async Task<ActionResult> Edit(int id)
         {
-            return View();
+            ViewBag.Branch = new SelectList(await _branchService.GetAllBranchs(), "Id", "Name");
+            ViewBag.Service = new SelectList(await _serviceOfferService.GetAll(), "Id", "Title");
+            var db = await _vacancyService.FirstOrDefaultAsync(id);
+            return View(db);
         }
 
         // POST: Admin/Vacancy/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public async Task<ActionResult> Edit(int id, Vacancy vacancy)
         {
             try
             {
-                // TODO: Add update logic here
-
+                _vacancyService.UpdateAsync(vacancy);
                 return RedirectToAction("Index");
             }
             catch
@@ -78,7 +84,8 @@ namespace StarSecurityService.Web.Areas.Admin.Controllers
         // GET: Admin/Vacancy/Delete/5
         public ActionResult Delete(int id)
         {
-            return View();
+            _vacancyService.DeleteAsync(id);
+            return RedirectToAction("Index");
         }
 
         // POST: Admin/Vacancy/Delete/5
