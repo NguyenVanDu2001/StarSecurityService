@@ -134,6 +134,7 @@
     <Compile Include="Areas\Admin\Controllers\MainAdminController.cs" />
     <Compile Include="Areas\Admin\Model\Achievements\AchievementModel.cs" />
     <Compile Include="Areas\Admin\Model\GroupUserGrantModel.cs" />
+    <Compile Include="Commons\Response.cs" />
     <Compile Include="Controllers\EmployeeController.cs" />
     <Compile Include="Controllers\GroupPermissionController.cs" />
     <Compile Include="Areas\Admin\Controllers\EmployeeController.cs" />

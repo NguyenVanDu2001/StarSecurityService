@@ -18,6 +18,8 @@
 
         table tfoot {
             background-color: #eaeaea;
+            cursor:pointer;
+            color:blue;
         }
     </style>
 }
@@ -192,14 +194,14 @@
                                     <tr class="text-center">
                                         <td>1</td>
                                         <td>
-                                            <select class="form-control">
+                                            <select class="form-control select-client">
                                                 <option>Client</option>
                                                 <option>Client</option>
                                                 <option>Client</option>
                                             </select>
                                         </td>
                                         <td>
-                                            <select class="form-control">
+                                            <select class="form-control select-service-offer">
                                                 <option>Client</option>
                                                 <option>Client</option>
                                                 <option>Client</option>
@@ -234,16 +236,12 @@
 
 @section scripts{
     <script>
-
-
         function readURL(input) {
             if (input.files && input.files[0]) {
                 var reader = new FileReader();
-
                 reader.onload = function (e) {
                     $('#blah').removeAttr("style").attr('src', e.target.result).height(120).width(120);
                 }
-
                 reader.readAsDataURL(input.files[0]);
             }
         }
@@ -260,22 +258,55 @@
             },
             event: function () {
                 this.addRow();
+                this.deleteRow();
             },
             addRow: function () {
                 tableTab2.sheft.find("tfoot tr").off("click").on("click", function () {
-                    tableTab2.elementCloneRowTbody.appendTo(tableTab2.sheft.find("tbody tr:last"))
+                    $("#tableServiceOffer > tbody > tr:first").clone().insertAfter('#tableServiceOffer tbody tr:last');
+                    tableTab2.orderIndexTbody();
+                })
+            },
+            deleteRow: function () {
+                $(document).on("click", "#tableServiceOffer tbody tr td .fa-trash", function () {
+                    if (confirm("Are you sure you want to delete?")) {
+                        const $this = $(this);
+                        $this.closest("tr").remove();
+                        tableTab2.orderIndexTbody();
+                    } ;
+                })
+            },
+            orderIndexTbody: function () {
+                tableTab2.sheft.find("tbody tr").each(function (i, e) {
+                    $(this).find("td:eq(0)").text(Number(i) + 1)
                 })
             }
 
         };
+        function loadCombobox() {
+            // Load combobox client table 
+            $.get("/Admin/Employee/LoadComboboxClient").done(function (data) {
+                if (data.StatusCode == 200) {
+                    var option = `<option value="">-- Choose client --</option>`;
+                    for (obj of data.Data) {
+                        option += `<option value="${obj.Value}">${obj.Lable}</option>`
+                    }
+                }
+                $("#tableServiceOffer tbody .select-client").html(option);
+            })
+            $.get("/Admin/Employee/LoadComboboxService").done(function (data) {
+                if (data.StatusCode == 200) {
+                    var option = `<option value="">Choose service offer </option>`;
+                    for (obj of data.Data) {
+                        option += `<option value="${obj.Value}">${obj.Lable}</option>`
+                    }
+                }
+                $("#tableServiceOffer tbody .select-service-offer").html(option);
+            })
+            // Load combobox service
+        }
 
-        function addTableRow(table) {
-            var $tr = $(table).find('tr:last').clone();
-            $(table).append($tr);
-            return true;
-        };
 
-        (function () { tableTab2.intit() })();
+        (function () { tableTab2.intit(), loadCombobox()})();
 
     </script>
-} 
+}  

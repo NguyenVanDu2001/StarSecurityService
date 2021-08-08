@@ -43,8 +43,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApplicationBaseService.cs" />
+    <Compile Include="Clients\ClientAppServices.cs" />
+    <Compile Include="Commons\Dto\ComboboxCommonDto.cs" />
     <Compile Include="Employees\EmployeeAppServices.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ServiceOffers\ServiceOfferService.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\StarSecurityService.ApplicationCore\StarSecurityService.ApplicationCore.csproj">
