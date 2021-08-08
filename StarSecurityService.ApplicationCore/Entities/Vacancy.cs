@@ -8,8 +8,8 @@ namespace StarSecurityService.ApplicationCore.Entities
     {
         public string Requirement { get; set; }
         public string Title { get; set; }
-        public int CreateBy { get; set; }
-        [ForeignKey("CreateBy")]
+        public int UpdateBy { get; set; }
+        [ForeignKey("UpdateBy")]
         public virtual Employyee Employyees { get; set; }
         public int BranchId { get; set; }
         [ForeignKey("BranchId")]
@@ -26,12 +26,12 @@ namespace StarSecurityService.ApplicationCore.Entities
         {
         }
 
-        public Vacancy(string requirement, string description, int createBy, Employyee employyees, int branchId, Branch branchs, int serviceOfferId,
+        public Vacancy(string requirement, string description, int updateBy, Employyee employyees, int branchId, Branch branchs, int serviceOfferId,
             ServiceOffer serviceOffer, DateTime updateAt, float salary, bool status, ICollection<Candidate> permissions)
         {
             Requirement = requirement;
             Title = description;
-            CreateBy = createBy;
+            UpdateBy = updateBy;
             Employyees = employyees;
             BranchId = branchId;
             Branchs = branchs;

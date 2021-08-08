@@ -28,19 +28,10 @@ namespace StarSecurityService.Web.Areas.Admin.Controllers
 
 
         // GET: Admin/Vacancy
-        public ActionResult Index()
+        public async Task<ActionResult> Index()
         {
-            IEnumerable<Vacancy> items = new List<Vacancy>
-            {
-
-            };
+            var items = await _vacancyService.GetAll();
             return View(items);
-        }
-
-        // GET: Admin/Vacancy/Details/5
-        public ActionResult Details(int id)
-        {
-            return View();
         }
 
         // GET: Admin/Vacancy/Create
@@ -67,19 +58,21 @@ namespace StarSecurityService.Web.Areas.Admin.Controllers
         }
 
         // GET: Admin/Vacancy/Edit/5
-        public ActionResult Edit(int id)
+        public async Task<ActionResult> Edit(int id)
         {
-            return View();
+            ViewBag.Branch = new SelectList(await _branchService.GetAllBranchs(), "Id", "Name");
+            ViewBag.Service = new SelectList(await _serviceOfferService.GetAll(), "Id", "Title");
+            var db = await _vacancyService.FirstOrDefaultAsync(id);
+            return View(db);
         }
 
         // POST: Admin/Vacancy/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public async Task<ActionResult> Edit(int id, Vacancy vacancy)
         {
             try
             {
-                // TODO: Add update logic here
-
+                _vacancyService.UpdateAsync(vacancy);
                 return RedirectToAction("Index");
             }
             catch
@@ -91,7 +84,8 @@ namespace StarSecurityService.Web.Areas.Admin.Controllers
         // GET: Admin/Vacancy/Delete/5
         public ActionResult Delete(int id)
         {
-            return View();
+            _vacancyService.DeleteAsync(id);
+            return RedirectToAction("Index");
         }
 
         // POST: Admin/Vacancy/Delete/5
