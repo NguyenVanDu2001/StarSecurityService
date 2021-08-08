@@ -208,6 +208,14 @@
     <Compile Include="Migrations\202108031500294_Add_foreginkey_vacancy_and_addrequriement.Designer.cs">
       <DependentUpon>202108031500294_Add_foreginkey_vacancy_and_addrequriement.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202108080350016_update-migration-employyee.cs" />
+    <Compile Include="Migrations\202108080350016_update-migration-employyee.Designer.cs">
+      <DependentUpon>202108080350016_update-migration-employyee.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202108080416188_update-entity.cs" />
+    <Compile Include="Migrations\202108080416188_update-entity.Designer.cs">
+      <DependentUpon>202108080416188_update-entity.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -239,6 +247,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202108031500294_Add_foreginkey_vacancy_and_addrequriement.resx">
       <DependentUpon>202108031500294_Add_foreginkey_vacancy_and_addrequriement.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202108080350016_update-migration-employyee.resx">
+      <DependentUpon>202108080350016_update-migration-employyee.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202108080416188_update-entity.resx">
+      <DependentUpon>202108080416188_update-entity.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

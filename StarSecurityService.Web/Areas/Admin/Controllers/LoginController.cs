@@ -1,6 +1,9 @@
-﻿using System;
+﻿using StarSecurityService.Application.Employees;
+using StarSecurityService.Web.Areas.Admin.Model.Logins;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 
@@ -8,82 +11,48 @@ namespace StarSecurityService.Web.Areas.Admin.Controllers
 {
     public class LoginController : Controller
     {
+        private readonly IEmployeeAppService _employeeAppService;
+        public LoginController()
+        {
+            _employeeAppService = new EmployeeAppServices();
+        }
         // GET: Admin/Login
         public ActionResult Index()
         {
+            string name;
+
+            if (TempData.ContainsKey("messageError"))
+                name = TempData["messageError"].ToString(); // returns "Bill" 
             return View();
         }
-
-        // GET: Admin/Login/Details/5
-        public ActionResult Details(int id)
-        {
-            return View();
-        }
-
-        // GET: Admin/Login/Create
-        public ActionResult Create()
-        {
-            return View();
-        }
-
-        // POST: Admin/Login/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public async Task<ActionResult> Login(LoginModel input)
         {
-            try
+            if (ModelState.IsValid)
             {
-                // TODO: Add insert logic here
-
-                return RedirectToAction("Index");
+                var user = await _employeeAppService.CheckLogin(input.EmailOrUserName, input.Password);
+                if (user == null)
+                {
+                    TempData["messageError"] = $"Unknown username. Check again or try your email address.";
+                    return RedirectToAction("index");
+                }
+                else
+                {
+                    Session["IdUser"] = user.Id;
+                    Session["UserName"] = user.UserName;
+                }
+                return RedirectToAction("Index","Employee");
             }
-            catch
+            else
             {
-                return View();
+                TempData["messageError"] = $"Unknown username. Check again or try your email address.";
             }
+            return RedirectToAction("index");
         }
-
-        // GET: Admin/Login/Edit/5
-        public ActionResult Edit(int id)
+        public ActionResult Logout()
         {
-            return View();
-        }
-
-        // POST: Admin/Login/Edit/5
-        [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add update logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        // GET: Admin/Login/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
-        // POST: Admin/Login/Delete/5
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add delete logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
+            Session.Clear();//remove session
+            return RedirectToAction("index");
         }
     }
 }

@@ -13,6 +13,7 @@ namespace StarSecurityService.Application.Employees
     {
         Task<IEnumerable<Employyee>> GetAllEmployee();
         Task<string> GetCodeEmployyee(int? idEmployee = 0);
+        Task<Employyee> CheckLogin(string emailOrEmail, string password);
     }
     public class EmployeeAppServices : IEmployeeAppService
     {
@@ -21,6 +22,15 @@ namespace StarSecurityService.Application.Employees
         {
             _employyeeRepository = new EfRepository<Employyee>(new StarServiceDbContext());
         }
+
+        public async Task<Employyee> CheckLogin(string emailOrEmail, string password)
+        {
+            var user = await _employyeeRepository.FirstOrDefaultAsync(x => (x.Email.Equals(emailOrEmail) || x.UserName.Equals(emailOrEmail)) && x.Password.Equals(password));
+            if (user != null)
+                return user;
+            return null;
+        }
+
         public async Task<IEnumerable<Employyee>> GetAllEmployee()
         {
             var iQueryableEmployee = await _employyeeRepository.GetAllAsync();

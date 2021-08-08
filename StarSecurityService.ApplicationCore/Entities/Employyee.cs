@@ -17,6 +17,12 @@ namespace StarSecurityService.ApplicationCore.Entities
         public bool Sex { get; set; }
         public bool Status { get; set; }
         public DateTime BirthDay { get; set; }
+        public decimal Salary { get; set; }
+        public string UserName { get; set; }
+        public decimal Bonus { get; set; }
+        public int? GroupId { get; set; }
+        [ForeignKey("GroupId")]
+        public GroupUser GroupUsers { get; set; }
         public virtual ICollection<EmployeeAchievement> EmployeeAchievements { get; set; }
         public virtual ICollection<ClientEmployees> ClientEmployees { get; set; }
         public virtual ICollection<EmployeeServiceOffered> EmployeeServiceOffered { get; set; }
