@@ -9,74 +9,78 @@
     <div class="col-xs-12 col-md-12 col-lg-12">
 
         <div class="panel panel-primary">
-           
+
             <div class="panel-body">
                 <div class="bootstrap-table">
                     <div class="table-responsive">
                         <a href="@Url.Action("Create", "Vacancy")" class="btn btn-primary">Create Vacancy</a>
                         <hr />
-                        <table class="table">
-                            <tr>
-                                <th>
-                                    @Html.DisplayNameFor(model => model.Requirement)
-                                </th>
-                                <th>
-                                    @Html.DisplayNameFor(model => model.Title)
-                                </th>
-                                <th>
-                                    @Html.DisplayNameFor(model => model.UpdateBy)
-                                </th>
-                                <th>
-                                    @Html.DisplayNameFor(model => model.BranchId)
-                                </th>
-                                <th>
-                                    @Html.DisplayNameFor(model => model.ServiceOfferId)
-                                </th>
-                                <th>
-                                    @Html.DisplayNameFor(model => model.UpdateAt)
-                                </th>
-                                <th>
-                                    @Html.DisplayNameFor(model => model.Salary)
-                                </th>
-                                <th>
-                                    @Html.DisplayNameFor(model => model.Status)
-                                </th>
-                                <th></th>
-                            </tr>
-
-                            @foreach (var item in Model)
-                            {
+                        <table class="table" id="table">
+                            <thead>
                                 <tr>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.Requirement)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.Title)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.UpdateBy)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.BranchId)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.ServiceOfferId)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.UpdateAt)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.Salary)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.Status)
-                                    </td>
-                                    <td>
-                                        @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-                                        @Html.ActionLink("Delete", "Delete", new { id = item.Id })
-                                    </td>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.Requirement)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.Title)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.UpdateBy)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.BranchId)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.ServiceOfferId)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.UpdateAt)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.Salary)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.Status)
+                                    </th>
+                                    <th></th>
                                 </tr>
-                            }
+                            </thead>
+
+
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Requirement)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Title)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.UpdateBy)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.BranchId)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.ServiceOfferId)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.UpdateAt)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Salary)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Status)
+                                        </td>
+                                        <td>
+                                            <a href="@Url.Action($"Edit/{item.Id}","Vacancy")" class="btn btn-success btn-sm"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+                                            <a href="@Url.Action($"Delete/{item.Id}","Vacancy")" class="btn btn-danger btn-sm"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+                                        </td>
+                                    </tr>
+                                }
 
                         </table>
 
@@ -87,3 +91,9 @@
         </div>
     </div>
 </div><!--/.row-->
+
+@section scripts{
+    <script>
+        $("#table").DataTable();
+    </script>
+}

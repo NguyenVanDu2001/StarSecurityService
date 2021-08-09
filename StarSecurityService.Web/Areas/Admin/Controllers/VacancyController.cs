@@ -48,10 +48,11 @@ namespace StarSecurityService.Web.Areas.Admin.Controllers
         {
             try
             {
+                vacancy.UpdateBy = Int32.Parse(Session["IdUser"].ToString());
                 _vacancyService.AddAsync(vacancy);
                 return RedirectToAction("Index");
             }
-            catch
+            catch(Exception ex)
             {
                 return View();
             }
@@ -72,6 +73,7 @@ namespace StarSecurityService.Web.Areas.Admin.Controllers
         {
             try
             {
+                vacancy.UpdateBy = Int32.Parse(Session["IdUser"].ToString());
                 _vacancyService.UpdateAsync(vacancy);
                 return RedirectToAction("Index");
             }

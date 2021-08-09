@@ -26,11 +26,8 @@ namespace StarSecurityService.Application.Vacancys
         public async Task<Vacancy> AddAsync(Vacancy vacancy)
         {
             //TODO: get user from systems
-            vacancy.UpdateBy = 1;
-
             vacancy.UpdateAt = DateTime.Now;
-            return await _vacancyRepository.AddAsync(vacancy)
-    ;
+            return await _vacancyRepository.AddAsync(vacancy);
         }
 
         public async Task DeleteAsync(int Id)
@@ -52,8 +49,6 @@ namespace StarSecurityService.Application.Vacancys
         public async Task UpdateAsync(Vacancy vacancy)
         {
             //TODO: get user from systems
-            vacancy.UpdateBy = 1;
-
             vacancy.UpdateAt = DateTime.Now;
             await _vacancyRepository.UpdateAsync(vacancy);
         }

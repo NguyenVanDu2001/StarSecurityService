@@ -5,6 +5,18 @@
     Layout = "~/Areas/Admin/Views/Shared/_MainLayoutAdmin.cshtml";
 }
 
+@section style{
+    <style>
+        label.error {
+            color: red
+        }
+
+        .font-red {
+            color: red
+        }
+    </style>
+}
+
 <div class="row">
     <div class="col-xs-12 col-md-12 col-lg-12">
 
@@ -13,7 +25,7 @@
             <div class="panel-body">
                 <div class="row" style="margin-bottom:40px">
                     <div class="col-xs-8">
-                        @using (Html.BeginForm())
+                        @using (Html.BeginForm("Create", "Vacancy", FormMethod.Post, new { id = "formVacancy" }))
                         {
                             @Html.AntiForgeryToken()
 
@@ -84,3 +96,30 @@
         </div>
     </div>
 </div><!--/.row-->
+@section scripts{
+    <script src="~/Areas/Asset/js/JqueyValidate/jquery.validate.min.js"></script>
+    <script>
+        var $validateForm = {
+            validate: $("#formVacancy").validate({
+                rules: {
+                    Requirement: "required",
+                    Title: "required",
+                    BranchId: "required",
+                    ServiceOfferId: "required",
+                    Salary: "required",
+                },
+                messages: {
+                    Requirement: "Please input requiment!",
+                    Title: "Please input title!",
+                    BranchId: "Please choose branch!",
+                    ServiceOfferId: "Please choose ServiceOfferId!",
+                    Salary: "Please input Salary",
+                },
+                submitHandler: function (form) {
+                     form.submit();
+                }
+            })
+        };
+        (function () { $validateForm.validate })();
+    </script>
+}
