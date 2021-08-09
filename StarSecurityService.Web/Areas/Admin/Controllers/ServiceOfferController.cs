@@ -1,7 +1,9 @@
-﻿using StarSecurityService.ApplicationCore.Entities;
+﻿using StarSecurityService.Application.ServiceOffers;
+using StarSecurityService.ApplicationCore.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 
@@ -9,17 +11,16 @@ namespace StarSecurityService.Web.Areas.Admin.Controllers
 {
     public class ServiceOfferController : Controller
     {
-        // GET: Admin/ServiceOffer
-        public ActionResult Index()
+        private readonly IServiceOfferService _serviceOfferService;
+        public ServiceOfferController()
         {
-            IEnumerable<ServiceOffer> items = new ServiceOffer[] { new ServiceOffer(1, "a", "a", true) };
-            return View(items);
+            _serviceOfferService = new ServiceOfferService();
         }
-
-        // GET: Admin/ServiceOffer/Details/5
-        public ActionResult Details(int id)
+        // GET: Admin/ServiceOffer
+        public async Task<ActionResult> Index()
         {
-            return View();
+            var items = await _serviceOfferService.GetAll();
+            return View(items);
         }
 
         // GET: Admin/ServiceOffer/Create
@@ -30,12 +31,12 @@ namespace StarSecurityService.Web.Areas.Admin.Controllers
 
         // POST: Admin/ServiceOffer/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Create(ServiceOffer service)
         {
             try
             {
                 // TODO: Add insert logic here
-
+                _serviceOfferService.AddAsync(service);
                 return RedirectToAction("Index");
             }
             catch
@@ -45,19 +46,20 @@ namespace StarSecurityService.Web.Areas.Admin.Controllers
         }
 
         // GET: Admin/ServiceOffer/Edit/5
-        public ActionResult Edit(int id)
+        public async Task<ActionResult> Edit(int id)
         {
-            return View();
+            var db = await _serviceOfferService.FirstOrDefaultAsync(id);
+            return View(db);
         }
 
         // POST: Admin/ServiceOffer/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit(int id, ServiceOffer service)
         {
             try
             {
                 // TODO: Add update logic here
-
+                _serviceOfferService.UpdateAsync(service);
                 return RedirectToAction("Index");
             }
             catch
@@ -69,23 +71,8 @@ namespace StarSecurityService.Web.Areas.Admin.Controllers
         // GET: Admin/ServiceOffer/Delete/5
         public ActionResult Delete(int id)
         {
-            return View();
-        }
-
-        // POST: Admin/ServiceOffer/Delete/5
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add delete logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
+            _serviceOfferService.DeleteAsync(id);
+            return RedirectToAction("Index");
         }
     }
 }

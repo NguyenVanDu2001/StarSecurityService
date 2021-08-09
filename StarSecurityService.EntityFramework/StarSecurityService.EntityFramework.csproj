@@ -220,6 +220,10 @@
     <Compile Include="Migrations\202108081549353_edit_entity_vacancy.Designer.cs">
       <DependentUpon>202108081549353_edit_entity_vacancy.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202108090843073_update.cs" />
+    <Compile Include="Migrations\202108090843073_update.Designer.cs">
+      <DependentUpon>202108090843073_update.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -260,6 +264,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202108081549353_edit_entity_vacancy.resx">
       <DependentUpon>202108081549353_edit_entity_vacancy.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202108090843073_update.resx">
+      <DependentUpon>202108090843073_update.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
