@@ -13,11 +13,13 @@ namespace StarSecurityService.ApplicationCore.Entities
         public string Message { get; set; }
         public string Email { get; set; }
         public DateTime StartDate { get; set; }
-        public bool Status { get; set; }
         public string UrlFile { get; set; }
-        public Candidate(int id, string name, string phone, int vacancyId, string message, string email, DateTime startDate, bool status)
+        public bool Status { get; set; }
+
+        public Candidate() {}
+
+        public Candidate(string name, string phone, int vacancyId, string message, string email, DateTime startDate, bool status, string urlFile)
         {
-            Id = id;
             Name = name;
             Phone = phone;
             VacancyId = vacancyId;
@@ -25,6 +27,7 @@ namespace StarSecurityService.ApplicationCore.Entities
             Email = email;
             StartDate = startDate;
             Status = status;
+            UrlFile = urlFile;
         }
     }
 }

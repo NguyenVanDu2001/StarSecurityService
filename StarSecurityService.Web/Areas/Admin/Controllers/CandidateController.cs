@@ -12,7 +12,7 @@ namespace StarSecurityService.Web.Areas.Admin.Controllers
         // GET: Admin/Candidate
         public ActionResult Index()
         {
-            IEnumerable<Candidate> items = new Candidate[] { new Candidate(1, "a", "a", 1, "a", "a", new DateTime(), true)  };
+            IEnumerable<Candidate> items = new Candidate[] { new Candidate("a", "a", 1, "a", "a", new DateTime(), true, "a")  };
             return View(items);
         }
 
