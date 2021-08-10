@@ -22,61 +22,66 @@
                         <a href="@Url.Action("Create", "ServiceOffer")" class="btn btn-primary">Create Service Offer</a>
                         <hr />
                         <table class="table table-bordered table-hover" id="tableIndexEmployee">
-                            <tr>
-                                <th class="text-center">
-                                    @Html.DisplayNameFor(model => model.Id)
-                                </th>
-                                <th class="text-center">
-                                    @Html.DisplayNameFor(model => model.Title)
-                                </th>
-                                <th class="text-center">
-                                    @Html.DisplayNameFor(model => model.Details)
-                                </th>
-                                <th class="text-center">
-                                    @Html.DisplayNameFor(model => model.Url)
-                                </th>
-                                <th class="text-center">
-                                    @Html.DisplayNameFor(model => model.Introduce)
-                                </th>
-                                <th class="text-center">
-                                    @Html.DisplayNameFor(model => model.Description)
-                                </th>
-                                <th class="text-center">
-                                    @Html.DisplayNameFor(model => model.Status)
-                                </th>
-                                <th></th>
-                            </tr>
-
-                            @foreach (var item in Model)
-                            {
+                            <thead>
                                 <tr>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.Id)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.Title)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.Details)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.Url)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.Introduce)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.Description)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.Status)
-                                    </td>
-                                    <td>
-                                        <a href="@Url.Action($"Edit/{item.Id}","ServiceOffer")" class="btn btn-success btn-sm"><i class="fa fa-pencil" aria-hidden="true"></i></a>
-                                        <a href="@Url.Action($"Delete/{item.Id}","ServiceOffer")" class="btn btn-danger btn-sm"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
-                                    </td>
+                                    <th class="text-center">
+                                        @Html.DisplayNameFor(model => model.Id)
+                                    </th>
+                                    <th class="text-center">
+                                        @Html.DisplayNameFor(model => model.Title)
+                                    </th>
+                                    <th class="text-center">
+                                        @Html.DisplayNameFor(model => model.Details)
+                                    </th>
+                                    <th class="text-center">
+                                        @Html.DisplayNameFor(model => model.Url)
+                                    </th>
+                                    <th class="text-center">
+                                        @Html.DisplayNameFor(model => model.Introduce)
+                                    </th>
+                                    <th class="text-center">
+                                        @Html.DisplayNameFor(model => model.Description)
+                                    </th>
+                                    <th class="text-center">
+                                        @Html.DisplayNameFor(model => model.Status)
+                                    </th>
+                                    <th></th>
                                 </tr>
-                            }
+                            </thead>
+                            
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Id)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Title)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Details)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Url)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Introduce)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Description)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Status)
+                                        </td>
+                                        <td>
+                                            <a href="@Url.Action($"Edit/{item.Id}","ServiceOffer")" class="btn btn-success btn-sm"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+                                            <a href="@Url.Action($"Delete/{item.Id}","ServiceOffer")" class="btn btn-danger btn-sm"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                           
 
                         </table>
                     </div>
