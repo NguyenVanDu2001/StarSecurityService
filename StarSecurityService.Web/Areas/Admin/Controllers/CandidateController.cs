@@ -1,7 +1,11 @@
-﻿using StarSecurityService.ApplicationCore.Entities;
+﻿using StarSecurityService.Application.Candidates;
+using StarSecurityService.Application.Vacancys;
+using StarSecurityService.ApplicationCore.Entities;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 
@@ -9,10 +13,20 @@ namespace StarSecurityService.Web.Areas.Admin.Controllers
 {
     public class CandidateController : Controller
     {
-        // GET: Admin/Candidate
-        public ActionResult Index()
+
+        private readonly IVacancyService _vacancyService;
+        private readonly ICandidateService _candidateRepository;
+
+        public CandidateController()
         {
-            IEnumerable<Candidate> items = new Candidate[] { new Candidate("a", "a", 1, "a", "a", new DateTime(), true, "a")  };
+            _vacancyService = new VacancyService();
+            _candidateRepository = new CandidateService();
+        }
+
+        // GET: Admin/Candidate
+        public async Task<ActionResult> Index()
+        {
+            var items = await _candidateRepository.GetAll();
             return View(items);
         }
 
@@ -23,40 +37,33 @@ namespace StarSecurityService.Web.Areas.Admin.Controllers
         }
 
         // GET: Admin/Candidate/Create
-        public ActionResult Create()
+        public async Task<ActionResult> Create(int? Id)
         {
-            return View();
+            Candidate item = await _candidateRepository.FirstOrDefaultAsync(Id);
+            ViewBag.Varcancy = new SelectList(await _vacancyService.GetAll(), "Id", "Title");
+            return View(item);
         }
 
         // POST: Admin/Candidate/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Create(Candidate candidate, HttpPostedFileBase Image)
         {
             try
             {
-                // TODO: Add insert logic here
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        // GET: Admin/Candidate/Edit/5
-        public ActionResult Edit(int id)
-        {
-            return View();
-        }
-
-        // POST: Admin/Candidate/Edit/5
-        [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add update logic here
-
+                if (Image.ContentLength > 0)
+                {
+                    candidate.UrlFile = Image.FileName;
+                    string _FileName = Path.GetFileName(Image.FileName);
+                    string _path = Path.Combine(Server.MapPath("~/Areas/Asset/img"), _FileName);
+                    Image.SaveAs(_path);
+                }
+                if(candidate.Id > 0)
+                {
+                    _candidateRepository.UpdateAsync(candidate);
+                } else
+                {
+                    _candidateRepository.AddAsync(candidate);
+                }
                 return RedirectToAction("Index");
             }
             catch
@@ -68,23 +75,8 @@ namespace StarSecurityService.Web.Areas.Admin.Controllers
         // GET: Admin/Candidate/Delete/5
         public ActionResult Delete(int id)
         {
-            return View();
-        }
-
-        // POST: Admin/Candidate/Delete/5
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add delete logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
+            _candidateRepository.DeleteAsync(id);
+            return RedirectToAction("Index");
         }
     }
 }

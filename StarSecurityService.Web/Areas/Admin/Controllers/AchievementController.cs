@@ -17,7 +17,6 @@ namespace StarSecurityService.Web.Areas.Admin.Controllers
         // GET: Admin/Achievement
         public async Task<ActionResult> Index(int? Id)
         {
-
             var data = await _achievementReponsitory.ListAllAsync();
             string name = string.Empty;
             Achievement entity = null;
