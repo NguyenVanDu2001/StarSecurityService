@@ -58,13 +58,12 @@
                             <div class="row" style="margin-bottom:40px">
                                 <div class="col-xs-8">
 
-                                    @Html.AntiForgeryToken()
-
+                                    <input type="hidden" name="Id" value="@Model.Id" />
                                     <div class="form-horizontal">
                                         <div class="form-group">
                                             @Html.LabelFor(model => model.UserName, htmlAttributes: new { @class = "control-label col-md-2" })
                                             <div class="col-md-10">
-                                                @Html.EditorFor(model => model.UserName, new { htmlAttributes = new { @class = "form-control", @type = "password" } })
+                                                @Html.EditorFor(model => model.UserName, new { htmlAttributes = new { @class = "form-control"} })
                                                 @Html.ValidationMessageFor(model => model.UserName, "", new { @class = "text-danger" })
                                             </div>
                                         </div>
@@ -103,7 +102,7 @@
                                         <div class="form-group">
                                             @Html.LabelFor(model => model.Salary, htmlAttributes: new { @class = "control-label col-md-2" })
                                             <div class="col-md-10">
-                                                @Html.EditorFor(model => model.Salary, new { htmlAttributes = new { @class = "form-control", @type = "password" } })
+                                                @Html.EditorFor(model => model.Salary, new { htmlAttributes = new { @class = "form-control" } })
                                                 @Html.ValidationMessageFor(model => model.Salary, "", new { @class = "text-danger" })
                                             </div>
                                         </div>
@@ -117,7 +116,7 @@
                                         <div class="form-group">
                                             @Html.LabelFor(model => model.Bonus, htmlAttributes: new { @class = "control-label col-md-2" })
                                             <div class="col-md-10">
-                                                @Html.EditorFor(model => model.Bonus, new { htmlAttributes = new { @class = "form-control", @type = "password" } })
+                                                @Html.EditorFor(model => model.Bonus, new { htmlAttributes = new { @class = "form-control"} })
                                                 @Html.ValidationMessageFor(model => model.Bonus, "", new { @class = "text-danger" })
                                             </div>
                                         </div>
@@ -146,11 +145,11 @@
                                             </label>
                                             <div class="col-md-10">
                                                 <label>
-                                                    <input type="radio" name="Sex" value="1">
+                                                    <input type="radio" name="Sex" value="false">
                                                     Male
                                                 </label>
                                                 <label>
-                                                    <input type="radio" name="Sex" value="0" />
+                                                    <input type="radio" name="Sex" value="true" />
                                                     Female
                                                 </label>
                                             </div>
@@ -176,7 +175,7 @@
                                         <div class="form-group">
                                             <label for="achievement" class="control-label col-md-2">Choose achievement:</label>
                                             <div class="col-md-10">
-                                                <select name="Achievement[]" id="Achievement" multiple class="form-control">
+                                                <select id="Achievement" multiple class="form-control">
                                                     <option value="volvo">Volvo</option>
                                                     <option value="saab">Saab</option>
                                                     <option value="opel">Opel</option>
@@ -185,9 +184,9 @@
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <label for="achievement" class="control-label col-md-2">Choose service offer</label>
+                                            <label for="ServiceOffer" class="control-label col-md-2">Choose service offer</label>
                                             <div class="col-md-10">
-                                                <select name="ServiceOffer[]" id="ServiceOffer" multiple class="form-control">
+                                                <select  id="ServiceOffer" multiple class="form-control">
                                                     <option value="volvo">Volvo</option>
                                                     <option value="saab">Saab</option>
                                                     <option value="opel">Opel</option>
@@ -328,12 +327,11 @@
             //Load combobox branch
             $.get("/Admin/Employee/LoadComboboxBranch").done(function (data) {
                 if (data.StatusCode == 200) {
-                    fillOptionSelect("select[name=BranchId]", data.Data, 'Choose branch');
+                    fillOptionSelect("#BranchId", data.Data, 'Choose branch');
                 }
             })
-            //Load combobox branch
+            //Load combobox achivement
             $.get("/Admin/Employee/LoadComboboxAchievemt").done(function (data) {
-                debugger
                 if (data.Status != 2) {
                     fillOptionSelect("#Achievement", data.Data);
                 }
@@ -389,12 +387,73 @@
                 },
                 submitHandler: function (form) {
                     debugger
+                    $validateForm.ajaxSubmitForm(form);
                     // form.submit();
                 }
-            })
-        };
+            }),
+            ajaxSubmitForm: function (form) {
+                var formdatainput = {};
+                $.map($("#formEmployee").serializeArray(), function (n, i) {
+                    formdatainput[n['name']] = n['value'];
+                });
 
-        (function () { tableTab2.intit(), loadCombobox(), $validateForm.validate })();
+                var fileUpload = $("#file-input").get(0);
+                var files = fileUpload.files;
+
+                // Create FormData object  
+                var formData = new FormData();
+
+                // Looping over all files and add it to FormData object  
+                for (var i = 0; i < files.length; i++) {
+                    formData.append(files[i].name, files[i]);
+                }
+
+                debugger
+                formData.append("serviceEmployee", $validateForm.dataTab2())
+                formData.append("employyee", JSON.stringify(formdatainput));
+                formData.append("listAchievement", $("#Achievement").val());
+                formData.append("listServiceOffer", $("#ServiceOffer").val());
+                var dataMpdel  = {
+                    serviceEmployee: $validateForm.dataTab2(),
+                    employyee: formdatainput,
+                    listAchievement: $("#Achievement").val(),
+                    listServiceOffer: $("#ServiceOffer").val()
+                }
+                $.ajax({
+                    url: '/Admin/Employee/submitForm',
+                    type: "POST",
+                    dataType:"Json",
+                    contentType: false, // Not to set any content header  
+                    processData: false, // Not to process data  
+                    data: formData,
+                    success: function (result) {
+                        alert(result);
+                    },
+                    error: function (err) {
+                        alert(err.statusText);
+                    }
+                });
+             
+                console.log(dataTab2);
+            },
+            dataTab2: function () {
+                var dataTab2 = [];
+                $("#info table tbody tr").each(function () {
+                    let $this = $(this); 
+                    dataTab2.push({
+                        client: $this.find("td:eq(1) select option:selected").val(),
+                        serviceOffer: $this.find("td:eq(2) select option:selected").val(),
+                        startShift: $this.find("td:eq(3) input").val(),
+                        endShift: $this.find("td:eq(4) input").val(),
+                    })
+                })
+                return dataTab2;
+            }
+        }
+        loadCombobox();
+        tableTab2.intit()
+        $validateForm.validate
+       // (function () { tableTab2.intit(), loadCombobox(), $validateForm.validate })();
 
     </script>
 }  

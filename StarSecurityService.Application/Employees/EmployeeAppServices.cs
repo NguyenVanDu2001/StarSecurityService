@@ -13,6 +13,7 @@ namespace StarSecurityService.Application.Employees
     {
         Task<IEnumerable<Employyee>> GetAllEmployee();
         Task<string> GetCodeEmployyee(int? idEmployee = 0);
+        Task<int> InsertAndGetIdAsync(Employyee em);
         Task<Employyee> CheckLogin(string emailOrEmail, string password);
     }
     public class EmployeeAppServices : IEmployeeAppService
@@ -45,6 +46,11 @@ namespace StarSecurityService.Application.Employees
                 return employyee != null ? employyee.Address : null;
             }
             return null;
+        }
+
+        public async Task<int> InsertAndGetIdAsync(Employyee em)
+        {
+             return  (await _employyeeRepository.AddAsync(em)).Id;
         }
     }
 }
