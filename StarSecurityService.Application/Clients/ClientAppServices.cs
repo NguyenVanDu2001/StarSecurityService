@@ -12,8 +12,11 @@ namespace StarSecurityService.Application.Clients
 {
     public interface IClientAppService
     {
-        Task<IEnumerable<Client>> GetAllClient();
-        Task<string> GetCodeClient(int? idClient = 0);
+        Task<Client> AddAsync(Client client);
+        Task<IEnumerable<Client>> GetAll();
+        Task<Client> FirstOrDefaultAsync(int Id);
+        Task UpdateAsync(Client client);
+        Task DeleteAsync(int Id);
         Task<List<ComboboxCommonDto>> GetComboboxClient();
     }
     public class ClientAppServices : IClientAppService
@@ -23,10 +26,26 @@ namespace StarSecurityService.Application.Clients
         {
             _ClientRepository = new EfRepository<Client>(new StarServiceDbContext());
         }
-        public async Task<IEnumerable<Client>> GetAllClient()
+
+        public async Task<Client> AddAsync(Client client)
         {
-            var iQueryableClient = await _ClientRepository.GetAllAsync();
-            return iQueryableClient.AsEnumerable();
+            return await _ClientRepository.AddAsync(client);
+        }
+
+        public async Task DeleteAsync(int Id)
+        {
+            var a = await _ClientRepository.FirstOrDefaultAsync(x => x.Id == Id);
+            await _ClientRepository.DeleteAsync(a);
+        }
+
+        public async Task<Client> FirstOrDefaultAsync(int Id)
+        {
+            return await _ClientRepository.FirstOrDefaultAsync(x => x.Id == Id);
+        }
+
+        public async Task<IEnumerable<Client>> GetAll()
+        {
+            return await _ClientRepository.GetAllAsync();
         }
 
         public async Task<string> GetCodeClient(int? idClient = 0)
@@ -42,9 +61,15 @@ namespace StarSecurityService.Application.Clients
         public async Task<List<ComboboxCommonDto>> GetComboboxClient()
         {
             return (await _ClientRepository.GetAllAsync()).Select(x => new ComboboxCommonDto
-                                                                {
-                                                                    Lable = x.Name,
-                                                                    Value = x.Id
-                                                                }).ToList();}
+            {
+                Lable = x.Name,
+                Value = x.Id
+            }).ToList();
+        }
+
+        public async Task UpdateAsync(Client client)
+        {
+            await _ClientRepository.UpdateAsync(client);
+        }
     }
 }
