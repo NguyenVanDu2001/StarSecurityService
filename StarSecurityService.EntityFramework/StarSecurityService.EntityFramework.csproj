@@ -224,6 +224,10 @@
     <Compile Include="Migrations\202108090843073_update.Designer.cs">
       <DependentUpon>202108090843073_update.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202108121528437_edit-fix-service-offer.cs" />
+    <Compile Include="Migrations\202108121528437_edit-fix-service-offer.Designer.cs">
+      <DependentUpon>202108121528437_edit-fix-service-offer.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -267,6 +271,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202108090843073_update.resx">
       <DependentUpon>202108090843073_update.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202108121528437_edit-fix-service-offer.resx">
+      <DependentUpon>202108121528437_edit-fix-service-offer.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
