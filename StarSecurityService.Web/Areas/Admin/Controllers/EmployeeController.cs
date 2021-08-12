@@ -2,8 +2,10 @@
 using StarSecurityService.Application.Branchs;
 using StarSecurityService.Application.Clients;
 using StarSecurityService.Application.Commons.Dto;
+using StarSecurityService.Application.EmployeeAchievements;
 using StarSecurityService.Application.Employees;
 using StarSecurityService.Application.Employees.Dto;
+using StarSecurityService.Application.EmployeeSerivceOffers;
 using StarSecurityService.Application.ServiceOffers;
 using StarSecurityService.ApplicationCore.Commons.Enums;
 using StarSecurityService.ApplicationCore.Entities;
@@ -27,6 +29,8 @@ namespace StarSecurityService.Web.Areas.Admin.Controllers
         private readonly IServiceOfferService _serviceOfferAppServices;
         private readonly IBrachAppService _brachAppService;
         private readonly IAchievementAppService _achievementAppService;
+        private readonly IEmployeeServiceOfferAppSerivce _employeeServiceOfferAppSerivce;
+        private readonly IEmployeeAchievementAppService _employeeAchievementAppService;
         public EmployeeController()
         {
             _employeeAppService = new EmployeeAppServices();
@@ -34,6 +38,8 @@ namespace StarSecurityService.Web.Areas.Admin.Controllers
             _serviceOfferAppServices = new ServiceOfferService();
             _brachAppService = new BranchAppService();
             _achievementAppService = new AchievementAppService();
+            _employeeServiceOfferAppSerivce = new EmployeeServiceOfferAppService();
+            _employeeAchievementAppService = new EmployeeAchievementAppService();
         }
      
         // GET: Admin/Employee
@@ -185,8 +191,9 @@ namespace StarSecurityService.Web.Areas.Admin.Controllers
         {
             
              var objectEmployee = new JavaScriptSerializer().Deserialize<EmployeeCreateOrUpdateInputDto>(formCollection["employyee"]);
-
-             HttpFileCollectionBase files = Request.Files;
+            var listAchivement = new JavaScriptSerializer().Deserialize<List<int>>(formCollection["listAchievement"]);
+            var listServiceOffer = new JavaScriptSerializer().Deserialize<List<int>>(formCollection["listServiceOffer"]);
+            HttpFileCollectionBase files = Request.Files;
 
             //string path = AppDomain.CurrentDomain.BaseDirectory + "Uploads/";  
             //string filename = Path.GetFileName(Request.Files[i].FileName);  
@@ -231,7 +238,56 @@ namespace StarSecurityService.Web.Areas.Admin.Controllers
                     Status = objectEmployee.Status,
                     UserName = objectEmployee.UserName,
                 });
+                if (listAchivement.Count > 0)
+                {
+                    var listServiceOffers = new List<EmployeeServiceOffered>();
+                    foreach (var item in listAchivement)
+                    {
+                        listServiceOffers.Add(new EmployeeServiceOffered
+                        {
+                            EmployeeId = idNhanVien,
+                            ServiceOfferId = item,
+                        });
+                    }
+                    bool isSave = await _employeeServiceOfferAppSerivce.InsertMuntiple(listServiceOffers);
+                    if (!isSave)
+                    {
+                        return null;
+                    }
 
+                    var listEmployeeAchievement = new List<EmployeeAchievement>();
+                    foreach (var item in listAchivement)
+                    {
+                        listEmployeeAchievement.Add(new EmployeeAchievement
+                        {
+                            EmployeeId = idNhanVien,
+                            AchievementId = item,
+                        });
+                    }
+                    bool isSaveAchiViement = await _employeeAchievementAppService.InsertMuntiple(listEmployeeAchievement);
+                    if (!isSaveAchiViement)
+                    {
+                        return null;
+                    }
+                    var listemployeeServiceOfferAppSerivce = new List<EmployeeServiceOffered>();
+                    foreach (var item in listServiceOffer)
+                    {
+                        listemployeeServiceOfferAppSerivce.Add(new EmployeeServiceOffered
+                        {
+                            EmployeeId = idNhanVien,
+                            ServiceOfferId = item,
+                        });
+                    }
+                    // 
+                    bool isSaveEmployeeServiceOffer = await _employeeServiceOfferAppSerivce.InsertMuntiple(listemployeeServiceOfferAppSerivce);
+                    if (!isSaveEmployeeServiceOffer)
+                    {
+                        return null;
+                    }
+
+
+
+                }
             }
 
                 
