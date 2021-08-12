@@ -333,7 +333,6 @@
             })
             //Load combobox branch
             $.get("/Admin/Employee/LoadComboboxAchievemt").done(function (data) {
-                debugger
                 if (data.Status != 2) {
                     fillOptionSelect("#Achievement", data.Data);
                 }
