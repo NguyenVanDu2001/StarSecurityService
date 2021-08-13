@@ -1,7 +1,9 @@
-﻿using StarSecurityService.ApplicationCore.Entities;
+﻿using StarSecurityService.Application.Clients;
+using StarSecurityService.ApplicationCore.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 
@@ -9,17 +11,15 @@ namespace StarSecurityService.Web.Areas.Admin.Controllers
 {
     public class ClientController : Controller
     {
-        // GET: Admin/Client
-        public ActionResult Index()
+        private readonly IClientAppService _clientAppServices;
+        public ClientController()
         {
-            IEnumerable<Client> items = new Client[] { new Client(1, "a", "a", "a", "a") };
-            return View(items);
+            _clientAppServices = new ClientAppServices();
         }
-
-        // GET: Admin/Client/Details/5
-        public ActionResult Details(int id)
+        public async Task<ActionResult> Index()
         {
-            return View();
+            var items = await _clientAppServices.GetAll();
+            return View(items);
         }
 
         // GET: Admin/Client/Create
@@ -30,12 +30,12 @@ namespace StarSecurityService.Web.Areas.Admin.Controllers
 
         // POST: Admin/Client/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Create(Client client)
         {
             try
             {
                 // TODO: Add insert logic here
-
+                _clientAppServices.AddAsync(client);
                 return RedirectToAction("Index");
             }
             catch
@@ -45,19 +45,20 @@ namespace StarSecurityService.Web.Areas.Admin.Controllers
         }
 
         // GET: Admin/Client/Edit/5
-        public ActionResult Edit(int id)
+        public async Task<ActionResult> Edit(int id)
         {
-            return View();
+            var db = await _clientAppServices.FirstOrDefaultAsync(id);
+            return View(db);
         }
 
         // POST: Admin/Client/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit(int id, Client client)
         {
             try
             {
                 // TODO: Add update logic here
-
+                _clientAppServices.UpdateAsync(client);
                 return RedirectToAction("Index");
             }
             catch
@@ -69,23 +70,8 @@ namespace StarSecurityService.Web.Areas.Admin.Controllers
         // GET: Admin/Client/Delete/5
         public ActionResult Delete(int id)
         {
-            return View();
-        }
-
-        // POST: Admin/Client/Delete/5
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add delete logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
+            _clientAppServices.DeleteAsync(id);
+            return RedirectToAction("Index");
         }
     }
 }
