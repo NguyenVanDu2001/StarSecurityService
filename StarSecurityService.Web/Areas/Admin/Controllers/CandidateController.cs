@@ -40,7 +40,7 @@ namespace StarSecurityService.Web.Areas.Admin.Controllers
         public async Task<ActionResult> Create(int? Id)
         {
             Candidate item = await _candidateRepository.FirstOrDefaultAsync(Id);
-            ViewBag.Varcancy = new SelectList(await _vacancyService.GetAll(), "Id", "Title");
+            ViewBag.Varcancy = await _vacancyService.GetAll();
             return View(item);
         }
 
@@ -50,12 +50,15 @@ namespace StarSecurityService.Web.Areas.Admin.Controllers
         {
             try
             {
-                if (Image.ContentLength > 0)
+                if (Image != null)
                 {
                     candidate.UrlFile = Image.FileName;
                     string _FileName = Path.GetFileName(Image.FileName);
                     string _path = Path.Combine(Server.MapPath("~/Areas/Asset/img"), _FileName);
                     Image.SaveAs(_path);
+                } else
+                {
+                    candidate.UrlFile = candidate.UrlFile;
                 }
                 if(candidate.Id > 0)
                 {

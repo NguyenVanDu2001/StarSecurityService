@@ -44,7 +44,7 @@ namespace StarSecurityService.Application.Candidates
             {
                 return await _candidateRepository.FirstOrDefaultAsync(x => x.Id == Id);
             }
-            return null;
+            return new Candidate();
         }
 
         public async Task UpdateAsync(Candidate candidate)

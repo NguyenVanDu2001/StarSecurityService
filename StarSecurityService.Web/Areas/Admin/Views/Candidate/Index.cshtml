@@ -38,9 +38,6 @@
                                         @Html.DisplayNameFor(model => model.CreateAt)
                                     </th>
                                     <th>
-                                        @Html.DisplayNameFor(model => model.UrlFile)
-                                    </th>
-                                    <th>
                                         @Html.DisplayNameFor(model => model.Status)
                                     </th>
                                     <th></th>
@@ -67,10 +64,6 @@
                                         </td>
                                         <td>
                                             @Html.DisplayFor(modelItem => item.CreateAt)
-                                        </td>
-                                        <td>
-                                            <img id="avatar" class="thumbnail" width="100px" src="~/Areas/Asset/img/@item.UrlFile">
-                                        </td>
                                         <td>
                                             @Html.DisplayFor(modelItem => item.Status)
                                         </td>
