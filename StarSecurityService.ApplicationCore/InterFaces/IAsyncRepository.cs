@@ -18,6 +18,7 @@ namespace StarSecurityService.ApplicationCore.InterFaces
         Task<T> FirstAsync(Expression<Func<T, bool>> predicate);
         Task<T> FirstOrDefaultAsync(Expression<Func<T, bool>> predicate);
         Task<IQueryable<T>> GetAllAsync();
+        Task<IQueryable<T>> GetAllInclueAsync(params Expression<Func<T, object>>[] includes);
         Task<IQueryable<T>> GetAllAsync(Expression<Func<T, bool>> predicate);
         Task<ICollection<T>> GetAllListAsync();
     }

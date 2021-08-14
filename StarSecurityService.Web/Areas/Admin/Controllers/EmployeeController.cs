@@ -1,6 +1,7 @@
 ﻿using StarSecurityService.Application.Achievements;
 using StarSecurityService.Application.Branchs;
 using StarSecurityService.Application.Clients;
+using StarSecurityService.Application.CLientServices;
 using StarSecurityService.Application.Commons.Dto;
 using StarSecurityService.Application.EmployeeAchievements;
 using StarSecurityService.Application.Employees;
@@ -9,8 +10,6 @@ using StarSecurityService.Application.EmployeeSerivceOffers;
 using StarSecurityService.Application.ServiceOffers;
 using StarSecurityService.ApplicationCore.Commons.Enums;
 using StarSecurityService.ApplicationCore.Entities;
-using StarSecurityService.ApplicationCore.InterFaces;
-using StarSecurityService.EntityFramework.Data;
 using StarSecurityService.Web.Commons;
 using System.Collections.Generic;
 using System.IO;
@@ -31,6 +30,7 @@ namespace StarSecurityService.Web.Areas.Admin.Controllers
         private readonly IAchievementAppService _achievementAppService;
         private readonly IEmployeeServiceOfferAppSerivce _employeeServiceOfferAppSerivce;
         private readonly IEmployeeAchievementAppService _employeeAchievementAppService;
+        private readonly IClientEmployeeAppService _clientEmployeeAppService;
         public EmployeeController()
         {
             _employeeAppService = new EmployeeAppServices();
@@ -40,6 +40,7 @@ namespace StarSecurityService.Web.Areas.Admin.Controllers
             _achievementAppService = new AchievementAppService();
             _employeeServiceOfferAppSerivce = new EmployeeServiceOfferAppService();
             _employeeAchievementAppService = new EmployeeAchievementAppService();
+            _clientEmployeeAppService = new ClientEmployeeAppService();
         }
      
         // GET: Admin/Employee
@@ -56,13 +57,14 @@ namespace StarSecurityService.Web.Areas.Admin.Controllers
         }
 
         // GET: Admin/Employee/Create
-        public ActionResult Create(int? id =0)
+        public async Task<ActionResult> Create(int? id)
         {
             if (id.HasValue)
             {
-
+                var em = await _employeeAppService.GetById(id.Value);
+                return View(em);
             }
-            return View();
+            return View(new Employyee());
         }
 
         // POST: Admin/Employee/Create
@@ -193,10 +195,9 @@ namespace StarSecurityService.Web.Areas.Admin.Controllers
              var objectEmployee = new JavaScriptSerializer().Deserialize<EmployeeCreateOrUpdateInputDto>(formCollection["employyee"]);
             var listAchivement = new JavaScriptSerializer().Deserialize<List<int>>(formCollection["listAchievement"]);
             var listServiceOffer = new JavaScriptSerializer().Deserialize<List<int>>(formCollection["listServiceOffer"]);
+            var listserviceEmployee = new JavaScriptSerializer().Deserialize<List<ClientEmployeeCreateDto>>(formCollection["serviceEmployee"]);
             HttpFileCollectionBase files = Request.Files;
 
-            //string path = AppDomain.CurrentDomain.BaseDirectory + "Uploads/";  
-            //string filename = Path.GetFileName(Request.Files[i].FileName);  
             string fname = string.Empty;
             if (files != null)
             {
@@ -240,8 +241,9 @@ namespace StarSecurityService.Web.Areas.Admin.Controllers
                 });
                 if (listAchivement.Count > 0)
                 {
+                    // Convert and add service offer 
                     var listServiceOffers = new List<EmployeeServiceOffered>();
-                    foreach (var item in listAchivement)
+                    foreach (var item in listServiceOffer)
                     {
                         listServiceOffers.Add(new EmployeeServiceOffered
                         {
@@ -254,7 +256,7 @@ namespace StarSecurityService.Web.Areas.Admin.Controllers
                     {
                         return null;
                     }
-
+                    // convert and insert achievement
                     var listEmployeeAchievement = new List<EmployeeAchievement>();
                     foreach (var item in listAchivement)
                     {
@@ -269,23 +271,22 @@ namespace StarSecurityService.Web.Areas.Admin.Controllers
                     {
                         return null;
                     }
-                    var listemployeeServiceOfferAppSerivce = new List<EmployeeServiceOffered>();
-                    foreach (var item in listServiceOffer)
+                   
+                    // convert and insert client
+                    var listclient = new List<ClientEmployees>();  
+                    foreach (var item in listserviceEmployee)
                     {
-                        listemployeeServiceOfferAppSerivce.Add(new EmployeeServiceOffered
+                        listclient.Add(new ClientEmployees
                         {
+                            ClientId = item.ClientId,
                             EmployeeId = idNhanVien,
-                            ServiceOfferId = item,
+                            ServiceOfferId = item.ServiceOfferId,
+                            ShiftEnd = item.EndShift.Value,
+                            ShiftStart = item.StartShift.Value
                         });
                     }
-                    // 
-                    bool isSaveEmployeeServiceOffer = await _employeeServiceOfferAppSerivce.InsertMuntiple(listemployeeServiceOfferAppSerivce);
-                    if (!isSaveEmployeeServiceOffer)
-                    {
-                        return null;
-                    }
-
-
+                    await  _clientEmployeeAppService.InsertMuntiple(listclient);
+                     //
 
                 }
             }

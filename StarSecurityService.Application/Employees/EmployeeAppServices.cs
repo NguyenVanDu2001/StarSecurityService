@@ -15,6 +15,7 @@ namespace StarSecurityService.Application.Employees
         Task<string> GetCodeEmployyee(int? idEmployee = 0);
         Task<int> InsertAndGetIdAsync(Employyee em);
         Task<Employyee> CheckLogin(string emailOrEmail, string password);
+        Task<Employyee> GetById(int id);
     }
     public class EmployeeAppServices : IEmployeeAppService
     {
@@ -36,6 +37,11 @@ namespace StarSecurityService.Application.Employees
         {
             var iQueryableEmployee = await _employyeeRepository.GetAllAsync();
             return iQueryableEmployee.AsEnumerable();
+        }
+
+        public async Task<Employyee> GetById(int id)
+        {
+            return await _employyeeRepository.GetByIdAsync(id);
         }
 
         public async Task<string> GetCodeEmployyee(int? idEmployee = 0)

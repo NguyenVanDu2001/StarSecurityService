@@ -4,10 +4,14 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Dashboard | Star Security</title>
+    <link href="~/Areas/Asset/Plugins/css/fStyle.css" rel="stylesheet" />
     <link href="~/Areas/Asset/css/bootstrap.min.css" rel="stylesheet">
     <link href="~/Areas/Asset/css/datepicker3.css" rel="stylesheet">
     <link href="~/Areas/Asset/css/styles.css" rel="stylesheet">
     <link href="~/Areas/Asset/tables/Datatable/jquery.dataTables.min.css" rel="stylesheet" />
+    <link href="~/Areas/Asset/Plugins/datatables-responsive/css/responsive.bootstrap4.min.css" rel="stylesheet" />
+    <link href="~/Areas/Asset/Plugins/datatables-bs4/css/dataTables.bootstrap4.min.css" rel="stylesheet" />
+    <link href="~/Areas/Asset/Plugins/summernote/summernote-bs4.min.css" rel="stylesheet" />
     @RenderSection("style", required: false)
 
     <script type="text/javascript" src="~/Areas/Asset/ckeditor/ckeditor.js"></script>
@@ -66,7 +70,15 @@
     <script src="~/Areas/Asset/js/easypiechart.js"></script>
     <script src="~/Areas/Asset/js/easypiechart-data.js"></script>
     <script src="~/Areas/Asset/js/bootstrap-datepicker.js"></script>
+
     <script src="~/Areas/Asset/tables/Datatable/jquery.dataTables.min.js"></script>
+    <script src="~/Areas/Asset/Plugins/datatables/jquery.dataTables.min.js"></script>
+    <script src="~/Areas/Asset/Plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+    <script src="~/Areas/Asset/Plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+    <script src="~/Areas/Asset/Plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+    <script src="~/Areas/Asset/Plugins/summernote/summernote-bs4.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
 
     <script>
         $('#calendar').datepicker({
@@ -88,7 +100,7 @@
             //Nếu như tồn thuộc tính file, đồng nghĩa người dùng đã chọn file mới
             if (input.files && input.files[0]) {
                 var reader = new FileReader();
-                //Sự kiện file đã được load vào website 
+                //Sự kiện file đã được load vào website
                 reader.onload = function (e) {
                     //Thay đổi đường dẫn ảnh
                     $('#avatar').attr('src', e.target.result);
@@ -103,6 +115,20 @@
         });
     </script>
     <script src="~/Areas/Asset/js/fontawesome.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#myTable').DataTable({
+                "paging": true,
+                "lengthChange": true,
+                "searching": true,
+                "ordering": true,
+                "info": true,
+                "autoWidth": false,
+                "responsive": true,
+            });
+        });
+
+    </script>
     @RenderSection("scripts", required: false)
 </body>
 </html>

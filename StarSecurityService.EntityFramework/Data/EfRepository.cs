@@ -98,5 +98,10 @@ namespace StarSecurityService.EntityFramework.Data
         {
            return   _dbContext.Set<T>().Where(predicate);
         }
+
+        public async Task<IQueryable<T>> GetAllInclueAsync(params Expression<Func<T, object>>[] includes)
+        {
+            return  _dbContext.Set<T>().Include(includes.ToString());
+        }
     }
 }

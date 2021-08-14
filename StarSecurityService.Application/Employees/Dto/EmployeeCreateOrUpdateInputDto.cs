@@ -23,5 +23,12 @@ namespace StarSecurityService.Application.Employees.Dto
         public decimal Bonus { get; set; }
         public int? BranchId { get; set; }
     }
+    public class ClientEmployeeCreateDto
+    {
+        public int ClientId{ get; set; }
+        public int ServiceOfferId { get; set; }
+        public DateTime? StartShift { get; set; }
+        public DateTime? EndShift { get; set; }
+    }
     
 }
