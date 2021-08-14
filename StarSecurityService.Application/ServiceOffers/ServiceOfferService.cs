@@ -1,4 +1,5 @@
 ﻿using StarSecurityService.Application.Commons.Dto;
+using StarSecurityService.ApplicationCore.DTO;
 using StarSecurityService.ApplicationCore.Entities;
 using StarSecurityService.ApplicationCore.InterFaces;
 using StarSecurityService.EntityFramework.Data;
@@ -13,7 +14,7 @@ namespace StarSecurityService.Application.ServiceOffers
     public interface IServiceOfferService
     {
         Task<List<ComboboxCommonDto>> GetComboboxServiceOffer();
-        Task<ServiceOffer> AddAsync(ServiceOffer service);
+        Task<ServiceOffer> AddAsync(ServiceOfferViewModel service);
         Task<IEnumerable<ServiceOffer>> GetAll();
         Task<ServiceOffer> FirstOrDefaultAsync(int Id);
         Task UpdateAsync(ServiceOffer service);
@@ -27,9 +28,11 @@ namespace StarSecurityService.Application.ServiceOffers
             _serviceOfferRepository = new EfRepository<ServiceOffer>(new StarServiceDbContext());
         }
 
-        public async Task<ServiceOffer> AddAsync(ServiceOffer service)
+        public async Task<ServiceOffer> AddAsync(ServiceOfferViewModel service)
         {
-            return await _serviceOfferRepository.AddAsync(service);
+            //return await _serviceOfferRepository.AddAsync(service);
+            
+            return null;
         }
 
         public async Task DeleteAsync(int Id)

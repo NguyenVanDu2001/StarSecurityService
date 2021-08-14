@@ -1,4 +1,5 @@
 ﻿using StarSecurityService.Application.ServiceOffers;
+using StarSecurityService.ApplicationCore.DTO;
 using StarSecurityService.ApplicationCore.Entities;
 using System;
 using System.Collections.Generic;
@@ -31,11 +32,17 @@ namespace StarSecurityService.Web.Areas.Admin.Controllers
 
         // POST: Admin/ServiceOffer/Create
         [HttpPost]
-        public ActionResult Create(ServiceOffer service)
+        public ActionResult Create(ServiceOfferViewModel service)
         {
             try
             {
-                // TODO: Add insert logic here
+                var name = "";
+                foreach (HttpPostedFileBase item in service.Url)
+                {
+                    name += item.FileName+ " ";
+                }
+                name = name.Trim();
+                string[] arrListStr = name.Split(' ');
                 _serviceOfferService.AddAsync(service);
                 return RedirectToAction("Index");
             }
