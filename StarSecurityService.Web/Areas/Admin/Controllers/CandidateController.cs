@@ -37,7 +37,7 @@ namespace StarSecurityService.Web.Areas.Admin.Controllers
         }
 
         // GET: Admin/Candidate/Create
-        public ActionResult Create()
+        public async Task<ActionResult> Create(int? Id)
         {
             Candidate item = await _candidateRepository.FirstOrDefaultAsync(Id);
             ViewBag.Varcancy = await _vacancyService.GetAll();
@@ -46,7 +46,7 @@ namespace StarSecurityService.Web.Areas.Admin.Controllers
 
         // POST: Admin/Candidate/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Create(Candidate candidate, HttpPostedFileBase Image)
         {
             try
             {
@@ -56,14 +56,16 @@ namespace StarSecurityService.Web.Areas.Admin.Controllers
                     string _FileName = Path.GetFileName(Image.FileName);
                     string _path = Path.Combine(Server.MapPath("~/Areas/Asset/img"), _FileName);
                     Image.SaveAs(_path);
-                } else
+                }
+                else
                 {
                     candidate.UrlFile = candidate.UrlFile;
                 }
-                if(candidate.Id > 0)
+                if (candidate.Id > 0)
                 {
                     _candidateRepository.UpdateAsync(candidate);
-                } else
+                }
+                else
                 {
                     _candidateRepository.AddAsync(candidate);
                 }
