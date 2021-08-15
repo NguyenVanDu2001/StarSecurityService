@@ -74,7 +74,7 @@ namespace StarSecurityService.Web.Areas.Admin.Controllers
         {
             try
             {
-                var name = "";
+                var fileName = "";
                 if(service.Url[0] != null)
                 {
                     foreach (HttpPostedFileBase item in service.Url)
@@ -82,18 +82,18 @@ namespace StarSecurityService.Web.Areas.Admin.Controllers
                         string _FileName = Path.GetFileName(item.FileName);
                         string _path = Path.Combine(Server.MapPath("~/Areas/Asset/img"), _FileName);
                         item.SaveAs(_path);
-                        name += item.FileName + " ";
+                        fileName += item.FileName + " ";
                     }
                 } else
                 {
                     var db = _serviceOfferService.FirstOrDefaultAsync(id).Result;
-                    name = db.Url;
+                    fileName = db.Url;
                 }
-                name = name.Trim();
-                _serviceOfferService.UpdateAsync(service, name, id);
+                fileName = fileName.Trim();
+                _serviceOfferService.UpdateAsync(service, fileName, id);
                 return RedirectToAction("Index");
             }
-            catch
+            catch(Exception ex)
             {
                 return View();
             }
