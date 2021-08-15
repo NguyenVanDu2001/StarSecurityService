@@ -12,7 +12,7 @@ namespace StarSecurityService.ApplicationCore.Entities
         public virtual Vacancy Vacancies { get; set; }
         public string Message { get; set; }
         public string Email { get; set; }
-        public DateTime CreateAt { get; set; }
+        public DateTime? CreateAt { get; set; }
         public string UrlFile { get; set; }
         public bool Status { get; set; }
 
