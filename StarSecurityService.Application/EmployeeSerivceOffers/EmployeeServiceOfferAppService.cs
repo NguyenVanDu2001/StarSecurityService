@@ -12,6 +12,7 @@ namespace StarSecurityService.Application.EmployeeSerivceOffers
     public interface IEmployeeServiceOfferAppSerivce
     {
         Task<bool> InsertMuntiple(List<EmployeeServiceOffered> EmployeeServiceOffereds);
+        Task<bool> DeleteByEmployeeId(int employeeId);
     }
     public class EmployeeServiceOfferAppService : IEmployeeServiceOfferAppSerivce
     {
@@ -19,6 +20,23 @@ namespace StarSecurityService.Application.EmployeeSerivceOffers
         public EmployeeServiceOfferAppService()
         {
             _employeeServiceOfferedRepository = new EfRepository<EmployeeServiceOffered>(new StarServiceDbContext());
+        }
+
+        public async Task<bool> DeleteByEmployeeId(int employeeId)
+        {
+            try
+            {
+                var getList = (await _employeeServiceOfferedRepository.GetAllAsync(x => x.EmployeeId == employeeId)).ToList();
+                foreach (var item in getList)
+                {
+                    await _employeeServiceOfferedRepository.DeleteAsync(item);
+                }
+                return true;
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
         }
 
         public async Task<bool> InsertMuntiple(List<EmployeeServiceOffered> employeeServiceOffereds)

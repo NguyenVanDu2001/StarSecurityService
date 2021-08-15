@@ -50,8 +50,21 @@ namespace StarSecurityService.EntityFramework.Data
 
         public async Task UpdateAsync(T entity)
         {
-            _dbContext.Entry(entity).State = EntityState.Modified;
-             _dbContext.SaveChanges();
+           
+            var entry = _dbContext.Entry(entity);
+            if (entry.State == EntityState.Detached || entry.State == EntityState.Modified)
+            {
+                entry.State = EntityState.Modified; //do it here
+                _dbContext.Set<T>().Attach(entity); //attach
+                _dbContext.SaveChanges();
+            } 
+              
+        }
+         public async Task UpdateAsync1(T entity)
+        {
+            //_dbContext.Entry(entity).asNo.State = EntityState.Modified;
+            //_dbContext.As.Attach(entity);
+            _dbContext.SaveChanges();
         }
 
         public async Task DeleteAsync(T entity)

@@ -12,6 +12,7 @@ namespace StarSecurityService.Application.CLientServices
     public interface IClientEmployeeAppService
     {
         Task<bool> InsertMuntiple(List<ClientEmployees> clientEmployees);
+        Task<bool> DeleteByEmployeeId(int employeeId);
     }
     public class ClientEmployeeAppService : IClientEmployeeAppService
     {
@@ -33,6 +34,23 @@ namespace StarSecurityService.Application.CLientServices
                  
             }
             catch (Exception ex)
+            {
+                return false;
+            }
+
+        }
+        public async Task<bool> DeleteByEmployeeId(int employeeId)
+        {
+            try
+            {
+                var getList = (await _ClientEmployeesRepository.GetAllAsync(x => x.EmployeeId == employeeId)).ToList();
+                foreach (var item in getList)
+                {
+                    await _ClientEmployeesRepository.DeleteAsync(item);
+                }
+                return true;
+            }
+            catch (Exception e)
             {
                 return false;
             }

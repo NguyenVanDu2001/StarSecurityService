@@ -1,13 +1,13 @@
 ﻿@model StarSecurityService.ApplicationCore.Entities.Employyee
-
+@using StarSecurityService.Application.Commons.Dto;
 @{
     Layout = "~/Areas/Admin/Views/Shared/_MainLayoutAdmin.cshtml";
 
     List<SelectListItem> listcat = new List<SelectListItem>();
     listcat.Add(new SelectListItem
     {
-        Text  ="Male",
-        Value ="True",
+        Text = "Male",
+        Value = "True",
 
     });
     listcat.Add(new SelectListItem { Text = "Female", Value = "False" });
@@ -15,7 +15,7 @@
     List<SelectListItem> ListStatus = new List<SelectListItem>();
     ListStatus.Add(new SelectListItem { Value = "0", Text = "Active" });
     ListStatus.Add(new SelectListItem { Value = "1", Text = "No Active" });
-
+    int order = 0;
 }
 @section style{
     <style>
@@ -42,8 +42,9 @@
         .font-red {
             color: red
         }
-        #home .col-md-6 div{
-            margin-top:12px ;
+
+        #home .col-md-6 div {
+            margin-top: 12px;
             width: 85%;
         }
     </style>
@@ -54,15 +55,15 @@
     <div class="col-xs-12 col-md-12 col-lg-12">
         <form method="post" id="formEmployee" enctype="multipart/form-data">
             <div class="panel panel-primary">
-                <div class="panel-heading">Create Employee</div>
+                <div class="panel-heading">@(Model.Id ==0 ? "Create Employee" : "Edit Employee")  </div>
                 <br />
                 <div class="form-group pull-right " style="margin-right :37px">
-                    <div class="row">
+                    <div class="row">   
                         <div class="col-md-offset-2 col-md-3">
                             <button type="submit" class="btn btn-primary"><i class="fa fa-floppy-o" aria-hidden="true"></i> &nbsp; Save</button>
                         </div>
                         <div class="col-md-offset-2 col-md-3">
-                            <a href="@Url.Action("Index","Employee")" class="btn btn-danger"> <i class="fa fa-window-close" aria-hidden="true"></i> &nbsp; Cancel</a>
+                            <a href="@Url.Action("Index", "Employee")" class="btn btn-danger"> <i class="fa fa-window-close" aria-hidden="true"></i> &nbsp; Cancel</a>
                         </div>
                     </div>
                 </div>
@@ -120,7 +121,7 @@
 
                                     <div>
                                         <label for="BirthDay"><span class="text-secondary "> BirthDay</span></label>
-                                        @Html.EditorFor(model => model.BirthDay, new { htmlAttributes = new { @class = "form-control", @type = "date" } })
+                                        @Html.EditorFor(model => model.BirthDay , new { htmlAttributes = new { @Value = Model.BirthDay.ToString("yyyy-MM-dd"), @class = "form-control", @type = "date" } })
                                         @Html.ValidationMessageFor(model => model.BirthDay, "", new { @class = "text-danger" })
                                     </div>
                                     <div>
@@ -184,29 +185,73 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr class="text-center">
-                                        <td>1</td>
-                                        <td>
-                                            <select class="form-control select-client">
-                                                <option>Client</option>
-                                                <option>Client</option>
-                                                <option>Client</option>
-                                            </select>
-                                        </td>
-                                        <td>
-                                            <select class="form-control select-service-offer">
-                                                <option>Client</option>
-                                                <option>Client</option>
-                                                <option>Client</option>
-                                            </select>
+                                    @if (Model.ClientEmployees?.Any() == true)
+                                    {
+                                        foreach (var item in Model.ClientEmployees)
+                                        {
+                                            order++;
+                                            <tr class="text-center">
+                                                <td> @order.ToString("D2")</td>
+                                                <td>
+                                                    <select class="form-control select-client" data-id="">
+                                                        <option value=""> -Choose client-</option>
+                                                        @foreach (var client in (List<ComboboxCommonDto>)ViewBag.ListClient)
+                                                        {
+                                                            <option @(client.Value == item.ClientId ? "selected" : "") value="@client.Value"> @client.Lable</option>
 
-                                        </td>
-                                        <td><input type="date" name="name" value="" class="form-control" /></td>
-                                        <td><input type="date" name="name" value="" class="form-control"/></td>
-                                        <td>
-                                            <i class="fa fa-trash fa-2x" aria-hidden="true"></i>
-                                        </td>
-                                    </tr>
+                                                        }
+                                                    </select>
+                                                </td>
+                                                <td>
+                                                    <select class="form-control select-service-offer">
+                                                        <option value=""> -Choose serviceoffer-</option>
+                                                        @foreach (var client in (List<ComboboxCommonDto>)ViewBag.ListServiceOffer)
+                                                        {
+                                                            <option @(client.Value == item.ServiceOfferId ? "selected" : "") value="@client.Value"> @client.Lable</option>
+
+                                                        }
+                                                    </select>
+                                                </td>
+                                                <td><input type="date" name="name" value="@item.ShiftStart.ToString("yyyy-MM-dd")" class="form-control" /></td>
+                                                <td><input type="date" name="name" value="@item.ShiftEnd.ToString("yyyy-MM-dd")" class="form-control" /></td>
+                                                <td>
+                                                    <i class="fa fa-trash fa-2x" aria-hidden="true"></i>
+                                                </td>
+                                            </tr>
+                                        }
+                                    }
+                                    else
+                                    {
+                                        order++;    
+                                        <tr class="text-center">
+                                            <td> @order.ToString("D2")</td>
+                                            <td>
+                                                <select class="form-control select-client" data-id="">
+                                                    <option value=""> -Choose client-</option>
+                                                    @foreach (var client in (List<ComboboxCommonDto>)ViewBag.ListClient)
+                                                    {
+                                                        <option value="@client.Value"> @client.Lable</option>
+
+                                                    }
+                                                </select>
+                                            </td>
+                                            <td>
+                                                <select class="form-control select-service-offer">
+                                                    <option value=""> -Choose serviceoffer-</option>
+                                                    @foreach (var client in (List<ComboboxCommonDto>)ViewBag.ListServiceOffer)
+                                                    {
+                                                        <option value="@client.Value"> @client.Lable</option>
+                                                    }
+                                                </select>
+                                            </td>
+                                            <td><input type="date" name="name" value="" class="form-control" /></td>
+                                            <td><input type="date" name="name" value="" class="form-control" /></td>
+                                            <td>
+                                                <i class="fa fa-trash fa-2x" aria-hidden="true"></i>
+                                            </td>
+                                        </tr>
+                                    }
+
                                 </tbody>
                                 <tfoot>
                                     <tr>
@@ -221,6 +266,8 @@
 
 
                     <div class="clearfix"></div>
+                    <input type="hidden" name="name" id="lstEmployeeServiceOffered" value="@(ViewBag.ListIdServiceOffer)" />
+                    <input type="hidden" name="name" id="lstEmployeeAchievement" value="@(ViewBag.ListIdAchi)" />
                 </div>
             </div>
         </form>
@@ -279,43 +326,60 @@
         function loadCombobox() {
             // Load combobox client table
             $.get("/Admin/Employee/LoadComboboxClient").done(function (data) {
-                if (data.StatusCode == 200) {
-                    var option = `<option value="">-- Choose client --</option>`;
-                    for (obj of data.Data) {
-                        option += `<option value="${obj.Value}">${obj.Lable}</option>`
-                    }
-                }
-                $("#tableServiceOffer tbody .select-client").html(option);
+                //if (data.StatusCode == 200) {
+                //    var option = `<option value="">-- Choose client --</option>`;
+                //    for (obj of data.Data) {
+                //        option += `<option value="${obj.Value}">${obj.Lable}</option>`
+                //    }
+                //}
+                //$("#tableServiceOffer tbody .select-client").html(option);
 
             })
             // Load combobox service
             $.get("/Admin/Employee/LoadComboboxService").done(function (data) {
                 if (data.StatusCode == 200) {
-                    fillOptionSelect("#tableServiceOffer tbody .select-service-offer", data.Data, 'Choose service offer');
-                    fillOptionSelect("#ServiceOffer", data.Data);
+                    let lisselected = JSON.parse($("#lstEmployeeServiceOffered").val());
+                    let optionDefault;
+                    for (obj of data.Data) {
+                        let selected = lisselected.filter(x => x == obj.Value).length > 0 ? "selected" : "";
+                        optionDefault += `<option ${selected} value="${obj.Value}">${obj.Lable}</option>`
+                    }
+                    $("#ServiceOffer").html(optionDefault);
                 }
             })
             //Load combobox branch
             $.get("/Admin/Employee/LoadComboboxBranch").done(function (data) {
                 if (data.StatusCode == 200) {
-                    fillOptionSelect("#BranchId", data.Data, 'Choose branch');
+                    fillOptionSelect("#BranchId", data.Data, 'Choose branch',@Model.BranchId);
+
                 }
             })
             //Load combobox achivement
             $.get("/Admin/Employee/LoadComboboxAchievemt").done(function (data) {
                 if (data.Status != 2) {
-                    fillOptionSelect("#Achievement", data.Data);
+                    let lisselected = JSON.parse($("#lstEmployeeAchievement").val());
+                    let optionDefault;
+                    for (obj of data.Data) {
+                        let selected = lisselected.filter(x => x == obj.Value).length > 0 ? "selected" : "";
+                        optionDefault += `<option ${selected} value="${obj.Value}">${obj.Lable}</option>`
+                    }
+                    $("#Achievement").html(optionDefault);
+
+
+
+                    //fillOptionSelect("#Achievement", data.Data);
                 }
             })
 
         }
-        function fillOptionSelect(selector, data, textOptionDefault = undefined) {
+        function fillOptionSelect(selector, data, textOptionDefault = undefined, valueSelected=0 ,listInt = []) {
             let optionDefault = "";
             if (textOptionDefault) {
                 optionDefault = `<option value="">${textOptionDefault}</option>`;
             }
             for (obj of data) {
-                optionDefault += `<option value="${obj.Value}">${obj.Lable}</option>`
+                let selected = obj.Value == valueSelected ? "selected" : "";
+                optionDefault += `<option ${selected} value="${obj.Value}">${obj.Lable}</option>`
             }
             $(selector).html(optionDefault);
         }
@@ -391,7 +455,6 @@
                     formData.append(files[i].name, files[i]);
                 }
 
-                debugger
                 formData.append("serviceEmployee", JSON.stringify($validateForm.dataTab2()));
                 formData.append("employyee", JSON.stringify(formdatainput));
                 formData.append("listAchievement", JSON.stringify($("#Achievement").val()));
