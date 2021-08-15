@@ -25,7 +25,7 @@ namespace StarSecurityService.ApplicationCore.Entities
         }
         public ServiceOffer()
         {
-                
+
         }
     }
 }
