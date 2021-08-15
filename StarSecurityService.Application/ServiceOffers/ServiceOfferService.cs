@@ -1,4 +1,5 @@
 ﻿using StarSecurityService.Application.Commons.Dto;
+using StarSecurityService.ApplicationCore.DTO;
 using StarSecurityService.ApplicationCore.Entities;
 using StarSecurityService.ApplicationCore.InterFaces;
 using StarSecurityService.EntityFramework.Data;
@@ -13,10 +14,10 @@ namespace StarSecurityService.Application.ServiceOffers
     public interface IServiceOfferService
     {
         Task<List<ComboboxCommonDto>> GetComboboxServiceOffer();
-        Task<ServiceOffer> AddAsync(ServiceOffer service);
+        Task<ServiceOffer> AddAsync(ServiceOfferViewModel service, string name);
         Task<IEnumerable<ServiceOffer>> GetAll();
         Task<ServiceOffer> FirstOrDefaultAsync(int Id);
-        Task UpdateAsync(ServiceOffer service);
+        Task UpdateAsync(ServiceOfferViewModel service, string name, int id);
         Task DeleteAsync(int Id);
     }
     public class ServiceOfferService : IServiceOfferService
@@ -27,9 +28,10 @@ namespace StarSecurityService.Application.ServiceOffers
             _serviceOfferRepository = new EfRepository<ServiceOffer>(new StarServiceDbContext());
         }
 
-        public async Task<ServiceOffer> AddAsync(ServiceOffer service)
+        public async Task<ServiceOffer> AddAsync(ServiceOfferViewModel service, string name)
         {
-            return await _serviceOfferRepository.AddAsync(service);
+            ServiceOffer db = new ServiceOffer(service.Title, service.Details, name, service.Introduce, service.Description, service.Status);
+            return await _serviceOfferRepository.AddAsync(db);
         }
 
         public async Task DeleteAsync(int Id)
@@ -57,9 +59,10 @@ namespace StarSecurityService.Application.ServiceOffers
             }).ToList();
         }
 
-        public async Task UpdateAsync(ServiceOffer service)
+        public async Task UpdateAsync(ServiceOfferViewModel service, string name, int id)
         {
-            await _serviceOfferRepository.UpdateAsync(service);
+            ServiceOffer db = new ServiceOffer(id, service.Title, service.Details, name, service.Introduce, service.Description, service.Status);
+            await _serviceOfferRepository.UpdateAsync(db);
         }
     }
 }
