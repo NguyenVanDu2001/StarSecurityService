@@ -24,9 +24,6 @@
                                         @Html.DisplayNameFor(model => model.Details)
                                     </th>
                                     <th class="text-center">
-                                        @Html.DisplayNameFor(model => model.Url)
-                                    </th>
-                                    <th class="text-center">
                                         @Html.DisplayNameFor(model => model.Introduce)
                                     </th>
                                     <th class="text-center">
@@ -42,30 +39,27 @@
                             <tbody>
                                 @foreach (var item in Model)
                                 {
-                                    <tr>
-                                        <td>
-                                            @Html.DisplayFor(modelItem => item.Title)
-                                        </td>
-                                        <td>
-                                            @Html.DisplayFor(modelItem => item.Details)
-                                        </td>
-                                        <td>
-                                            @Html.DisplayFor(modelItem => item.Url)
-                                        </td>
-                                        <td>
-                                            @Html.DisplayFor(modelItem => item.Introduce)
-                                        </td>
-                                        <td>
-                                            @Html.DisplayFor(modelItem => item.Description)
-                                        </td>
-                                        <td>
-                                            @Html.DisplayFor(modelItem => item.Status)
-                                        </td>
-                                        <td>
-                                            <a href="@Url.Action($"Edit/{item.Id}","ServiceOffer")" class="btn btn-success btn-sm"><i class="fa fa-pencil" aria-hidden="true"></i></a>
-                                            <a href="@Url.Action($"Delete/{item.Id}","ServiceOffer")" class="btn btn-danger btn-sm"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
-                                        </td>
-                                    </tr>
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Title)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Details)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Introduce)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Description)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Status)
+                                    </td>
+                                    <td>
+                                        <a href="@Url.Action($"Edit/{item.Id}","ServiceOffer")" class="btn btn-success btn-sm"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+                                        <a href="@Url.Action($"Delete/{item.Id}","ServiceOffer")" class="btn btn-danger btn-sm"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+                                    </td>
+                                </tr>
                                 }
                             </tbody>
                            

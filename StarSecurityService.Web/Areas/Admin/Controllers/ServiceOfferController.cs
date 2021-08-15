@@ -1,7 +1,9 @@
 ﻿using StarSecurityService.Application.ServiceOffers;
+using StarSecurityService.ApplicationCore.DTO;
 using StarSecurityService.ApplicationCore.Entities;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
@@ -35,8 +37,16 @@ namespace StarSecurityService.Web.Areas.Admin.Controllers
         {
             try
             {
-                // TODO: Add insert logic here
-                _serviceOfferService.AddAsync(service);
+                var name = "";
+                foreach (HttpPostedFileBase item in service.Url)
+                {
+                    string _FileName = Path.GetFileName(item.FileName);
+                    string _path = Path.Combine(Server.MapPath("~/Areas/Asset/img"), _FileName);
+                    item.SaveAs(_path);
+                    name += item.FileName+ " ";
+                }
+                name = name.Trim();
+                _serviceOfferService.AddAsync(service, name);
                 return RedirectToAction("Index");
             }
             catch
@@ -49,20 +59,41 @@ namespace StarSecurityService.Web.Areas.Admin.Controllers
         public async Task<ActionResult> Edit(int id)
         {
             var db = await _serviceOfferService.FirstOrDefaultAsync(id);
+            string[] image = db.Url.Split(' ');
+            List<string> path = new List<string>();
+            foreach (string img in image) {
+                path.Add(img);
+            }
+            ViewBag.Image = path;
             return View(db);
         }
 
         // POST: Admin/ServiceOffer/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, ServiceOffer service)
+        public ActionResult Edit(int id, ServiceOfferViewModel service)
         {
             try
             {
-                // TODO: Add update logic here
-                _serviceOfferService.UpdateAsync(service);
+                var fileName = "";
+                if(service.Url[0] != null)
+                {
+                    foreach (HttpPostedFileBase item in service.Url)
+                    {
+                        string _FileName = Path.GetFileName(item.FileName);
+                        string _path = Path.Combine(Server.MapPath("~/Areas/Asset/img"), _FileName);
+                        item.SaveAs(_path);
+                        fileName += item.FileName + " ";
+                    }
+                } else
+                {
+                    var db = _serviceOfferService.FirstOrDefaultAsync(id).Result;
+                    fileName = db.Url;
+                }
+                fileName = fileName.Trim();
+                _serviceOfferService.UpdateAsync(service, fileName, id);
                 return RedirectToAction("Index");
             }
-            catch
+            catch(Exception ex)
             {
                 return View();
             }
