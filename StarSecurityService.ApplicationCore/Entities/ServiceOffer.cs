@@ -31,9 +31,20 @@ namespace StarSecurityService.ApplicationCore.Entities
             Description = description;
             Status = status;
         }
+
+        public ServiceOffer(string title, string details, string url, string introduce, string description, bool status)
+        {
+            Title = title;
+            Details = details;
+            Url = url;
+            Introduce = introduce;
+            Description = description;
+            Status = status;
+        }
+
         public ServiceOffer()
         {
-                
+
         }
     }
 }
