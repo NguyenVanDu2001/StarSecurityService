@@ -123,8 +123,10 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Areas\Admin\Controllers\BaseController.cs" />
     <Compile Include="Areas\Admin\Controllers\BussinessController.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\CustomAuthorizeAttribute.cs" />
     <Compile Include="Areas\Admin\Controllers\GroupUserController.cs" />
     <Compile Include="Areas\Admin\Controllers\AchievementController.cs" />
     <Compile Include="Areas\Admin\Controllers\BranchController.cs" />
@@ -152,6 +154,7 @@
     <Content Include="Areas\Admin\Views\Bussiness\index.js" />
     <Content Include="Areas\Admin\Views\Employee\create.js" />
     <Content Include="Areas\Admin\Views\Login\login.css" />
+    <None Include="Areas\Admin\Views\Shared\401.cshtml" />
     <Content Include="Areas\Asset\ckeditor\adapters\jquery.js" />
     <Content Include="Areas\Asset\ckeditor\build-config.js" />
     <Content Include="Areas\Asset\ckeditor\ckeditor.js" />
@@ -2600,6 +2603,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Models\" />
+    <Folder Include="Areas\Admin\Views\Base\" />
     <Folder Include="Models\" />
     <Folder Include="Views\Bussiness\" />
     <Folder Include="Views\Clients\" />

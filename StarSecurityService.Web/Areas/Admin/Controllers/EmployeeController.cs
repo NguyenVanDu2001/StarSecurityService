@@ -5,9 +5,6 @@ using StarSecurityService.Application.Commons.Dto;
 using StarSecurityService.Application.Employees;
 using StarSecurityService.Application.ServiceOffers;
 using StarSecurityService.ApplicationCore.Commons.Enums;
-using StarSecurityService.ApplicationCore.Entities;
-using StarSecurityService.ApplicationCore.InterFaces;
-using StarSecurityService.EntityFramework.Data;
 using StarSecurityService.Web.Commons;
 using System.Collections.Generic;
 using System.Net;
@@ -16,6 +13,7 @@ using System.Web.Mvc;
 
 namespace StarSecurityService.Web.Areas.Admin.Controllers
 {
+    [CustomAuthorizeAttribute(RoleID = "Employee")]
     public class EmployeeController : Controller
     {
         private readonly IEmployeeAppService _employeeAppService;
