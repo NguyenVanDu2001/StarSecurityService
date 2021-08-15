@@ -31,7 +31,6 @@ namespace StarSecurityService.Web.Areas.Admin.Controllers
 
         // POST: Admin/ServiceOffer/Create
         [HttpPost]
-        [ValidateInput(false)]
         public ActionResult Create(ServiceOffer service)
         {
             try
