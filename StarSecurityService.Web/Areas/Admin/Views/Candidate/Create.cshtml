@@ -19,76 +19,77 @@
             <div class="panel-body">
                 <div class="row" style="margin-bottom:40px">
                     <div class="col-xs-8">
-                        @using (Html.BeginForm())
+                        @using (Html.BeginForm("Create", "Candidate", FormMethod.Post, new { enctype = "multipart/form-data", id = "formCandidate" }))
                         {
                             @Html.AntiForgeryToken()
 
-                        <div class="form-horizontal">
-                            <hr />
-                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                            <div class="form-group">
-                                @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
-                                <div class="col-md-10">
-                                    @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
-                                    @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                            <div class="form-horizontal">
+                                <hr />
+                                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="col-md-10">
+                                        @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                                    </div>
                                 </div>
-                            </div>
 
-                            <div class="form-group">
-                                @Html.LabelFor(model => model.Phone, htmlAttributes: new { @class = "control-label col-md-2" })
-                                <div class="col-md-10">
-                                    @Html.EditorFor(model => model.Phone, new { htmlAttributes = new { @class = "form-control" } })
-                                    @Html.ValidationMessageFor(model => model.Phone, "", new { @class = "text-danger" })
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.Phone, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="col-md-10">
+                                        @Html.EditorFor(model => model.Phone, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.Phone, "", new { @class = "text-danger" })
+                                    </div>
                                 </div>
-                            </div>
 
-                            <div class="form-group">
-                                @Html.LabelFor(model => model.VacancyId, htmlAttributes: new { @class = "control-label col-md-2" })
-                                <div class="col-md-10">
-                                    @Html.DropDownListFor(model => model.VacancyId, (IEnumerable<SelectListItem>)ViewBag.Varcancy, new { @class = "form-control" })
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.VacancyId, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="col-md-10">
+                                        @Html.DropDownListFor(model => model.VacancyId, new SelectList(ViewBag.Varcancy, "Id", "Title"), "Select your country", new { @class = "form-control", id = "VacancyId" })
+                                    </div>
                                 </div>
-                            </div>
 
-                            <div class="form-group">
-                                @Html.LabelFor(model => model.Message, htmlAttributes: new { @class = "control-label col-md-2" })
-                                <div class="col-md-10">
-                                    @Html.EditorFor(model => model.Message, new { htmlAttributes = new { @class = "form-control" } })
-                                    @Html.ValidationMessageFor(model => model.Message, "", new { @class = "text-danger" })
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.Message, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="col-md-10">
+                                        @Html.EditorFor(model => model.Message, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.Message, "", new { @class = "text-danger" })
+                                    </div>
                                 </div>
-                            </div>
 
-                            <div class="form-group">
-                                @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
-                                <div class="col-md-10">
-                                    @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
-                                    @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="col-md-10">
+                                        @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                                    </div>
                                 </div>
-                            </div>
 
-                            <div class="form-group">
-                                @Html.LabelFor(model => model.UrlFile, htmlAttributes: new { @class = "control-label col-md-2" })
-                                <div class="col-md-10">
-                                    <input id="img" type="file" name="UrlFile" value="@((Model.UrlFile != null) ? Model.UrlFile : "new_seo-10-512.png")" class="form-control hidden" onchange="changeImg(this)">
-                                    <img id="avatar" class="thumbnail" width="300px" src="~/Areas/Asset/img/@((Model.UrlFile != null) ? Model.UrlFile : "new_seo-10-512.png")">
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.UrlFile, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="col-md-10">
+                                        <input id="img" type="file" name="Image" class="form-control hidden" onchange="changeImg(this)">
+                                        <input type="text" name="UrlFile" class="form-control hidden" value="@((Model.UrlFile != null) ? Model.UrlFile : "new_seo-10-512.png")" onchange="changeImg(this)">
+                                        <img id="avatar" class="thumbnail" width="300px" src="~/Areas/Asset/img/@((Model.UrlFile != null) ? Model.UrlFile : "new_seo-10-512.png")">
+                                    </div>
                                 </div>
-                            </div>
 
-                            <div class="form-group">
-                                @Html.LabelFor(model => model.Status, htmlAttributes: new { @class = "control-label col-md-2" })
-                                <div class="col-md-10">
-                                    <div class="checkbox">
-                                        @Html.EditorFor(model => model.Status)
-                                        @Html.ValidationMessageFor(model => model.Status, "", new { @class = "text-danger" })
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.Status, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="col-md-10">
+                                        <div class="checkbox">
+                                            @Html.EditorFor(model => model.Status)
+                                            @Html.ValidationMessageFor(model => model.Status, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="col-md-offset-2 col-md-10">
+                                        <input type="submit" value="Submit" class="btn btn-default" />
                                     </div>
                                 </div>
                             </div>
-
-                            <div class="form-group">
-                                <div class="col-md-offset-2 col-md-10">
-                                    <input type="submit" value="Submit" class="btn btn-default" />
-                                </div>
-                            </div>
-                        </div>
                         }
 
                         <div>
@@ -100,3 +101,46 @@
         </div>
     </div>
 </div><!--/.row-->
+
+@section scripts{
+    <script src="~/Areas/Asset/js/JqueyValidate/jquery.validate.min.js"></script>
+    <script>
+        jQuery.validator.addMethod('valid_phone', function (value) {
+            var regex = '(84|0[3|5|7|8|9])+([0-9]{8})$';
+            return value.trim().match(regex);
+        });
+        var $validateForm = {
+            validate: $("#formCandidate").validate({
+                rules: {
+                    Name: "required",
+                    Phone:{
+                        required: true,
+                        valid_phone: true
+                    },
+                    Email: {
+                        required: true,
+                        email: true
+                    },
+                    VacancyId: "required",
+                },
+                messages: {
+                    Name: "Please input Name!",
+                    Phone:
+                    {
+                        required: "Please input Phone!",
+                        valid_phone: 'Please enter a valid Phone without spacial chars and have 10 charactor, Phone must start with +84 || 03 || 05 || 07 || 08 || 09'
+                    },
+                    Email: {
+                        required: "Please enter email, can't be empty or blank!",
+                        email: "Please enter a valid email address!"
+                    },
+                    VacancyId: "Please choose branch!",
+                },
+                submitHandler: function (form) {
+                    form.submit();
+                }
+            })
+        };
+        (function () { $validateForm.validate })();
+    </script>
+}
