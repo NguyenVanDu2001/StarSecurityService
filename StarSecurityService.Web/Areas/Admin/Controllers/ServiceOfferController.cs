@@ -33,7 +33,7 @@ namespace StarSecurityService.Web.Areas.Admin.Controllers
 
         // POST: Admin/ServiceOffer/Create
         [HttpPost]
-        public ActionResult Create(ServiceOffer service)
+        public ActionResult Create(ServiceOfferViewModel service)
         {
             try
             {

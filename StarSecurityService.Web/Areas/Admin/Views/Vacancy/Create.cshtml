@@ -5,6 +5,22 @@
     Layout = "~/Areas/Admin/Views/Shared/_MainLayoutAdmin.cshtml";
 }
 
+@section style{
+    <style>
+        label.error {
+            color: red
+        }
+
+        .font-red {
+            color: red
+        }
+
+        .gallery img {
+            width: 100px;
+        }
+    </style>
+}
+
 <div class="row">
     <div class="col-xs-12 col-md-12 col-lg-12">
 
@@ -13,14 +29,14 @@
             <div class="panel-body">
                 <div class="row" style="margin-bottom:40px">
                     <div class="col-xs-8">
-                        @using (Html.BeginForm())
+                        @using (Html.BeginForm("Create", "Vacancy", FormMethod.Post, new { enctype = "multipart/form-data", id = "formVacancy" }))
                         {
                             @Html.AntiForgeryToken()
 
                             <div class="form-horizontal">
                                 <h4>Vacancy</h4>
                                 <hr />
-                                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                @Html.ValidationSummary(true, "", new { @class = "text-danger", id = "formVacancy" })
                                 <div class="form-group">
                                     @Html.LabelFor(model => model.Requirement, htmlAttributes: new { @class = "control-label col-md-2" })
                                     <div class="col-md-10">
@@ -84,3 +100,31 @@
         </div>
     </div>
 </div><!--/.row-->
+
+@section scripts{
+    <script src="~/Areas/Asset/js/JqueyValidate/jquery.validate.min.js"></script>
+    <script>
+        var $validateForm = {
+            validate: $("#formVacancy").validate({
+                rules: {
+                    Requirement: "required",
+                    Title: "required",
+                    BranchId: "required",
+                    ServiceOfferId: "required",
+                    Salary: "required",
+                },
+                messages: {
+                    Requirement: "Please input Name!",
+                    Title: "Please input Name!",
+                    Salary: "Please input Name!",
+                    BranchId: "Please choose BranchId!",
+                    ServiceOfferId: "Please choose ServiceOfferId!",
+                },
+                submitHandler: function (form) {
+                    form.submit();
+                }
+            })
+        };
+        (function () { $validateForm.validate })();
+    </script>
+}

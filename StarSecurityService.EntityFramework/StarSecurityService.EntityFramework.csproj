@@ -189,49 +189,9 @@
   <ItemGroup>
     <Compile Include="Data\EfRepository.cs" />
     <Compile Include="Data\StarServiceDbContext.cs" />
-    <Compile Include="Migrations\202107280923036_Add-Entity-Employees.cs" />
-    <Compile Include="Migrations\202107280923036_Add-Entity-Employees.designer.cs">
-      <DependentUpon>202107280923036_Add-Entity-Employees.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202107290918024_Add-Entity-Permission.cs" />
-    <Compile Include="Migrations\202107290918024_Add-Entity-Permission.Designer.cs">
-      <DependentUpon>202107290918024_Add-Entity-Permission.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202108031433214_Add_entity_System_relationship.cs" />
-    <Compile Include="Migrations\202108031433214_Add_entity_System_relationship.Designer.cs">
-      <DependentUpon>202108031433214_Add_entity_System_relationship.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202108031445199_add_foreignKey_table_vacancy.cs" />
-    <Compile Include="Migrations\202108031445199_add_foreignKey_table_vacancy.Designer.cs">
-      <DependentUpon>202108031445199_add_foreignKey_table_vacancy.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202108031500294_Add_foreginkey_vacancy_and_addrequriement.cs" />
-    <Compile Include="Migrations\202108031500294_Add_foreginkey_vacancy_and_addrequriement.Designer.cs">
-      <DependentUpon>202108031500294_Add_foreginkey_vacancy_and_addrequriement.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202108080350016_update-migration-employyee.cs" />
-    <Compile Include="Migrations\202108080350016_update-migration-employyee.Designer.cs">
-      <DependentUpon>202108080350016_update-migration-employyee.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202108080416188_update-entity.cs" />
-    <Compile Include="Migrations\202108080416188_update-entity.Designer.cs">
-      <DependentUpon>202108080416188_update-entity.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202108081549353_edit_entity_vacancy.cs" />
-    <Compile Include="Migrations\202108081549353_edit_entity_vacancy.Designer.cs">
-      <DependentUpon>202108081549353_edit_entity_vacancy.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202108090843073_update.cs" />
-    <Compile Include="Migrations\202108090843073_update.Designer.cs">
-      <DependentUpon>202108090843073_update.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202108121528437_edit-fix-service-offer.cs" />
-    <Compile Include="Migrations\202108121528437_edit-fix-service-offer.Designer.cs">
-      <DependentUpon>202108121528437_edit-fix-service-offer.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202108151505271_edit-database-candidate-1508.cs" />
-    <Compile Include="Migrations\202108151505271_edit-database-candidate-1508.designer.cs">
-      <DependentUpon>202108151505271_edit-database-candidate-1508.cs</DependentUpon>
+    <Compile Include="Migrations\202108161157014_updatedb.cs" />
+    <Compile Include="Migrations\202108161157014_updatedb.designer.cs">
+      <DependentUpon>202108161157014_updatedb.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -250,38 +210,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202107280923036_Add-Entity-Employees.resx">
-      <DependentUpon>202107280923036_Add-Entity-Employees.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202107290918024_Add-Entity-Permission.resx">
-      <DependentUpon>202107290918024_Add-Entity-Permission.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202108031433214_Add_entity_System_relationship.resx">
-      <DependentUpon>202108031433214_Add_entity_System_relationship.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202108031445199_add_foreignKey_table_vacancy.resx">
-      <DependentUpon>202108031445199_add_foreignKey_table_vacancy.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202108031500294_Add_foreginkey_vacancy_and_addrequriement.resx">
-      <DependentUpon>202108031500294_Add_foreginkey_vacancy_and_addrequriement.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202108080350016_update-migration-employyee.resx">
-      <DependentUpon>202108080350016_update-migration-employyee.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202108080416188_update-entity.resx">
-      <DependentUpon>202108080416188_update-entity.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202108081549353_edit_entity_vacancy.resx">
-      <DependentUpon>202108081549353_edit_entity_vacancy.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202108090843073_update.resx">
-      <DependentUpon>202108090843073_update.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202108121528437_edit-fix-service-offer.resx">
-      <DependentUpon>202108121528437_edit-fix-service-offer.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202108151505271_edit-database-candidate-1508.resx">
-      <DependentUpon>202108151505271_edit-database-candidate-1508.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202108161157014_updatedb.resx">
+      <DependentUpon>202108161157014_updatedb.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
