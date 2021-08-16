@@ -13,6 +13,8 @@ namespace StarSecurityService.Application.Branchs
     public interface IBrachAppService {
         Task<IEnumerable<Branch>> GetAllBranchs();
         Task<List<ComboboxCommonDto>> GetAllForCombobox();
+            Task<int> AddBranch(Branch branch);
+            Task<Branch>  GetByIdBranch(int idBrach);
     }
     public class BranchAppService : IBrachAppService
     {
@@ -33,6 +35,17 @@ namespace StarSecurityService.Application.Branchs
         {
             var iQueryableEmployee = await _branchRepository.GetAllAsync();
             return iQueryableEmployee.AsEnumerable();
+        }
+
+        public async Task<int> AddBranch(Branch branch)
+        {
+            var branch1=   await _branchRepository.AddAsync(branch);
+            return branch1.Id;
+        }
+
+        public async Task<Branch> GetByIdBranch(int idBrach)
+        {
+            return (await _branchRepository.GetByIdAsync(idBrach));
         }
     }
 }
