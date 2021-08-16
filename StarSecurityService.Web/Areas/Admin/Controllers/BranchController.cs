@@ -1,7 +1,9 @@
-﻿using StarSecurityService.ApplicationCore.Entities;
+﻿using StarSecurityService.Application.Branchs;
+using StarSecurityService.ApplicationCore.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 
@@ -9,11 +11,15 @@ namespace StarSecurityService.Web.Areas.Admin.Controllers
 {
     public class BranchController : Controller
     {
-        // GET: Admin/Branch
-        public ActionResult Index()
+        private readonly IBrachAppService _brachAppService;
+        public BranchController()
         {
-            IEnumerable<Branch> items = new Branch[] { new Branch(1, "a", "a", "a", "a") };
-            return View(items);
+            _brachAppService = new BranchAppService();
+    }
+        // GET: Admin/Branch
+        public async Task<ActionResult> Index()
+        {
+            return View(await _brachAppService.GetAllBranchs());
         }
 
         // GET: Admin/Branch/Details/5
@@ -23,18 +29,29 @@ namespace StarSecurityService.Web.Areas.Admin.Controllers
         }
 
         // GET: Admin/Branch/Create
-        public ActionResult Create()
+        public async Task<ActionResult> Create(int? id)
         {
-            return View();
+            if (id.HasValue)
+            {
+                var model = await _brachAppService.GetByIdBranch(id.Value);
+                return View(model);
+            }
+            return View(new Branch());
         }
 
         // POST: Admin/Branch/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public async Task<ActionResult> Create(Branch branch)
         {
             try
             {
                 // TODO: Add insert logic here
+                if (!ModelState.IsValid)
+                {
+                  await  _brachAppService.AddBranch(branch);
+                    return RedirectToAction("Index");
+
+                }
 
                 return RedirectToAction("Index");
             }
