@@ -26,8 +26,6 @@ namespace StarSecurityService.Application.Vacancys
         public async Task<Vacancy> AddAsync(Vacancy vacancy)
         {
             //TODO: get user from systems
-            vacancy.UpdateBy = 1;
-
             vacancy.UpdateAt = DateTime.Now;
             return await _vacancyRepository.AddAsync(vacancy)
     ;

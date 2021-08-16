@@ -100,39 +100,6 @@
 </div><!--/.row-->
 @section scripts {
     <script src="~/Areas/Asset/js/JqueyValidate/jquery.validate.min.js"></script>
-    <script src="~/Content/ckeditor5-build-classic/ckeditor.js"></script>
-    <script>
-        $(function () {
-            ClassicEditor
-                .create(document.querySelector('#Introduce'))
-                .then(editor => {
-                    console.log(editor);
-                })
-                .catch(error => {
-                    console.error(error);
-                });
-        })
-        $(function () {
-            ClassicEditor
-                .create(document.querySelector('#Description'))
-                .then(editor => {
-                    console.log(editor);
-                })
-                .catch(error => {
-                    console.error(error);
-                });
-        })
-        $(function () {
-            ClassicEditor
-                .create(document.querySelector('#Details'))
-                .then(editor => {
-                    console.log(editor);
-                })
-                .catch(error => {
-                    console.error(error);
-                });
-        })
-    </script>
     <script>
         var $validateForm = {
             validate: $("#formSerice").validate({
