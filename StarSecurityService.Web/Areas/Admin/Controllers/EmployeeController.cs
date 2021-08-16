@@ -13,7 +13,7 @@ using System.Web.Mvc;
 
 namespace StarSecurityService.Web.Areas.Admin.Controllers
 {
-    [CustomAuthorizeAttribute(RoleID = "Employee")]
+    [CustomAuthorize]
     public class EmployeeController : Controller
     {
         private readonly IEmployeeAppService _employeeAppService;
@@ -21,7 +21,7 @@ namespace StarSecurityService.Web.Areas.Admin.Controllers
         private readonly IServiceOfferService _serviceOfferAppServices;
         private readonly IBrachAppService _brachAppService;
         private readonly IAchievementAppService _achievementAppService;
-        public EmployeeController()
+        public EmployeeController() 
         {
             _employeeAppService = new EmployeeAppServices();
             _clientAppServices = new ClientAppServices();
@@ -29,7 +29,6 @@ namespace StarSecurityService.Web.Areas.Admin.Controllers
             _brachAppService = new BranchAppService();
             _achievementAppService = new AchievementAppService();
         }
-     
         // GET: Admin/Employee
         public async Task<ActionResult> Index()
         {

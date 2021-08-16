@@ -99,5 +99,16 @@ namespace StarSecurityService.EntityFramework.Data
         {
            return   _dbContext.Set<T>().Where(predicate);
         }
+
+        public T GetById(int id)
+        {
+            var keyValues = new object[] { id };
+            return  _dbContext.Set<T>().Find(keyValues);
+        }
+
+        public IQueryable<T> GetAll()
+        {
+            return _dbContext.Set<T>();
+        }
     }
 }
