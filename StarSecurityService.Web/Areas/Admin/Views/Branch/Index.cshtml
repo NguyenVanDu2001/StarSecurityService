@@ -1,10 +1,10 @@
 ﻿@model IEnumerable<StarSecurityService.ApplicationCore.Entities.Branch>
 
 @{
-                /**/
+    /**/
 
-                ViewBag.Title = "Index";
-                Layout = "~/Areas/Admin/Views/Shared/_MainLayoutAdmin.cshtml";
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_MainLayoutAdmin.cshtml";
 }
 <div class="row">
     <div class="col-xs-12 col-md-12 col-lg-12">
@@ -70,3 +70,8 @@
         </div>
     </div>
 </div><!--/.row-->
+@section scripts{
+    <script>
+        $("#table").DataTable();
+    </script>
+}

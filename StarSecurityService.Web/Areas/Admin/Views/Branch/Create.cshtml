@@ -5,63 +5,81 @@
     Layout = "~/Areas/Admin/Views/Shared/_MainLayoutAdmin.cshtml";
 }
 
-<div class="row">
-    <div class="col-lg-12">
-        <h1 class="page-header">Branch</h1>
-    </div>
-</div><!--/.row-->
+@section style{
+    <style>
+        label.error {
+            color: red
+        }
 
+        .font-red {
+            color: red
+        }
+
+        .gallery img {
+            width: 100px;
+        }
+    </style>
+}
+<br />
 <div class="row">
     <div class="col-xs-12 col-md-12 col-lg-12">
         <div class="panel panel-primary">
             <div class="panel-heading">Create Branch</div>
             <div class="panel-body">
-                @using (Html.BeginForm())
+                @using (Html.BeginForm("Create", "Branch", FormMethod.Post, new { id = "formBranch" }))
                 {
                     @Html.AntiForgeryToken()
 
-                    <div class="form-horizontal">
-                        <h4>Branch</h4>
-                        <hr />
-                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                        <div class="form-group">
-                            @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
-                            <div class="col-md-10">
-                                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
-                                @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
-                            </div>
+                <div class="form-horizontal">
+                    <hr />
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
                         </div>
+                    </div>
 
-                        <div class="form-group">
-                            @Html.LabelFor(model => model.Phone, htmlAttributes: new { @class = "control-label col-md-2" })
-                            <div class="col-md-10">
-                                @Html.EditorFor(model => model.Phone, new { htmlAttributes = new { @class = "form-control" } })
-                                @Html.ValidationMessageFor(model => model.Phone, "", new { @class = "text-danger" })
-                            </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Phone, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.Phone, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Phone, "", new { @class = "text-danger" })
                         </div>
+                    </div>
 
-                        <div class="form-group">
-                            @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
-                            <div class="col-md-10">
-                                @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
-                                @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
-                            </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
                         </div>
+                    </div>
 
-                        <div class="form-group">
-                            @Html.LabelFor(model => model.Address, htmlAttributes: new { @class = "control-label col-md-2" })
-                            <div class="col-md-10">
-                                @Html.EditorFor(model => model.Address, new { htmlAttributes = new { @class = "form-control" } })
-                                @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger" })
-                            </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Address, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.Address, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger" })
                         </div>
-
-                        <div class="form-group">
-                            <div class="col-md-offset-2 col-md-10">
-                                <input type="submit" value="Create" class="btn btn-default" />
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Status, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            <div class="checkbox">
+                                @Html.EditorFor(model => model.Status)
+                                @Html.ValidationMessageFor(model => model.Status, "", new { @class = "text-danger" })
                             </div>
                         </div>
                     </div>
+
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="submit" value="Submit" class="btn btn-default" />
+                        </div>
+                    </div>
+                </div>
                 }
 
                 <div>
@@ -72,3 +90,46 @@
         </div>
     </div>
 </div><!--/.row-->
+@section scripts{
+    <script src="~/Areas/Asset/js/JqueyValidate/jquery.validate.min.js"></script>
+    <script>
+        jQuery.validator.addMethod('valid_phone', function (value) {
+            var regex = '(84|0[3|5|7|8|9])+([0-9]{8})$';
+            return value.trim().match(regex);
+        });
+        var $validateForm = {
+            validate: $("#formBranch").validate({
+                rules: {
+                    Name: "required",
+                    Address: "required",
+                    Phone: {
+                        required: true,
+                        valid_phone: true
+                    },
+                    Email: {
+                        required: true,
+                        email: true
+                    },
+                },
+                messages: {
+                    Name: "Please input Name!",
+                    Address: "Please input Address!",
+                    Phone:
+                    {
+                        required: "Please input Phone!",
+                        valid_phone: 'Please enter a valid Phone without spacial chars and have 10 charactor, Phone must start with +84 || 03 || 05 || 07 || 08 || 09'
+                    },
+                    Email: {
+                        required: "Please enter email, can't be empty or blank!",
+                        email: "Please enter a valid email address!"
+                    },
+
+                },
+                submitHandler: function (form) {
+                    form.submit();
+                }
+            })
+        };
+        (function () { $validateForm.validate })();
+    </script>
+}
