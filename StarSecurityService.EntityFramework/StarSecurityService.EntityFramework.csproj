@@ -189,17 +189,9 @@
   <ItemGroup>
     <Compile Include="Data\EfRepository.cs" />
     <Compile Include="Data\StarServiceDbContext.cs" />
-    <Compile Include="Migrations\202108161157014_updatedb.cs" />
-    <Compile Include="Migrations\202108161157014_updatedb.designer.cs">
-      <DependentUpon>202108161157014_updatedb.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202108171303216_updateBranch.cs" />
-    <Compile Include="Migrations\202108171303216_updateBranch.designer.cs">
-      <DependentUpon>202108171303216_updateBranch.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202108161617050_edit-ServiceOffer-allocationHtml.cs" />
-    <Compile Include="Migrations\202108161617050_edit-ServiceOffer-allocationHtml.Designer.cs">
-      <DependentUpon>202108161617050_edit-ServiceOffer-allocationHtml.cs</DependentUpon>
+    <Compile Include="Migrations\202108171545033_update-code-entity.cs" />
+    <Compile Include="Migrations\202108171545033_update-code-entity.designer.cs">
+      <DependentUpon>202108171545033_update-code-entity.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -218,8 +210,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202108161157014_updatedb.resx">
-      <DependentUpon>202108161157014_updatedb.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202108171545033_update-code-entity.resx">
+      <DependentUpon>202108171545033_update-code-entity.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

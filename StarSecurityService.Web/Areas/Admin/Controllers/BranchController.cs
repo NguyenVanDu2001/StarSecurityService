@@ -35,8 +35,13 @@ namespace StarSecurityService.Web.Areas.Admin.Controllers
         // GET: Admin/Branch/Create
         public async Task<ActionResult> Create(int? Id)
         {
-            Branch item = await _branchService.FirstOrDefaultAsync(Id);
+            if (Id.HasValue)
+            {
+
+             Branch item = await _branchService.GetByIdBranch(Id.Value);
             return View(item);
+            }
+            return View(new Branch());
         }
 
         // POST: Admin/Branch/Create
@@ -48,7 +53,7 @@ namespace StarSecurityService.Web.Areas.Admin.Controllers
                 // TODO: Add insert logic here
                 if (!ModelState.IsValid)
                 {
-                  await  _brachAppService.AddBranch(branch);
+                  await _branchService.AddBranch(branch);
                     return RedirectToAction("Index");
 
                 }

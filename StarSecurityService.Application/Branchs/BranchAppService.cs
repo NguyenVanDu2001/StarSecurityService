@@ -40,5 +40,35 @@ namespace StarSecurityService.Application.Branchs
             var iQueryableEmployee = await _branchRepository.GetAllAsync();
             return iQueryableEmployee.AsEnumerable();
         }
+
+        public Task<Branch> AddAsync(Branch branch)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<Branch> FirstOrDefaultAsync(int? Id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task UpdateAsync(Branch branch)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task DeleteAsync(int Id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<int> AddBranch(Branch branch)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<Branch> GetByIdBranch(int idBrach)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

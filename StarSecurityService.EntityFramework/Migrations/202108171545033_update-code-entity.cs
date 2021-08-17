@@ -3,7 +3,7 @@
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class updatedb : DbMigration
+    public partial class updatecodeentity : DbMigration
     {
         public override void Up()
         {
@@ -64,6 +64,7 @@
                         Phone = c.String(),
                         Email = c.String(),
                         Address = c.String(),
+                        Status = c.Boolean(nullable: false),
                     })
                 .PrimaryKey(t => t.Id);
             

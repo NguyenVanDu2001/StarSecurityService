@@ -7,13 +7,13 @@ namespace StarSecurityService.EntityFramework.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.4.4")]
-    public sealed partial class updatedb : IMigrationMetadata
+    public sealed partial class updatecodeentity : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(updatedb));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(updatecodeentity));
         
         string IMigrationMetadata.Id
         {
-            get { return "202108161157014_updatedb"; }
+            get { return "202108171545033_update-code-entity"; }
         }
         
         string IMigrationMetadata.Source
