@@ -52,10 +52,11 @@ namespace StarSecurityService.Web.Areas.Admin.Controllers
             }
             else if (input.Id > 0)
             {
-                _FileName = (await _achievementReponsitory.GetByIdAsync(input.Id))?.Url;
+                var achi = (await _achievementReponsitory.GetByIdAsync(input.Id));
+                _FileName = achi != null ? achi?.Url : string.Empty;
             }
 
-            var achivement = new Achievement
+            var achivement = new Achievement    
             {
                 Url = _FileName,
                 Id = input.Id,
