@@ -9,6 +9,7 @@ namespace StarSecurityService.ApplicationCore.Entities
     public class Achievement : BaseEntity<int>
     {
         public string name { get; set; }
+        public string Url { get; set; }
         public virtual ICollection<EmployeeAchievement> EmployeeAchievements { get; set; }
     }
 }
