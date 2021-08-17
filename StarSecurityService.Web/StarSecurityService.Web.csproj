@@ -136,6 +136,7 @@
     <Compile Include="Areas\Admin\Controllers\ClientController.cs" />
     <Compile Include="Areas\Admin\Controllers\LoginController.cs" />
     <Compile Include="Areas\Admin\Controllers\MainAdminController.cs" />
+    <Compile Include="Areas\Admin\Model\Achievements\AchievementCreateOrUpdateViewModel.cs" />
     <Compile Include="Areas\Admin\Model\Achievements\AchievementModel.cs" />
     <Compile Include="Areas\Admin\Model\Employees\EmployeeCreate.cs" />
     <Compile Include="Areas\Admin\Model\GroupUserGrantModel.cs" />
