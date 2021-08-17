@@ -193,6 +193,10 @@
     <Compile Include="Migrations\202108161157014_updatedb.designer.cs">
       <DependentUpon>202108161157014_updatedb.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202108171303216_updateBranch.cs" />
+    <Compile Include="Migrations\202108171303216_updateBranch.designer.cs">
+      <DependentUpon>202108171303216_updateBranch.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -212,6 +216,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202108161157014_updatedb.resx">
       <DependentUpon>202108161157014_updatedb.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202108171303216_updateBranch.resx">
+      <DependentUpon>202108171303216_updateBranch.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
