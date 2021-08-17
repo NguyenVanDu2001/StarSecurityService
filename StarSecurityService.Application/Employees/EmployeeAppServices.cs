@@ -13,7 +13,10 @@ namespace StarSecurityService.Application.Employees
     {
         Task<IEnumerable<Employyee>> GetAllEmployee();
         Task<string> GetCodeEmployyee(int? idEmployee = 0);
+        Task<int> InsertAndGetIdAsync(Employyee em);
+        Task UpdateAndGetIdAsync(Employyee em);
         Task<Employyee> CheckLogin(string emailOrEmail, string password);
+        Task<Employyee> GetById(int id);
     }
     public class EmployeeAppServices : IEmployeeAppService
     {
@@ -37,6 +40,11 @@ namespace StarSecurityService.Application.Employees
             return iQueryableEmployee.AsEnumerable();
         }
 
+        public async Task<Employyee> GetById(int id)
+        {
+            return await _employyeeRepository.GetByIdAsync(id);
+        }
+
         public async Task<string> GetCodeEmployyee(int? idEmployee = 0)
         {
             if (idEmployee > 0)
@@ -45,6 +53,16 @@ namespace StarSecurityService.Application.Employees
                 return employyee != null ? employyee.Address : null;
             }
             return null;
+        }
+
+        public async Task<int> InsertAndGetIdAsync(Employyee em)
+        {
+             return  (await _employyeeRepository.AddAsync(em)).Id;
+        }
+
+        public async Task UpdateAndGetIdAsync(Employyee em)
+        {
+             await _employyeeRepository.UpdateAsync(em);
         }
     }
 }
