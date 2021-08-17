@@ -38,27 +38,33 @@ namespace StarSecurityService.Web.Areas.Admin.Controllers
             if (Id.HasValue)
             {
 
-             Branch item = await _branchService.GetByIdBranch(Id.Value);
-            return View(item);
+                Branch item = await _branchService.GetByIdBranch(Id.Value);
+                return View(item);
             }
             return View(new Branch());
         }
 
         // POST: Admin/Branch/Create
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<ActionResult> Create(Branch branch)
         {
             try
             {
-                // TODO: Add insert logic here
-                if (!ModelState.IsValid)
+
+                if (branch.Id > 0)
                 {
-                  await _branchService.AddBranch(branch);
-                    return RedirectToAction("Index");
+
+                    await _branchService.UpdateAsync(branch);
+                }
+                else
+                {
+                    await _branchService.AddBranch(branch);
 
                 }
-
                 return RedirectToAction("Index");
+
+
             }
             catch
             {

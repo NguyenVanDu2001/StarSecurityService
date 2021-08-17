@@ -52,11 +52,12 @@ namespace StarSecurityService.EntityFramework.Data
         {
            
             var entry = _dbContext.Entry(entity);
+            entry.State = EntityState.Modified; //do it here
+            _dbContext.Set<T>().Attach(entity); //attach
+            _dbContext.SaveChanges();
             if (entry.State == EntityState.Detached || entry.State == EntityState.Modified)
             {
-                entry.State = EntityState.Modified; //do it here
-                _dbContext.Set<T>().Attach(entity); //attach
-                _dbContext.SaveChanges();
+              
             } 
               
         }

@@ -2288,6 +2288,7 @@
     <Content Include="Areas\Asset\css\bootstrap.min.css" />
     <Content Include="Areas\Asset\css\datepicker.css" />
     <Content Include="Areas\Asset\css\datepicker3.css" />
+    <Content Include="Areas\Asset\css\styleMain.css" />
     <Content Include="Areas\Asset\css\styles.css" />
     <Content Include="Areas\Asset\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Areas\Asset\img\iphone7-plus-black-select-2016.jpg" />

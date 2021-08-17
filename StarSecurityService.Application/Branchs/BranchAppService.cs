@@ -51,9 +51,9 @@ namespace StarSecurityService.Application.Branchs
             throw new NotImplementedException();
         }
 
-        public Task UpdateAsync(Branch branch)
+        public async Task UpdateAsync(Branch branch)
         {
-            throw new NotImplementedException();
+          await _branchRepository.UpdateAsync(branch);
         }
 
         public Task DeleteAsync(int Id)
@@ -61,14 +61,15 @@ namespace StarSecurityService.Application.Branchs
             throw new NotImplementedException();
         }
 
-        public Task<int> AddBranch(Branch branch)
+        public async Task<int> AddBranch(Branch branch)
         {
-            throw new NotImplementedException();
+            var branch1 = await _branchRepository.AddAsync(branch);
+            return branch1.Id;
         }
 
-        public Task<Branch> GetByIdBranch(int idBrach)
+        public async Task<Branch> GetByIdBranch(int idBrach)
         {
-            throw new NotImplementedException();
+            return await _branchRepository.GetByIdAsync(idBrach);
         }
     }
 }
