@@ -43,7 +43,7 @@
 
 
 
-            <li class="active"><a href="@Url.Action("Index", "MainAdmin")"><svg class="glyph stroked dashboard-dial"><use xlink:href="#stroked-dashboard-dial"></use></svg> Home</a></li>
+           @* <li class="active"><a href="@Url.Action("Index", "MainAdmin")"><svg class="glyph stroked dashboard-dial"><use xlink:href="#stroked-dashboard-dial"></use></svg> Home</a></li>*@
 
             <li class="@(Request.Path.StartsWith(@Url.Action("Index", "Employee")) ? "active" : null)">
                 <a href="@Url.Action("Index", "Employee")"><svg class="glyph stroked clipboard with paper"><use xlink:href="#stroked-clipboard-with-paper" /></svg> Employee</a>
@@ -55,6 +55,7 @@
             <li class="@(Request.Path.StartsWith(@Url.Action("Index", "ServiceOffer")) ? "active" : null)"><a href="@Url.Action("Index", "ServiceOffer")"><svg class="glyph stroked open folder"><use xlink:href="#stroked-open-folder" /></svg> ServiceOffer</a></li>
             <li class="@(Request.Path.StartsWith(@Url.Action("Index", "Vacancy")) ? "active" : null)"><a href="@Url.Action("Index", "Vacancy")"><svg class="glyph stroked notepad "><use xlink:href="#stroked-notepad" /></svg> Vacancy</a></li>
             <li class="@(Request.Path.StartsWith(@Url.Action("Index", "Candidate")) ? "active" : null)"><a href="@Url.Action("Index", "Candidate")"><svg class="glyph stroked film"><use xlink:href="#stroked-film" /></svg> Candidate</a></li>
+            <li class="@(Request.Path.StartsWith(@Url.Action("Index", "Histories")) ? "active" : null)"><a href="@Url.Action("Index", "Histories")"><svg class="glyph stroked film"><use xlink:href="#stroked-film" /></svg> History</a></li>
             <li role="presentation" class="divider"></li>
         </ul>
 
