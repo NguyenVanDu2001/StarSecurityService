@@ -42,7 +42,7 @@ namespace StarSecurityService.EntityFramework.Data
         }
 
         public async Task<T> AddAsync(T entity)
-        {
+        {   
              _dbContext.Set<T>().Add(entity);
              _dbContext.SaveChanges();
             return entity;
