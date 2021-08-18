@@ -136,6 +136,7 @@
     <Compile Include="Areas\Admin\Controllers\ClientController.cs" />
     <Compile Include="Areas\Admin\Controllers\LoginController.cs" />
     <Compile Include="Areas\Admin\Controllers\MainAdminController.cs" />
+    <Compile Include="Areas\Admin\Model\Achievements\AchievementCreateOrUpdateViewModel.cs" />
     <Compile Include="Areas\Admin\Model\Achievements\AchievementModel.cs" />
     <Compile Include="Areas\Admin\Model\Employees\EmployeeCreate.cs" />
     <Compile Include="Areas\Admin\Model\GroupUserGrantModel.cs" />
@@ -2288,6 +2289,7 @@
     <Content Include="Areas\Asset\css\bootstrap.min.css" />
     <Content Include="Areas\Asset\css\datepicker.css" />
     <Content Include="Areas\Asset\css\datepicker3.css" />
+    <Content Include="Areas\Asset\css\styleMain.css" />
     <Content Include="Areas\Asset\css\styles.css" />
     <Content Include="Areas\Asset\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Areas\Asset\img\iphone7-plus-black-select-2016.jpg" />

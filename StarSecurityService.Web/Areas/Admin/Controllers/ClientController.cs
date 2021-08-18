@@ -1,5 +1,6 @@
 ﻿using StarSecurityService.Application.Clients;
 using StarSecurityService.ApplicationCore.Entities;
+using StarSecurityService.Web.Commons;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -73,5 +74,49 @@ namespace StarSecurityService.Web.Areas.Admin.Controllers
             _clientAppServices.DeleteAsync(id);
             return RedirectToAction("Index");
         }
+        public async Task<JsonResult> GetAllEmployeeByClientId(int Id)
+        {
+            var client = await _clientAppServices.FirstOrDefaultAsync(Id);
+            var res = new Response<List<EmployeeRes>>();
+
+            var data = new List<EmployeeRes>();
+            if (client != null)
+            {
+                if (client.ClientEmployees?.Any() == true)
+                {
+                    foreach (var item in client.ClientEmployees)
+                    {
+                        data.Add(new EmployeeRes
+                        {
+                            EmployeeName = item?.Employyees?.UserName,
+                            Status = item?.Employyees?.Status,
+                            ClientName = client.Name,
+                        });
+                    }
+                }
+            }
+            res.Data = data;
+            return Json(res,JsonRequestBehavior.AllowGet);
+        }
+    }
+    public class EmployeeRes
+    {
+        public string  EmployeeName { get; set; }
+        public string  ClientName { get; set; }
+        public string StatusName { get {
+                if (this.Status.HasValue && this.Status.Value)
+                {
+                    return "Active";
+                }
+                else
+                {
+                    return "No Active";
+                }
+            } }
+        public string  ShifDate { get; set; }
+        public string  EndDate{ get; set; }
+        public bool? Status { get; set; }
+
+
     }
 }

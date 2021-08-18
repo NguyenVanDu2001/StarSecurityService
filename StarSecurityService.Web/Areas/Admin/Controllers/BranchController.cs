@@ -11,15 +11,19 @@ namespace StarSecurityService.Web.Areas.Admin.Controllers
 {
     public class BranchController : Controller
     {
-        private readonly IBrachAppService _brachAppService;
+        private readonly IBrachAppService _branchService;
+
         public BranchController()
         {
-            _brachAppService = new BranchAppService();
-    }
+            _branchService = new BranchAppService();
+        }
+
+
         // GET: Admin/Branch
         public async Task<ActionResult> Index()
         {
-            return View(await _brachAppService.GetAllBranchs());
+            var item = await _branchService.GetAllBranchs();
+            return View(item);
         }
 
         // GET: Admin/Branch/Details/5
@@ -29,31 +33,38 @@ namespace StarSecurityService.Web.Areas.Admin.Controllers
         }
 
         // GET: Admin/Branch/Create
-        public async Task<ActionResult> Create(int? id)
+        public async Task<ActionResult> Create(int? Id)
         {
-            if (id.HasValue)
+            if (Id.HasValue)
             {
-                var model = await _brachAppService.GetByIdBranch(id.Value);
-                return View(model);
+
+                Branch item = await _branchService.GetByIdBranch(Id.Value);
+                return View(item);
             }
             return View(new Branch());
         }
 
         // POST: Admin/Branch/Create
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<ActionResult> Create(Branch branch)
         {
             try
             {
-                // TODO: Add insert logic here
-                if (!ModelState.IsValid)
+
+                if (branch.Id > 0)
                 {
-                  await  _brachAppService.AddBranch(branch);
-                    return RedirectToAction("Index");
+
+                    await _branchService.UpdateAsync(branch);
+                }
+                else
+                {
+                    await _branchService.AddBranch(branch);
 
                 }
-
                 return RedirectToAction("Index");
+
+
             }
             catch
             {
@@ -86,23 +97,8 @@ namespace StarSecurityService.Web.Areas.Admin.Controllers
         // GET: Admin/Branch/Delete/5
         public ActionResult Delete(int id)
         {
-            return View();
-        }
-
-        // POST: Admin/Branch/Delete/5
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add delete logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
+            _branchService.DeleteAsync(id);
+            return RedirectToAction("Index");
         }
     }
 }

@@ -323,6 +323,7 @@
             }
 
         };
+        let _id = $("input[name=Id]").val();
         function loadCombobox() {
             // Load combobox client table
             $.get("/Admin/Employee/LoadComboboxClient").done(function (data) {
@@ -335,13 +336,20 @@
                 //$("#tableServiceOffer tbody .select-client").html(option);
 
             })
+
             // Load combobox service
             $.get("/Admin/Employee/LoadComboboxService").done(function (data) {
                 if (data.StatusCode == 200) {
-                    let lisselected = JSON.parse($("#lstEmployeeServiceOffered").val());
+                    let lisselected = "";
+                    if (_id > 0) {
+                         lisselected = JSON.parse($("#lstEmployeeServiceOffered").val());
+                    }
                     let optionDefault;
                     for (obj of data.Data) {
-                        let selected = lisselected.filter(x => x == obj.Value).length > 0 ? "selected" : "";
+                        let selected = "";
+                        if (_id > 0) {
+                            selected = lisselected.filter(x => x == obj.Value).length > 0 ? "selected" : "";
+                        }
                         optionDefault += `<option ${selected} value="${obj.Value}">${obj.Lable}</option>`
                     }
                     $("#ServiceOffer").html(optionDefault);
@@ -355,12 +363,18 @@
                 }
             })
             //Load combobox achivement
-            $.get("/Admin/Employee/LoadComboboxAchievemt").done(function (data) {
+            $.get("/Admin/Employee/LoadComboboxAchievemt")  .done(function (data) {
                 if (data.Status != 2) {
-                    let lisselected = JSON.parse($("#lstEmployeeAchievement").val());
+                    let lisselected = "";
+                    if (_id > 0) {
+                         lisselected = JSON.parse($("#lstEmployeeAchievement").val());
+                    }
                     let optionDefault;
                     for (obj of data.Data) {
-                        let selected = lisselected.filter(x => x == obj.Value).length > 0 ? "selected" : "";
+                        let selected = "";
+                        if (_id > 0) {
+                             selected = lisselected.filter(x => x == obj.Value).length > 0 ? "selected" : "";
+                        }
                         optionDefault += `<option ${selected} value="${obj.Value}">${obj.Lable}</option>`
                     }
                     $("#Achievement").html(optionDefault);

@@ -28,6 +28,8 @@ namespace StarSecurityService.EntityFramework.Data
         public virtual DbSet<Branch> Branchs { get; set; }
         public virtual DbSet<ServiceOffer> ServiceOffers { get; set; }
         public virtual DbSet<Vacancy> Vacancies { get; set; }
+        public virtual DbSet<History> Histories { get; set; }
+        public virtual DbSet<ShareHolder> ShareHolders { get; set; }
 
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)

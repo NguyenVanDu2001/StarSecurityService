@@ -189,13 +189,17 @@
   <ItemGroup>
     <Compile Include="Data\EfRepository.cs" />
     <Compile Include="Data\StarServiceDbContext.cs" />
-    <Compile Include="Migrations\202108161157014_updatedb.cs" />
-    <Compile Include="Migrations\202108161157014_updatedb.designer.cs">
-      <DependentUpon>202108161157014_updatedb.cs</DependentUpon>
+    <Compile Include="Migrations\202108171545033_update-code-entity.cs" />
+    <Compile Include="Migrations\202108171545033_update-code-entity.designer.cs">
+      <DependentUpon>202108171545033_update-code-entity.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202108161617050_edit-ServiceOffer-allocationHtml.cs" />
-    <Compile Include="Migrations\202108161617050_edit-ServiceOffer-allocationHtml.Designer.cs">
-      <DependentUpon>202108161617050_edit-ServiceOffer-allocationHtml.cs</DependentUpon>
+    <Compile Include="Migrations\202108171619225_Add-url-achievement.cs" />
+    <Compile Include="Migrations\202108171619225_Add-url-achievement.designer.cs">
+      <DependentUpon>202108171619225_Add-url-achievement.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202108181406285_Add-Table-Historty-ShareHodlder.cs" />
+    <Compile Include="Migrations\202108181406285_Add-Table-Historty-ShareHodlder.designer.cs">
+      <DependentUpon>202108181406285_Add-Table-Historty-ShareHodlder.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -214,11 +218,14 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202108161157014_updatedb.resx">
-      <DependentUpon>202108161157014_updatedb.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202108171545033_update-code-entity.resx">
+      <DependentUpon>202108171545033_update-code-entity.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202108161617050_edit-ServiceOffer-allocationHtml.resx">
-      <DependentUpon>202108161617050_edit-ServiceOffer-allocationHtml.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202108171619225_Add-url-achievement.resx">
+      <DependentUpon>202108171619225_Add-url-achievement.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202108181406285_Add-Table-Historty-ShareHodlder.resx">
+      <DependentUpon>202108181406285_Add-Table-Historty-ShareHodlder.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

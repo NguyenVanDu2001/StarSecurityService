@@ -7,13 +7,13 @@ namespace StarSecurityService.EntityFramework.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.4.4")]
-    public sealed partial class updatedb : IMigrationMetadata
+    public sealed partial class Addurlachievement : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(updatedb));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(Addurlachievement));
         
         string IMigrationMetadata.Id
         {
-            get { return "202108161157014_updatedb"; }
+            get { return "202108171619225_Add-url-achievement"; }
         }
         
         string IMigrationMetadata.Source

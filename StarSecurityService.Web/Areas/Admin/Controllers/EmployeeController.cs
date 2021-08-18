@@ -257,7 +257,7 @@ namespace StarSecurityService.Web.Areas.Admin.Controllers
                         Id = objectEmployee.Id,
                         Address = objectEmployee.Address,
                         BirthDay = objectEmployee.BirthDay,
-                        GroupId = 3,
+                        GroupId = 1,
                         Image = fname,
                         BranchId = objectEmployee.BranchId,
                         Password = objectEmployee.Password,
@@ -268,6 +268,7 @@ namespace StarSecurityService.Web.Areas.Admin.Controllers
                         Sex = objectEmployee.Sex,
                         Status = objectEmployee.Status,
                         UserName = objectEmployee.UserName,
+                        
                     };
 
                     int idNhanVien = objectEmployee.Id;

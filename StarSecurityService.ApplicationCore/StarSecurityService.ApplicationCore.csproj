@@ -222,7 +222,9 @@
     <Compile Include="Entities\Employyee.cs" />
     <Compile Include="Entities\GroupPermesstion.cs" />
     <Compile Include="Entities\GroupUser.cs" />
+    <Compile Include="Entities\History.cs" />
     <Compile Include="Entities\Permission.cs" />
+    <Compile Include="Entities\ShareHolder.cs" />
     <Compile Include="InterFaces\IAsyncRepository.cs" />
     <Compile Include="Entities\ServiceOffer.cs" />
     <Compile Include="Entities\Vacancy.cs" />

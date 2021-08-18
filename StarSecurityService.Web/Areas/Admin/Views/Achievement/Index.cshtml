@@ -12,24 +12,31 @@
 
 <div class="row">
     <div class="col-xs-12 col-md-5 col-lg-5">
-        @using (Html.BeginForm("SubmitForm", "Achievement", FormMethod.Post))
+        @using (Html.BeginForm("SubmitForm", "Achievement", FormMethod.Post, new { enctype = "multipart/form-data" }))
         {
-            @Html.AntiForgeryToken() 
-            <input type="hidden"  name="Id" value="@(Model.entity != null ? Model.entity.Id : 0)"/>
-            <div class="panel panel-primary">
-                <div class="panel-heading">
-                    Create Achievement
-                </div>
-                <div class="panel-body">
-                    <div class="form-group">
-                        <label>Achievement Name:</label>
-                        <input type="text" name="name" class="form-control" value="@(Model.entity != null ? Model.entity.name : "")" placeholder="Enter achievement name...">
+                <input type="hidden" name="Id" value="@(Model.entity != null ? Model.entity.Id : 0)" />
+                @Html.AntiForgeryToken()
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        Create Achievement
+                    </div>
+                    <div class="panel-body">
+                        <div class="form-group">
+                            <label>Achievement Name:</label>
+                            <input type="text" name="name" class="form-control" value="@(Model.entity != null ? Model.entity.name : "")" placeholder="Enter achievement name...">
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-10">
+                                <input id="img" type="file" name="Url" class="form-control hidden" onchange="changeImg(this)">
+                                <input type="text" name="UrlFile" class="form-control hidden" value="@((Model.entity.Url != null) ? Model.entity.Url : "new_seo-10-512.png")" onchange="changeImg(this)">
+                                <img id="avatar" class="thumbnail" width="300px" src="~/Areas/Asset/img/@((Model.entity.Url != null) ? Model.entity.Url : "new_seo-10-512.png")">
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
-        }
-    </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            }
+        </div>
     <div class="col-xs-12 col-md-7 col-lg-7">
         <div class="panel panel-primary">
             <div class="panel-heading">Achievement List</div>
