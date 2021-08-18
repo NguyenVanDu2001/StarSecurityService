@@ -61,7 +61,13 @@ namespace StarSecurityService.Application.ServiceOffers
 
         public async Task UpdateAsync(ServiceOfferViewModel service, string name, int id)
         {
-            ServiceOffer db = new ServiceOffer(id, service.Title, service.Details, name, service.Introduce, service.Description, service.Status);
+            ServiceOffer db = await FirstOrDefaultAsync(id);
+            db.Title = service.Title;
+            db.Details = service.Details;
+            db.Url = name;
+            db.Introduce = service.Introduce;
+            db.Description = service.Description;
+            db.Status = service.Status;
             await _serviceOfferRepository.UpdateAsync(db);
         }
     }

@@ -32,7 +32,7 @@ namespace StarSecurityService.Web.Areas.Admin.Controllers
         }
 
         // POST: Admin/ServiceOffer/Create
-        [HttpPost]
+        [HttpPost, ValidateInput(false)]
         public ActionResult Create(ServiceOfferViewModel service)
         {
             try
@@ -69,7 +69,7 @@ namespace StarSecurityService.Web.Areas.Admin.Controllers
         }
 
         // POST: Admin/ServiceOffer/Edit/5
-        [HttpPost]
+        [HttpPost, ValidateInput(false)]
         public ActionResult Edit(int id, ServiceOfferViewModel service)
         {
             try
