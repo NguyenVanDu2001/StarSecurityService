@@ -1,6 +1,10 @@
-﻿using System;
+﻿using StarSecurityService.Application.Clients;
+using StarSecurityService.Application.ServiceOffers;
+using StarSecurityService.EntityFramework.Data;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 
@@ -8,6 +12,15 @@ namespace StarSecurityService.Web.Controllers
 {
     public class HomeController : Controller
     {
+        private StarServiceDbContext db;
+        private readonly IClientAppService _clientAppServices;
+        private readonly IServiceOfferService _serviceOfferService;
+        public HomeController()
+        {
+            db = new StarServiceDbContext();
+            _clientAppServices = new ClientAppServices();
+            _serviceOfferService = new ServiceOfferService();
+        }
         public ActionResult Index()
         {
             return View();
@@ -17,9 +30,10 @@ namespace StarSecurityService.Web.Controllers
         {
             return View();
         }
-        public ActionResult Career()
+        public async Task<ActionResult> Career()
         {
-            return View();
+            var data = await _serviceOfferService.GetAll();
+            return View(data);
         }
         public ActionResult ContactUs()
         {
@@ -33,8 +47,9 @@ namespace StarSecurityService.Web.Controllers
         {
             return View();
         }
-        public ActionResult Emiratisation()
+        public async Task<ActionResult> Emiratisation() 
         {
+            ViewBag.clientData = await _clientAppServices.FirstOrDefaultAsync(1);
             return View();
         }
         public ActionResult BoardMember()
@@ -61,9 +76,11 @@ namespace StarSecurityService.Web.Controllers
         {
             return View();
         }
-        public ActionResult Facilities()
+        public async Task<ActionResult> Facilities()
         {
-            return View();
+            ViewBag.serviceData = await _serviceOfferService.FirstOrDefaultAsync(1);
+            var data = await _serviceOfferService.GetAll();
+            return View(data);
         }
     }
 }
