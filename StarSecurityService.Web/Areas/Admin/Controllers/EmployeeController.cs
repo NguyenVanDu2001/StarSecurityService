@@ -13,6 +13,7 @@ using StarSecurityService.ApplicationCore.Commons.Enums;
 using StarSecurityService.ApplicationCore.Entities;
 using StarSecurityService.Web.Areas.Admin.Model.Employees;
 using StarSecurityService.Web.Commons;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Net;
@@ -213,6 +214,7 @@ namespace StarSecurityService.Web.Areas.Admin.Controllers
 
             try
             {
+                var bac = formCollection["employyee"];
                 var objectEmployee = new JavaScriptSerializer().Deserialize<EmployeeCreateOrUpdateInputDto>(formCollection["employyee"]);
                 var listAchivement = new JavaScriptSerializer().Deserialize<List<int>>(formCollection["listAchievement"]);
                 var listServiceOffer = new JavaScriptSerializer().Deserialize<List<int>>(formCollection["listServiceOffer"]);
@@ -254,10 +256,10 @@ namespace StarSecurityService.Web.Areas.Admin.Controllers
                     }
                     var emp = new Employyee
                     {
-                        Id = objectEmployee.Id,
+                          Id = objectEmployee.Id,
                         Address = objectEmployee.Address,
-                        BirthDay = objectEmployee.BirthDay,
-                        GroupId = 1,
+                        BirthDay = objectEmployee.BirthDay.HasValue ? objectEmployee.BirthDay.Value : DateTime.Now,
+                        GroupId = 2,
                         Image = fname,
                         BranchId = objectEmployee.BranchId,
                         Password = objectEmployee.Password,
