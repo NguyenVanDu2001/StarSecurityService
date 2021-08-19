@@ -1,4 +1,4 @@
-﻿@model IEnumerable<StarSecurityService.ApplicationCore.Entities.ServiceOffer>
+﻿
 @{
     ViewBag.Title = "Facilities";
 }
@@ -27,7 +27,11 @@
                                 <div class="column mcb-column mcb-item-bnetoqwrz one column_column">
                                     <div class="column_attr clearfix" style="">
                                         <h4 style="text-transform: uppercase;">
-                                            @ViewBag.serviceData.Description
+                                            Star Security Services provides
+                                            many services and facilities for its staff members.
+                                            The training institute of Star Security Services is well equipped
+                                            for providing professional training & has various facilities such
+                                            as:
                                         </h4>
                                     </div>
                                 </div>
@@ -38,14 +42,22 @@
                             <div class="mcb-wrap-inner">
                                 <div class="column mcb-column mcb-item-6qi9g2zs5 one column_column">
                                     <div class="column_attr clearfix" style="">
-                                        @foreach (var item in Model)
-                                        {
-                                            <p>
-                                                <ul>
-                                                    <li>@item.Details</li>
-                                                </ul>
-                                            </p>
-                                        }
+                                        <p>
+                                            <ul>
+                                                <li>Training Arabic and English candidates </li>
+                                                <li>Computer training </li>
+                                                <li>
+                                                    Basic equipment for the presentation of lessons and courses
+                                                </li>
+                                                <li>A library which has a variety of books and video tapes</li>
+                                                <li>Slide projector</li>
+                                                <li>X-Ray machine for training </li>
+
+
+
+
+                                            </ul>
+                                        </p>
                                     </div>
                                 </div>
                             </div>
@@ -61,8 +73,17 @@
                                 <div class="column mcb-column mcb-item-4d35b29d5 two-fifth column_column">
                                     <div class="column_attr clearfix align_left" style="padding:50px 10px 0 0;">
                                         <p>
-                                            @ViewBag.serviceData.Introduce
+                                            We own a large fleet of vehicles for timely transportation of
+                                            security personnel. Uniforms are provided free of cost for security
+                                            guards as well as for all escort personnel. Other perks include free
+                                            transportation, accommodation, health insurance and insurance
+                                            against accidents at work. The company is committed to honour all
+                                            service regulations and labour laws applicable in the United Arab
+                                            Emirates
                                         </p>
+
+
+
                                     </div>
                                 </div>
                                 <div class="column mcb-column mcb-item-bmvzbxptp three-fifth column_slider">
