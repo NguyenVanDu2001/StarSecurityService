@@ -1,0 +1,91 @@
+﻿@model StarSecurityService.ApplicationCore.Entities.History
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Areas/Admin/Views/Shared/_MainLayoutAdmin.cshtml";
+}
+@section style{
+    <style>
+        .col-md-6 div {
+            margin-top: 12px;
+            width: 85%;
+        }
+    </style>
+}
+@{
+        string url = string.IsNullOrEmpty(Model.Image) ? "/Areas/Asset/img/new_seo-10-512.png" : $"/Areas/Asset/img/{Model.Image}";
+        string dateTime = Model.TimeLine.ToString("yyyy-MM-dd");
+    }
+@using (Html.BeginForm("Create", "Histories", FormMethod.Post, new { enctype = "multipart/form-data", id = "formHistory" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="row  " style="margin-right :37px ; margin-top:20px">
+
+        <div class="col-md-offset-2 col-md-3 pull-right">
+            <button type="submit" class="btn btn-primary "><i class="fa fa-floppy-o" aria-hidden="true"></i> &nbsp; Save</button>
+
+            &nbsp; &nbsp;<a href="@Url.Action("Index", "Histories")" class="btn btn-danger "> <i class="fa fa-window-close" aria-hidden="true"></i> &nbsp; Cancel</a>
+        </div>
+        @*<div class="col-md-offset-2 col-md-3">
+            </div>*@
+    </div>
+    <div class="row">
+        <input type="hidden" name="Id" value="@Model.Id" />
+        <input type="hidden" name="FIleName" value="@Model.Image" />
+        <div class="col-md-6">
+            <div>
+                <label for="Title"><span class="text-secondary ">Title</span></label>
+                @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
+            </div>
+            <div>
+                <label for="TimeLine"><span class="text-secondary ">TimeLine</span></label>
+                <input type="date" class="form-control" name="TimeLine" value="@dateTime" />
+                @Html.ValidationMessageFor(model => model.TimeLine, "", new { @class = "text-danger" })
+            </div>
+
+        </div>
+        <div class="col-md-6">
+            <div>
+                <label for="Description"><span class="text-secondary ">Description</span></label>
+                @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+            </div>
+            <div>
+                <label for="Imge"><span class="text-secondary "> Image</span></label>
+
+                <input required id="img" type="file" name="Image" class="form-control hidden" onchange="changeImg(this)">
+
+                <img id="avatar" class="thumbnail" width="300px" src="@url">
+
+            </div>
+
+
+        </div>
+    </div>
+
+}
+@section scripts{
+    <script src="~/Areas/Asset/js/JqueyValidate/jquery.validate.min.js"></script>
+    <script>
+        var $validateForm = {
+            validate: $("#formHistory").validate({
+                rules: {
+                    Description: "required",
+                    Title: "required",
+                    TimeLine: "required",
+                },
+                messages: {
+                    Description: "Please input Description!",
+                    Title: "Please input Title!",
+                    TimeLine: "Please choose TimeLine!",
+                },
+                submitHandler: function (form) {
+                    form.submit();
+                }
+            })
+        };
+        (function () { $validateForm.validate })();
+    </script>
+}

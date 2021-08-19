@@ -4,6 +4,7 @@
     ViewBag.Title = "Index";
     Layout = "~/Areas/Admin/Views/Shared/_MainLayoutAdmin.cshtml";
 }
+<br />
 <div class="row">
     <div class="col-xs-12 col-md-12 col-lg-12">
 
@@ -44,13 +45,13 @@
                                         @Html.DisplayFor(modelItem => item.Title)
                                     </td>
                                     <td>
-                                        @Html.DisplayFor(modelItem => item.Details)
+                                        @Html.Raw(item.Details)
                                     </td>
                                     <td>
-                                        @Html.DisplayFor(modelItem => item.Introduce)
+                                        @Html.Raw(item.Introduce)
                                     </td>
                                     <td>
-                                        @Html.DisplayFor(modelItem => item.Description)
+                                        @Html.Raw(item.Description)
                                     </td>
                                     <td>
                                         @Html.DisplayFor(modelItem => item.Status)
