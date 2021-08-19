@@ -136,12 +136,14 @@
     <Compile Include="Areas\Admin\Controllers\HistoriesController.cs" />
     <Compile Include="Areas\Admin\Controllers\LoginController.cs" />
     <Compile Include="Areas\Admin\Controllers\MainAdminController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ShareHoldersController.cs" />
     <Compile Include="Areas\Admin\Model\Achievements\AchievementCreateOrUpdateViewModel.cs" />
     <Compile Include="Areas\Admin\Model\Achievements\AchievementModel.cs" />
     <Compile Include="Areas\Admin\Model\Employees\EmployeeCreate.cs" />
     <Compile Include="Areas\Admin\Model\GroupUserGrantModel.cs" />
     <Compile Include="Areas\Admin\Model\Histories\HistoryCreateOrYpdate.cs" />
     <Compile Include="Areas\Admin\Model\Logins\LoginModel.cs" />
+    <Compile Include="Areas\Admin\Model\ShareHolders\ShareHolderCreateOrUpdate.cs" />
     <Compile Include="Commons\Response.cs" />
     <Compile Include="Controllers\EmployeeController.cs" />
     <Compile Include="Controllers\GroupPermissionController.cs" />
@@ -2818,6 +2820,8 @@
     <Content Include="Areas\Asset\ckeditor5-build-classic\ckeditor.js.map" />
     <Content Include="Areas\Asset\ckeditor5-build-classic\LICENSE.md" />
     <Content Include="Areas\Asset\ckeditor5-build-classic\README.md" />
+    <Content Include="Areas\Admin\Views\ShareHolders\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\ShareHolders\Index.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -2863,7 +2867,6 @@
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Models\" />
     <Folder Include="Areas\Admin\Views\Base\" />
-    <Folder Include="Areas\Asset\img\" />
     <Folder Include="Models\" />
     <Folder Include="Views\Bussiness\" />
     <Folder Include="Views\Clients\" />

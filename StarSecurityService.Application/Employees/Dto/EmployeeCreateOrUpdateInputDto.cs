@@ -17,7 +17,7 @@ namespace StarSecurityService.Application.Employees.Dto
         public string Phone { get; set; }
         public bool Sex { get; set; }
         public bool Status { get; set; }
-        public DateTime BirthDay { get; set; }
+        public DateTime? BirthDay { get; set; }
         public decimal Salary { get; set; }
         public string UserName { get; set; }
         public decimal Bonus { get; set; }

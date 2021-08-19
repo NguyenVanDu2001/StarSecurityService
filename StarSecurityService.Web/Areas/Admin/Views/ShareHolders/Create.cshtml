@@ -1,0 +1,143 @@
+﻿@model StarSecurityService.ApplicationCore.Entities.ShareHolder
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Areas/Admin/Views/Shared/_MainLayoutAdmin.cshtml";
+}
+@section style{
+    <style>
+        .col-md-6 div {
+            margin-top: 12px;
+            width: 85%;
+        }
+    </style>
+}
+@{
+    string url = string.IsNullOrEmpty(Model.Image) ? "/Areas/Asset/img/new_seo-10-512.png" : $"/Areas/Asset/img/{Model.Image}";
+}
+
+@using (Html.BeginForm("Create", "ShareHolders", FormMethod.Post, new { enctype = "multipart/form-data", id = "formShareHolder" }))
+{
+    @Html.AntiForgeryToken()
+    <input type="hidden" name="Id" value="@Model.Id" />
+    <input type="hidden" name="ImageName" value="@Model.Image" />
+    <div class="form-horizontal">
+
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Phone, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Phone, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Phone, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Image, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <div>
+                    <label for="Imge"><span class="text-secondary "> Image</span></label>
+
+                    <input required id="img" type="file" name="Image" class="form-control hidden" onchange="changeImg(this)">
+
+                    <img id="avatar" class="thumbnail" width="300px" src="@url">
+
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Address, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Address, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Status, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Status, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Status, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.JoinCreateAt, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input type="date" name="JoinCreateAt" class="form-control" value="@Model.JoinCreateAt.ToString("yyyy-MM-dd")" />
+                @Html.ValidationMessageFor(model => model.JoinCreateAt, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+@section scripts{
+    <script src="~/Areas/Asset/js/JqueyValidate/jquery.validate.min.js"></script>
+    <script>
+        var $validateForm = {
+            validate: $("#formShareHolder").validate({
+                rules: {
+                    Name: "required",
+                    Email: {
+                        required: true,
+                        email: true
+                    },
+                    Phone: "required",
+                    Description: "required",
+                    Address: "required",
+                    JoinCreateAt: "required",
+                },
+                messages: {
+                    Name: "Please input Name!",
+                    Email: {
+                        required: "Please input email",
+                        email: "Please email error"
+                    },
+                    Phone: "Please input Phone!",
+                    Description: "Please input Description!",
+                    Address: "Please input Address!",
+                    JoinCreateAt: "Please input JoinCreateAt!",
+
+                },
+                submitHandler: function (form) {
+                    form.submit();
+                }
+            })
+        };
+        (function () { $validateForm.validate })();
+    </script>
+}

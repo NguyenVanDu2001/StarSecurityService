@@ -22,7 +22,8 @@
             <div class="panel-body">
                 <div class="row" style="margin-bottom:40px">
                     <div class="col-xs-8">
-                        <form id="formSerice" method="post" enctype="multipart/form-data">
+                        @using (Html.BeginForm("Edit", "ServiceOffer", FormMethod.Post, new { enctype = "multipart/form-data", id = "formSerice" }))
+                        {
                             @Html.AntiForgeryToken()
                             <div class="form-horizontal">
                                 <h4>Service Offer</h4>
@@ -51,7 +52,7 @@
                                     <div class="col-md-10">
                                         <input id="file-input" type="file" multiple name="Url">
                                         <div id="preview">
-                                            @foreach(string img in ViewBag.Image)
+                                            @foreach (string img in ViewBag.Image)
                                             {
                                                 <img src="~/Areas/Asset/img/@img" width="100px" alt="Alternate Text" />
                                             }
@@ -91,8 +92,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </form>
-
+                        }
                         <div>
                             @Html.ActionLink("Back to List", "Index")
                         </div>

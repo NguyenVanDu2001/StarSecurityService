@@ -123,5 +123,10 @@ namespace StarSecurityService.EntityFramework.Data
         {
             return  _dbContext.Set<T>().Include(includes.ToString());
         }
+
+        public T GetByIdAsNoTracking(Expression<Func<T, bool>> predicate)
+        {
+            return _dbContext.Set<T>().AsNoTracking().Where(predicate).FirstOrDefault();
+        }
     }
 }
