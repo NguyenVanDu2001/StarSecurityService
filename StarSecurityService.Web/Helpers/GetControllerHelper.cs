@@ -9,6 +9,23 @@ namespace StarSecurityService.Web.Helpers
 {
     public static class GetControllerHelper
     {
+        public static List<string> GetThumb(string Thumbs)
+        {
+            List<string> lst = new List<string>();
+            string[] subs = Thumbs.Split(' ');
+            if (subs.Length > 0)
+            {
+                foreach (var item in subs)
+                {
+                    if (!String.IsNullOrWhiteSpace(item))
+                    {
+                        lst.Add(item);
+                    }
+                }
+            }
+            return lst;
+        }
+
         public static List<Type> GetController(string namespaces)
         {
             Assembly asm = Assembly.GetExecutingAssembly();
