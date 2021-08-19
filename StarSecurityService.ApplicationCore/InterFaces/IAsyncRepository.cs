@@ -10,6 +10,7 @@ namespace StarSecurityService.ApplicationCore.InterFaces
     {
         Task<T> GetByIdAsync(int id);
         T GetById(int id);
+        T GetByIdAsNoTracking(Expression<Func<T, bool>> predicate);
         Task<IReadOnlyList<T>> ListAllAsync();
         Task<IReadOnlyList<T>> ListAsync(Expression<Func<T, bool>> predicate);
         Task<T> AddAsync(T entity);
