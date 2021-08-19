@@ -42,7 +42,7 @@ namespace StarSecurityService.Application.Employees
 
         public async Task<Employyee> GetById(int id)
         {
-            return await _employyeeRepository.GetByIdAsync(id);
+            return  _employyeeRepository.GetByIdAsNoTracking(x=>x.Id == id);
         }
 
         public async Task<string> GetCodeEmployyee(int? idEmployee = 0)
