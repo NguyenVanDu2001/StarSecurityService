@@ -60,7 +60,6 @@ namespace StarSecurityService.Web.Areas.Admin.Controllers
         }
 
         // GET: Admin/Vacancy/Edit/5
-        [HttpPost, ValidateInput(false)]
         public async Task<ActionResult> Edit(int id)
         {
             ViewBag.Branch = await _branchService.GetAllBranchs();
@@ -70,7 +69,7 @@ namespace StarSecurityService.Web.Areas.Admin.Controllers
         }
 
         // POST: Admin/Vacancy/Edit/5
-        [HttpPost]
+        [HttpPost, ValidateInput(false)]
         public async Task<ActionResult> Edit(int id, Vacancy vacancy)
         {
             try

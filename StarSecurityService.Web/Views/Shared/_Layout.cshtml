@@ -120,13 +120,13 @@
                                              src="~/Content/wp-content/uploads/2019/07/banner-logo.png"
                                              data-retina="~/Content/wp-content/uploads/2019/07/banner-logo.png"
                                              data-height="" alt="" data-no-retina />
-                                             <img class="logo-sticky scale-with-grid"
+                                        <img class="logo-sticky scale-with-grid"
                                              src="~/Content/wp-content/uploads/2019/07/banner-logo.png"
                                              data-retina="~/Content/wp-content/uploads/2019/07/banner-logo.png"
                                              data-height="" alt="" data-no-retina /><img class="logo-mobile scale-with-grid"
-                                             src="~/Content/wp-content/uploads/2019/07/banner-logo.png"
-                                             data-retina="~/Content/wp-content/uploads/2019/07/banner-logo.png"
-                                             data-height="" alt="" data-no-retina /><img class="logo-mobile-sticky scale-with-grid"                                                                                                                                   data-height="" alt="" data-no-retina />
+                                                                                         src="~/Content/wp-content/uploads/2019/07/banner-logo.png"
+                                                                                         data-retina="~/Content/wp-content/uploads/2019/07/banner-logo.png"
+                                                                                         data-height="" alt="" data-no-retina /><img class="logo-mobile-sticky scale-with-grid" data-height="" alt="" data-no-retina />
                                     </a>
                                 </div>
                                 <div class="menu_wrapper">
@@ -192,7 +192,8 @@
                                             <li id="menu-item-2099"
                                                 class="menu-item menu-item-type-post_type menu-item-object-page ">
                                                 <a href="@Url.Action("ContactUs", "Home")">
-                                                    <span class="@(Request.Path.StartsWith(@Url.Action("ContactUs", "Home")) ? "activeMenu" : null)">CONTACT US</span></a>
+                                                    <span class="@(Request.Path.StartsWith(@Url.Action("ContactUs", "Home")) ? "activeMenu" : null)">CONTACT US</span>
+                                                </a>
                                             </li>
                                         </ul>
                                     </nav><a class="responsive-menu-toggle " href="#"><i class="icon-menu-fine"></i></a>
@@ -349,7 +350,7 @@
 
     <!-- mfn_hook_bottom -->
     <!-- mfn_hook_bottom -->
-    
+
     <script type="text/javascript">
         function revslider_showDoubleJqueryError(sliderID) {
             var errorMessage = "Revolution Slider Error: You have some jquery.js library include that comes after the revolution files js include.";
@@ -400,8 +401,7 @@
             src='~/Content/wp-content/uploads/pum/pum-site-scripts71bf.js?defer&amp;generated=1622718911&amp;ver=1.16.1'></script>
     <script type='text/javascript' src='~/Content/wp-includes/js/wp-embed.min9dff.js?ver=5.3.2'></script>
 
+    @RenderSection("style", required: false)
+
 </body>
-
-<!-- Mirrored from starsecurity.ae/ by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 28 Jul 2021 13:35:32 GMT -->
-
 </html>

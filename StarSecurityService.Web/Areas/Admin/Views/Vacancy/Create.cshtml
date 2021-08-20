@@ -33,65 +33,65 @@
                         {
                             @Html.AntiForgeryToken()
 
-                        <div class="form-horizontal">
-                            <h4>Vacancy</h4>
-                            <hr />
-                            @Html.ValidationSummary(true, "", new { @class = "text-danger", id = "formVacancy" })
+                            <div class="form-horizontal">
+                                <h4>Vacancy</h4>
+                                <hr />
+                                @Html.ValidationSummary(true, "", new { @class = "text-danger", id = "formVacancy" })
 
 
-                            <div class="form-group">
-                                @Html.LabelFor(model => model.Title, htmlAttributes: new { @class = "control-label col-md-2" })
-                                <div class="col-md-10">
-                                    @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control" } })
-                                    @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.Title, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="col-md-10">
+                                        @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
+                                    </div>
                                 </div>
-                            </div>
 
-                            <div class="form-group">
-                                @Html.LabelFor(model => model.BranchId, htmlAttributes: new { @class = "control-label col-md-2" })
-                                <div class="col-md-10">
-                                    @Html.DropDownListFor(model => model.BranchId, new SelectList(ViewBag.Branch, "Id", "Name"), "Select Branch", new { @class = "form-control", id = "BranchId" })
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.BranchId, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="col-md-10">
+                                        @Html.DropDownListFor(model => model.BranchId, new SelectList(ViewBag.Branch, "Id", "Name"), "Select Branch", new { @class = "form-control", id = "BranchId" })
+                                    </div>
                                 </div>
-                            </div>
 
-                            <div class="form-group">
-                                @Html.LabelFor(model => model.ServiceOfferId, htmlAttributes: new { @class = "control-label col-md-2" })
-                                <div class="col-md-10">
-                                    @Html.DropDownListFor(model => model.ServiceOfferId, new SelectList(ViewBag.Service, "Id", "Title"), "Select ServiceOffer", new { @class = "form-control", id = "ServiceOfferId" })
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.ServiceOfferId, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="col-md-10">
+                                        @Html.DropDownListFor(model => model.ServiceOfferId, new SelectList(ViewBag.Service, "Id", "Title"), "Select ServiceOffer", new { @class = "form-control", id = "ServiceOfferId" })
+                                    </div>
                                 </div>
-                            </div>
 
-                            <div class="form-group">
-                                @Html.LabelFor(model => model.Salary, htmlAttributes: new { @class = "control-label col-md-2" })
-                                <div class="col-md-10">
-                                    <input type="number" step="0.1" id="Salary" name="Salary" class="form-control">
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.Salary, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="col-md-10">
+                                        <input type="number" step="0.1" id="Salary" name="Salary" class="form-control">
+                                    </div>
                                 </div>
-                            </div>
 
-                            <div class="form-group">
-                                @Html.LabelFor(model => model.Requirement, htmlAttributes: new { @class = "control-label col-md-2" })
-                                <div class="col-md-10">
-                                    @Html.EditorFor(model => model.Requirement, new { htmlAttributes = new { @class = "form-control" } })
-                                    @Html.ValidationMessageFor(model => model.Requirement, "", new { @class = "text-danger" })
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.Requirement, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="col-md-10">
+                                        @Html.TextAreaFor(model => model.Requirement, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.Requirement, "", new { @class = "text-danger" })
+                                    </div>
                                 </div>
-                            </div>
 
-                            <div class="form-group">
-                                @Html.LabelFor(model => model.Status, htmlAttributes: new { @class = "control-label col-md-2" })
-                                <div class="col-md-10">
-                                    <div class="checkbox">
-                                        @Html.EditorFor(model => model.Status)
-                                        @Html.ValidationMessageFor(model => model.Status, "", new { @class = "text-danger" })
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.Status, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="col-md-10">
+                                        <div class="checkbox">
+                                            @Html.EditorFor(model => model.Status)
+                                            @Html.ValidationMessageFor(model => model.Status, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="col-md-offset-2 col-md-10">
+                                        <input type="submit" value="Create" class="btn btn-default" />
                                     </div>
                                 </div>
                             </div>
-
-                            <div class="form-group">
-                                <div class="col-md-offset-2 col-md-10">
-                                    <input type="submit" value="Create" class="btn btn-default" />
-                                </div>
-                            </div>
-                        </div>
                         }
                         <div>
                             @Html.ActionLink("Back to List", "Index")
@@ -105,7 +105,19 @@
 
 @section scripts{
     <script src="~/Areas/Asset/js/JqueyValidate/jquery.validate.min.js"></script>
+    <script src="~/Areas/Asset/ckeditor5-build-classic/ckeditor.js"></script>
+
     <script>
+        $(function () {
+            ClassicEditor
+                .create(document.querySelector('#Requirement'))
+                .then(editor => {
+                    console.log(editor);
+                })
+                .catch(error => {
+                    console.error(error);
+                });
+        })
         var $validateForm = {
             validate: $("#formVacancy").validate({
                 rules: {

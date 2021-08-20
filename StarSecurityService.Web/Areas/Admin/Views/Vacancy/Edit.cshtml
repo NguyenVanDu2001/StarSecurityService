@@ -5,6 +5,22 @@
     Layout = "~/Areas/Admin/Views/Shared/_MainLayoutAdmin.cshtml";
 }
 
+@section style{
+    <style>
+        label.error {
+            color: red
+        }
+
+        .font-red {
+            color: red
+        }
+
+        .gallery img {
+            width: 100px;
+        }
+    </style>
+}
+
 <div class="row">
     <div class="col-lg-12">
         <h1 class="page-header">Vacancy</h1>
@@ -61,7 +77,7 @@
                                 <div class="form-group">
                                     @Html.LabelFor(model => model.Requirement, htmlAttributes: new { @class = "control-label col-md-2" })
                                     <div class="col-md-10">
-                                        @Html.EditorFor(model => model.Requirement, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.TextAreaFor(model => model.Requirement, new { htmlAttributes = new { @class = "form-control" } })
                                         @Html.ValidationMessageFor(model => model.Requirement, "", new { @class = "text-danger" })
                                     </div>
                                 </div>

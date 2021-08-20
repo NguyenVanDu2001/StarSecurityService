@@ -50,7 +50,16 @@
                                 {
                                     <tr>
                                         <td>
-                                            @Html.DisplayFor(modelItem => item.Requirement)
+                                            <p>
+                                                <a class="btn btn-primary" data-toggle="collapse" href="#@item.Id" role="button" aria-expanded="false" aria-controls="collapseExample">
+                                                    <i class="fa fa-file-o" aria-hidden="true"></i>
+                                                </a>
+                                            </p>
+                                            <div class="collapse" id="@item.Id">
+                                                <div class="card card-body">
+                                                    @Html.Raw(item.Requirement)
+                                                </div>
+                                            </div>
                                         </td>
                                         <td>
                                             @Html.DisplayFor(modelItem => item.Title)
