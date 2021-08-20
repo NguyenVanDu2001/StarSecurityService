@@ -43,7 +43,7 @@ namespace StarSecurityService.Web.Areas.Admin.Controllers
         }
 
         // POST: Admin/Vacancy/Create
-        [HttpPost]
+        [HttpPost, ValidateInput(false)]
         public ActionResult Create(Vacancy vacancy)
         {
             try
@@ -59,10 +59,11 @@ namespace StarSecurityService.Web.Areas.Admin.Controllers
         }
 
         // GET: Admin/Vacancy/Edit/5
+        [HttpPost, ValidateInput(false)]
         public async Task<ActionResult> Edit(int id)
         {
-            ViewBag.Branch = new SelectList(await _branchService.GetAllBranchs(), "Id", "Name");
-            ViewBag.Service = new SelectList(await _serviceOfferService.GetAll(), "Id", "Title");
+            ViewBag.Branch = await _branchService.GetAllBranchs();
+            ViewBag.Service = await _serviceOfferService.GetAll();
             var db = await _vacancyService.FirstOrDefaultAsync(id);
             return View(db);
         }
