@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Web.Mvc;
 
 namespace StarSecurityService.ApplicationCore.Entities
@@ -18,6 +19,9 @@ namespace StarSecurityService.ApplicationCore.Entities
         [AllowHtml]
         public string Description { get; set; }
         public bool Status { get; set; }
+        public int? CategoryServiceOfferId { get; set; }
+        [ForeignKey("CategoryServiceOfferId")]
+        public virtual CategoryServiceOffer CategoryServiceOffer { get; set; }
         public virtual ICollection<EmployeeServiceOffered> EmployeeServiceOffered { get; set; }
         public virtual ICollection<ClientEmployees> ClientEmployees { get; set; }
 

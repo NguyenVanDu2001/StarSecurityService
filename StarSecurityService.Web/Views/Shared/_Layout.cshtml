@@ -38,6 +38,9 @@
             background: none !important;
             padding: 0 !important;
         }
+        .activeMenu{
+            color : #0094ff !important;
+        }
     </style>
     <link rel='stylesheet' id='wp-block-library-css'
           href='~/Content/wp-includes/css/dist/block-library/style.min9dff.css?ver=5.3.2' type='text/css' media='all' />
@@ -129,31 +132,13 @@
                                 <div class="menu_wrapper">
                                     <nav id="menu">
                                         <ul id="menu-main-menu" class="menu menu-main">
-                                            <li id="menu-item-77"
-                                                class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home current-menu-item page_item page-item-2 current_page_item">
+                                            <li class="@(Request.Path.StartsWith(@Url.Action("Index", "Home")) ? "activeMenu" : null)">
                                                 <a href="@Url.Action("Index", "Home")"><span>HOME</span></a>
                                             </li>
-                                            <li id="menu-item-2026"
-                                                class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children">
+                                            <li class="@(Request.Path.StartsWith(@Url.Action("AboutUs", "Home")) ? "activeMenu" : null)">
                                                 <a href="@Url.Action("AboutUs", "Home")"><span>ABOUT</span></a>
-                                                <ul class="sub-menu">
-                                                    <li id="menu-item-2025"
-                                                        class="menu-item menu-item-type-post_type menu-item-object-page">
-                                                        <a href="@Url.Action("BoardMember", "Home")">
-                                                            <span>
-                                                                BOARD
-                                                                MEMBERS
-                                                            </span>
-                                                        </a>
-                                                    </li>
-                                                    <li id="menu-item-2024"
-                                                        class="menu-item menu-item-type-post_type menu-item-object-page">
-                                                        <a href="@Url.Action("Whysss", "Home")"><span>WHY SSS</span></a>
-                                                    </li>
-                                                </ul>
                                             </li>
-                                            <li id="menu-item-129"
-                                                class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children">
+                                            <li class="@(Request.Path.StartsWith(@Url.Action("Divisions", "Home")) ? "active" : null)">
                                                 <a href="@Url.Action("Divisions", "Home")"><span>DIVISIONS</span></a>
                                                 <ul class="sub-menu">
                                                     <li id="menu-item-2057"
@@ -167,8 +152,7 @@
                                                     </li>
                                                 </ul>
                                             </li>
-                                            <li id="menu-item-2061"
-                                                class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children">
+                                            <li class="@(Request.Path.StartsWith(@Url.Action("Profesional", "Home")) ? "active" : null)">
                                                 <a href="@Url.Action("Profesional", "Home")">
                                                     <span>
                                                         PROFESSIONAL
@@ -199,17 +183,16 @@
                                                     </li>
                                                 </ul>
                                             </li>
-                                            <li id="menu-item-2095"
-                                                class="menu-item menu-item-type-post_type menu-item-object-page">
+                                            <li class="@(Request.Path.StartsWith(@Url.Action("Emiratisation", "Home")) ? "active" : null)">
                                                 <a href="@Url.Action("Emiratisation", "Home")"><span>EMIRATISATION</span></a>
                                             </li>
-                                            <li id="menu-item-2156"
-                                                class="menu-item menu-item-type-post_type menu-item-object-page">
+                                            <li class="@(Request.Path.StartsWith(@Url.Action("Career", "Home")) ? "active" : null)">
                                                 <a href="@Url.Action("Career", "Home")"><span>CAREER</span></a>
                                             </li>
                                             <li id="menu-item-2099"
-                                                class="menu-item menu-item-type-post_type menu-item-object-page">
-                                                <a href="@Url.Action("ContactUs", "Home")"><span>CONTACT US</span></a>
+                                                class="menu-item menu-item-type-post_type menu-item-object-page ">
+                                                <a href="@Url.Action("ContactUs", "Home")">
+                                                    <span class="@(Request.Path.StartsWith(@Url.Action("ContactUs", "Home")) ? "activeMenu" : null)">CONTACT US</span></a>
                                             </li>
                                         </ul>
                                     </nav><a class="responsive-menu-toggle " href="#"><i class="icon-menu-fine"></i></a>

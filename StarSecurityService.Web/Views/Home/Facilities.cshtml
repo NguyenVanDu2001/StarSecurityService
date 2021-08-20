@@ -1,4 +1,4 @@
-﻿
+﻿@model IEnumerable<StarSecurityService.ApplicationCore.Entities.ServiceOffer>
 @{
     ViewBag.Title = "Facilities";
 }
@@ -27,11 +27,7 @@
                                 <div class="column mcb-column mcb-item-bnetoqwrz one column_column">
                                     <div class="column_attr clearfix" style="">
                                         <h4 style="text-transform: uppercase;">
-                                            Star Security Services provides
-                                            many services and facilities for its staff members.
-                                            The training institute of Star Security Services is well equipped
-                                            for providing professional training & has various facilities such
-                                            as:
+                                            @Html.Raw(ViewBag.serviceData.Details)
                                         </h4>
                                     </div>
                                 </div>
@@ -44,18 +40,7 @@
                                     <div class="column_attr clearfix" style="">
                                         <p>
                                             <ul>
-                                                <li>Training Arabic and English candidates </li>
-                                                <li>Computer training </li>
-                                                <li>
-                                                    Basic equipment for the presentation of lessons and courses
-                                                </li>
-                                                <li>A library which has a variety of books and video tapes</li>
-                                                <li>Slide projector</li>
-                                                <li>X-Ray machine for training </li>
-
-
-
-
+                                                @Html.Raw(ViewBag.serviceData.Details)
                                             </ul>
                                         </p>
                                     </div>
@@ -72,37 +57,23 @@
                             <div class="mcb-wrap-inner">
                                 <div class="column mcb-column mcb-item-4d35b29d5 two-fifth column_column">
                                     <div class="column_attr clearfix align_left" style="padding:50px 10px 0 0;">
-                                        <p>
-                                            We own a large fleet of vehicles for timely transportation of
-                                            security personnel. Uniforms are provided free of cost for security
-                                            guards as well as for all escort personnel. Other perks include free
-                                            transportation, accommodation, health insurance and insurance
-                                            against accidents at work. The company is committed to honour all
-                                            service regulations and labour laws applicable in the United Arab
-                                            Emirates
-                                        </p>
-
-
-
+                                        @Html.Raw(ViewBag.serviceData.Introduce)
                                     </div>
                                 </div>
                                 <div class="column mcb-column mcb-item-bmvzbxptp three-fifth column_slider">
                                     <div class="content_slider flat hide-dots">
+
                                         <ul class="content_slider_ul">
-                                            <li class="content_slider_li_1">
-                                                <img width="900" height="500"
-                                                     src="../wp-content/uploads/2019/11/dubai1.jpg"
-                                                     class="scale-with-grid wp-post-image" alt=""
-                                                     srcset="https://starsecurity.ae/wp-content/uploads/2019/11/dubai1.jpg 900w, https://starsecurity.ae/wp-content/uploads/2019/11/dubai1-300x167.jpg 300w, https://starsecurity.ae/wp-content/uploads/2019/11/dubai1-768x427.jpg 768w, https://starsecurity.ae/wp-content/uploads/2019/11/dubai1-260x144.jpg 260w, https://starsecurity.ae/wp-content/uploads/2019/11/dubai1-50x28.jpg 50w, https://starsecurity.ae/wp-content/uploads/2019/11/dubai1-135x75.jpg 135w"
-                                                     sizes="(max-width: 900px) 100vw, 900px" />
-                                            </li>
-                                            <li class="content_slider_li_2">
-                                                <img width="900" height="500"
-                                                     src="../wp-content/uploads/2019/12/facilities.jpg"
-                                                     class="scale-with-grid wp-post-image" alt=""
-                                                     srcset="https://starsecurity.ae/wp-content/uploads/2019/12/facilities.jpg 900w, https://starsecurity.ae/wp-content/uploads/2019/12/facilities-300x167.jpg 300w, https://starsecurity.ae/wp-content/uploads/2019/12/facilities-768x427.jpg 768w, https://starsecurity.ae/wp-content/uploads/2019/12/facilities-260x144.jpg 260w, https://starsecurity.ae/wp-content/uploads/2019/12/facilities-50x28.jpg 50w, https://starsecurity.ae/wp-content/uploads/2019/12/facilities-135x75.jpg 135w"
-                                                     sizes="(max-width: 900px) 100vw, 900px" />
-                                            </li>
+                                            @foreach (string img in ViewBag.thumbData)
+                                            {
+                                                <li class="content_slider_li_1">
+                                                    <img width="900" height="500"
+                                                         src="~/Areas/Asset/img/@img"
+                                                         class="scale-with-grid wp-post-image" alt=""
+                                                         srcset="~/Areas/Asset/img/@img 900w, ~/Areas/Asset/img/@img 300w, ~/Areas/Asset/img/@img 768w, ~/Areas/Asset/img/@img 260w, ~/Areas/Asset/img/@img 50w, ~/Areas/Asset/img/@img 135w"
+                                                         sizes="(max-width: 900px) 100vw, 900px" />
+                                                </li>
+                                            }
                                         </ul>
                                         <div class="slider_pager slider_pagination"></div>
                                     </div>
