@@ -121,7 +121,7 @@
 
                                     <div>
                                         <label for="BirthDay"><span class="text-secondary "> BirthDay</span></label>
-                                        @Html.EditorFor(model => model.BirthDay , new { htmlAttributes = new { @Value = Model.BirthDay.ToString("yyyy-MM-dd"), @class = "form-control", @type = "date" } })
+                                        <input type="date" class="form-control" id="BirthDay" name="BirthDay" value="@Model.BirthDay.ToString("yyyy-MM-dd")" />
                                         @Html.ValidationMessageFor(model => model.BirthDay, "", new { @class = "text-danger" })
                                     </div>
                                     <div>
@@ -473,6 +473,8 @@
                 formData.append("employyee", JSON.stringify(formdatainput));
                 formData.append("listAchievement", JSON.stringify($("#Achievement").val()));
                 formData.append("listServiceOffer", JSON.stringify($("#ServiceOffer").val()));
+                console.log(formdatainput);
+                debugger
 
                 $.ajax({
                     url: '/Admin/Employee/submitForm',
