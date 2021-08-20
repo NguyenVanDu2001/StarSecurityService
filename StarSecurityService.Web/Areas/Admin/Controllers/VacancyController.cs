@@ -37,8 +37,8 @@ namespace StarSecurityService.Web.Areas.Admin.Controllers
         // GET: Admin/Vacancy/Create
         public async Task<ActionResult> Create()
         {
-            ViewBag.Branch = new SelectList(await _branchService.GetAllBranchs(), "Id", "Name");
-            ViewBag.Service = new SelectList(await _serviceOfferService.GetAll(), "Id", "Title");
+            ViewBag.Branch = await _branchService.GetAllBranchs();
+            ViewBag.Service = await _serviceOfferService.GetAll();
             return View();
         }
 
@@ -73,6 +73,7 @@ namespace StarSecurityService.Web.Areas.Admin.Controllers
         {
             try
             {
+                vacancy.UpdateBy = Int32.Parse(Session["IdUser"].ToString());
                 _vacancyService.UpdateAsync(vacancy);
                 return RedirectToAction("Index");
             }

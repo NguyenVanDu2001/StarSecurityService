@@ -1,6 +1,8 @@
-﻿using System;
+﻿using StarSecurityService.Application.Vacancys;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 
@@ -8,6 +10,14 @@ namespace StarSecurityService.Web.Controllers
 {
     public class HomeController : Controller
     {
+
+        private readonly IVacancyService _vacancyService;
+
+        public HomeController()
+        {
+            _vacancyService = new VacancyService();
+        }
+
         public ActionResult Index()
         {
             return View();
@@ -17,9 +27,11 @@ namespace StarSecurityService.Web.Controllers
         {
             return View();
         }
-        public ActionResult Career()
+
+        public async Task<ActionResult> Career()
         {
-            return View();
+            var items = await _vacancyService.GetAllByStatus();
+            return View(items);
         }
         public ActionResult ContactUs()
         {

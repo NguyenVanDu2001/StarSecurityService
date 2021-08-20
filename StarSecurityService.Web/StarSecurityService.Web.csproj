@@ -2295,10 +2295,6 @@
     <Content Include="Areas\Asset\css\styleMain.css" />
     <Content Include="Areas\Asset\css\styles.css" />
     <Content Include="Areas\Asset\fonts\glyphicons-halflings-regular.svg" />
-    <Content Include="Areas\Asset\img\dowload.jpg" />
-    <Content Include="Areas\Asset\img\iphone7-plus-black-select-2016.jpg" />
-    <Content Include="Areas\Asset\img\new_seo-10-512.png" />
-    <Content Include="Areas\Asset\img\upload-cloud.png" />
     <Content Include="Areas\Asset\js\bootstrap-datepicker.js" />
     <Content Include="Areas\Asset\js\bootstrap-table.js" />
     <Content Include="Areas\Asset\js\bootstrap.js" />

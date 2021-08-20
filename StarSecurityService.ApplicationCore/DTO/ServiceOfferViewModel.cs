@@ -9,16 +9,11 @@ namespace StarSecurityService.ApplicationCore.DTO
 {
     public class ServiceOfferViewModel
     {
-
         public string Title { get; set; }
         public string Details { get; set; }
         public HttpPostedFileBase[] Url { get; set; }
         public string Introduce { get; set; }
         public string Description { get; set; }
         public bool Status { get; set; }
-
-        public ServiceOfferViewModel()
-        {
-        }
     }
 }

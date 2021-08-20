@@ -74,7 +74,7 @@
                                             @Html.DisplayFor(modelItem => item.Status)
                                         </td>
                                         <td>
-                                            <a href="@Url.Action($"Create/{item.Id}","Vacancy")" class="btn btn-success btn-sm"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+                                            <a href="@Url.Action($"Edit/{item.Id}","Vacancy")" class="btn btn-success btn-sm"><i class="fa fa-pencil" aria-hidden="true"></i></a>
                                             <a href="@Url.Action($"Delete/{item.Id}","Vacancy")" class="btn btn-danger btn-sm"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
                                         </td>
                                     </tr>
