@@ -210,6 +210,7 @@
   <ItemGroup>
     <Compile Include="Commons\Enums\StatusEnum.cs" />
     <Compile Include="DTO\ServiceOfferViewModel.cs" />
+    <Compile Include="Entities\CategoryServiceOffer.cs" />
     <Compile Include="Entities\ClientEmployees.cs" />
     <Compile Include="Entities\EmployeeAchievement .cs" />
     <Compile Include="Entities\Achievement.cs" />

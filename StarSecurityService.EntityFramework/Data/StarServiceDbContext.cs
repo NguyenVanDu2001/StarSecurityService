@@ -30,6 +30,7 @@ namespace StarSecurityService.EntityFramework.Data
         public virtual DbSet<Vacancy> Vacancies { get; set; }
         public virtual DbSet<History> Histories { get; set; }
         public virtual DbSet<ShareHolder> ShareHolders { get; set; }
+        public virtual DbSet<CategoryServiceOffer> CategoryServiceOffers { get; set; }
 
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
