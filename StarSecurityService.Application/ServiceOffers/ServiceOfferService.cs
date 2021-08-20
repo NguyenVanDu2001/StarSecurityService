@@ -31,6 +31,7 @@ namespace StarSecurityService.Application.ServiceOffers
         public async Task<ServiceOffer> AddAsync(ServiceOfferViewModel service, string name)
         {
             ServiceOffer db = new ServiceOffer(service.Title, service.Details, name, service.Introduce, service.Description, service.Status);
+            db.CategoryServiceOfferId = service.CategoryServiceOfferId;
             return await _serviceOfferRepository.AddAsync(db);
         }
 
@@ -68,6 +69,7 @@ namespace StarSecurityService.Application.ServiceOffers
             db.Introduce = service.Introduce;
             db.Description = service.Description;
             db.Status = service.Status;
+            db.CategoryServiceOfferId = service.CategoryServiceOfferId;
             await _serviceOfferRepository.UpdateAsync(db);
         }
     }
