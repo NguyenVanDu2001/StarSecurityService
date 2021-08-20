@@ -12,6 +12,7 @@ using System.Web.Mvc;
 
 namespace StarSecurityService.Web.Areas.Admin.Controllers
 {
+    [CustomAuthorize]
     public class VacancyController : Controller
     {
 
@@ -52,7 +53,7 @@ namespace StarSecurityService.Web.Areas.Admin.Controllers
                 _vacancyService.AddAsync(vacancy);
                 return RedirectToAction("Index");
             }
-            catch
+            catch(Exception ex)
             {
                 return View();
             }
