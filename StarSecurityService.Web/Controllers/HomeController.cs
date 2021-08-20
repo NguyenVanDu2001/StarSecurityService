@@ -2,6 +2,7 @@
 using StarSecurityService.Application.Clients;
 using StarSecurityService.Application.ServiceOffers;
 using StarSecurityService.EntityFramework.Data;
+using StarSecurityService.Web.Areas.Admin.Controllers;
 using StarSecurityService.Web.Helpers;
 using System;
 using System.Collections.Generic;
@@ -41,7 +42,7 @@ namespace StarSecurityService.Web.Controllers
         }
         public async Task<ActionResult> ContactUs()
         {
-            var db = await _branchService.GetAllBranchs();
+            var db = await _branchService.GetAllByStatus();
             return View(db);
         }
         public ActionResult Divisions()
