@@ -2873,6 +2873,7 @@
     <Content Include="Views\Home\Supervision.cshtml" />
     <Content Include="Views\Home\Training.cshtml" />
     <Content Include="Views\Home\Facilities.cshtml" />
+    <Content Include="Views\Shared\NavServiceOffer.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

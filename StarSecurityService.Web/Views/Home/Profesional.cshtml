@@ -1,4 +1,5 @@
-﻿@model IEnumerable<StarSecurityService.ApplicationCore.Entities.CategoryServiceOffer>
+﻿@model IEnumerable<StarSecurityService.ApplicationCore.Entities.ServiceOffer>
+@using System.Web.Script.Serialization;
 @{
     ViewBag.Title = "Profesional";
 }
@@ -11,6 +12,16 @@
         </div>
     </div>
 }
+<style>
+    .title-serviceOffer {
+        font-size: 34px;
+        font-weight: bold;
+        color: #00a2e0
+    }
+    .content-description > *, .content-introduce > * {
+        color: black;
+    }
+</style>
 <div id="Content">
     <div class="content_wrapper clearfix">
 
@@ -29,14 +40,13 @@
                                     <ul id="myMenu">
                                         @foreach (var item in Model)
                                         {
-                                            <li><a href="#" data-id ="@item" >@item.Name</a></li>
+                                            var json = new JavaScriptSerializer().Serialize(item);
+                                            <li><a href="#" data-id="@json">@item.Title</a></li>
                                         }
+
                                     </ul>
                                 </div>
-                                <div id="text-4" class="widget widget_text">
-                                    <h2 class="block-title" style="color: black; font-size: 2.3em;">Certifications</h2>
-                                    <div class="textwidget"><img src="http://themes.webdevia.com/logistica-wp/demo-2/wp-content/uploads/sites/3/2015/06/iso.jpg" rel="iso-9001"></div>
-                                </div>
+                               
                             </div>
                         </div>
                         <div class="wrap mcb-wrap mcb-wrap-w3t94awfi two-third  valign-top clearfix"
@@ -44,22 +54,28 @@
                             <div class="mcb-wrap-inner">
                                 <div class="column mcb-column mcb-item-6qi9g2zs5 one column_column">
                                     <div class="large-9 main columns">
-                                        <a id="main-content"></a>
                                         <div class="view-content">
-                                            <article>
-                                                <div class="body field">
                                                     <p>
-                                                        <img loading="lazy" class="alignnone wp-image-3092 size-full" src="http://themes.webdevia.com/bodyguard/light/wp-content/uploads/sites/2/2015/07/service-3.jpg" alt="service-3" width="791" height="363"><br>
-                                                        The quick, brown fox jumps over a lazy dog. DJs flock by when MTV ax quiz prog. Junk MTV quiz graced by fox whelps. Bawds jog, flick quartz, vex nymphs. Waltz, bad nymph, for quick jigs vex! Fox nymphs grab quick-jived waltz. Brick quiz whangs jumpy veldt fox. Bright vixens jump; dozy fowl quack. Quick wafting zephyrs vex bold Jim. Quick zephyrs blow, vexing daft Jim.
+                                                        <img  id="url-file" class="alignnone wp-image-3092 size-full" src="http://themes.webdevia.com/bodyguard/light/wp-content/uploads/sites/2/2015/07/service-3.jpg" alt="service-3" width="300" height="150"><br>
                                                     </p>
-                                                    <p>Sex-charged fop blew my junk TV quiz. How quickly daft jumping zebras vex. Two driven jocks help fax my big quiz. Quick, Baz, get my woven flax jodhpurs! “Now fax quiz Jack! ” my brave ghost pled. Five quacking zephyrs jolt my wax bed. Flummoxed by job, kvetching W. zaps Iraq. Cozy sphinx waves quart jug of bad milk. A very bad quack might jinx zippy fowls. Few quips galvanized the mock jury box.</p>
-                                                    <p>Quick brown dogs jump over the lazy fox. The jay, pig, fox, zebra, and my wolves quack! Blowzy red vixens fight for a quick jump. Joaquin Phoenix was gazed by MTV for luck. A wizard’s job is to vex chumps quickly in fog. Watch “Jeopardy! “, Alex Trebek’s fun TV quiz game. Woven silk pyjamas exchanged for blue quartz. Brawny gods just flocked up to quiz and vex him.</p>
-                                                    <p>Adjusting quiver and bow, Zompyc[1] killed the fox. My faxed joke won a pager in the cable TV quiz show. Amazingly few discotheques provide jukeboxes. My girl wove six dozen plaid jackets before she quit. Six big devils from Japan quickly forgot how to waltz. Big July earthquakes confound zany experimental vow. Foxy parsons quiz and cajole the lovably dim wiki-girl. Have a pick: twenty six letters – no forcing a jumbled quiz!</p>
-                                                    <p>Crazy Fredericka bought many very exquisite opal jewels. Sixty zippers were quickly picked from the woven jute bag. A quick movement of the enemy will jeopardize six gunboats. All questions asked by five watch experts amazed the judge. Jack quietly moved up front and seized the big ball of wax. The quick, brown fox jumps over a lazy dog. DJs flock by when MTV ax quiz prog. Junk MTV quiz graced by fox whelps. Bawds jog, flick quartz, vex nymphs. Waltz, bad nymph, for quick jigs vex! Fox nymphs grab quick-jived waltz. Brick quiz whangs jumpy veldt fox. Bright vixens jump; dozy fowl quack. Quick wafting zephyrs vex bold Jim. Quick zephyrs blow, vexing daft Jim. Sex-charged fop blew my</p>
-                                                </div>
-                                            </article>
-                                        </div>
+                                                    
+                                                    <div class="title-serviceOffer">
+                                                    </div>  
+                                                    <br />
+                                                    <div class="introduce-service">
+                                                        <h3 style="color:gray">Introduce Service</h3>
+                                                        <div class="content-introduce">
 
+                                                        </div>
+                                                    </div>
+                                                    <br />
+                                                    <div class="description-serviceOffer">
+                                                        <h3 style="color:gray">Description</h3>
+                                                        <div class="content-description">
+
+                                                        </div>
+                                                    </div>
+                                                </div>
                                     </div>
                                 </div>
                             </div>
@@ -89,17 +105,23 @@
     </div>
 </div>
 @section scripts{
+    <script src="~/Areas/Asset/tables/Datatable/jquery-3.5.1.js"></script>
     <script>
         (function () {
-
             $(document).on("click", "#myMenu a", function () {
+                $("#myMenu li").removeAttr("style", "background-color:#00a2e0");
+                $(this).closest("li").attr("style", "background-color:#00a2e0");
+
                 let categoryId = $(this).attr("data-id");
-                console.log(categoryId);
-                //$.get(`/Home/GetServiceOfferByCateId/${categoryId}`).done(function (result) {
-                //    console.log(result);
-                //})
-            })
+                var json = JSON.parse(categoryId);
+                console.log(json);
+                $("#url-file").attr("src", `../../Areas/Asset/img/${json.Url}`);
+                $(".title-serviceOffer").html(json.Title)
+                $(".content-description").html(json.Description);
+                $(".content-introduce").html(json.Introduce);
+            });
+            $("#myMenu a").trigger("click");
         })()
 
     </script>
-    } 
+}
