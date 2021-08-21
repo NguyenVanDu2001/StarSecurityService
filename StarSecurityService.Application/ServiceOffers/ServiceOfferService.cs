@@ -16,6 +16,8 @@ namespace StarSecurityService.Application.ServiceOffers
         Task<List<ComboboxCommonDto>> GetComboboxServiceOffer();
         Task<ServiceOffer> AddAsync(ServiceOfferViewModel service, string name);
         Task<IEnumerable<ServiceOffer>> GetAll();
+
+        Task<IEnumerable<ServiceOffer>> GetAllByStatus();
         Task<ServiceOffer> FirstOrDefaultAsync(int Id);
         Task UpdateAsync(ServiceOfferViewModel service, string name, int id);
         Task DeleteAsync(int Id);
@@ -49,6 +51,12 @@ namespace StarSecurityService.Application.ServiceOffers
         public async Task<IEnumerable<ServiceOffer>> GetAll()
         {
             return await _serviceOfferRepository.GetAllAsync();
+        }
+
+        public async Task<IEnumerable<ServiceOffer>> GetAllByStatus()
+        {
+            IEnumerable<ServiceOffer> service = await _serviceOfferRepository.GetAllAsync(x => x.Status == true);
+            return service;
         }
 
         public async Task<List<ComboboxCommonDto>> GetComboboxServiceOffer()
