@@ -1,11 +1,13 @@
 ﻿using StarSecurityService.Application.Branchs;
 using StarSecurityService.Application.CategoryServiceoofers;
 using StarSecurityService.Application.Clients;
+using StarSecurityService.Application.Histories;
 using StarSecurityService.Application.ServiceOffers;
 using StarSecurityService.ApplicationCore.Entities;
 using StarSecurityService.EntityFramework.Data;
 using StarSecurityService.Web.Areas.Admin.Controllers;
 using StarSecurityService.Web.Helpers;
+using StarSecurityService.Web.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,6 +23,8 @@ namespace StarSecurityService.Web.Controllers
         private readonly IClientAppService _clientAppServices;
         private readonly IServiceOfferService _serviceOfferService;
         private readonly IBrachAppService _branchService;
+        private readonly IHistoryService _historyService;
+        private readonly IShareHolderService _shareHolderService;
         private readonly IServiceOfferAppService _CategoryServiceOfferRepository;
         public HomeController()
         {
@@ -29,15 +33,20 @@ namespace StarSecurityService.Web.Controllers
             _serviceOfferService = new ServiceOfferService();
             _branchService = new BranchAppService();
             _CategoryServiceOfferRepository = new CategoryServiceOfferService();
+            _historyService = new HistoryService();
+            _shareHolderService = new ShareHolderService();
         }
         public ActionResult Index()
         {
             return View();
         }
 
-        public ActionResult AboutUs()
-        { 
-            return View();
+        public async Task<ActionResult> AboutUs()
+        {
+            var model = new HomeAboutUs();
+            model.HistoryModel = await _historyService.GetAll();
+            model.ShareHolderModel = await _shareHolderService.GetAll();
+            return View(model);
         }
         public ActionResult Career()
         {

@@ -46,6 +46,7 @@
     <Compile Include="ApplicationBaseService.cs" />
     <Compile Include="Branchs\BranchAppService.cs" />
     <Compile Include="CategoryServiceoofers\CategoryServiceOfferService.cs" />
+    <Compile Include="ShareHolders\ShareHolderService.cs" />
     <Compile Include="Histories\HistoryService.cs" />
     <Compile Include="CLientServices\ClientEmployeeAppService.cs" />
     <Compile Include="Candidates\CandidateService.cs" />

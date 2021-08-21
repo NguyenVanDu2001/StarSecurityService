@@ -10,6 +10,7 @@ using System.Web.Mvc;
 
 namespace StarSecurityService.Web.Areas.Admin.Controllers
 {
+    [CustomAuthorize]
     public class GroupUserController : Controller
     {
         private readonly IAsyncRepository<Bussiness> _bussinessReponsitory;
@@ -29,6 +30,39 @@ namespace StarSecurityService.Web.Areas.Admin.Controllers
         {
             var data = await _groupUserReponsitory.ListAllAsync();
             return View(data);
+        }
+        public async Task<ActionResult> Create(int? id)
+        {
+            var groupUser = new GroupUser();
+            if (id.HasValue)
+            {
+                groupUser =  _groupUserReponsitory.GetById(id.Value);
+            }
+            return View(groupUser);
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        [ValidateInput(false)]
+        public async Task<ActionResult> Create(GroupUser groupUser)
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    if (groupUser.Id > 0)
+                        await _groupUserReponsitory.UpdateAsync(groupUser);
+                    else
+                        await _groupUserReponsitory.AddAsync(groupUser);
+
+                    return RedirectToAction("Index");
+                }
+                return View();
+
+            }
+            catch (Exception ex)
+            {
+                return View();
+            }
         }
         public async Task<ActionResult> GrantPermisstion(int groupId)
         {

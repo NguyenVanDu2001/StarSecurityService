@@ -13,6 +13,7 @@ using StarSecurityService.Web.Areas.Admin.Model.ShareHolders;
 
 namespace StarSecurityService.Web.Areas.Admin.Controllers
 {
+    [CustomAuthorize]
     public class ShareHoldersController : Controller
     {
         private StarServiceDbContext db = new StarServiceDbContext();
