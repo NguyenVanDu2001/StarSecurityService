@@ -8,6 +8,7 @@ using System.Web.Mvc;
 
 namespace StarSecurityService.Web.Areas.Admin.Controllers
 {
+    [CustomAuthorize]
     public class AchievementController : Controller
     {
          private readonly IAsyncRepository<Achievement> _achievementReponsitory;

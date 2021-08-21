@@ -156,6 +156,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\GetControllerHelper.cs" />
+    <Compile Include="Models\HomeModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -238,6 +239,7 @@
     <Content Include="Areas\Admin\Views\CategoryServiceOffers\Details.cshtml" />
     <Content Include="Areas\Admin\Views\CategoryServiceOffers\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\CategoryServiceOffers\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\GroupUser\Create.cshtml" />
     <None Include="Areas\Admin\Views\Shared\401.cshtml" />
     <Content Include="Areas\Asset\ckeditor\adapters\jquery.js" />
     <Content Include="Areas\Asset\ckeditor\build-config.js" />
@@ -2303,9 +2305,12 @@
     <Content Include="Areas\Asset\css\styleMain.css" />
     <Content Include="Areas\Asset\css\styles.css" />
     <Content Include="Areas\Asset\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Areas\Asset\img\a2.jpg" />
+    <Content Include="Areas\Asset\img\dai-tu.png" />
     <Content Include="Areas\Asset\img\dowload.jpg" />
     <Content Include="Areas\Asset\img\iphone7-plus-black-select-2016.jpg" />
     <Content Include="Areas\Asset\img\new_seo-10-512.png" />
+    <None Include="Areas\Asset\img\dowload.ipg" />
     <Content Include="Areas\Asset\img\upload-cloud.png" />
     <Content Include="Areas\Asset\js\bootstrap-datepicker.js" />
     <Content Include="Areas\Asset\js\bootstrap-table.js" />
@@ -2873,7 +2878,6 @@
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Models\" />
     <Folder Include="Areas\Admin\Views\Base\" />
-    <Folder Include="Models\" />
     <Folder Include="Views\Bussiness\" />
     <Folder Include="Views\Clients\" />
     <Folder Include="Views\GroupPermission\" />

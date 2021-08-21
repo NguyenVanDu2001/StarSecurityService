@@ -11,6 +11,7 @@ using StarSecurityService.EntityFramework.Data;
 
 namespace StarSecurityService.Web.Areas.Admin.Controllers
 {
+    [CustomAuthorize]
     public class CategoryServiceOffersController : Controller
     {
         private StarServiceDbContext db = new StarServiceDbContext();
