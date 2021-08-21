@@ -58,6 +58,8 @@
             <li class="@(Request.Path.StartsWith(@Url.Action("Index", "Histories")) ? "active" : null)"><a href="@Url.Action("Index", "Histories")"><svg class="glyph stroked film"><use xlink:href="#stroked-film" /></svg> History</a></li>
             <li class="@(Request.Path.StartsWith(@Url.Action("Index", "ShareHolders")) ? "active" : null)"><a href="@Url.Action("Index", "ShareHolders")"><svg class="glyph stroked film"><use xlink:href="#stroked-film" /></svg> Share  Holders</a></li>
             <li class="@(Request.Path.StartsWith(@Url.Action("Index", "CategoryServiceOffers")) ? "active" : null)"><a href="@Url.Action("Index", "CategoryServiceOffers")"><svg class="glyph stroked film"><use xlink:href="#stroked-film" /></svg> Category serviceoffer</a></li>
+            <li class="@(Request.Path.StartsWith(@Url.Action("Index", "GroupUser")) ? "active" : null)"><a href="@Url.Action("Index", "GroupUser")"><svg class="glyph stroked film"><use xlink:href="#stroked-film" /></svg>  Group User</a></li>
+            <li class="@(Request.Path.StartsWith(@Url.Action("Index", "Bussiness")) ? "active" : null)"><a href="@Url.Action("Index", "Bussiness")"><svg class="glyph stroked film"><use xlink:href="#stroked-film" /></svg>  Bussiness</a></li>
             <li role="presentation" class="divider"></li>
         </ul>
 
@@ -69,10 +71,10 @@
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
 
-    <script src="~/Areas/Asset/js/chart.min.js"></script>
+    @*<script src="~/Areas/Asset/js/chart.min.js"></script>
     <script src="~/Areas/Asset/js/chart-data.js"></script>
     <script src="~/Areas/Asset/js/easypiechart.js"></script>
-    <script src="~/Areas/Asset/js/easypiechart-data.js"></script>
+    <script src="~/Areas/Asset/js/easypiechart-data.js"></script>*@
     <script src="~/Areas/Asset/js/bootstrap-datepicker.js"></script>
 
     <script src="~/Areas/Asset/tables/Datatable/jquery.dataTables.min.js"></script>

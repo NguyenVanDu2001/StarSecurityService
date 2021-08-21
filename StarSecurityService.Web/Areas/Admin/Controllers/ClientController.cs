@@ -10,6 +10,7 @@ using System.Web.Mvc;
 
 namespace StarSecurityService.Web.Areas.Admin.Controllers
 {
+    [CustomAuthorize]
     public class ClientController : Controller
     {
         private readonly IClientAppService _clientAppServices;

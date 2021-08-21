@@ -238,6 +238,7 @@
     <Content Include="Areas\Admin\Views\CategoryServiceOffers\Details.cshtml" />
     <Content Include="Areas\Admin\Views\CategoryServiceOffers\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\CategoryServiceOffers\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\GroupUser\Create.cshtml" />
     <None Include="Areas\Admin\Views\Shared\401.cshtml" />
     <Content Include="Areas\Asset\ckeditor\adapters\jquery.js" />
     <Content Include="Areas\Asset\ckeditor\build-config.js" />

@@ -29,7 +29,7 @@ namespace StarSecurityService.Web.Areas.Admin.Controllers
         }
         public async Task<ActionResult> Update()
         {
-            var controller = GetControllerHelper.GetController("StarSecurityService.Web.Controllers");
+            var controller = GetControllerHelper.GetController("StarSecurityService.Web.Areas.Admin.Controllers");
             // insert controller
             foreach (var ctrl in controller)
             {
@@ -50,7 +50,7 @@ namespace StarSecurityService.Web.Areas.Admin.Controllers
                     Permission p = new Permission
                     {
                         Id = ctrl.Name + "-" + act, // CategorController-Index
-                        Name = ctrl.Name,
+                        Name = act,
                         BusinessId = ctrl.Name,
                         Status = false
                     };
