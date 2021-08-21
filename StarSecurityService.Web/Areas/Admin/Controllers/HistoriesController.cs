@@ -13,6 +13,7 @@ using StarSecurityService.Web.Areas.Admin.Model.Histories;
 
 namespace StarSecurityService.Web.Areas.Admin.Controllers
 {
+    [CustomAuthorize]
     public class HistoriesController : Controller
     {
         private StarServiceDbContext db = new StarServiceDbContext();

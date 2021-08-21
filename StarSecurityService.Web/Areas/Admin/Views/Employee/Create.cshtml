@@ -133,6 +133,24 @@
                                         <label for="Bonus"><span class="text-secondary "> Upload File</span></label>
                                         <input id="file-input" type="file" class="form-control" value="@Model.Image" />
                                     </div>
+                                    <div>
+                                        <label for="Grander"><span class="text-secondary "> Branch</span></label>
+                                        <select class=" form-control" id="BranchId" name="BranchId">
+                                            <option value=""> Choose branch</option>
+                                        </select>
+                                    </div>
+                                    <div>
+                                        <label for="GroupId"><span class="text-secondary "> Group User</span></label>
+                                        @Html.DropDownList("GroupId", new SelectList(ViewBag.lstGrUser, "Id", "Name"), "---Choose group user---", htmlAttributes: new { @class = "form-control" })
+
+                                        @*<select class=" form-control" id="GroupId" name="GroupId">
+                                            <option value=""> Choose Group User</option>
+                                            @foreach (var item in collection)
+                                            {
+
+                                            }
+                                        </select>*@
+                                    </div>
                                 </div>
 
 
@@ -147,12 +165,12 @@
                                         <label for="Grander"><span class="text-secondary "> Status</span></label>
                                         @Html.EditorFor(model => model.Status)
                                     </div>
-                                    <div>
+                                    @*<div>
                                         <label for="Grander"><span class="text-secondary "> Branch</span></label>
                                         <select class=" form-control" id="BranchId" name="BranchId">
                                             <option value=""> Choose branch</option>
                                         </select>
-                                    </div>
+                                    </div>*@
                                     <div>
                                         <label for="Grander"><span class="text-secondary "> ServiceOffer</span></label>
                                         <select id="ServiceOffer" multiple class="form-control">
@@ -358,6 +376,7 @@
             //Load combobox branch
             $.get("/Admin/Employee/LoadComboboxBranch").done(function (data) {
                 if (data.StatusCode == 200) {
+                    debugger
                     fillOptionSelect("#BranchId", data.Data, 'Choose branch',@Model.BranchId);
 
                 }
@@ -425,7 +444,8 @@
                         //  phone: true
                     },
                     Salary: "required",
-                    UserName: "required"
+                    UserName: "required",
+                    GroupId: "required"
                 },
                 messages: {
                     BranchId: "Please choose branch",
@@ -440,6 +460,7 @@
                     },
                     BirthDay: "Please choose birth day ,can't be blank ",
                     UserName: "Please enter user name ,can't be blank",
+                    GroupId: "Please choose group user ,can't be blank",
                     Salary: "Please enter salary ,can't be blank",
                     Phone: {
                         required: "Please enter phone number ,can't be blank",
@@ -447,7 +468,6 @@
                     }
                 },
                 submitHandler: function (form) {
-                    debugger
                     $validateForm.ajaxSubmitForm(form);
                     // form.submit();
                 }

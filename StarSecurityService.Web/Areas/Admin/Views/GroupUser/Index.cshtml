@@ -37,7 +37,7 @@
             @(item.Status ? "Active":"No Active")
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+            @Html.ActionLink("Edit", "Create", new { id = item.Id }) |
             @Html.ActionLink("GrantPermisstion", "GrantPermisstion", new { groupId = item.Id }) 
             @Html.ActionLink("Delete", "Delete", new { id = item.Id })
         </td>

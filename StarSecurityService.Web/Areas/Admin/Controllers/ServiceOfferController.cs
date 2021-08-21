@@ -12,6 +12,7 @@ using System.Web.Mvc;
 
 namespace StarSecurityService.Web.Areas.Admin.Controllers
 {
+    [CustomAuthorize]
     public class ServiceOfferController : Controller
     {
         private readonly IServiceOfferService _serviceOfferService;
