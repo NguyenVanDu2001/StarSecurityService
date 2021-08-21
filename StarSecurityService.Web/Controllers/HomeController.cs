@@ -75,7 +75,7 @@ namespace StarSecurityService.Web.Controllers
         }
         public async Task<ActionResult> Facilities()
         {
-            var data = db.ServiceOffers.First();
+            var data = db.ServiceOffers.FirstOrDefault();
             var thumb = GetControllerHelper.GetThumb(data.Url);
             ViewBag.serviceData = data;
             ViewBag.thumbData = thumb;

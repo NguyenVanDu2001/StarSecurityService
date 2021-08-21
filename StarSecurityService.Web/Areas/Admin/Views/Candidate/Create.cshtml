@@ -60,9 +60,9 @@
                                 </div>
 
                                 <div class="form-group">
-                                    @Html.LabelFor(model => model.VacancyId, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <label class="control-label col-md-2">Vancancy</label>
                                     <div class="col-md-10">
-                                        @Html.DropDownListFor(model => model.VacancyId, new SelectList(ViewBag.Varcancy, "Id", "Title"), "Select your country", new { @class = "form-control", id = "VacancyId" })
+                                        @Html.DropDownListFor(model => model.VacancyId, new SelectList(ViewBag.Varcancy, "Id", "Title"), "Select your vacancy", new { @class = "form-control", id = "VacancyId" })
                                     </div>
                                 </div>
 
@@ -151,7 +151,7 @@
                         required: "Please enter email, can't be empty or blank!",
                         email: "Please enter a valid email address!"
                     },
-                    VacancyId: "Please choose branch!",
+                    VacancyId: "Please choose Vacancy!",
                 },
                 submitHandler: function (form) {
                     form.submit();

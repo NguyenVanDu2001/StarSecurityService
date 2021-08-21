@@ -127,6 +127,7 @@
     <Compile Include="Areas\Admin\Controllers\BaseController.cs" />
     <Compile Include="Areas\Admin\Controllers\BussinessController.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\CategoryServiceOffersController.cs" />
     <Compile Include="Areas\Admin\Controllers\CustomAuthorizeAttribute.cs" />
     <Compile Include="Areas\Admin\Controllers\GroupUserController.cs" />
     <Compile Include="Areas\Admin\Controllers\AchievementController.cs" />
@@ -232,6 +233,11 @@
     <Content Include="Areas\Asset\ckeditor5-build-classic\translations\zh.js" />
     <Content Include="Areas\Admin\Views\Histories\Create.cshtml" />
     <Content Include="Areas\Admin\Views\Histories\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\CategoryServiceOffers\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\CategoryServiceOffers\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\CategoryServiceOffers\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\CategoryServiceOffers\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\CategoryServiceOffers\Index.cshtml" />
     <None Include="Areas\Admin\Views\Shared\401.cshtml" />
     <Content Include="Areas\Asset\ckeditor\adapters\jquery.js" />
     <Content Include="Areas\Asset\ckeditor\build-config.js" />
