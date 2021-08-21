@@ -1,6 +1,8 @@
 ﻿using StarSecurityService.Application.Branchs;
+using StarSecurityService.Application.CategoryServiceoofers;
 using StarSecurityService.Application.Clients;
 using StarSecurityService.Application.ServiceOffers;
+using StarSecurityService.ApplicationCore.Entities;
 using StarSecurityService.EntityFramework.Data;
 using StarSecurityService.Web.Areas.Admin.Controllers;
 using StarSecurityService.Web.Helpers;
@@ -19,13 +21,14 @@ namespace StarSecurityService.Web.Controllers
         private readonly IClientAppService _clientAppServices;
         private readonly IServiceOfferService _serviceOfferService;
         private readonly IBrachAppService _branchService;
-
+        private readonly IServiceOfferAppService _CategoryServiceOfferRepository;
         public HomeController()
         {
             db = new StarServiceDbContext();
             _clientAppServices = new ClientAppServices();
             _serviceOfferService = new ServiceOfferService();
             _branchService = new BranchAppService();
+            _CategoryServiceOfferRepository = new CategoryServiceOfferService();
         }
         public ActionResult Index()
         {
@@ -49,9 +52,15 @@ namespace StarSecurityService.Web.Controllers
         {
             return View();
         }
-        public ActionResult Profesional()
+        public async Task<ActionResult> Profesional()
         {
-            return View();
+            var data = await _CategoryServiceOfferRepository.GetAll();
+            return View(data);
+        }
+        public async Task<JsonResult> GetServiceOfferByCateId(int id)
+        {
+           // var res = new Response<List<ComboboxCommonDto>>();
+            return Json(1,JsonRequestBehavior.AllowGet);
         }
         public ActionResult Emiratisation()
         {
@@ -76,11 +85,17 @@ namespace StarSecurityService.Web.Controllers
         public async Task<ActionResult> Facilities()
         {
             var data = db.ServiceOffers.FirstOrDefault();
-            var thumb = GetControllerHelper.GetThumb(data.Url);
+            if (data != null)
+            {
+                var thumb = GetControllerHelper.GetThumb(data.Url);
+                ViewBag.thumbData = thumb;
+            }
+            else
+            {
+                return RedirectToAction("Index");
+            }
             ViewBag.serviceData = data;
-            ViewBag.thumbData = thumb;
             return View();
         }
-
     }
 }
