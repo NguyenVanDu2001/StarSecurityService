@@ -4,7 +4,23 @@
     ViewBag.Title = "Index";
     Layout = "~/Areas/Admin/Views/Shared/_MainLayoutAdmin.cshtml";
 }
-
+@section style{
+    <style>
+        #title {
+            font-size: 1.5rem;
+            width: 250px;
+            line-height: 2rem;
+            max-height: 9rem;
+            -webkit-box-orient: vertical;
+            display: block;
+            display: -webkit-box;
+            overflow: hidden !important;
+            text-overflow: ellipsis;
+            -webkit-line-clamp: 2;
+        }
+    </style>
+}
+    <br />
 <div class="row">
     <div class="col-xs-12 col-md-12 col-lg-12">
 
@@ -50,28 +66,10 @@
                                 {
                                     <tr>
                                         <td>
-                                            <p>
-                                                <a data-toggle="collapse" href="#@item.Id" role="button" aria-expanded="false" aria-controls="collapseExample">
-                                                    <i class="fa fa-file-o" aria-hidden="true"></i>
-                                                </a>
-                                            </p>
-                                            <div class="collapse" id="@item.Id">
-                                                <div class="card card-body">
-                                                    @Html.Raw(item.Requirement)
-                                                </div>
-                                            </div>
+                                            <h4 id="title" title="@Html.Raw(item.Requirement)">@Html.Raw(item.Requirement)</h4>
                                         </td>
                                         <td>
-                                            <p>
-                                                <a data-toggle="collapse" href="#@item.Id@item.Title" role="button" aria-expanded="false" aria-controls="collapseExample">
-                                                    <i class="fa fa-file-o" aria-hidden="true"></i>
-                                                </a>
-                                            </p>
-                                            <div class="collapse" id="@item.Id@item.Title">
-                                                <div class="card card-body">
-                                                    @Html.Raw(item.Title)
-                                                </div>
-                                            </div>
+                                            <h4 id="title" style="width: 150px" title="@Html.Raw(item.Title)">@Html.Raw(item.Title)</h4>
                                         </td>
                                         <td>
                                             @Html.DisplayFor(modelItem => item.UpdateBy)
