@@ -2832,7 +2832,9 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Uploads\dowload.jpg" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -2859,6 +2861,7 @@
     <Content Include="Views\Home\Supervision.cshtml" />
     <Content Include="Views\Home\Training.cshtml" />
     <Content Include="Views\Home\Facilities.cshtml" />
+    <Content Include="Views\Home\JobDetails.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
