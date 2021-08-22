@@ -1,4 +1,5 @@
-﻿using StarSecurityService.Application.ServiceOffers;
+﻿using StarSecurityService.Application.CategoryServiceoofers;
+using StarSecurityService.Application.ServiceOffers;
 using StarSecurityService.ApplicationCore.DTO;
 using StarSecurityService.ApplicationCore.Entities;
 using System;
@@ -11,12 +12,15 @@ using System.Web.Mvc;
 
 namespace StarSecurityService.Web.Areas.Admin.Controllers
 {
+    [CustomAuthorize]
     public class ServiceOfferController : Controller
     {
         private readonly IServiceOfferService _serviceOfferService;
+        private readonly IServiceOfferAppService _cateserviceOfferAppService;
         public ServiceOfferController()
         {
             _serviceOfferService = new ServiceOfferService();
+            _cateserviceOfferAppService = new CategoryServiceOfferService();
         }
         // GET: Admin/ServiceOffer
         public async Task<ActionResult> Index()
@@ -26,8 +30,9 @@ namespace StarSecurityService.Web.Areas.Admin.Controllers
         }
 
         // GET: Admin/ServiceOffer/Create
-        public ActionResult Create()
+        public async Task<ActionResult> Create()
         {
+            ViewBag.list = await _cateserviceOfferAppService.GetAll(status:true);
             return View();
         }
 
@@ -58,6 +63,7 @@ namespace StarSecurityService.Web.Areas.Admin.Controllers
         // GET: Admin/ServiceOffer/Edit/5
         public async Task<ActionResult> Edit(int id)
         {
+            ViewBag.list = await _cateserviceOfferAppService.GetAll(status: true);
             var db = await _serviceOfferService.FirstOrDefaultAsync(id);
             string[] image = db.Url.Split(' ');
             List<string> path = new List<string>();

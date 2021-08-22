@@ -1,0 +1,98 @@
+﻿@model IEnumerable<StarSecurityService.ApplicationCore.Entities.CategoryServiceOffer>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_MainLayoutAdmin.cshtml";
+}
+
+@*<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Status)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Status)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+            </td>
+        </tr>
+    }
+
+</table>*@
+<div class="row">
+    <div class="col-xs-12 col-md-12 col-lg-12">
+
+        <div class="panel panel-primary">
+
+            <div class="panel-body">
+                <a href="@Url.Action("Create", "CategoryServiceOffers")" class="btn btn-primary  ">Create CategoryServiceOffers</a>
+                <div class="bootstrap-table">
+                    <div class="table-responsive">
+                        <br />
+                        <table class="table  table-striped table-bordered dt-responsive nowrap" id="myTable">
+                            <thead>
+                                <tr class="active">
+                                    <th> Order</th>
+                                    <th class="text-center">
+                                        @Html.DisplayNameFor(model => model.Name)
+                                    </th>
+                                    <th class="text-center">
+                                        @Html.DisplayNameFor(model => model.Status)
+                                    </th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @if (Model?.Any() == true)
+                                {
+                                    int order = 1;
+                                    foreach (var item in Model)
+                                    {
+                                <tr>
+                                    <td style="width:5%">
+                                        @((order++).ToString("D2"))
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Name)
+                                    </td>
+                                  
+                                    <td>
+                                       @(item.Status ? "Active":"No active")
+                                    </td>
+                                    <td>
+                                        <a href="@Url.Action($"Edit/{item.Id}","CategoryServiceOffers")" class="btn btn-success btn-sm"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+                                        <a href="@Url.Action($"Delete/{item.Id}","CategoryServiceOffers")" class="btn btn-danger btn-sm"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+                                    </td>
+                                </tr>
+                                    }
+                                }
+                            </tbody>
+
+                        </table>
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </div>
+</div><!--/.row-->

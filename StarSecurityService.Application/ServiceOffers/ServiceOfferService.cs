@@ -16,6 +16,8 @@ namespace StarSecurityService.Application.ServiceOffers
         Task<List<ComboboxCommonDto>> GetComboboxServiceOffer();
         Task<ServiceOffer> AddAsync(ServiceOfferViewModel service, string name);
         Task<IEnumerable<ServiceOffer>> GetAll();
+
+        Task<IEnumerable<ServiceOffer>> GetAllByStatus();
         Task<ServiceOffer> FirstOrDefaultAsync(int Id);
         Task UpdateAsync(ServiceOfferViewModel service, string name, int id);
         Task DeleteAsync(int Id);
@@ -31,6 +33,7 @@ namespace StarSecurityService.Application.ServiceOffers
         public async Task<ServiceOffer> AddAsync(ServiceOfferViewModel service, string name)
         {
             ServiceOffer db = new ServiceOffer(service.Title, service.Details, name, service.Introduce, service.Description, service.Status);
+            db.CategoryServiceOfferId = service.CategoryServiceOfferId;
             return await _serviceOfferRepository.AddAsync(db);
         }
 
@@ -51,6 +54,12 @@ namespace StarSecurityService.Application.ServiceOffers
             return await _serviceOfferRepository.GetAllAsync();
         }
 
+        public async Task<IEnumerable<ServiceOffer>> GetAllByStatus()
+        {
+            IEnumerable<ServiceOffer> service = await _serviceOfferRepository.GetAllAsync(x => x.Status == true);
+            return service;
+        }
+
         public async Task<List<ComboboxCommonDto>> GetComboboxServiceOffer()
         {
             return (await _serviceOfferRepository.GetAllAsync()).Select(x => new ComboboxCommonDto
@@ -69,6 +78,7 @@ namespace StarSecurityService.Application.ServiceOffers
             db.Introduce = service.Introduce;
             db.Description = service.Description;
             db.Status = service.Status;
+            db.CategoryServiceOfferId = service.CategoryServiceOfferId;
             await _serviceOfferRepository.UpdateAsync(db);
         }
     }

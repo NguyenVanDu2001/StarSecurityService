@@ -1,6 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" />
   <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -128,6 +127,7 @@
     <Compile Include="Areas\Admin\Controllers\BaseController.cs" />
     <Compile Include="Areas\Admin\Controllers\BussinessController.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\CategoryServiceOffersController.cs" />
     <Compile Include="Areas\Admin\Controllers\CustomAuthorizeAttribute.cs" />
     <Compile Include="Areas\Admin\Controllers\GroupUserController.cs" />
     <Compile Include="Areas\Admin\Controllers\AchievementController.cs" />
@@ -156,6 +156,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\GetControllerHelper.cs" />
+    <Compile Include="Models\HomeModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -233,6 +234,12 @@
     <Content Include="Areas\Asset\ckeditor5-build-classic\translations\zh.js" />
     <Content Include="Areas\Admin\Views\Histories\Create.cshtml" />
     <Content Include="Areas\Admin\Views\Histories\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\CategoryServiceOffers\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\CategoryServiceOffers\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\CategoryServiceOffers\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\CategoryServiceOffers\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\CategoryServiceOffers\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\GroupUser\Create.cshtml" />
     <None Include="Areas\Admin\Views\Shared\401.cshtml" />
     <Content Include="Areas\Asset\ckeditor\adapters\jquery.js" />
     <Content Include="Areas\Asset\ckeditor\build-config.js" />
@@ -2862,12 +2869,12 @@
     <Content Include="Views\Home\Training.cshtml" />
     <Content Include="Views\Home\Facilities.cshtml" />
     <Content Include="Views\Home\JobDetails.cshtml" />
+    <Content Include="Views\Shared\NavServiceOffer.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Models\" />
     <Folder Include="Areas\Admin\Views\Base\" />
-    <Folder Include="Models\" />
     <Folder Include="Views\Bussiness\" />
     <Folder Include="Views\Clients\" />
     <Folder Include="Views\GroupPermission\" />
@@ -2932,10 +2939,7 @@
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
     <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
-    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.props'))" />
-    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.targets'))" />
   </Target>
-  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

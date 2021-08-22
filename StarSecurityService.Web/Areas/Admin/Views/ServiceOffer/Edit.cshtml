@@ -1,5 +1,5 @@
 ﻿@model StarSecurityService.ApplicationCore.Entities.ServiceOffer
-
+@using StarSecurityService.ApplicationCore.Entities
 @{
     ViewBag.Title = "Edit";
     Layout = "~/Areas/Admin/Views/Shared/_MainLayoutAdmin.cshtml";
@@ -50,13 +50,7 @@
                             </div>
 
 
-                            <div class="form-group">
-                                @Html.LabelFor(model => model.Details, htmlAttributes: new { @class = "control-label col-md-2" })
-                                <div class="col-md-10">
-                                    @Html.TextAreaFor(model => model.Details, new { htmlAttributes = new { @class = "form-control" } })
-                                    @Html.ValidationMessageFor(model => model.Details, "", new { @class = "text-danger" })
-                                </div>
-                            </div>
+                            
 
                             <div class="form-group">
                                 @Html.LabelFor(model => model.Url, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -79,15 +73,35 @@
                                 </div>
                             </div>
 
-                            <div class="form-group">
-                                @Html.LabelFor(model => model.Status, htmlAttributes: new { @class = "control-label col-md-2" })
-                                <div class="col-md-10">
-                                    <div class="checkbox">
-                                        @Html.EditorFor(model => model.Status)
-                                        @Html.ValidationMessageFor(model => model.Status, "", new { @class = "text-danger" })
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="col-md-10">
+                                        @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
                                     </div>
                                 </div>
-                            </div>
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.CategoryServiceOfferId, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="col-md-10">
+                                        <select class="form-control" name="CategoryServiceOfferId" id="CategoryServiceOfferId">
+                                            <option value="">Choose category serviceoffer</option>
+                                            @foreach (var item in (IEnumerable<CategoryServiceOffer>)ViewBag.list)
+                                            {
+                                                <option @(item.Id == Model.CategoryServiceOfferId ? "selected":"") value="@item.Id">@item.Name</option>
+                                            }
+                                        </select>
+
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.Status, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="col-md-10">
+                                        <div class="checkbox">
+                                            @Html.EditorFor(model => model.Status)
+                                            @Html.ValidationMessageFor(model => model.Status, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                </div>
 
                             <div class="form-group">
                                 <div class="col-md-offset-2 col-md-10">
@@ -147,13 +161,15 @@
                     Title: "required",
                     Details: "required",
                     Introduce: "required",
-                    Description: "required"
+                    Description: "required",
+                      CategoryServiceOfferId: "required"
                 },
                 messages: {
                     Title: "Please enter title, can't be blank",
                     Details: "Please enter details, can't be blank",
                     Introduce: "Please enter introduce, can't be blank",
-                    Description: "Please enter description, can't be blank"
+                    Description: "Please enter description, can't be blank",
+                    CategoryServiceOfferId: "Please choose category serviceoffer , can't be blank"      
                 },
                 submitHandler: function (form) {
                     form.submit();

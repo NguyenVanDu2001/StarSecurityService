@@ -38,9 +38,27 @@
             background: none !important;
             padding: 0 !important;
         }
-        .activeMenu{
-            color : #0094ff !important;
+
+        .activeMain {
+            color: #0094ff !important;
         }
+
+        #myMenu {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        #myMenu li a {
+            padding: 12px;
+            text-decoration: none;
+            color: black;
+            display: block
+        }
+
+            #myMenu li a:hover {
+                background-color: #0094ff;
+            }
     </style>
     <link rel='stylesheet' id='wp-block-library-css'
           href='~/Content/wp-includes/css/dist/block-library/style.min9dff.css?ver=5.3.2' type='text/css' media='all' />
@@ -132,14 +150,20 @@
                                 <div class="menu_wrapper">
                                     <nav id="menu">
                                         <ul id="menu-main-menu" class="menu menu-main">
-                                            <li class="@(Request.Path.StartsWith(@Url.Action("Index", "Home")) ? "activeMenu" : null)">
-                                                <a href="@Url.Action("Index", "Home")"><span>HOME</span></a>
+                                            <li>
+                                                <a href="@Url.Action("Index", "Home")">
+                                                    <span>HOME</span>
+                                                </a>
                                             </li>
-                                            <li class="@(Request.Path.StartsWith(@Url.Action("AboutUs", "Home")) ? "activeMenu" : null)">
-                                                <a href="@Url.Action("AboutUs", "Home")"><span>ABOUT</span></a>
+                                            <li class="menu-item menu-item-type-post_type menu-item-object-page">
+                                                <a href="@Url.Action("AboutUs", "Home")">
+                                                    <span class="@(Request.Path.StartsWith(@Url.Action("AboutUs", "Home")) ? "activeMain" : null)">ABOUT</span>
+                                                </a>
                                             </li>
-                                            <li class="@(Request.Path.StartsWith(@Url.Action("Divisions", "Home")) ? "active" : null)">
-                                                <a href="@Url.Action("Divisions", "Home")"><span>DIVISIONS</span></a>
+                                            <li class="menu-item menu-item-type-post_type menu-item-object-page">
+                                                <a href="@Url.Action("Divisions", "Home")">
+                                                    <span class="@(Request.Path.StartsWith(@Url.Action("Divisions", "Home")) ? "activeMain" : null)">DIVISIONS</span>
+                                                </a>
                                                 <ul class="sub-menu">
                                                     <li id="menu-item-2057"
                                                         class="menu-item menu-item-type-post_type menu-item-object-page">
@@ -152,47 +176,30 @@
                                                     </li>
                                                 </ul>
                                             </li>
-                                            <li class="@(Request.Path.StartsWith(@Url.Action("Profesional", "Home")) ? "active" : null)">
+                                            <li class="menu-item menu-item-type-post_type menu-item-object-page">
                                                 <a href="@Url.Action("Profesional", "Home")">
-                                                    <span>
-                                                        PROFESSIONAL
-                                                        SERVICES
+                                                    <span class="@(Request.Path.StartsWith(@Url.Action("Profesional", "Home")) ? "activeMain" : null)">
+                                                        SERVICES OFFER
                                                     </span>
                                                 </a>
                                                 <ul class="sub-menu">
-                                                    <li id="menu-item-2066"
-                                                        class="menu-item menu-item-type-post_type menu-item-object-page">
-                                                        <a href="@Url.Action("Recruitment", "Home")"><span>RECRUITMENT</span></a>
-                                                    </li>
-                                                    <li id="menu-item-2083"
-                                                        class="menu-item menu-item-type-post_type menu-item-object-page">
-                                                        <a href="@Url.Action("Supervision", "Home")">
-                                                            <span>
-                                                                SUPERVISION
-                                                                &#038; OPERATION&#8217;S ROOM
-                                                            </span>
-                                                        </a>
-                                                    </li>
-                                                    <li id="menu-item-2086"
-                                                        class="menu-item menu-item-type-post_type menu-item-object-page">
-                                                        <a href="@Url.Action("Training", "Home")"><span>TRAINING</span></a>
-                                                    </li>
-                                                    <li id="menu-item-2089"
-                                                        class="menu-item menu-item-type-post_type menu-item-object-page">
-                                                        <a href="@Url.Action("Facilities", "Home")"><span>FACILITIES</span></a>
-                                                    </li>
+                                                    @Html.Action("GetNavPartialServiceOffer", "Home")
                                                 </ul>
                                             </li>
-                                            <li class="@(Request.Path.StartsWith(@Url.Action("Emiratisation", "Home")) ? "active" : null)">
-                                                <a href="@Url.Action("Emiratisation", "Home")"><span>EMIRATISATION</span></a>
+                                            <li class="menu-item menu-item-type-post_type menu-item-object-page">
+                                                <a href="@Url.Action("Emiratisation", "Home")">
+                                                    <span class="@(Request.Path.StartsWith(@Url.Action("Emiratisation", "Home")) ? "activeMain" : null)">EMIRATISATION</span>
+                                                </a>
                                             </li>
-                                            <li class="@(Request.Path.StartsWith(@Url.Action("Career", "Home")) ? "active" : null)">
-                                                <a href="@Url.Action("Career", "Home")"><span>CAREER</span></a>
+                                            <li class="menu-item menu-item-type-post_type menu-item-object-page">
+                                                <a href="@Url.Action("Career", "Home")">
+                                                    <span class="@(Request.Path.StartsWith(@Url.Action("Career", "Home")) ? "activeMain" : null)">CAREER</span>
+                                                </a>
                                             </li>
                                             <li id="menu-item-2099"
-                                                class="menu-item menu-item-type-post_type menu-item-object-page ">
+                                                class="menu-item menu-item-type-post_type menu-item-object-page">
                                                 <a href="@Url.Action("ContactUs", "Home")">
-                                                    <span class="@(Request.Path.StartsWith(@Url.Action("ContactUs", "Home")) ? "activeMenu" : null)">CONTACT US</span>
+                                                    <span class="@(Request.Path.StartsWith(@Url.Action("ContactUs", "Home")) ? "activeMain" : null)">CONTACT US</span>
                                                 </a>
                                             </li>
                                         </ul>

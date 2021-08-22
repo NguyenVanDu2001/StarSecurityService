@@ -1,5 +1,5 @@
 ﻿@model StarSecurityService.ApplicationCore.Entities.ServiceOffer
-
+@using StarSecurityService.ApplicationCore.Entities
 @{
     ViewBag.Title = "Create";
     Layout = "~/Areas/Admin/Views/Shared/_MainLayoutAdmin.cshtml";
@@ -76,6 +76,27 @@
                             </div>
 
                             <div class="form-group">
+                                @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.CategoryServiceOfferId, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    <select class="form-control" name="CategoryServiceOfferId" id="CategoryServiceOfferId">
+                                        <option value="">Choose category serviceoffer</option>
+                                        @foreach (var item in (IEnumerable<CategoryServiceOffer>)ViewBag.list)
+                                        {
+                                            <option value="@item.Id">@item.Name</option>
+                                        }
+                                    </select>
+                                   
+                                </div>
+                            </div>
+
+                            <div class="form-group">
                                 @Html.LabelFor(model => model.Status, htmlAttributes: new { @class = "control-label col-md-2" })
                                 <div class="col-md-10">
                                     <div class="checkbox">
@@ -143,14 +164,16 @@
                     Details: "required",
                     Url: "required",
                     Introduce: "required",
-                    Description: "required"
+                    Description: "required",
+                    CategoryServiceOfferId: "required"
                 },
                 messages: {
                     Title: "Please enter title, can't be blank",
                     Details: "Please enter details, can't be blank",
                     Url: "Please choose url, can't be blank",
                     Introduce: "Please enter introduce, can't be blank",
-                    Description: "Please enter description, can't be blank"
+                    Description: "Please enter description, can't be blank",
+                    CategoryServiceOfferId: "Please choose category serviceoffer , can't be blank"
                 },
                 submitHandler: function (form) {
                     form.submit();

@@ -6,6 +6,7 @@ using System.Web.Mvc;
 
 namespace StarSecurityService.Web.Areas.Admin.Controllers
 {
+    [CustomAuthorize]
     public class MainAdminController : Controller
     {
         // GET: Admin/MainAdmin
