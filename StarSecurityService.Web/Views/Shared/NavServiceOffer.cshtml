@@ -1,0 +1,10 @@
+﻿@model IEnumerable<StarSecurityService.ApplicationCore.Entities.CategoryServiceOffer>
+
+@foreach (var item in Model)
+{
+    <li id="menu-item-2066"
+        class="menu-item menu-item-type-post_type menu-item-object-page">
+        <a href="@Url.Action("Profesional", "Home",new { id = item.Id})"><span>@item.Name</span></a>
+    </li>
+}
+

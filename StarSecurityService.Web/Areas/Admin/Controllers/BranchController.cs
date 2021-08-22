@@ -9,6 +9,7 @@ using System.Web.Mvc;
 
 namespace StarSecurityService.Web.Areas.Admin.Controllers
 {
+    [CustomAuthorize]
     public class BranchController : Controller
     {
         private readonly IBrachAppService _branchService;

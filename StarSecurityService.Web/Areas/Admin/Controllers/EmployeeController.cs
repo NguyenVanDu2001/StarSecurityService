@@ -11,6 +11,8 @@ using StarSecurityService.Application.EmployeeSerivceOffers;
 using StarSecurityService.Application.ServiceOffers;
 using StarSecurityService.ApplicationCore.Commons.Enums;
 using StarSecurityService.ApplicationCore.Entities;
+using StarSecurityService.ApplicationCore.InterFaces;
+using StarSecurityService.EntityFramework.Data;
 using StarSecurityService.Web.Areas.Admin.Model.Employees;
 using StarSecurityService.Web.Commons;
 using System;
@@ -35,6 +37,7 @@ namespace StarSecurityService.Web.Areas.Admin.Controllers
         private readonly IEmployeeServiceOfferAppSerivce _employeeServiceOfferAppSerivce;
         private readonly IEmployeeAchievementAppService _employeeAchievementAppService;
         private readonly IClientEmployeeAppService _clientEmployeeAppService;
+        private readonly IAsyncRepository<GroupUser> _groupUserRepojsitory;
         public EmployeeController()
         {
             _employeeAppService = new EmployeeAppServices();
@@ -45,6 +48,7 @@ namespace StarSecurityService.Web.Areas.Admin.Controllers
             _employeeServiceOfferAppSerivce = new EmployeeServiceOfferAppService();
             _employeeAchievementAppService = new EmployeeAchievementAppService();
             _clientEmployeeAppService = new ClientEmployeeAppService();
+            _groupUserRepojsitory = new EfRepository<GroupUser>(new StarServiceDbContext());
         }
         // GET: Admin/Employee
         public async Task<ActionResult> Index()
@@ -62,6 +66,7 @@ namespace StarSecurityService.Web.Areas.Admin.Controllers
         // GET: Admin/Employee/Create
         public async Task<ActionResult> Create(int? id)
         {
+            ViewBag.lstGrUser = await _groupUserRepojsitory.GetAllListAsync();
             ViewBag.ListClient = await _clientAppServices.GetComboboxClient();
             ViewBag.ListServiceOffer = await _serviceOfferAppServices.GetComboboxServiceOffer();
             if (id.HasValue)
@@ -259,7 +264,7 @@ namespace StarSecurityService.Web.Areas.Admin.Controllers
                           Id = objectEmployee.Id,
                         Address = objectEmployee.Address,
                         BirthDay = objectEmployee.BirthDay.HasValue ? objectEmployee.BirthDay.Value : DateTime.Now,
-                        GroupId = 2,
+                        GroupId =  objectEmployee.GroupId,
                         Image = fname,
                         BranchId = objectEmployee.BranchId,
                         Password = objectEmployee.Password,

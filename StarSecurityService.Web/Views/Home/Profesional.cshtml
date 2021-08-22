@@ -1,4 +1,5 @@
-﻿
+﻿@model IEnumerable<StarSecurityService.ApplicationCore.Entities.ServiceOffer>
+@using System.Web.Script.Serialization;
 @{
     ViewBag.Title = "Profesional";
 }
@@ -6,11 +7,21 @@
     <div id="Subheader">
         <div class="container">
             <div class="column one">
-                <h1 class="title">PROFESSIONAL SERVICES</h1>
+                <h1 class="title">SERVICES OFFER</h1>
             </div>
         </div>
     </div>
 }
+<style>
+    .title-serviceOffer {
+        font-size: 34px;
+        font-weight: bold;
+        color: #00a2e0
+    }
+    .content-description > *, .content-introduce > * {
+        color: black;
+    }
+</style>
 <div id="Content">
     <div class="content_wrapper clearfix">
 
@@ -19,94 +30,52 @@
             <div class="entry-content" itemprop="mainContentOfPage">
 
                 <div class="section mcb-section mcb-section-aws2hfhu4 mt-40" id="mt-40"
-                     style="padding-top:110px;padding-bottom:70px;background-color:#1f1f1f">
+                     style="padding-top:110px;padding-bottom:70px;background-color:white">
                     <div class="section_wrapper mcb-section-inner">
                         <div class="wrap mcb-wrap mcb-wrap-z29txcs2b one-third  valign-top clearfix"
                              style="padding:0 2%">
-                            <div class="mcb-wrap-inner">
-                                <div class="column mcb-column mcb-item-bnetoqwrz one column_column">
-                                    <div class="column_attr clearfix" style="">
-                                        <h3>
-                                            PROFESSIONAL
-                                            SERVICES
-                                        </h3>
+                            <div class="row">
+                                <h2 class="block-title" style="color: black; font-size: 2.3em;">Service Offer List</h2>
+                                <div style="background-color:whitesmoke;">
+                                    <ul id="myMenu">
+                                        @foreach (var item in Model)
+                                        {
+                                            var json = new JavaScriptSerializer().Serialize(item);
+                                            <li><a href="#" data-id="@json">@item.Title</a></li>
+                                        }
 
-                                        <h6 class="themecolor" style="text-transform: uppercase;">
-                                            Star Security
-                                            Services L.L.C is 100% locally established company owned by H.E.
-                                            Musallam Al Qubaisi as such we follow the UAE rules. All our senior
-                                            management is from the Army / Police background and they are members
-                                            of American Society for Industrial Safety and Security.
-                                        </h6>
-                                    </div>
+                                    </ul>
                                 </div>
+                               
                             </div>
                         </div>
                         <div class="wrap mcb-wrap mcb-wrap-w3t94awfi two-third  valign-top clearfix"
                              style="padding:0 2%">
                             <div class="mcb-wrap-inner">
                                 <div class="column mcb-column mcb-item-6qi9g2zs5 one column_column">
-                                    <div class="column_attr clearfix" style="">
-                                        <p>
-                                            <ul>
-                                                <li>
-                                                    Guarding Services as laid down by the PSBD, Abu Dhabi Police.
-                                                </li>
+                                    <div class="large-9 main columns">
+                                        <div class="view-content">
+                                                    <p>
+                                                        <img  id="url-file" class="alignnone wp-image-3092 size-full" src="http://themes.webdevia.com/bodyguard/light/wp-content/uploads/sites/2/2015/07/service-3.jpg" alt="service-3" width="300" height="150"><br>
+                                                    </p>
+                                                    
+                                                    <div class="title-serviceOffer">
+                                                    </div>  
+                                                    <br />
+                                                    <div class="introduce-service">
+                                                        <h3 style="color:gray">Introduce Service</h3>
+                                                        <div class="content-introduce">
 
-                                                <li>Guarding the Oil & Gas fields, onshore and offshore.</li>
+                                                        </div>
+                                                    </div>
+                                                    <br />
+                                                    <div class="description-serviceOffer">
+                                                        <h3 style="color:gray">Description</h3>
+                                                        <div class="content-description">
 
-                                                <li>Guarding the warehouses.</li>
-
-                                                <li>Guarding the factories and production facilities.</li>
-
-                                                <li>Guarding hospitals and health centers.</li>
-
-                                                <li>
-                                                    Giving security covers to the banks, government bodies and
-                                                    institutions.
-                                                </li>
-
-                                                <li>Covering special ceremonies and festivals.</li>
-
-                                                <li>Protecting ships, vessels and ports.</li>
-
-                                                <li>
-                                                    Guarding hotels and hotel apartments, private premises and other
-                                                    properties.
-                                                </li>
-
-                                                <li>Guarding malls and department stores.</li>
-
-                                                <li>Covering universities, institutes and schools.</li>
-
-                                                <li>
-                                                    Guarding airports facilities, accessories and sport stadiums.
-                                                </li>
-
-                                                Protecting buildings and institutions which are under construction.
-                                                </li>
-
-                                                <li>Guarding embassies and diplomatic corps.</li>
-
-                                                <li>Security Audit and Investigations.</li>
-
-                                                <li>Professional Training and Development.</li>
-
-                                                <li>Risk Management & Loss Prevention.</li>
-
-                                                <li>
-                                                    Event Management such as marriages, cultural, event,
-                                                    star/musical show etc.
-                                                </li>
-
-                                                <li>
-                                                    Technical assistance for Surveillance Systems. Providing trained
-                                                    security personnel as CCTV operator, receptionist, telephone
-                                                    operator, BMS operators and for car parking.
-                                                </li>
-                                                <li>Providing manpower for mobile patrol service.</li>
-                                            </ul>
-                                        </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                     </div>
                                 </div>
                             </div>
@@ -135,4 +104,24 @@
 
     </div>
 </div>
+@section scripts{
+    <script src="~/Areas/Asset/tables/Datatable/jquery-3.5.1.js"></script>
+    <script>
+        (function () {
+            $(document).on("click", "#myMenu a", function () {
+                $("#myMenu li").removeAttr("style", "background-color:#00a2e0");
+                $(this).closest("li").attr("style", "background-color:#00a2e0");
 
+                let categoryId = $(this).attr("data-id");
+                var json = JSON.parse(categoryId);
+                console.log(json);
+                $("#url-file").attr("src", `../../Areas/Asset/img/${json.Url}`);
+                $(".title-serviceOffer").html(json.Title)
+                $(".content-description").html(json.Description);
+                $(".content-introduce").html(json.Introduce);
+            });
+            $("#myMenu a").trigger("click");
+        })()
+
+    </script>
+}
