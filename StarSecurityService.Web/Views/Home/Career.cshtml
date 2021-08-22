@@ -20,6 +20,31 @@
 
 @section style{
     <style>
+        #title {
+            font-size: 1.5rem;
+            width: 250px;
+            line-height: 2rem;
+            max-height: 9rem;
+            -webkit-box-orient: vertical;
+            display: block;
+            display: -webkit-box;
+            overflow: hidden !important;
+            text-overflow: ellipsis;
+            -webkit-line-clamp: 3;
+        }
+
+        /*#title:hover {
+            font-size: 1.5rem;
+            width: 550px;
+            position: relative;
+            background: #99a0b0;
+        }*/
+
+        #details {
+            top: -48px;
+            position: relative;
+            left: 30px;
+        }
     </style>
 }
 
@@ -46,11 +71,13 @@
                                 {
                                     <div class="column mcb-column mcb-item-4d35b29d5 one-fourth column_column text-white column-margin-30px">
                                         <div class="column_attr clearfix align_left" style="">
-                                            <div class="box-mar row">
-                                                <h4 style="word-wrap:break-word;">@item.Title</h4>
-                                                <div>
-                                                    <a class="button button_right button_size_1 button_theme button_js kill_the_icon popmake-2152" style="float: left;" href="#popmake-836"><span class="button_icon"><i class="icon-right-dir"></i></span><span class="button_label">Apply Now</span></a>
-                                                </div>
+                                            <div class="box-mar" id="warp">
+                                                <a href="@Url.Action($"JobDetails/{item.Id}","Home")" style="text-decoration: none;">
+                                                    <h4 id="title" style="word-wrap:break-word;">@item.Title</h4>
+                                                </a>
+                                            </div>
+                                            <div id="details">
+                                                <a class="button button_right button_size_1 button_theme button_js kill_the_icon" href="@Url.Action($"JobDetails/{item.Id}","Home")"><span class="button_icon"><i class="icon-right-dir"></i></span><span class="button_label">View Details</span></a>
                                             </div>
                                         </div>
                                     </div>

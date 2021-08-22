@@ -7,6 +7,7 @@ using StarSecurityService.Web.Helpers;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web.Mvc;
+using System.Collections.Generic;
 
 namespace StarSecurityService.Web.Controllers
 {
@@ -45,6 +46,23 @@ namespace StarSecurityService.Web.Controllers
             var items = await _vacancyService.GetAllByStatus();
             return View(items);
         }
+
+
+        public async Task<ActionResult> JobDetails(int id)
+        {
+            var items = await _vacancyService.FirstOrDefaultAsync(id);
+            ViewBag.Branch = await _branchService.FirstOrDefaultAsync(items.BranchId);
+            ViewBag.Service = await _serviceOfferService.FirstOrDefaultAsync(items.ServiceOfferId);
+            string[] image = ViewBag.Service.Url.Split(' ');
+            List<string> path = new List<string>();
+            foreach (string img in image)
+            {
+                path.Add(img);
+            }
+            ViewBag.Image = path;
+            return View(items);
+        }
+
         public async Task<ActionResult> ContactUs()
         {
             var db = await _branchService.GetAllBranchs();
