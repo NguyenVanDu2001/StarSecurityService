@@ -185,29 +185,7 @@
                                                     </span>
                                                 </a>
                                                 <ul class="sub-menu">
-                                                    <li id="menu-item-2066"
-                                                        class="menu-item menu-item-type-post_type menu-item-object-page">
-                                                        <a href="@Url.Action("Recruitment", "Home")"><span>RECRUITMENT</span></a>
-                                                    </li>
-                                                    <li id="menu-item-2083"
-                                                        class="menu-item menu-item-type-post_type menu-item-object-page">
-                                                        <a href="@Url.Action("Supervision", "Home")">
-                                                            <span>
-                                                                SUPERVISION
-                                                                &#038; OPERATION&#8217;S ROOM
-                                                            </span>
-                                                        </a>
-                                                    </li>
-                                                    <li id="menu-item-2086"
-                                                        class="menu-item menu-item-type-post_type menu-item-object-page">
-                                                        <a href="@Url.Action("Training", "Home")"><span>TRAINING</span></a>
-                                                    </li>
-                                                    <li id="menu-item-2089"
-                                                        class="menu-item menu-item-type-post_type menu-item-object-page">
-                                                        <a href="@Url.Action("Facilities", "Home")">
-                                                            <span class="@(Request.Path.StartsWith(@Url.Action("Facilities", "Home")) ? "activeMain" : null)">FACILITIES</span>
-                                                        </a>
-                                                    </li>
+                                                    @Html.Action("GetNavPartialServiceOffer", "Home")
                                                 </ul>
                                             </li>
                                             <li class="menu-item menu-item-type-post_type menu-item-object-page">
@@ -551,7 +529,7 @@
     <script type='text/javascript'
             src='~/Content/wp-content/uploads/pum/pum-site-scripts71bf.js?defer&amp;generated=1622718911&amp;ver=1.16.1'></script>
     <script type='text/javascript' src='~/Content/wp-includes/js/wp-embed.min9dff.js?ver=5.3.2'></script>
-    @Scripts.Render("~/bundles/jquery")
+    @*@Scripts.Render("~/bundles/jquery")*@
     @RenderSection("scripts", required: false)
 </body>
 

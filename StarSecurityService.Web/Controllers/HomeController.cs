@@ -25,12 +25,14 @@ namespace StarSecurityService.Web.Controllers
         private readonly IBrachAppService _branchService;
         private readonly IHistoryService _historyService;
         private readonly IShareHolderService _shareHolderService;
+        private readonly IServiceOfferAppService _CategoryServiceOfferRepository;
         public HomeController()
         {
             db = new StarServiceDbContext();
             _clientAppServices = new ClientAppServices();
             _serviceOfferService = new ServiceOfferService();
             _branchService = new BranchAppService();
+            _CategoryServiceOfferRepository = new CategoryServiceOfferService();
             _historyService = new HistoryService();
             _shareHolderService = new ShareHolderService();
         }
@@ -59,15 +61,30 @@ namespace StarSecurityService.Web.Controllers
         {
             return View();
         }
-        public async Task<ActionResult> Profesional()
+        public async Task<ActionResult> Profesional(int id)
         {
-            var data = await _CategoryServiceOfferRepository.GetAll();
-            return View(data);
+          
+            return View((await _serviceOfferService.GetAllByStatus()).Where(x => x.CategoryServiceOfferId == id).Select(x => new ServiceOffer
+                            {
+                                Id = x.Id,
+                                Title = x.Title,
+                                Introduce = x.Introduce,
+                                Description = x.Description,
+                                Details = x.Details,
+                                Url = x.Url,
+                            })?.AsEnumerable());
         }
+
         public async Task<JsonResult> GetServiceOfferByCateId(int id)
         {
            // var res = new Response<List<ComboboxCommonDto>>();
             return Json(1,JsonRequestBehavior.AllowGet);
+        }
+        public async Task<ActionResult> GetNavPartialServiceOffer()
+        {
+            var data = await _CategoryServiceOfferRepository.GetAll(status:true);
+
+            return PartialView("~/Views/Shared/NavServiceOffer.cshtml",data);
         }
         public ActionResult Emiratisation()
         {
