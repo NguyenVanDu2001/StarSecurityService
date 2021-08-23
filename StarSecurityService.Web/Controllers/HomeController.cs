@@ -1,6 +1,7 @@
 ﻿using StarSecurityService.Application.Branchs;
 using StarSecurityService.Application.CategoryServiceoofers;
 using StarSecurityService.Application.Clients;
+using StarSecurityService.Application.CLientServices;
 using StarSecurityService.Application.Histories;
 using StarSecurityService.Application.ServiceOffers;
 using StarSecurityService.ApplicationCore.Entities;
@@ -21,6 +22,7 @@ namespace StarSecurityService.Web.Controllers
     {
         private StarServiceDbContext db;
         private readonly IClientAppService _clientAppServices;
+        private readonly IClientEmployeeAppService _ClientEmployeesRepository;
         private readonly IServiceOfferService _serviceOfferService;
         private readonly IBrachAppService _branchService;
         private readonly IHistoryService _historyService;
@@ -35,6 +37,7 @@ namespace StarSecurityService.Web.Controllers
             _CategoryServiceOfferRepository = new CategoryServiceOfferService();
             _historyService = new HistoryService();
             _shareHolderService = new ShareHolderService();
+            _ClientEmployeesRepository = new ClientEmployeeAppService();
         }
         public ActionResult Index()
         {
@@ -63,28 +66,36 @@ namespace StarSecurityService.Web.Controllers
         }
         public async Task<ActionResult> Profesional(int id)
         {
-          
-            return View((await _serviceOfferService.GetAllByStatus()).Where(x => x.CategoryServiceOfferId == id).Select(x => new ServiceOffer
-                            {
-                                Id = x.Id,
-                                Title = x.Title,
-                                Introduce = x.Introduce,
-                                Description = x.Description,
-                                Details = x.Details,
-                                Url = x.Url,
-                            })?.AsEnumerable());
+          try {
+                var model = new HomeAboutUs();
+                model.ServiceOffersModel = ((await _serviceOfferService.GetAllByStatus()).Where(x => x.CategoryServiceOfferId == id).Select(x => new ServiceOffer
+                {
+                    Id = x.Id,
+                    Title = x.Title,
+                    Introduce = x.Introduce,
+                    Description = x.Description,
+                    Details = x.Details,
+                    Url = x.Url,
+                })?.AsEnumerable());
+                model.ClientModel = await _clientAppServices.GetAll();
+                return View(model);
+            }
+            catch (Exception ex)
+            {
+                return View(new HomeAboutUs());
+            }
         }
 
         public async Task<JsonResult> GetServiceOfferByCateId(int id)
         {
-           // var res = new Response<List<ComboboxCommonDto>>();
-            return Json(1,JsonRequestBehavior.AllowGet);
+            // var res = new Response<List<ComboboxCommonDto>>();
+            return Json(1, JsonRequestBehavior.AllowGet);
         }
         public async Task<ActionResult> GetNavPartialServiceOffer()
         {
-            var data = await _CategoryServiceOfferRepository.GetAll(status:true);
+            var data = await _CategoryServiceOfferRepository.GetAll(status: true);
 
-            return PartialView("~/Views/Shared/NavServiceOffer.cshtml",data);
+            return PartialView("~/Views/Shared/NavServiceOffer.cshtml", data);
         }
         public ActionResult Emiratisation()
         {
@@ -104,21 +115,6 @@ namespace StarSecurityService.Web.Controllers
         }
         public ActionResult Training()
         {
-            return View();
-        }
-        public async Task<ActionResult> Facilities()
-        {
-            var data = db.ServiceOffers.FirstOrDefault();
-            if (data != null)
-            {
-                var thumb = GetControllerHelper.GetThumb(data.Url);
-                ViewBag.thumbData = thumb;
-            }
-            else
-            {
-                return RedirectToAction("Index");
-            }
-            ViewBag.serviceData = data;
             return View();
         }
     }

@@ -2869,10 +2869,6 @@
     <Content Include="Views\Home\BoardMember.cshtml" />
     <Content Include="Views\Home\Whysss.cshtml" />
     <Content Include="Views\Home\DubaiDivision.cshtml" />
-    <Content Include="Views\Home\Recruitment.cshtml" />
-    <Content Include="Views\Home\Supervision.cshtml" />
-    <Content Include="Views\Home\Training.cshtml" />
-    <Content Include="Views\Home\Facilities.cshtml" />
     <Content Include="Views\Shared\NavServiceOffer.cshtml" />
   </ItemGroup>
   <ItemGroup>

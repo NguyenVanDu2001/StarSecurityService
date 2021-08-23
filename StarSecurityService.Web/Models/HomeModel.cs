@@ -13,5 +13,8 @@ namespace StarSecurityService.Web.Models
     {
         public IEnumerable<History> HistoryModel { get; set; }
         public IEnumerable<ShareHolder> ShareHolderModel { get; set; }
+        public IEnumerable<ServiceOffer> ServiceOffersModel { get; set; }
+        public IEnumerable<Client> ClientModel { get; set; }
+        public IEnumerable<Vacancy> VacancyModel { get; set; }
     }
 }
