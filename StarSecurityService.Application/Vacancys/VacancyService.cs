@@ -49,7 +49,7 @@ namespace StarSecurityService.Application.Vacancys
         }
         public async Task<IEnumerable<Vacancy>> GetAllByStatus()
         {
-            return await _vacancyRepository.ListAsync(x => x.Status == false);
+            return await _vacancyRepository.ListAsync(x => x.Status == true);
         }
 
         public async Task UpdateAsync(Vacancy vacancy)

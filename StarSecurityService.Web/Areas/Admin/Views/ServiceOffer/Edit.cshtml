@@ -15,7 +15,7 @@
         }
     </style>
 }
-    <br />
+<br />
 <div class="row">
     <div class="col-xs-12 col-md-12 col-lg-12">
         <div class="panel panel-primary">
@@ -26,60 +26,59 @@
                         @using (Html.BeginForm("Edit", "ServiceOffer", FormMethod.Post, new { enctype = "multipart/form-data", id = "formSerice" }))
                         {
                             @Html.AntiForgeryToken()
-                        <div class="form-horizontal">
-                            <h4>Service Offer</h4>
-                            <hr />
-                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                            @Html.HiddenFor(model => model.Id)
+                            <div class="form-horizontal">
+                                <h4>Service Offer</h4>
+                                <hr />
+                                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                @Html.HiddenFor(model => model.Id)
 
-                            <div class="form-group">
-                                @Html.LabelFor(model => model.Title, htmlAttributes: new { @class = "control-label col-md-2" })
-                                <div class="col-md-10">
-                                    @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control" } })
-                                    @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
-                                </div>
-                            </div>
-
-
-                            <div class="form-group">
-                                @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })
-                                <div class="col-md-10">
-                                    @Html.TextAreaFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
-                                    @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
-                                </div>
-                            </div>
-
-
-                            
-
-                            <div class="form-group">
-                                @Html.LabelFor(model => model.Url, htmlAttributes: new { @class = "control-label col-md-2" })
-                                <div class="col-md-10">
-                                    <input id="file-input" type="file" multiple name="Url">
-                                    <div id="preview">
-                                        @foreach (string img in ViewBag.Image)
-                                        {
-                                            <img src="~/Areas/Asset/img/@img" width="100px" alt="Alternate Text" />
-                                        }
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.Title, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="col-md-10">
+                                        @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
                                     </div>
                                 </div>
-                            </div>
 
-                            <div class="form-group">
-                                @Html.LabelFor(model => model.Introduce, htmlAttributes: new { @class = "control-label col-md-2" })
-                                <div class="col-md-10">
-                                    @Html.TextAreaFor(model => model.Introduce, new { htmlAttributes = new { @class = "form-control" } })
-                                    @Html.ValidationMessageFor(model => model.Introduce, "", new { @class = "text-danger" })
-                                </div>
-                            </div>
 
                                 <div class="form-group">
                                     @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })
                                     <div class="col-md-10">
-                                        @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.TextAreaFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
                                         @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
                                     </div>
                                 </div>
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.Details, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="col-md-10">
+                                        @Html.TextAreaFor(model => model.Details, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.Details, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.Url, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="col-md-10">
+                                        <input id="file-input" type="file" multiple name="Url">
+                                        <div id="preview">
+                                            @foreach (string img in ViewBag.Image)
+                                            {
+                                                <img src="~/Areas/Asset/img/@img" width="100px" alt="Alternate Text" />
+                                            }
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.Introduce, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="col-md-10">
+                                        @Html.TextAreaFor(model => model.Introduce, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.Introduce, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
                                 <div class="form-group">
                                     @Html.LabelFor(model => model.CategoryServiceOfferId, htmlAttributes: new { @class = "control-label col-md-2" })
                                     <div class="col-md-10">
@@ -87,7 +86,7 @@
                                             <option value="">Choose category serviceoffer</option>
                                             @foreach (var item in (IEnumerable<CategoryServiceOffer>)ViewBag.list)
                                             {
-                                                <option @(item.Id == Model.CategoryServiceOfferId ? "selected":"") value="@item.Id">@item.Name</option>
+                                                <option @(item.Id == Model.CategoryServiceOfferId ? "selected" : "") value="@item.Id">@item.Name</option>
                                             }
                                         </select>
 
@@ -103,12 +102,12 @@
                                     </div>
                                 </div>
 
-                            <div class="form-group">
-                                <div class="col-md-offset-2 col-md-10">
-                                    <input type="submit" value="Save" class="btn btn-primary" />
+                                <div class="form-group">
+                                    <div class="col-md-offset-2 col-md-10">
+                                        <input type="submit" value="Save" class="btn btn-primary" />
+                                    </div>
                                 </div>
                             </div>
-                        </div>
                         }
                         <div>
                             @Html.ActionLink("Back to List", "Index")
@@ -162,14 +161,14 @@
                     Details: "required",
                     Introduce: "required",
                     Description: "required",
-                      CategoryServiceOfferId: "required"
+                    CategoryServiceOfferId: "required"
                 },
                 messages: {
                     Title: "Please enter title, can't be blank",
                     Details: "Please enter details, can't be blank",
                     Introduce: "Please enter introduce, can't be blank",
                     Description: "Please enter description, can't be blank",
-                    CategoryServiceOfferId: "Please choose category serviceoffer , can't be blank"      
+                    CategoryServiceOfferId: "Please choose category serviceoffer , can't be blank"
                 },
                 submitHandler: function (form) {
                     form.submit();

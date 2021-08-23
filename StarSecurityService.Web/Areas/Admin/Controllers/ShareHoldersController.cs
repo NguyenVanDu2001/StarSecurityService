@@ -87,11 +87,21 @@ namespace StarSecurityService.Web.Areas.Admin.Controllers
                         Name = shareHolder.Name,
                         Phone = shareHolder.Phone,
                         Status = shareHolder.Status,
-
                     };
                     if (shareHolder.Id > 0)
                     {
-                        db.Entry(shareHolder).State = EntityState.Modified;
+                        ShareHolder shareHolderDb = db.ShareHolders.Find(shareHolder.Id);
+                        shareHolderDb.Image = _FileName;
+                        shareHolderDb.Address = shareHolder.Address;
+                        shareHolderDb.Description = shareHolder.Description;
+                        shareHolderDb.Email = shareHolder.Email;
+                        shareHolderDb.JoinCreateAt = shareHolder.JoinCreateAt;
+                        shareHolderDb.Name = shareHolder.Name;
+                        shareHolderDb.Phone = shareHolder.Phone;
+                        shareHolderDb.Status = shareHolder.Status;
+
+                        db.Entry(shareHolderDb).State = EntityState.Modified;
+                        db.SaveChanges();
                     }
                     else
                     {
