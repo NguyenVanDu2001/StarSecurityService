@@ -64,19 +64,73 @@ namespace StarSecurityService.Web.Controllers
         {
             return View();
         }
-        public async Task<ActionResult> Profesional(int id)
+        public async Task<ActionResult> Profesional(int id , int? serivceOfferId = 0)
         {
           try {
                 var model = new HomeAboutUs();
-                model.ServiceOffersModel = ((await _serviceOfferService.GetAllByStatus()).Where(x => x.CategoryServiceOfferId == id).Select(x => new ServiceOffer
+                    var listRespomse = new List<ServiceOfferCategoryOuput>();  
+                    var listServiceOfferData = ((await _serviceOfferService.GetAllByStatus()).Where(x => x.CategoryServiceOfferId == id)?.ToList());
+                if (serivceOfferId.GetValueOrDefault(1) > 0)
                 {
-                    Id = x.Id,
-                    Title = x.Title,
-                    Introduce = x.Introduce,
-                    Description = x.Description,
-                    Details = x.Details,
-                    Url = x.Url,
-                })?.AsEnumerable());
+                    foreach (var item in listServiceOfferData)
+                    {
+                        var serviceoffer = new ServiceOfferCategoryOuput
+                        {
+                            Title = item.Title,
+                            Introduce = item.Introduce,
+                            Description = item.Description,
+                            Details = item.Details,
+                            Url = item.Url,
+                            CategoryServiceOfferId = item.CategoryServiceOfferId.HasValue ? item.CategoryServiceOfferId.Value : 0,
+                            Id = item.Id,
+                            isSelected = serivceOfferId == item.Id ? true : false,
+                        };
+                        if (item.ClientEmployees?.Any() == true)
+                        {
+
+                            serviceoffer.ClientModel = item.ClientEmployees?.Select(z => new Client
+                            {
+                                Name = z.Clients.Name,
+                                Phone = z.Clients.Phone,
+                                Address = z.Clients.Address
+                            })?.AsEnumerable();
+                        }
+                        listRespomse.Add(serviceoffer);
+                    }
+                    model.ServiceOffersModel = listRespomse;
+
+                }
+                else
+                {
+                    foreach (var item in listServiceOfferData)
+                    {
+                        var serviceoffer = new ServiceOfferCategoryOuput
+                        {
+                            Title = item.Title,
+                            Introduce = item.Introduce,
+                            Description = item.Description,
+                            Details = item.Details,
+                            Url = item.Url,
+                            CategoryServiceOfferId = item.CategoryServiceOfferId.HasValue ? item.CategoryServiceOfferId.Value : 0,
+                            Id = item.Id,
+                            isSelected = serivceOfferId == item.Id ? true : false,
+                        };
+                        if (item.ClientEmployees?.Any() == true)
+                        {
+
+                            serviceoffer.ClientModel = item.ClientEmployees?.Select(z => new Client
+                            {
+                                Name = z.Clients.Name,
+                                Phone = z.Clients.Phone,
+                                Address = z.Clients.Address
+                            })?.AsEnumerable();
+                        }
+                        listRespomse.Add(serviceoffer);
+                    }
+                model.ServiceOffersModel = listRespomse;
+
+                    model.ServiceOffersModel.FirstOrDefault().isSelected = true;
+                }
                 model.ClientModel = await _clientAppServices.GetAll();
                 return View(model);
             }
