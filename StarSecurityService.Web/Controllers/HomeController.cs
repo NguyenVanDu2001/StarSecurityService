@@ -1,5 +1,7 @@
 ﻿using StarSecurityService.Application.Branchs;
 using StarSecurityService.Application.CategoryServiceoofers;
+using StarSecurityService.Application.Vacancys;
+﻿using StarSecurityService.Application.Branchs;
 using StarSecurityService.Application.Clients;
 using StarSecurityService.Application.CLientServices;
 using StarSecurityService.Application.Histories;
@@ -13,13 +15,16 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using System.Web;
 using System.Web.Mvc;
+using System.Collections.Generic;
 
 namespace StarSecurityService.Web.Controllers
 {
     public class HomeController : Controller
     {
+
+        private readonly IVacancyService _vacancyService;
+
         private StarServiceDbContext db;
         private readonly IClientAppService _clientAppServices;
         private readonly IClientEmployeeAppService _ClientEmployeesRepository;
@@ -37,8 +42,11 @@ namespace StarSecurityService.Web.Controllers
             _CategoryServiceOfferRepository = new CategoryServiceOfferService();
             _historyService = new HistoryService();
             _shareHolderService = new ShareHolderService();
+            _vacancyService = new VacancyService();
+
             _ClientEmployeesRepository = new ClientEmployeeAppService();
         }
+
         public ActionResult Index()
         {
             return View();
@@ -51,10 +59,29 @@ namespace StarSecurityService.Web.Controllers
             model.ShareHolderModel = await _shareHolderService.GetAll();
             return View(model);
         }
-        public ActionResult Career()
+
+        public async Task<ActionResult> Career()
         {
-            return View();
+            var items = await _vacancyService.GetAllByStatus();
+            return View(items);
         }
+
+
+        public async Task<ActionResult> JobDetails(int id)
+        {
+            var items = await _vacancyService.FirstOrDefaultAsync(id);
+            ViewBag.Branch = await _branchService.FirstOrDefaultAsync(items.BranchId);
+            ViewBag.Service = await _serviceOfferService.FirstOrDefaultAsync(items.ServiceOfferId);
+            string[] image = ViewBag.Service.Url.Split(' ');
+            List<string> path = new List<string>();
+            foreach (string img in image)
+            {
+                path.Add(img);
+            }
+            ViewBag.Image = path;
+            return View(items);
+        }
+
         public async Task<ActionResult> ContactUs()
         {
             var db = await _branchService.GetAllByStatus();
@@ -64,19 +91,73 @@ namespace StarSecurityService.Web.Controllers
         {
             return View();
         }
-        public async Task<ActionResult> Profesional(int id)
+        public async Task<ActionResult> Profesional(int id , int? serivceOfferId = 0)
         {
           try {
                 var model = new HomeAboutUs();
-                model.ServiceOffersModel = ((await _serviceOfferService.GetAllByStatus()).Where(x => x.CategoryServiceOfferId == id).Select(x => new ServiceOffer
+                    var listRespomse = new List<ServiceOfferCategoryOuput>();  
+                    var listServiceOfferData = ((await _serviceOfferService.GetAllByStatus()).Where(x => x.CategoryServiceOfferId == id)?.ToList());
+                if (serivceOfferId.GetValueOrDefault(1) > 0)
                 {
-                    Id = x.Id,
-                    Title = x.Title,
-                    Introduce = x.Introduce,
-                    Description = x.Description,
-                    Details = x.Details,
-                    Url = x.Url,
-                })?.AsEnumerable());
+                    foreach (var item in listServiceOfferData)
+                    {
+                        var serviceoffer = new ServiceOfferCategoryOuput
+                        {
+                            Title = item.Title,
+                            Introduce = item.Introduce,
+                            Description = item.Description,
+                            Details = item.Details,
+                            Url = item.Url,
+                            CategoryServiceOfferId = item.CategoryServiceOfferId.HasValue ? item.CategoryServiceOfferId.Value : 0,
+                            Id = item.Id,
+                            isSelected = serivceOfferId == item.Id ? true : false,
+                        };
+                        if (item.ClientEmployees?.Any() == true)
+                        {
+
+                            serviceoffer.ClientModel = item.ClientEmployees?.Select(z => new Client
+                            {
+                                Name = z.Clients.Name,
+                                Phone = z.Clients.Phone,
+                                Address = z.Clients.Address
+                            })?.AsEnumerable();
+                        }
+                        listRespomse.Add(serviceoffer);
+                    }
+                    model.ServiceOffersModel = listRespomse;
+
+                }
+                else
+                {
+                    foreach (var item in listServiceOfferData)
+                    {
+                        var serviceoffer = new ServiceOfferCategoryOuput
+                        {
+                            Title = item.Title,
+                            Introduce = item.Introduce,
+                            Description = item.Description,
+                            Details = item.Details,
+                            Url = item.Url,
+                            CategoryServiceOfferId = item.CategoryServiceOfferId.HasValue ? item.CategoryServiceOfferId.Value : 0,
+                            Id = item.Id,
+                            isSelected = serivceOfferId == item.Id ? true : false,
+                        };
+                        if (item.ClientEmployees?.Any() == true)
+                        {
+
+                            serviceoffer.ClientModel = item.ClientEmployees?.Select(z => new Client
+                            {
+                                Name = z.Clients.Name,
+                                Phone = z.Clients.Phone,
+                                Address = z.Clients.Address
+                            })?.AsEnumerable();
+                        }
+                        listRespomse.Add(serviceoffer);
+                    }
+                model.ServiceOffersModel = listRespomse;
+
+                    model.ServiceOffersModel.FirstOrDefault().isSelected = true;
+                }
                 model.ClientModel = await _clientAppServices.GetAll();
                 return View(model);
             }

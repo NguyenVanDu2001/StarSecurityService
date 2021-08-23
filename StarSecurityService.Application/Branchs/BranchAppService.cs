@@ -47,9 +47,9 @@ namespace StarSecurityService.Application.Branchs
             throw new NotImplementedException();
         }
 
-        public Task<Branch> FirstOrDefaultAsync(int? Id)
+        public async Task<Branch> FirstOrDefaultAsync(int? Id)
         {
-            throw new NotImplementedException();
+            return await _branchRepository.FirstOrDefaultAsync(x => x.Id == Id);
         }
 
         public async Task UpdateAsync(Branch branch)
