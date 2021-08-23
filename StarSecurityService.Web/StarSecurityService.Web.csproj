@@ -47,10 +47,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
@@ -2305,13 +2305,6 @@
     <Content Include="Areas\Asset\css\styleMain.css" />
     <Content Include="Areas\Asset\css\styles.css" />
     <Content Include="Areas\Asset\fonts\glyphicons-halflings-regular.svg" />
-    <Content Include="Areas\Asset\img\a2.jpg" />
-    <Content Include="Areas\Asset\img\dai-tu.png" />
-    <Content Include="Areas\Asset\img\dowload.jpg" />
-    <Content Include="Areas\Asset\img\iphone7-plus-black-select-2016.jpg" />
-    <Content Include="Areas\Asset\img\new_seo-10-512.png" />
-    <None Include="Areas\Asset\img\dowload.ipg" />
-    <Content Include="Areas\Asset\img\upload-cloud.png" />
     <Content Include="Areas\Asset\js\bootstrap-datepicker.js" />
     <Content Include="Areas\Asset\js\bootstrap-table.js" />
     <Content Include="Areas\Asset\js\bootstrap.js" />
@@ -2846,7 +2839,9 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Uploads\dowload.jpg" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -2873,6 +2868,7 @@
     <Content Include="Views\Home\Supervision.cshtml" />
     <Content Include="Views\Home\Training.cshtml" />
     <Content Include="Views\Home\Facilities.cshtml" />
+    <Content Include="Views\Home\JobDetails.cshtml" />
     <Content Include="Views\Shared\NavServiceOffer.cshtml" />
   </ItemGroup>
   <ItemGroup>

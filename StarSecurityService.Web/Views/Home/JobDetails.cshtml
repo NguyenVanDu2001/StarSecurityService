@@ -1,0 +1,313 @@
+﻿@model StarSecurityService.ApplicationCore.Entities.Vacancy
+@{
+    ViewBag.Title = "Job Details";
+}
+@section sub_header_supervision{
+    <div id="Subheader">
+        <div class="container">
+            <div class="column one">
+                <h1 class="title" style="text-transform: uppercase;">RECRUITMENT - @Model.Title</h1>
+            </div>
+        </div>
+    </div>
+}
+
+@section style{
+    <style>
+        label.error {
+            color: red
+        }
+
+        .font-red {
+            color: red
+        }
+
+        .gallery img {
+            width: 100px;
+        }
+        #message {
+            top: 70px;
+            left: 70px;
+            background: #d2f1c1;
+            padding: 20px;
+        }
+        #message span {
+            color: #000;
+        }
+    </style>
+}
+
+<div id="Content">
+    <div class="content_wrapper clearfix">
+
+        <div class="sections_group">
+
+            
+
+            <div class="entry-content" itemprop="mainContentOfPage">
+                <div class="section mcb-section mcb-section-aws2hfhu4 mt-40" id="mt-40"
+                     style="padding-top:100px;padding-bottom:40px;background-color:#ffffff">
+                    <div class="section_wrapper mcb-section-inner">
+                        <div class="wrap mcb-wrap mcb-wrap-z29txcs2b one-fourth  valign-top clearfix"
+                             style="padding:0 2%">
+                            <div class="mcb-wrap-inner">
+                                <div class="column mcb-column mcb-item-bnetoqwrz one column_column">
+                                    <div class="column_attr clearfix" style="">
+                                        <h4 class="themecolor" style="text-transform: uppercase;">
+                                            @Model.Title
+                                        </h4>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="wrap mcb-wrap mcb-wrap-w3t94awfi three-fourth  valign-top clearfix"
+                             style="padding:0 2%">
+                            <div class="mcb-wrap-inner">
+                                <div class="column mcb-column mcb-item-6qi9g2zs5 one-second column_column">
+                                    <div class="column_attr clearfix" style="">
+                                        <h6 style="color: #000;">Requirement: </h6>
+                                        <p>
+                                            @Html.Raw(Model.Requirement)
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="column mcb-column mcb-item-odxes3d3s one-second column_column">
+                                    <div class="column_attr clearfix" style="">
+                                        <p>
+                                            <ul>
+                                                <li>
+                                                    <span class="a"><b>Salary: Up To</b></span>
+                                                    <span class="a" style="color: #ff0000"><b id="salary">@Model.Salary</b></span>
+                                                </li>
+                                                <h6 style="color: #000;">Contact : </h6>
+                                                <li>@ViewBag.Branch.Name</li>
+                                                <li>@ViewBag.Branch.Phone</li>
+                                                <li>@ViewBag.Branch.Email</li>
+                                                <div>
+                                                    <a class="button button_right button_size_1 button_theme button_js kill_the_icon popmake-2152" style="float: left;" href="#popmake-836"><span class="button_icon"><i class="icon-right-dir"></i></span><span class="button_label">Apply Now</span></a>
+                                                </div>
+                                            </ul>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="wrap mcb-wrap mcb-wrap-dtm7llnio one  valign-top clearfix" style="">
+                            <div class="mcb-wrap-inner">
+                                <div class="column mcb-column mcb-item-apm0megq8 one-fourth column_column">
+                                    <div class="column_attr clearfix" style=""></div>
+                                </div>
+                                <div class="column mcb-column mcb-item-zb3amd6ln three-fourth column_column">
+                                    <div class="column_attr clearfix" style="padding:0px 0px 0px 30px; color:#000;">
+                                        <h6 style="color: #000;">Description: </h6>
+                                        @Html.Raw(ViewBag.Service.Description)
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="section mcb-section mcb-section-c44bbf2b9  no-margin-h no-margin-v full-width"
+                     style="padding-top:0px;padding-bottom:0px">
+                    <div class="section_wrapper mcb-section-inner">
+                        <div class="wrap mcb-wrap mcb-wrap-387f75522 one  valign-top bg-cover clearfix"
+                             style="padding:70px 8% 70px;background-color:#99a0b0">
+                            <div class="mcb-wrap-inner">
+                                <div class="column mcb-column mcb-item-4d35b29d5 two-fifth column_column">
+                                    <div class="column_attr clearfix align_left" style="padding:0 10px 0 0;">
+                                        <h3 style="margin-bottom: 0;">
+                                            @*TODO: This action will replace by link go to serviceOffer detail view
+                                                <a href="@Url.Action($"ServiceOffer/{item.Id}","Home")">*@
+                                            <a href="#">@ViewBag.Service.Title</a>
+                                            @*</a>*@
+                                        </h3>
+                                        <hr class="no_line" style="margin: 0 auto 10px;" />
+
+                                        <div style="color:#fff;">
+                                            @Html.Raw(ViewBag.Service.Introduce)
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="column mcb-column mcb-item-x2e8qvk7c three-fifth column_slider">
+                                    <div class="content_slider flat hide-dots">
+                                        <ul class="content_slider_ul">
+                                            @foreach (string img in ViewBag.Image)
+                                            {
+                                                <li class="content_slider_li_1">
+                                                    <img id="avatar" class="scale-with-grid wp-post-image" style="width: 486px; height:270px;" src="~/Areas/Asset/img/@img">
+                                                </li>
+                                            }
+                                        </ul>
+                                        <div class="slider_pager slider_pagination"></div>
+                                    </div>
+                                </div>
+                                <div class="column mcb-column mcb-item-52z407m2d one column_divider">
+                                    <hr class="no_line" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="pum-2152"
+     class="pum pum-overlay pum-theme-2143 pum-theme-default-theme popmake-overlay pum-click-to-close click_open"
+     data-popmake="{&quot;id&quot;:2152,&quot;slug&quot;:&quot;career-popup&quot;,&quot;theme_id&quot;:2143,&quot;cookies&quot;:[],&quot;triggers&quot;:[{&quot;type&quot;:&quot;click_open&quot;,&quot;settings&quot;:{&quot;extra_selectors&quot;:&quot;&quot;,&quot;cookie_name&quot;:null}}],&quot;mobile_disabled&quot;:null,&quot;tablet_disabled&quot;:null,&quot;meta&quot;:{&quot;display&quot;:{&quot;stackable&quot;:&quot;1&quot;,&quot;overlay_disabled&quot;:false,&quot;scrollable_content&quot;:false,&quot;disable_reposition&quot;:false,&quot;size&quot;:&quot;tiny&quot;,&quot;responsive_min_width&quot;:&quot;0%&quot;,&quot;responsive_min_width_unit&quot;:false,&quot;responsive_max_width&quot;:&quot;100%&quot;,&quot;responsive_max_width_unit&quot;:false,&quot;custom_width&quot;:&quot;640px&quot;,&quot;custom_width_unit&quot;:false,&quot;custom_height&quot;:&quot;380px&quot;,&quot;custom_height_unit&quot;:false,&quot;custom_height_auto&quot;:false,&quot;location&quot;:&quot;center&quot;,&quot;position_from_trigger&quot;:false,&quot;position_top&quot;:&quot;100&quot;,&quot;position_left&quot;:&quot;0&quot;,&quot;position_bottom&quot;:&quot;0&quot;,&quot;position_right&quot;:&quot;0&quot;,&quot;position_fixed&quot;:false,&quot;animation_type&quot;:&quot;fade&quot;,&quot;animation_speed&quot;:&quot;350&quot;,&quot;animation_origin&quot;:&quot;center top&quot;,&quot;overlay_zindex&quot;:false,&quot;zindex&quot;:&quot;1999999999&quot;},&quot;close&quot;:{&quot;text&quot;:&quot;&quot;,&quot;button_delay&quot;:&quot;0&quot;,&quot;overlay_click&quot;:&quot;1&quot;,&quot;esc_press&quot;:false,&quot;f4_press&quot;:false},&quot;click_open&quot;:[]}}"
+     role="dialog" aria-hidden="true" aria-labelledby="pum_popup_title_2152">
+
+    <div id="popmake-2152"
+         class="pum-container popmake theme-2143 pum-responsive pum-responsive-tiny responsive size-tiny">
+        <div id="pum_popup_title_2152" class="pum-title popmake-title">
+            Apply This position
+        </div>
+        <div class="pum-content popmake-content">
+            <div id="message" hidden>
+                    <span>You have successfuly applied!</span><br />
+                    <span>We will connect you again!</span>
+            </div>
+            <br />
+            <form method="post" id="formCandidate" enctype="multipart/form-data"  class="wpcf7-form">
+                <div style="display: none;">
+                    <input type="hidden" name="VacancyId" value="@Model.Id" />
+                </div>
+                <div class="column one">
+                    <span class="wpcf7-form-control-wrap your-name">
+                        <input type="text"
+                               name="Name" id="Name" value="" size="40"
+                               class="wpcf7-form-control"
+                               aria-required="true" aria-invalid="false" placeholder="Full Name" />
+                    </span>
+                </div>
+                <div class="column one">
+                    <span class="wpcf7-form-control-wrap your-name">
+                        <input type="number"
+                               name="Phone" id="Phone" value="" size="20"
+                               class="wpcf7-form-control"
+                               aria-required="true" aria-invalid="false" placeholder="Contact Number" />
+                    </span>
+                </div>
+                <div class="column one">
+                    <span class="wpcf7-form-control-wrap your-email">
+                        <input type="email"
+                               name="Email" id="Email" value="" size="40"
+                               class="wpcf7-form-control"
+                               aria-required="true" aria-invalid="false" placeholder="Email Address" />
+                    </span>
+                </div>
+                <div class="column one">
+                    <span class="wpcf7-form-control-wrap your-file">
+                        <label for="Image">Curriculum Vitae</label>
+                        <input type="file"
+                               name="Image" id="Image" size="40"
+                               class="wpcf7-form-control"
+                               accept=".jpg,.jpeg,.png,.gif,.pdf,.doc,.docx,.ppt,.pptx,.odt,.avi,.ogg,.m4a,.mov,.mp3,.mp4,.mpg,.wav,.wmv"
+                               aria-required="true" aria-invalid="false" />
+                    </span>
+                </div>
+                <div class="column one">
+                    <span class="wpcf7-form-control-wrap your-msg">
+                        <textarea name="Message" id="Message"
+                                  cols="4" rows="3" class="wpcf7-form-control wpcf7-textarea" aria-invalid="false"
+                                  placeholder="message"></textarea>
+                    </span>
+                </div>
+
+                <div class="column one">
+                    <input type="submit" value="Submit" id="btnReset" Value=" Run jquery(disappear or appear) Again!!" />
+                </div>
+            </form>
+        </div>
+
+        <button type="button" class="pum-close popmake-close" aria-label="Close">
+            X
+        </button>
+
+    </div>
+
+</div>
+
+@section scripts {
+    <script src="~/Areas/Asset/tables/Datatable/jquery-3.5.1.js"></script>
+    <script src="~/Areas/Asset/js/JqueyValidate/jquery.validate.min.js"></script>
+
+    <script>
+        var s = document.getElementById("salary").innerHTML;
+        var salary = parseInt(s)
+        var rs = salary.toLocaleString('us-US', { style: 'currency', currency: 'USD' });
+        document.getElementById("salary").innerHTML = rs;
+
+        jQuery.validator.addMethod('valid_phone', function (value) {
+            var regex = '(84|0[3|5|7|8|9])+([0-9]{8})$';
+            return value.trim().match(regex);
+        });
+
+       
+
+        var $validateForm = {
+            validate: $("#formCandidate").validate({
+                rules: {
+                    Name: "required",
+                    Phone: {
+                        required: true,
+                        valid_phone: true
+                    },
+                    Email: {
+                        required: true,
+                        email: true
+                    },
+                    VacancyId: "required",
+                    Image: "required",
+                },
+                messages: {
+                    Name: "Please input Name!",
+                    Phone:
+                    {
+                        required: "Please input Phone!",
+                        valid_phone: 'Please enter a valid Phone without spacial chars and have 10 charactor, Phone must start with +84 || 03 || 05 || 07 || 08 || 09'
+                    },
+                    Email: {
+                        required: "Please enter email, can't be empty or blank!",
+                        email: "Please enter a valid email address!"
+                    },
+                    VacancyId: "Please choose Vacancy!",
+                    Image: "Please attach your Curriculum Vitae!",
+                },
+                submitHandler: function (form) {
+                   
+                    //form.submit();
+                    $validateForm.ajaxSubmitForm(form);
+                }
+            }),
+            ajaxSubmitForm: function (form) {
+                var formData = new FormData();
+                formData.append("Name", form.Name.value);
+                formData.append("Phone", form.Phone.value);
+                formData.append("VacancyId", form.VacancyId.value);
+                formData.append("Message", form.Message.value);
+                formData.append("Email", form.Email.value);
+                formData.append("Image", $("#Image")[0].files[0]);
+                $.ajax({
+                    url: '/Admin/Candidate/Create',
+                    type: "POST",
+                    dataType: "Json",
+                    contentType: false, // Not to set any content header
+                    processData: false, // Not to process data
+                    data: formData,
+                    success: function (result) {
+                    },
+                    error: function (err) {
+                    }
+                });
+                document.getElementById("message").removeAttribute("hidden");
+                $("#message").delay(1000).fadeOut(5000);
+                $('#formCandidate')[0].reset();
+            }
+        };
+        (function () { $validateForm.validate })();
+
+    </script>
+
+}

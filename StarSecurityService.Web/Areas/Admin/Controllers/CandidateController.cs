@@ -57,7 +57,7 @@ namespace StarSecurityService.Web.Areas.Admin.Controllers
                     string _FileName = Path.GetFileName(Image.FileName);
                     string _path = Path.Combine(Server.MapPath("~/Areas/Asset/img"), _FileName);
                     Image.SaveAs(_path);
-                }
+                }   
                 else
                 {
                     candidate.UrlFile = candidate.UrlFile;
