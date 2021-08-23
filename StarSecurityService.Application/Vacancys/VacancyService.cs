@@ -10,6 +10,7 @@ namespace StarSecurityService.Application.Vacancys
     {
         Task<Vacancy> AddAsync(Vacancy vacancy);
         Task<IEnumerable<Vacancy>> GetAll();
+        Task<IEnumerable<Vacancy>> GetAllByStatus();
         Task<Vacancy> FirstOrDefaultAsync(int Id);
         Task UpdateAsync(Vacancy vacancy);
         Task DeleteAsync(int Id);
@@ -46,12 +47,13 @@ namespace StarSecurityService.Application.Vacancys
         {
             return await _vacancyRepository.GetAllAsync();
         }
+        public async Task<IEnumerable<Vacancy>> GetAllByStatus()
+        {
+            return await _vacancyRepository.ListAsync(x => x.Status == false);
+        }
 
         public async Task UpdateAsync(Vacancy vacancy)
         {
-            //TODO: get user from systems
-            vacancy.UpdateBy = 1;
-
             vacancy.UpdateAt = DateTime.Now;
             await _vacancyRepository.UpdateAsync(vacancy);
         }

@@ -39,8 +39,9 @@ namespace StarSecurityService.Application.ServiceOffers
 
         public async Task DeleteAsync(int Id)
         {
-            var a = await _serviceOfferRepository.FirstOrDefaultAsync(x => x.Id == Id);
-            await _serviceOfferRepository.DeleteAsync(a);
+            var db = await _serviceOfferRepository.FirstOrDefaultAsync(x => x.Id == Id);
+            db.Status = true;
+            await _serviceOfferRepository.UpdateAsync(db);
         }
 
         public async Task<ServiceOffer> FirstOrDefaultAsync(int Id)

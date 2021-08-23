@@ -190,15 +190,15 @@
     <Compile Include="Data\EfRepository.cs" />
     <Compile Include="Data\StarServiceDbContext.cs" />
     <Compile Include="Migrations\202108171545033_update-code-entity.cs" />
-    <Compile Include="Migrations\202108171545033_update-code-entity.designer.cs">
+    <Compile Include="Migrations\202108171545033_update-code-entity.Designer.cs">
       <DependentUpon>202108171545033_update-code-entity.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\202108171619225_Add-url-achievement.cs" />
-    <Compile Include="Migrations\202108171619225_Add-url-achievement.designer.cs">
+    <Compile Include="Migrations\202108171619225_Add-url-achievement.Designer.cs">
       <DependentUpon>202108171619225_Add-url-achievement.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\202108181406285_Add-Table-Historty-ShareHodlder.cs" />
-    <Compile Include="Migrations\202108181406285_Add-Table-Historty-ShareHodlder.designer.cs">
+    <Compile Include="Migrations\202108181406285_Add-Table-Historty-ShareHodlder.Designer.cs">
       <DependentUpon>202108181406285_Add-Table-Historty-ShareHodlder.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\202108201455194_add-table-categoryserviceoffer.cs" />
