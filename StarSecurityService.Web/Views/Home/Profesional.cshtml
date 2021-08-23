@@ -1,4 +1,4 @@
-﻿@model IEnumerable<StarSecurityService.ApplicationCore.Entities.ServiceOffer>
+﻿@model StarSecurityService.Web.Models.HomeAboutUs
 @using System.Web.Script.Serialization;
 @{
     ViewBag.Title = "Profesional";
@@ -18,8 +18,13 @@
         font-weight: bold;
         color: #00a2e0
     }
+
     .content-description > *, .content-introduce > * {
         color: black;
+    }
+
+    .active-service {
+        background-color: #00a2e0;
     }
 </style>
 <div id="Content">
@@ -34,48 +39,72 @@
                     <div class="section_wrapper mcb-section-inner">
                         <div class="wrap mcb-wrap mcb-wrap-z29txcs2b one-third  valign-top clearfix"
                              style="padding:0 2%">
-                            <div class="row">
+                            <div class="">
                                 <h2 class="block-title" style="color: black; font-size: 2.3em;">Service Offer List</h2>
                                 <div style="background-color:whitesmoke;">
-                                    <ul id="myMenu">
-                                        @foreach (var item in Model)
+                                    <ul id="myMenu" role="tablist">
+                                        @foreach (var item in Model.ServiceOffersModel)
                                         {
                                             var json = new JavaScriptSerializer().Serialize(item);
-                                            <li><a href="#" data-id="@json">@item.Title</a></li>
+                                            <li data-toggle="tab" class="@(item.isSelected == true ? "active-service" : "")" href="#home" role="tab" aria-controls="home" aria-selected="false"><a href="@Url.Action("Profesional", "Home",new { id = item.CategoryServiceOfferId , serivceOfferId = item.Id })"  data-id="@json">@item.Title</a></li>
                                         }
 
                                     </ul>
                                 </div>
-                               
+                            </div>
+                            <div class="b" style="margin: 30px 0">
+                                <h2 class="block-title" style="color: black; font-size: 2.3em;">List Client</h2>
+                                <div>
+                                    @foreach (var item in Model.ServiceOffersModel?.Where(x=>x.isSelected == true)?.FirstOrDefault()?.ClientModel)
+                                    {
+                                        <div class="column_attr clearfix" style="">
+                                            <h4 class="themecolor">@item.Name</h4>
+                                            <p style="color: #212121;">
+                                               Phone Number: @item.Phone
+                                            </p>
+                                            <p style="color: #212121;">
+                                              Address: @item.Address
+                                            </p>
+                                        </div>
+                                    }
+                                </div>
                             </div>
                         </div>
                         <div class="wrap mcb-wrap mcb-wrap-w3t94awfi two-third  valign-top clearfix"
                              style="padding:0 2%">
                             <div class="mcb-wrap-inner">
                                 <div class="column mcb-column mcb-item-6qi9g2zs5 one column_column">
-                                    <div class="large-9 main columns">
-                                        <div class="view-content">
-                                                    <p>
-                                                        <img  id="url-file" class="alignnone wp-image-3092 size-full" src="http://themes.webdevia.com/bodyguard/light/wp-content/uploads/sites/2/2015/07/service-3.jpg" alt="service-3" width="300" height="150"><br>
-                                                    </p>
-                                                    
-                                                    <div class="title-serviceOffer">
-                                                    </div>  
-                                                    <br />
-                                                    <div class="introduce-service">
-                                                        <h3 style="color:gray">Introduce Service</h3>
-                                                        <div class="content-introduce">
+                                    <div class="view-content">
+                                        <div class="content_slider flat hide-dots">
+                                            <ul class="content_slider_ul">
+   
+                                            </ul>
+                                            <div class="slider_pager slider_pagination"></div>
+                                        </div>
+                                        <br />
+                                        <div class="title-serviceOffer">
+                                        </div>
+                                        <br />
+                                        <div class="introduce-service">
+                                            <h3 style="color:gray">Introduce Service</h3>
+                                            <div class="content-introduce">
 
-                                                        </div>
-                                                    </div>
-                                                    <br />
-                                                    <div class="description-serviceOffer">
-                                                        <h3 style="color:gray">Description</h3>
-                                                        <div class="content-description">
+                                            </div>
+                                        </div>
+                                        <br />
+                                        <div class="description-serviceOffer">
+                                            <h3 style="color:gray">Description</h3>
+                                            <div class="content-description">
 
-                                                        </div>
-                                                    </div>
-                                                </div>
+                                            </div>
+                                        </div>
+                                        <br />
+                                        <div class="details-serviceOffer">
+                                            <h3 style="color:gray">Details</h3>
+                                            <div class="content-details">
+
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -109,19 +138,32 @@
     <script>
         (function () {
             $(document).on("click", "#myMenu a", function () {
-                $("#myMenu li").removeAttr("style", "background-color:#00a2e0");
-                $(this).closest("li").attr("style", "background-color:#00a2e0");
-
+                //css event
+                //$("#myMenu li").removeAttr("style", "background-color:#00a2e0");
+                //$(this).closest("li").attr("style", "background-color:#00a2e0");
                 let categoryId = $(this).attr("data-id");
                 var json = JSON.parse(categoryId);
-                console.log(json);
-                $("#url-file").attr("src", `../../Areas/Asset/img/${json.Url}`);
+                 //xử lý lấy ảnh theo category
+                let arrayUrl = json.Url.split(" "); 
+                let string_componet = ``;
+                for (let val of arrayUrl) {
+                    string_componet += ` <li class="content_slider_li">
+                                                        <img width="900" height="500"
+                                                             src="../../Areas/Asset/img/${val}"
+                                                             class="scale-with-grid wp-post-image" alt=""
+                                                             srcset="../../Areas/Asset/img/${val} 900w, ../../Areas/Asset/img/${val} 300w, ../../Areas/Asset/img/${val} 768w, ../../Areas/Asset/img/${val} 260w, ../../Areas/Asset/img/${val} 50w, ../../Areas/Asset/img/${val} 135w"
+                                                             sizes="(max-width: 900px) 100vw, 900px" />
+                                                    </li>`
+                };
+                $(".content_slider_ul").html(string_componet);
+                 //end
+                //$("#url-file").attr("src", `../../Areas/Asset/img/${json.Url}`);
                 $(".title-serviceOffer").html(json.Title)
                 $(".content-description").html(json.Description);
                 $(".content-introduce").html(json.Introduce);
+                $(".content-details").html(json.Details);
             });
-            $("#myMenu a").trigger("click");
+            $("#myMenu li.active-service:first a").trigger("click");
         })()
-
     </script>
 }
