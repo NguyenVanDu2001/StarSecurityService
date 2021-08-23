@@ -161,35 +161,14 @@
                                                 </a>
                                             </li>
                                             <li class="menu-item menu-item-type-post_type menu-item-object-page">
-                                                <a href="@Url.Action("Divisions", "Home")">
-                                                    <span class="@(Request.Path.StartsWith(@Url.Action("Divisions", "Home")) ? "activeMain" : null)">DIVISIONS</span>
-                                                </a>
-                                                <ul class="sub-menu">
-                                                    <li id="menu-item-2057"
-                                                        class="menu-item menu-item-type-post_type menu-item-object-page">
-                                                        <a href="@Url.Action("DubaiDivision", "Home")">
-                                                            <span>
-                                                                DUBAI
-                                                                DIVISIONS
-                                                            </span>
-                                                        </a>
-                                                    </li>
-                                                </ul>
-                                            </li>
-                                            <li class="menu-item menu-item-type-post_type menu-item-object-page">
-                                                <a href="@Url.Action("Profesional", "Home")">
-                                                    <span class="@(Request.Path.StartsWith(@Url.Action("Profesional", "Home")) ? "activeMain" : null)">
+                                                <a style="cursor: pointer">
+                                                    <span>
                                                         SERVICES OFFER
                                                     </span>
                                                 </a>
                                                 <ul class="sub-menu">
                                                     @Html.Action("GetNavPartialServiceOffer", "Home")
                                                 </ul>
-                                            </li>
-                                            <li class="menu-item menu-item-type-post_type menu-item-object-page">
-                                                <a href="@Url.Action("Emiratisation", "Home")">
-                                                    <span class="@(Request.Path.StartsWith(@Url.Action("Emiratisation", "Home")) ? "activeMain" : null)">EMIRATISATION</span>
-                                                </a>
                                             </li>
                                             <li class="menu-item menu-item-type-post_type menu-item-object-page">
                                                 <a href="@Url.Action("Career", "Home")">
