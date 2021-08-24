@@ -98,7 +98,7 @@ namespace StarSecurityService.EntityFramework.Data
             GC.SuppressFinalize(this);
         }
 
-        public async Task<ICollection<T>> GetAllListAsync()
+        public async Task<List<T>> GetAllListAsync()
         {
           return  await _dbContext.Set<T>().ToListAsync();
         }

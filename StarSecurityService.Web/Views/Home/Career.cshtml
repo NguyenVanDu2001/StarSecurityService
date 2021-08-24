@@ -45,6 +45,15 @@
             position: relative;
             left: 30px;
         }
+
+        .filters-page {
+            float: right;
+            display: flex;
+        }
+
+            .filters-page a {
+                max-height: 15px
+            }
     </style>
 }
 
@@ -64,8 +73,13 @@
                                         <h3 style="margin-bottom: 0;">Vacancy</h3>
                                     </div>
                                 </div>
+                                <div class="filters-page">
+                                    <input type="text" class="form-control" id="Filters" name="Filter" value="" />
+                                    &nbsp; <a id="search" class="button button_right button_size_1 button_theme">Search</a>
+                                </div>
                                 <div class="column mcb-column mcb-item-5ye0ocfyz one column_divider">
                                     <hr class="no_line" style="margin: 0 auto 50px;" />
+
                                 </div>
                                 @foreach (var item in Model)
                                 {
@@ -187,3 +201,15 @@
     </div>
 
 </div>
+@section scripts{
+    <script src="~/Areas/Asset/tables/Datatable/jquery-3.5.1.js"></script>
+    <script>
+        (function () {
+            $("#search").click(function () {
+                let filter1 = $("#Filters").val();
+                var url = '@Url.Action("Career","Home")?filter=' + filter1;
+                window.location.href = url;
+            })
+        })()
+    </script>
+    }

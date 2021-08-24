@@ -10,7 +10,7 @@ namespace StarSecurityService.Application.Vacancys
     {
         Task<Vacancy> AddAsync(Vacancy vacancy);
         Task<IEnumerable<Vacancy>> GetAll();
-        Task<IEnumerable<Vacancy>> GetAllByStatus();
+        Task<List<Vacancy>> GetAllByStatus(string filter = "");
         Task<Vacancy> FirstOrDefaultAsync(int Id);
         Task UpdateAsync(Vacancy vacancy);
         Task DeleteAsync(int Id);
@@ -47,11 +47,18 @@ namespace StarSecurityService.Application.Vacancys
         {
             return await _vacancyRepository.GetAllAsync();
         }
-        public async Task<IEnumerable<Vacancy>> GetAllByStatus()
+        public async Task<List<Vacancy>> GetAllByStatus(string filter = "")
         {
-            return await _vacancyRepository.ListAsync(x => x.Status == true);
+            if (!string.IsNullOrEmpty(filter))
+            {
+                 return (await _vacancyRepository.GetAllListAsync()).FindAll(x => (x.Branchs.Name.ToLower().Contains(filter.ToLower())
+                                                                                || x.ServiceOffer.Title.ToLower().Contains(filter.ToLower())
+                                                                                )  || x.Title.ToLower().Contains(filter.ToLower())
+                                                                                && x.Status == true);
+            }
+           return (await _vacancyRepository.GetAllListAsync()).FindAll(x => x.Status == true);
         }
-
+            
         public async Task UpdateAsync(Vacancy vacancy)
         {
             vacancy.UpdateAt = DateTime.Now;

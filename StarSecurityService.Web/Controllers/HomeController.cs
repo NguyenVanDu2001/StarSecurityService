@@ -60,9 +60,9 @@ namespace StarSecurityService.Web.Controllers
             return View(model);
         }
 
-        public async Task<ActionResult> Career()
+        public async Task<ActionResult> Career( string filter = "")
         {
-            var items = await _vacancyService.GetAllByStatus();
+            var items = await _vacancyService.GetAllByStatus(filter);
             return View(items);
         }
 
