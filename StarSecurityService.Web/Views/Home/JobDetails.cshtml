@@ -116,10 +116,7 @@
                                 <div class="column mcb-column mcb-item-4d35b29d5 two-fifth column_column">
                                     <div class="column_attr clearfix align_left" style="padding:0 10px 0 0;">
                                         <h3 style="margin-bottom: 0;">
-                                            @*TODO: This action will replace by link go to serviceOffer detail view
-                                                <a href="@Url.Action($"ServiceOffer/{item.Id}","Home")">*@
-                                            <a href="#">@ViewBag.Service.Title</a>
-                                            @*</a>*@
+                                            <a href="@Url.Action("Profesional", "Home",new { id =  @ViewBag.Service.CategoryServiceOfferId , serivceOfferId = @ViewBag.Service.Id })">@ViewBag.Service.Title</a>
                                         </h3>
                                         <hr class="no_line" style="margin: 0 auto 10px;" />
 
