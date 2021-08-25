@@ -54,7 +54,7 @@ namespace StarSecurityService.Web.Areas.Admin.Controllers
             var isPermisstion = ( _grPermis.GetAll()).Any(x => x.GroupId == em.GroupId && x.PermisstionId == permistionId);
             if (isPermisstion)
             {
-                return false; // nếu ko tồn tại <=> chưa đưuọc gán quyền
+                return true;
             }
 
             return false;

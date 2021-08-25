@@ -9,7 +9,8 @@ namespace StarSecurityService.Web.Models
     public class HomeIndexModel
     {
         public IEnumerable<CategoryServiceOffer> CategoryServiceOfferModel { get; set; }
-        public IEnumerable<History> HistoryModel { get; set; }
+        public History HistoryModel { get; set; }
+        public List<Branch> Branchs { get; set; }
     }
     public class HomeAboutUs
     {
