@@ -3,6 +3,7 @@ using StarSecurityService.ApplicationCore.Entities;
 using StarSecurityService.Web.Commons;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
@@ -32,11 +33,19 @@ namespace StarSecurityService.Web.Areas.Admin.Controllers
 
         // POST: Admin/Client/Create
         [HttpPost]
-        public ActionResult Create(Client client)
+        public ActionResult Create(Client client, HttpPostedFileBase Image)
         {
             try
             {
-                // TODO: Add insert logic here
+
+                if (Image != null)
+                {
+                    client.Image = Image.FileName;
+                    string _FileName = Path.GetFileName(Image.FileName);
+                    string _path = Path.Combine(Server.MapPath("~/Areas/Asset/img"), _FileName);
+                    Image.SaveAs(_path);
+                }
+
                 _clientAppServices.AddAsync(client);
                 return RedirectToAction("Index");
             }
@@ -55,11 +64,19 @@ namespace StarSecurityService.Web.Areas.Admin.Controllers
 
         // POST: Admin/Client/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, Client client)
+        public ActionResult Edit(int id, Client client, HttpPostedFileBase Image)
         {
             try
             {
                 // TODO: Add update logic here
+                if (Image != null)
+                {
+                    client.Image = Image.FileName;
+                    string _FileName = Path.GetFileName(Image.FileName);
+                    string _path = Path.Combine(Server.MapPath("~/Areas/Asset/img"), _FileName);
+                    Image.SaveAs(_path);
+                }
+
                 _clientAppServices.UpdateAsync(client);
                 return RedirectToAction("Index");
             }
