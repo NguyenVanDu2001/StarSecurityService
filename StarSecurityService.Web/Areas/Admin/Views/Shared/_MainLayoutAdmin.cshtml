@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Dashboard | Star Security</title>
+    <link rel="shortcut icon" href="~/Areas/Asset/img/banner-logo.png" type="image/x-icon" />
     <link href="~/Areas/Asset/Plugins/css/fStyle.css" rel="stylesheet" />
     <link href="~/Areas/Asset/css/bootstrap.min.css" rel="stylesheet">
     <link href="~/Areas/Asset/css/datepicker3.css" rel="stylesheet">
@@ -53,13 +54,13 @@
             <li class="@(Request.Path.StartsWith(@Url.Action("Index", "Branch")) ? "active" : null)"><a href="@Url.Action("Index", "Branch")"><svg class="glyph stroked home"><use xlink:href="#stroked-home" /></svg> Branch</a></li>
             <li class="@(Request.Path.StartsWith(@Url.Action("Index", "Client")) ? "active" : null)"><a href="@Url.Action("Index", "Client")"><svg class="glyph stroked female user"><use xlink:href="#stroked-female-user" /></svg> Client</a></li>
             <li class="@(Request.Path.StartsWith(@Url.Action("Index", "ServiceOffer")) ? "active" : null)"><a href="@Url.Action("Index", "ServiceOffer")"><svg class="glyph stroked open folder"><use xlink:href="#stroked-open-folder" /></svg> ServiceOffer</a></li>
-            <li class="@(Request.Path.StartsWith(@Url.Action("Index", "Vacancy")) ? "active" : null)"><a href="@Url.Action("Index", "Vacancy")"><svg class="glyph stroked notepad "><use xlink:href="#stroked-notepad" /></svg> Vacancy</a></li>
-            <li class="@(Request.Path.StartsWith(@Url.Action("Index", "Candidate")) ? "active" : null)"><a href="@Url.Action("Index", "Candidate")"><svg class="glyph stroked film"><use xlink:href="#stroked-film" /></svg> Candidate</a></li>
+            <li class="@(Request.Path.StartsWith(@Url.Action("Index", "Vacancy")) ? "active" : null)"><a href="@Url.Action("Index", "Vacancy")"><svg class="glyph stroked eye"><use xlink:href="#stroked-eye"/></svg> Vacancy</a></li>
+            <li class="@(Request.Path.StartsWith(@Url.Action("Index", "Candidate")) ? "active" : null)"><a href="@Url.Action("Index", "Candidate")"><svg class="glyph stroked paperclip"><use xlink:href="#stroked-paperclip" /></svg> Candidate</a></li>
             <li class="@(Request.Path.StartsWith(@Url.Action("Index", "Histories")) ? "active" : null)"><a href="@Url.Action("Index", "Histories")"><svg class="glyph stroked film"><use xlink:href="#stroked-film" /></svg> History</a></li>
-            <li class="@(Request.Path.StartsWith(@Url.Action("Index", "ShareHolders")) ? "active" : null)"><a href="@Url.Action("Index", "ShareHolders")"><svg class="glyph stroked film"><use xlink:href="#stroked-film" /></svg> Share  Holders</a></li>
-            <li class="@(Request.Path.StartsWith(@Url.Action("Index", "CategoryServiceOffers")) ? "active" : null)"><a href="@Url.Action("Index", "CategoryServiceOffers")"><svg class="glyph stroked film"><use xlink:href="#stroked-film" /></svg> Category serviceoffer</a></li>
-            <li class="@(Request.Path.StartsWith(@Url.Action("Index", "GroupUser")) ? "active" : null)"><a href="@Url.Action("Index", "GroupUser")"><svg class="glyph stroked film"><use xlink:href="#stroked-film" /></svg>  Group User</a></li>
-            <li class="@(Request.Path.StartsWith(@Url.Action("Index", "Bussiness")) ? "active" : null)"><a href="@Url.Action("Index", "Bussiness")"><svg class="glyph stroked film"><use xlink:href="#stroked-film" /></svg>  Bussiness</a></li>
+            <li class="@(Request.Path.StartsWith(@Url.Action("Index", "ShareHolders")) ? "active" : null)"><a href="@Url.Action("Index", "ShareHolders")"><svg class="glyph stroked laptop computer and mobile"><use xlink:href="#stroked-laptop-computer-and-mobile" /></svg> Share  Holders</a></li>
+            <li class="@(Request.Path.StartsWith(@Url.Action("Index", "CategoryServiceOffers")) ? "active" : null)"><a href="@Url.Action("Index", "CategoryServiceOffers")"><svg class="glyph stroked flag"><use xlink:href="#stroked-flag" /></svg> Category serviceoffer</a></li>
+            <li class="@(Request.Path.StartsWith(@Url.Action("Index", "GroupUser")) ? "active" : null)"><a href="@Url.Action("Index", "GroupUser")"><svg class="glyph stroked external hard drive"><use xlink:href="#stroked-external-hard-drive" /></svg>  Group User</a></li>
+            <li class="@(Request.Path.StartsWith(@Url.Action("Index", "Bussiness")) ? "active" : null)"><a href="@Url.Action("Index", "Bussiness")"><svg class="glyph stroked wireless router"><use xlink:href="#stroked-wireless-router" /></svg>  Bussiness</a></li>
             <li role="presentation" class="divider"></li>
         </ul>
 
