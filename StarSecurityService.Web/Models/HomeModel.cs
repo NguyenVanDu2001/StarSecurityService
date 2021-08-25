@@ -6,8 +6,10 @@ using System.Web;
 
 namespace StarSecurityService.Web.Models
 {
-    public class HomeModel
+    public class HomeIndexModel
     {
+        public IEnumerable<CategoryServiceOffer> CategoryServiceOfferModel { get; set; }
+        public IEnumerable<History> HistoryModel { get; set; }
     }
     public class HomeAboutUs
     {

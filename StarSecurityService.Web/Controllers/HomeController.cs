@@ -47,9 +47,13 @@ namespace StarSecurityService.Web.Controllers
             _ClientEmployeesRepository = new ClientEmployeeAppService();
         }
 
-        public ActionResult Index()
+        public async Task<ActionResult> Index()
         {
-            return View();
+            var model = new HomeIndexModel()
+            {
+                CategoryServiceOfferModel = await _CategoryServiceOfferRepository.GetAll(),
+            };
+            return View(model);
         }
 
         public async Task<ActionResult> AboutUs()

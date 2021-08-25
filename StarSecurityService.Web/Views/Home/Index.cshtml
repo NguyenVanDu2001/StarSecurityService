@@ -1,6 +1,21 @@
-﻿
+﻿@model StarSecurityService.Web.Models.HomeIndexModel
 @{
     ViewBag.Title = "Star Security";
+}
+
+@section style{
+    <style>
+        .column_icon_box .desc_wrapper {
+            position: absolute;
+            top: 84px;
+            left: 0px;
+        }
+
+        .style-simple .icon_box .desc_wrapper .title {
+            color: white;
+            font-family: monospace;
+        }
+    </style>
 }
 <div id="Content">
     <div class="content_wrapper clearfix">
@@ -20,58 +35,24 @@
                                         <h3 style="color:#6d6e72">OUR<br>SERVICES</h3>
                                     </div>
                                 </div>
-                                <div class="column mcb-column mcb-item-xrrvx4bj6 one-fifth column_icon_box">
-                                    <div class="animate" data-anim-type="fadeInUpLarge">
-                                        <div class="icon_box icon_position_top no_border">
-                                            <div class="image_wrapper">
-                                                <img src="../../Content/wp-content/uploads/2019/07/SHIELD-guard.png"
-                                                     class="scale-with-grid" alt="" />
-                                            </div>
-                                            <div class="desc_wrapper">
-                                                <h5 class="title">GUARDING SERVICES</h5>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="column mcb-column mcb-item-jq0d879rl one-fifth column_icon_box">
-                                    <div class="animate" data-anim-type="fadeInUpLarge">
-                                        <div class="icon_box icon_position_top no_border">
-                                            <div class="image_wrapper">
-                                                <img src="../../Content/wp-content/uploads/2019/07/SHIELD-camera.png"
-                                                     class="scale-with-grid" alt="" />
-                                            </div>
-                                            <div class="desc_wrapper">
-                                                <h5 class="title">SECURITY SURVAILANCE</h5>
+                                @foreach (var item in Model.CategoryServiceOfferModel)
+                                {
+                                    <div class="column mcb-column mcb-item-xrrvx4bj6 one-fifth column_icon_box">
+                                        <div class="animate" data-anim-type="fadeInUpLarge">
+                                            <div class="icon_box icon_position_top no_border">
+                                                <div class="image_wrapper">
+                                                    <img src="../../Content/wp-content/uploads/2019/07/SHIELD-guard-demo.png"
+                                                         class="scale-with-grid" alt="" />
+                                                </div>
+                                                <div class="desc_wrapper">
+                                                    <h5 class="title">@item.Name</h5>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="column mcb-column mcb-item-e7yitw4vh one-fifth column_icon_box">
-                                    <div class="animate" data-anim-type="fadeInUpLarge">
-                                        <div class="icon_box icon_position_top no_border">
-                                            <div class="image_wrapper">
-                                                <img src="../../Content/wp-content/uploads/2019/07/SHIELD-fire.png"
-                                                     class="scale-with-grid" alt="" />
-                                            </div>
-                                            <div class="desc_wrapper">
-                                                <h5 class="title">FIRE &amp; SAFETY</h5>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="column mcb-column mcb-item-22kml402a one-fifth column_icon_box">
-                                    <div class="animate" data-anim-type="fadeInUpLarge">
-                                        <div class="icon_box icon_position_top no_border">
-                                            <div class="image_wrapper">
-                                                <img src="../../Content/wp-content/uploads/2019/07/SHIELD-other.png"
-                                                     class="scale-with-grid" alt="" />
-                                            </div>
-                                            <div class="desc_wrapper">
-                                                <h5 class="title">OTHER SERVICES</h5>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                                }
+
+
                             </div>
                         </div>
                     </div>
