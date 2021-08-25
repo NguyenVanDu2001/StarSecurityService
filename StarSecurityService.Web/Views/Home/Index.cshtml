@@ -5,15 +5,31 @@
 
 @section style{
     <style>
-        .column_icon_box .desc_wrapper {
+        .column_icon_box .title-wrapper {
             position: absolute;
-            top: 84px;
-            left: 0px;
+            top: 63px;
+            left: 14px;
+            right: 0px;
         }
 
-        .style-simple .icon_box .desc_wrapper .title {
+        .style-simple .icon_box .title-wrapper .title {
             color: white;
             font-family: monospace;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            max-width: 160px;
+            /*            white-space: nowrap;*/
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .banner_background {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .icon_box .image_wrapper .scale-with-grid {
+            max-width: 190px !important;
         }
     </style>
 }
@@ -27,11 +43,11 @@
                 <div class="section mcb-section mcb-section-ylkmrierc"
                      style="padding-top:80px;padding-bottom:10px;background-color:#ffffff">
                     <div class="section_wrapper mcb-section-inner">
-                        <div class="wrap mcb-wrap mcb-wrap-187q43x0j one  valign-top clearfix" style="">
-                            <div class="mcb-wrap-inner">
+                        <div class="wrap mcb-wrap mcb-wrap-187q43x0j one  valign-top clearfix">
+                            <div class="mcb-wrap-inner banner_background">
                                 <div class="column mcb-column mcb-item-lh3o7uyfp one-fifth column_column">
                                     <div class="column_attr clearfix align_left animate"
-                                         data-anim-type="fadeInLeft" style="padding:90px 0 0;">
+                                         data-anim-type="fadeInLeft">
                                         <h3 style="color:#6d6e72">OUR<br>SERVICES</h3>
                                     </div>
                                 </div>
@@ -43,9 +59,9 @@
                                                 <div class="image_wrapper">
                                                     <img src="../../Content/wp-content/uploads/2019/07/SHIELD-guard-demo.png"
                                                          class="scale-with-grid" alt="" />
-                                                </div>
-                                                <div class="desc_wrapper">
-                                                    <h5 class="title">@item.Name</h5>
+                                                    <div class="desc_wrapper title-wrapper">
+                                                        <h6 class="title" title="@item.Name">@item.Name</h6>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -99,7 +115,7 @@
                                 </div>
                                 <div class="column mcb-column mcb-item-mdcqgsqmc one column_button">
                                     <a class="button  button_right button_size_2 button_theme button_js"
-                                       href="@Url.Action("AboutUs", "Client")">
+                                       href="@Url.Action("AboutUs", "Home")">
                                         <span class="button_icon">
                                             <i class="icon-right-dir"></i>
                                         </span><span class="button_label">LEARN MORE</span>
@@ -594,7 +610,7 @@
                                         <h3 style="color:#6d6e72">WHERE CAN YOU FIND US</h3>
                                     </div>
                                 </div>
-                                <div class="column mcb-column mcb-item-k4srygryc one-second column_column">
+                                <div class="column mcb-column mcb-item-k4srygryc one-second column_column" style="width: 100%">
                                     <div class="column_attr clearfix align_center" style="">
                                         <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3723.6549998389814!2d105.78124751540255!3d21.0464859925476!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135ab32dd484c53%3A0x4201b89c8bdfd968!2zMjM4IEhvw6BuZyBRdeG7kWMgVmnhu4d0LCBD4buVIE5odeG6vywgQ-G6p3UgR2nhuqV5LCBIw6AgTuG7mWksIFZp4buHdCBOYW0!5e0!3m2!1svi!2s!4v1629728510258!5m2!1svi!2s" width="100%" height="490" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
                                     </div>
