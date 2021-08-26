@@ -7,34 +7,19 @@
     <style>
         .column_icon_box .title-wrapper {
             position: absolute;
-            top: 63px;
-            left: 18px;
+            top: 60px;
+            left: 17px;
             right: 0px;
         }
 
         .style-simple .icon_box .title-wrapper .title {
             color: white;
-            font-family: monospace;
             display: -webkit-box;
             -webkit-line-clamp: 3;
             -webkit-box-orient: vertical;
             max-width: 160px;
-            /*            white-space: nowrap;*/
             overflow: hidden;
             text-overflow: ellipsis;
-        }
-
-        .banner_background {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-        .icon_box .image_wrapper .scale-with-grid {
-            max-width: 190px !important;
-        }
-        .set_with_banner {
-            overflow: auto;
         }
     </style>
 }
@@ -45,36 +30,31 @@
 
             <div class="entry-content" itemprop="mainContentOfPage">
 
-                <div class="section mcb-section mcb-section-ylkmrierc"
-                     style="padding-top:80px;padding-bottom:10px;background-color:#ffffff">
+                <div class="section mcb-section mcb-section-ylkmrierc" style="padding-top:80px;padding-bottom:10px;background-color:#ffffff">
                     <div class="section_wrapper mcb-section-inner">
-                        <div class="wrap mcb-wrap mcb-wrap-187q43x0j one  valign-top clearfix">
-                            <div class="mcb-wrap-inner banner_background set_with_banner">
+                        <div class="wrap mcb-wrap mcb-wrap-187q43x0j one  valign-top clearfix" style="">
+                            <div class="mcb-wrap-inner">
                                 <div class="column mcb-column mcb-item-lh3o7uyfp one-fifth column_column">
-                                    <div class="column_attr clearfix align_left animate"
-                                         data-anim-type="fadeInLeft">
+                                    <div class="column_attr clearfix align_left animate fadeInLeft" data-anim-type="fadeInLeft" style="padding:90px 0 0;">
                                         <h3 style="color:#6d6e72">OUR<br>SERVICES</h3>
                                     </div>
                                 </div>
                                 @foreach (var item in Model.CategoryServiceOfferModel)
                                 {
                                     <div class="column mcb-column mcb-item-xrrvx4bj6 one-fifth column_icon_box">
-                                        <div class="animate" data-anim-type="fadeInUpLarge">
+                                        <div class="animate fadeInUpLarge" data-anim-type="fadeInUpLarge">
                                             <div class="icon_box icon_position_top no_border">
                                                 <div class="image_wrapper">
-                                                    <img src="../../Content/wp-content/uploads/2019/07/SHIELD-guard-demo.png"
-                                                         class="scale-with-grid" alt="" />
-                                                    <div class="desc_wrapper title-wrapper">
-                                                        <h6 class="title" title="@item.Name">@item.Name</h6>
-                                                    </div>
+                                                    <img src="../../Content/wp-content/uploads/2019/07/SHIELD-guard-demo.png" class="scale-with-grid" alt="">
+                                                </div>
+                                                <div class="desc_wrapper title-wrapper">
+                                                    <h5 class="title" title="@item.Name">@item.Name</h5>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 }
-
-
-                            </div>
+                                </div>
                         </div>
                     </div>
                 </div>
