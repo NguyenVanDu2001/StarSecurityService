@@ -54,18 +54,16 @@
                                         </div>
                                     </div>
                                 }
-                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="section mcb-section mcb-section-5ydhpqene  no-margin-v bt-top"
-                     style="padding-top:0px;padding-bottom:0px;background-color:#ffffff">
+                <div class="section mcb-section mcb-section-5ydhpqene  no-margin-v bt-top" style="padding-bottom:10px;background-color:#ffffff">
                     <div class="section_wrapper mcb-section-inner">
-                        <div class="wrap mcb-wrap mcb-wrap-c42dxzzzt one-second  valign-middle clearfix"
-                             style="">
+                        <div class="wrap mcb-wrap mcb-wrap-c42dxzzzt one-second  valign-middle clearfix" style="">
                             <div class="mcb-wrap-inner">
-                                <div class="column mcb-column mcb-item-g5khn0yb7 one column_image">
-                                    <div class="animate" data-anim-type="zoomIn">
+                                <div class="column mcb-column mcb-item-g5khn0yb7 one column_image" style="padding-top: 30px">
+                                    <div class="animate zoomIn" data-anim-type="zoomIn">
                                         <div class="image_frame image_item no_link scale-with-grid aligncenter no_border">
                                             <div class="image_wrapper">
                                                 @if (!string.IsNullOrEmpty(Model?.HistoryModel?.Image))
@@ -79,29 +77,17 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="wrap mcb-wrap mcb-wrap-6s9q7k897 one-second  valign-top clearfix"
-                             style="padding:0 30px 0">
+                        </div><div class="wrap mcb-wrap mcb-wrap-6s9q7k897 one-second  valign-top clearfix" style="padding:0 30px 0">
                             <div class="mcb-wrap-inner">
                                 <div class="column mcb-column mcb-item-ebdoowcl4 one column_column">
-                                    <div class="column_attr clearfix align_left animate"
-                                         data-anim-type="fadeInRight" style="padding:110px 0 0;">
-                                        <h3 style="color:#6d6e72">WHO WE ARE</h3>
-                                        <h3 class="themecolor">
-                                            @(Model?.HistoryModel?.Title)
-                                        </h3>
+                                    <div class="column_attr clearfix align_left animate fadeInRight" data-anim-type="fadeInRight" style="padding:20px 0 0;">
+                                        <h3 style="color:#6d6e72">@(Model?.HistoryModel?.Title)</h3>
                                         <p>
                                             @(Model?.HistoryModel?.Description)
                                         </p>
                                     </div>
-                                </div>
-                                <div class="column mcb-column mcb-item-mdcqgsqmc one column_button">
-                                    <a class="button  button_right button_size_2 button_theme button_js"
-                                       href="@Url.Action("AboutUs", "Home")">
-                                        <span class="button_icon">
-                                            <i class="icon-right-dir"></i>
-                                        </span><span class="button_label">LEARN MORE</span>
-                                    </a>
+                                </div><div class="column mcb-column mcb-item-mdcqgsqmc one column_button">
+                                    <a class="button  button_right button_size_2 button_theme button_js kill_the_icon" href="@Url.Action("AboutUs", "Home")"><span class="button_icon"><i class="icon-right-dir"></i></span><span class="button_label">LEARN MORE</span></a>
                                 </div>
                             </div>
                         </div>
@@ -119,38 +105,21 @@
                                         <h3 style="color:#000">OUR DIVISIONS</h3>
                                     </div>
                                 </div>
-                               
-                                @*<div class="column mcb-column mcb-item-4d35b29d5 one-fourth column_column text-white column-margin-30px">
-                                        <div class="column_attr clearfix align_left" style="">
-                                            <div class="box-mar" id="warp">
-                                                <a href="@Url.Action($"JobDetails","Home")" style="text-decoration: none;">
-                                                    <h4 id="title" style="word-wrap:break-word;">1211212121212</h4>
-                                                </a>
-                                            </div>
-                                            <div id="details">
-                                                <a class="button button_right button_size_1 button_theme button_js kill_the_icon" href="@Url.Action($"JobDetails","Home")"><span class="button_icon"><i class="icon-right-dir"></i></span><span class="button_label">View Details</span></a>
-                                            </div>
-                                        </div>
-                                    </div>*@
                                 @foreach (var item in Model.Branchs)
                                 {
-
-                                <div class="column mcb-column mcb-item-u8w58k8p8 one-second column_icon_box">
-                                    <div class="animate" data-anim-type="zoomIn">
-                                        <div class="icon_box icon_position_top no_border">
-                                            <a class=""
-                                               href="dubai-divisions/index.html">
-                                                <h4 style="text-align:center" class="title">@item.Name</h4>
-                                            </a>
+                                    <div class="column mcb-column mcb-item-u8w58k8p8 one-second column_icon_box" style="background-color: slategrey">
+                                        <div class="animate" data-anim-type="zoomIn">
+                                            <div class="icon_box icon_position_top no_border">
+                                                    <h4 style="text-align:center" class="title">@item.Name</h4>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
                                 }
                             </div>
                         </div>
                     </div>
                 </div>
-            
+
                 <div class="section mcb-section mcb-section-sn5fjbb1k  no-margin-h"
                      style="padding-top:110px;padding-bottom:70px;background-color:#ffffff">
                     <div class="section_wrapper mcb-section-inner">
