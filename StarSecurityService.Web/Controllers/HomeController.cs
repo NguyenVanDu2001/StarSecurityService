@@ -51,7 +51,9 @@ namespace StarSecurityService.Web.Controllers
         {
             var model = new HomeIndexModel()
             {
+                HistoryModel = (await _historyService.GetAll()).FirstOrDefault(),
                 CategoryServiceOfferModel = await _CategoryServiceOfferRepository.GetAll(),
+                Branchs =( await _branchService.GetAllByStatus()).ToList(),
             };
             return View(model);
         }
