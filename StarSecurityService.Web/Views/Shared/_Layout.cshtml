@@ -267,13 +267,10 @@
                                 <div style="text-align: left;">
                                     <h5>Usefull Links</h5>
                                     <ul>
-                                        <li> <a href="#">Home</a></li>
-                                        <li> <a href="#">About</a></li>
-                                        <li> <a href="#">Sectors</a></li>
-                                        <li> <a href="#">Divisions</a></li>
-                                        <li> <a href="#">Customers</a></li>
-                                        <li> <a href="#">Career</a></li>
-                                        <li> <a href="#">Contact</a></li>
+                                        <li> <a href="@Url.Action("Index", "Home")">Home</a></li>
+                                        <li> <a href="@Url.Action("AboutUs", "Home")">About</a></li>
+                                        <li> <a href="@Url.Action("Career", "Home")">Career</a></li>
+                                        <li> <a href="@Url.Action("ContactUs", "Home")">Contact Us</a></li>
 
                                     </ul>
                                 </div>
@@ -286,16 +283,29 @@
                                 <div style="text-align: left;">
                                     <h5>LOCATION</h5>
                                     <p>
-                                        Chain Office Tower Bldg. <br>
-                                        6th Floor-601,opposite al falah plaza<br>
-                                        Al Muroor Road – Abu Dhabi,<br>
-                                        United Arab Emirates
+                                        Address: 250 Hoang Quoc Viet, Bac Tu Liem, Hanoi
                                     </p>
                                     <p>
-                                        Email:sss2333@emirates.net.ae<br />
-                                        Phone: 00971-26675588<br />
-                                        Fax: 00971-026676788
+                                        Email: tuyensinh@bachkhoa-aptech.edu.vn
                                     </p>
+                                    <p>
+                                        Hotline: 0868 88 6996
+                                    </p>
+                                </div>
+                            </div>
+                        </aside>
+                    </div>
+                    <div class="column one-fifth">
+                        <aside id="custom_html-3" class="widget_text widget widget_custom_html">
+                            <div class="textwidget custom-html-widget">
+                                <div style="text-align: left;">
+                                    <h5>Service Offer</h5>
+                                    <ul>
+                                        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+                                                @Html.Action("GetNavPartialServiceOffer", "Home")
+                                        </li>
+
+                                    </ul>
                                 </div>
                             </div>
                         </aside>
@@ -314,7 +324,7 @@
 
 
                         <div class="copyright">
-                            © 2020 Star Security services. All Rights Reserved. | Designed by <a href="https://aiwa.digital/">Aiwa Digital</a>
+                            © 2020 Star Security services. All Rights Reserved.</a>
                         </div>
                         <ul class="social"></ul>
                     </div>
