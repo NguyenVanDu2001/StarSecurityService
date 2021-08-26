@@ -1,25 +1,29 @@
 ﻿
 @{
-      Layout = "~/Areas/Admin/Views/Shared/_MainLayoutAdmin.cshtml";
+    Layout = "~/Areas/Admin/Views/Shared/_MainLayoutAdmin.cshtml";
 }
-
-<!-- Content Wrapper. Contains page content -->
-<div class="content-wrapper">
-    <!-- Content Header (Page header) -->
-    <div class="content-header">
-        <div class="container-fluid">
-
-        </div><!-- /.container-fluid -->
-    </div>
-    <!-- /.content-header -->
-    <div class="container card">
-        <div class="card-body">
-
-            <div class="alert alert-danger alert-dismissible">
-                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-                <h5><i class="icon fas fa-ban"></i> Notify !</h5>
-                You do not have access!
-            </div>
+@section style{
+    <style>
+        .header-authen {
+            margin-top: 10px;
+        }
+        .fa-exclamation-triangle{
+            color: red;
+        }
+        .color-title {
+            color: red;
+        }
+    </style>
+}
+<div class="container py-5 header-authen">
+    <div class="row">
+        <div class="col-md-2 text-center">
+            <h4><i class="fa fa-exclamation-triangle fa-5x"></i><br /><b>Status Code: 401</b></h4>
+        </div>
+        <div class="col-md-10">
+            <h2 class="color-title"><b>OPPSSS!!!! Sorry...</b></h2>
+            <p>Sorry, your access is refused due to security reasons of our server and also our sensitive data.<br />Please go back to the previous page to continue browsing.</p>
         </div>
     </div>
+</div>
 
