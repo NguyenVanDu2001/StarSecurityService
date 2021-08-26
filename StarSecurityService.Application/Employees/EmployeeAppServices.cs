@@ -17,6 +17,7 @@ namespace StarSecurityService.Application.Employees
         Task UpdateAndGetIdAsync(Employyee em);
         Task<Employyee> CheckLogin(string emailOrEmail, string password);
         Task<Employyee> GetById(int id);
+        Task<bool> Delete(int id); 
     }
     public class EmployeeAppServices : IEmployeeAppService
     {
@@ -32,6 +33,20 @@ namespace StarSecurityService.Application.Employees
             if (user != null)
                 return user;
             return null;
+        }
+
+        public async Task<bool> Delete(int id)
+        {
+            try
+            {
+                var emp = await  _employyeeRepository.FirstOrDefaultAsync(x => x.Id == id);
+                await _employyeeRepository.DeleteAsync(emp);
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
         }
 
         public async Task<IEnumerable<Employyee>> GetAllEmployee()

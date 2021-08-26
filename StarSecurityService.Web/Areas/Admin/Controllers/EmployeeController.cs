@@ -131,24 +131,35 @@ namespace StarSecurityService.Web.Areas.Admin.Controllers
         }
 
         // GET: Admin/Employee/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
+       
 
         // POST: Admin/Employee/Delete/5
         [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        public async Task<JsonResult> Delete(int id)
         {
             try
             {
                 // TODO: Add delete logic here
+                await _employeeAppService.Delete(id);
 
-                return RedirectToAction("Index");
+                await _employeeServiceOfferAppSerivce.DeleteByEmployeeId(id);
+                await _employeeAchievementAppService.DeleteByEmployeeId(id);
+                await _clientEmployeeAppService.DeleteByEmployeeId(id);
+                var res = new Response<List<ComboboxCommonDto>>()
+                {
+                    Message = "Deleete success",
+                    Status = StatusEnum.Succeeded
+                };
+                return Json(res, JsonRequestBehavior.AllowGet);
             }
             catch
             {
-                return View();
+                var res = new Response<List<ComboboxCommonDto>>()
+                {
+                    Message = "Deleete Fail",
+                    Status = StatusEnum.Error
+                };
+                return Json(res, JsonRequestBehavior.AllowGet);
             }
         }
         [HttpGet]

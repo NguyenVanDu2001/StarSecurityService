@@ -376,13 +376,12 @@
             //Load combobox branch
             $.get("/Admin/Employee/LoadComboboxBranch").done(function (data) {
                 if (data.StatusCode == 200) {
-                    debugger
                     fillOptionSelect("#BranchId", data.Data, 'Choose branch',@Model.BranchId);
 
                 }
             })
             //Load combobox achivement
-            $.get("/Admin/Employee/LoadComboboxAchievemt")  .done(function (data) {
+            $.get("/Admin/Employee/LoadComboboxAchievemt").done(function (data) {
                 if (data.Status != 2) {
                     let lisselected = "";
                     if (_id > 0) {
@@ -467,8 +466,23 @@
                         // phone: "Plese enter phone in correct format phone number"
                     }
                 },
+                invalidHandler: function (event, validator) {
+                    var iss = $validateForm.checkValidateTab2();
+                    console.log(iss);
+                    if (iss == false) {
+                        alert("You are required to select the full tab information Employee Service");
+                    }
+                },
+
                 submitHandler: function (form) {
+                    var iss = $validateForm.checkValidateTab2();
+                    if (iss == false) {
+                        alert("You are required to select the full tab information Employee Service")
+                    } else {
+
                     $validateForm.ajaxSubmitForm(form);
+                    }
+
                     // form.submit();
                 }
             }),
@@ -493,8 +507,6 @@
                 formData.append("employyee", JSON.stringify(formdatainput));
                 formData.append("listAchievement", JSON.stringify($("#Achievement").val()));
                 formData.append("listServiceOffer", JSON.stringify($("#ServiceOffer").val()));
-                console.log(formdatainput);
-                debugger
 
                 $.ajax({
                     url: '/Admin/Employee/submitForm',
@@ -504,10 +516,10 @@
                     processData: false, // Not to process data
                     data: formData,
                     success: function (result) {
-                        alert(result);
+                        console.log(result);
                     },
                     error: function (err) {
-                        alert(err.statusText);
+                        console.log(err);
                     }
                 });
 
@@ -525,6 +537,31 @@
                     })
                 })
                 return dataTab2;
+            },
+            checkValidateTab2: function () {
+                let lengthTr = $("#info table tbody tr").length;
+                if (lengthTr == 0) {
+                    return false;
+                } else {
+
+                }
+                let ischeck = false;
+                $("#info table tbody tr").each(function () {
+                    let _$thisTr = $(this);
+                    if ( !_$thisTr.find("td:eq(1) select option:selected").val()
+                        || !_$thisTr.find("td:eq(2) select option:selected").val()
+                        || !_$thisTr.find("td:eq(3) input[type=date]").val()
+                        || !_$thisTr.find("td:eq(4) input[type=date]").val()
+                    ) {
+                        ischeck = true;
+                    }
+                })
+                if (ischeck) {
+                    return false;
+                }
+                return true;
+                
+                
             }
         }
         loadCombobox();
