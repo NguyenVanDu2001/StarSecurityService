@@ -252,8 +252,8 @@ namespace StarSecurityService.Web.Areas.Admin.Controllers
                         fname = file.FileName;
                     }
                     // Get the complete folder path and store the file inside it.  
-                    fname = Path.Combine(Server.MapPath("~/Uploads/"), fname);
-                    file.SaveAs(fname);
+                    string path = Path.Combine(Server.MapPath("~/Uploads/"), fname);
+                    file.SaveAs(path);
                 }
                 if (objectEmployee != null)
                 {

@@ -129,10 +129,19 @@
                                         @Html.EditorFor(model => model.Bonus, new { htmlAttributes = new { @class = "form-control" } })
                                         @Html.ValidationMessageFor(model => model.Bonus, "", new { @class = "text-danger" })
                                     </div>
-                                    <div>
-                                        <label for="Bonus"><span class="text-secondary "> Upload File</span></label>
-                                        <input id="file-input" type="file" class="form-control" value="@Model.Image" />
+
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.Image, htmlAttributes: new { @class = "control-label col-md-2" })
+                                        <div class="col-md-10">
+                                            <input id="img" type="file" name="Image" class="form-control hidden" onchange="changeImg(this)">
+                                            <img id="avatar" class="thumbnail" width="300px" src="~/Areas/Asset/img/@((Model.Image != null) ? Model.Image : "new_seo-10-512.png")">
+                                            @if (Model.Image != null)
+                                            {
+                                                <a href="~/Areas/Asset/img/@Model.Image">View File</a>
+                                            }
+                                        </div>
                                     </div>
+
                                     <div>
                                         <label for="Grander"><span class="text-secondary "> Branch</span></label>
                                         <select class=" form-control" id="BranchId" name="BranchId">
@@ -144,12 +153,12 @@
                                         @Html.DropDownList("GroupId", new SelectList(ViewBag.lstGrUser, "Id", "Name"), "---Choose group user---", htmlAttributes: new { @class = "form-control" })
 
                                         @*<select class=" form-control" id="GroupId" name="GroupId">
-                                            <option value=""> Choose Group User</option>
-                                            @foreach (var item in collection)
-                                            {
+                <option value=""> Choose Group User</option>
+                @foreach (var item in collection)
+                {
 
-                                            }
-                                        </select>*@
+                }
+            </select>*@
                                     </div>
                                 </div>
 
@@ -492,7 +501,7 @@
                     formdatainput[n['name']] = n['value'];
                 });
 
-                var fileUpload = $("#file-input").get(0);
+                var fileUpload = $("#img").get(0);
                 var files = fileUpload.files;
 
                 // Create FormData object
