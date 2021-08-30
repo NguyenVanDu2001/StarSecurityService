@@ -17,7 +17,8 @@ namespace StarSecurityService.Application.Employees
         Task UpdateAndGetIdAsync(Employyee em);
         Task<Employyee> CheckLogin(string emailOrEmail, string password);
         Task<Employyee> GetById(int id);
-        Task<bool> Delete(int id); 
+        Task<bool> Delete(int id);
+        Task<bool> CheckName(string name, string email);
     }
     public class EmployeeAppServices : IEmployeeAppService
     {
@@ -33,6 +34,12 @@ namespace StarSecurityService.Application.Employees
             if (user != null)
                 return user;
             return null;
+        }
+
+        public async Task<bool> CheckName(string name, string email)
+        {
+
+            return _employyeeRepository.GetAll().Any(x => x.UserName.Equals(name) || x.Email.Equals(email)); 
         }
 
         public async Task<bool> Delete(int id)

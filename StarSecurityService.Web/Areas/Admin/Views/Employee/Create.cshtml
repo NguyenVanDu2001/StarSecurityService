@@ -488,8 +488,7 @@
                     if (iss == false) {
                         alert("You are required to select the full tab information Employee Service")
                     } else {
-
-                    $validateForm.ajaxSubmitForm(form);
+                        $validateForm.ajaxSubmitForm(form);
                     }
 
                     // form.submit();
@@ -526,6 +525,7 @@
                     data: formData,
                     success: function (result) {
                         console.log(result);
+                        alert(result);  
                     },
                     error: function (err) {
                         console.log(err);

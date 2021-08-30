@@ -236,7 +236,7 @@ namespace StarSecurityService.Web.Areas.Admin.Controllers
                 var listServiceOffer = new JavaScriptSerializer().Deserialize<List<int>>(formCollection["listServiceOffer"]);
                 var listserviceEmployee = new JavaScriptSerializer().Deserialize<List<ClientEmployeeCreateDto>>(formCollection["serviceEmployee"]);
                 HttpFileCollectionBase files = Request.Files;
-
+                
                 string fname = string.Empty;
                 if (files.Count > 0)
                 {
@@ -258,6 +258,16 @@ namespace StarSecurityService.Web.Areas.Admin.Controllers
                 if (objectEmployee != null)
                 {
                     // Edit
+                    if (objectEmployee.Id == 0)
+                    {
+                        var checkName = (await _employeeAppService.CheckName(objectEmployee.UserName, objectEmployee.Email));
+                        if (checkName)
+                        {
+                            return Json("Your name or email is already the same", JsonRequestBehavior.AllowGet);
+                        }
+                    }
+                    
+                    
                     if (objectEmployee.Id > 0)
                     {
                         var employee = await _employeeAppService.GetById(objectEmployee.Id);
@@ -357,7 +367,7 @@ namespace StarSecurityService.Web.Areas.Admin.Controllers
             }
                 
            
-            return Json(1);
+            return Json("Save success");
         }
             
     }
